@@ -135,7 +135,7 @@ body{font-family:'Nunito',sans-serif;color:var(--tinte);min-height:100dvh;displa
 .chartbox .sub{font-size:9.5px;font-weight:800;color:var(--tinte-weich);text-transform:uppercase;letter-spacing:.4px}
 .chartbox svg{display:block;margin:2px auto 0;max-width:100%;height:auto}
 .chartbox svg,.mchart svg,path.hit{outline:none;-webkit-tap-highlight-color:transparent}
-path.hit.aktivseg{stroke:var(--tinte);stroke-width:2.5;stroke-linejoin:round;fill:rgba(44,52,40,.05)}
+path.hit.aktivseg{stroke:var(--segcol,var(--tinte));stroke-width:3;stroke-linejoin:round;fill:rgba(44,52,40,.04)}
 .klick{text-align:center;font-size:10px;font-weight:800;color:var(--wiese-tief);margin-top:2px}
 .zaehler{display:grid;grid-template-columns:1fr 1fr;gap:7px}
 .zl{background:#fff;border-radius:11px;padding:7px 9px;box-shadow:var(--sk)}
@@ -661,7 +661,7 @@ function torte(gross){
       if(istBallast && pct>100) p+=`<path d="${dF}" fill="#16330f" opacity="${Math.min(.5,ueber*3)}"/>`;
     }
     if(pct<10) luecken.push(g);
-    p+=`<path class="hit" data-seg="${g.k}" data-pct="${pct.toFixed(0)}" d="M ${xi0} ${yi0} L ${xo0} ${yo0} A ${R_OUT} ${R_OUT} 0 0 1 ${xo1} ${yo1} L ${xi1} ${yi1} A ${R_IN} ${R_IN} 0 0 0 ${xi0} ${yi0} Z" fill="transparent" style="cursor:pointer"/>`;
+    p+=`<path class="hit" data-seg="${g.k}" data-pct="${pct.toFixed(0)}" d="M ${xi0} ${yi0} L ${xo0} ${yo0} A ${R_OUT} ${R_OUT} 0 0 1 ${xo1} ${yo1} L ${xi1} ${yi1} A ${R_IN} ${R_IN} 0 0 0 ${xi0} ${yi0} Z" fill="transparent" style="cursor:pointer;--segcol:${dunkler(g.col,.2)}"/>`;
     if(gross){
       if(pct>100){const am=((i+.5)*step-90)*Math.PI/180, rb=R_OUT-16;
         const [bx,by]=P(rb,am);
