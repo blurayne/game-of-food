@@ -358,7 +358,16 @@ path.hit.aktivseg{stroke:var(--segcol,var(--tinte));stroke-width:3;stroke-linejo
 #zzuck.warn .bahn{background:rgba(255,255,255,.28)}
 #zzuck.warn .bahn i{background-color:#fff!important;background-image:none!important}
 
-@media (prefers-reduced-motion: reduce){ .huelle,.huelle::after,.lm,.zl .bahn i{transition:none} }
+/* Warnstufen des Zucker-Zählers */
+#zzuck.fast .bahn i{background-color:var(--rot)!important}
+#zzuck.warn{outline:3px solid var(--rot-tief);outline-offset:1.5px;animation:zublink 1s ease-in-out infinite}
+#zzuck.warn.doppelt{animation-duration:.4s}
+@keyframes zublink{
+  0%,100%{outline-color:var(--rot-tief);box-shadow:0 3px 12px rgba(228,87,46,.4)}
+  50%{outline-color:rgba(228,87,46,.12);box-shadow:0 3px 24px rgba(228,87,46,.75)}
+}
+
+@media (prefers-reduced-motion: reduce){ .huelle,.huelle::after,.lm,.zl .bahn i{transition:none} #zzuck.warn{animation:none} }
 </style>
 </head>
 <body>
@@ -770,8 +779,11 @@ function render(){
   document.getElementById('kanteil').textContent = einzeln ? `${Math.round(kc/BED.kcal*100)} % deines Tages` : '';
   zz.querySelector('.v').textContent=zu+' g';
   zz.querySelector('.bahn i').style.width=Math.min(100,zu/BED.zucker_max*100)+'%';
+  const zproz=zu/BED.zucker_max*100;
+  zz.classList.toggle('fast', zproz>=90&&zproz<100);  // ab 90 %: Balken rot
+  zz.classList.toggle('warn', zproz>=100);            // ab 100 %: Feld rot, Umrandung, Blinken (1 s)
+  zz.classList.toggle('doppelt', zproz>=200);         // ab 200 %: schneller blinken (0,4 s)
   const drueber = zu>BED.zucker_max;
-  zz.classList.toggle('warn', drueber);
   document.getElementById('zueber').textContent = !drueber ? ''
     : (einzeln ? `🔴 allein schon über dem Tages-Limit (${BED.zucker_max} g)`
                : `🔴 ${zu-BED.zucker_max} g über dem Limit (${BED.zucker_max} g)`);

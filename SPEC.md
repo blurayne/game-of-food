@@ -83,6 +83,8 @@ Gerichte speichern **nur** `bestandteile[]`. Alle Nährwerte, `wasser_ml`, `port
 
 **Obergrenzen:** 🧂 Natrium max **1800 mg** (Soll 750) · 🍬 Zucker max **45 g** (WHO: 10 % der Energie)
 
+> ✅ **Zucker-Limit nachgeprüft (2026-07):** WHO (2015) empfiehlt < 10 % der Energie an freien Zuckern — bei den 1800 kcal Tagesbedarf dieser App exakt **45 g**. Häufig zitierte ~42 g für 7–10-Jährige beruhen auf einer niedrigeren Referenzenergie (~1700 kcal). Die strengere WHO/DGE-Empfehlung (< 5 %) läge bei ~22 g.
+
 ---
 
 ## 2. Die zwei Kategorien-Systeme
@@ -475,7 +477,7 @@ Der frühere automatische „👁️ Vorschau"-Badge ist damit **abgelöst** —
 | **🎚 🖼️ Hintergrund** | Schieberegler (im ⚙️-Dialog) für die Deckkraft der Hintergrund-Textur (0–100 %, Standard 50 %) |
 | **↔️ Spalten-Griffe** | Zwei schmale vertikale Griffe zwischen den drei Spalten (Desktop): **Ziehen** (Maus/Touch, Pointer Events) macht Picker bzw. rechte Spalte breiter/schmaler (CSS-Variablen `--c1`/`--c3`, per `clamp()` begrenzt), **Doppelklick** setzt zurück, Breiten überleben Reload (`localStorage`). Im gestapelten Portrait-Layout ausgeblendet |
 | **☐ 🍎 Fruchtzucker wie Zucker** | **Standard: aus.** Zucker aus ganzem Obst (Regal 🍎) zählt dann als normale Kohlenhydrate — WHO-Logik „freie Zucker": intrinsischer Fruchtzucker fällt nicht unters 45-g-Limit, *Trauben werden nicht bestraft*. **Eingeschaltet** zählt Obst-Zucker überall wie einfacher Zucker: 🍬-Zähler & Warnung, Teller-Liste, Tropfen-Treemap (pinker Block statt braunem KH-Block), Hover-Tipps und Modal. Säfte, Smoothies & Trockenobst gelten immer als Zucker (stehen nicht im Obst-Regal). |
-| **Zähler** | Energie + Zucker mit Balken. Über 45 g Zucker: **das ganze Feld wird rot** + Bezifferung der Überschreitung |
+| **Zähler** | Energie + Zucker mit Balken. Zucker warnt gestuft: **ab 90 %** des Limits wird der Balken rot · **ab 100 %** wird das ganze Feld rot, bekommt eine rote Umrandung und **blinkt/faded** (ease-in-out, 1 s) + Bezifferung der Überschreitung · **ab 200 %** blinkt es schnell (0,4 s). Bei `prefers-reduced-motion` kein Blinken |
 | **⚖️ Verhältnis** | Drei Kästchen (Breite = Soll-Anteil). Der Ist-Balken **überdehnt sichtbar** in die Nachbarzone, wenn ein Makro zu viel wird. Bei leerem Teller: Hinweis, dass das Verhältnis nur für den **ganzen Tag** gilt |
 
 ### Screen-Maße
