@@ -212,6 +212,20 @@ body{font-family:'Nunito',sans-serif;color:var(--tinte);background:linear-gradie
 .opt input{width:14px;height:14px;accent-color:var(--wiese);cursor:pointer}
 .opt span{font-size:10px;font-weight:800;line-height:1.25}
 .opt span small{display:block;font-weight:700;color:var(--tinte-weich);font-size:8.5px}
+.suche{display:flex;align-items:center;gap:6px;background:#fff;border:2px solid transparent;border-radius:9px;
+  padding:6px 9px;margin-bottom:6px;box-shadow:var(--sk)}
+.suche:focus-within{border-color:var(--wiese)}
+.suche .ic{font-size:13px;opacity:.6;flex:0 0 auto}
+.suche input{flex:1;min-width:0;border:none;outline:none;background:none;
+  font-family:'Nunito',sans-serif;font-size:12px;font-weight:800;color:var(--tinte)}
+.suche input::placeholder{color:var(--tinte-weich);font-weight:700}
+.suche input::-webkit-search-cancel-button{-webkit-appearance:none;display:none}
+.suche .sx{flex:0 0 auto;background:var(--papier-tief);border:none;border-radius:6px;width:18px;height:18px;
+  cursor:pointer;font-size:10px;display:grid;place-items:center;color:var(--tinte-weich);transition:.12s}
+.suche .sx:hover{transform:scale(1.15);color:var(--rot-tief)}
+.suche .sx.aus{display:none}
+.streffer{font-size:10.5px;font-weight:700;font-style:italic;color:var(--tinte-weich);
+  text-align:center;padding:14px 6px;line-height:1.5}
 .vorschau{position:absolute;top:8px;left:10px;background:var(--sonne);color:var(--tinte);
   font-size:9px;font-weight:800;padding:3px 8px;border-radius:999px;box-shadow:var(--sk);z-index:3}
 .vorschau.aus{display:none}
@@ -336,6 +350,11 @@ body{font-family:'Nunito',sans-serif;color:var(--tinte);background:linear-gradie
   <div class="pad">
 
     <div class="pickerwrap">
+      <div class="suche">
+        <span class="ic">🔍</span>
+        <input type="search" id="suche" placeholder="Essen suchen …" autocomplete="off" aria-label="Essen suchen">
+        <button class="sx aus" id="suchex" aria-label="Suche löschen">✕</button>
+      </div>
       <label class="opt"><input type="checkbox" id="optx">
         <span>✕ Nutzlose ausgrauen<small>markiert, was nichts mehr zum Tagesbedarf beiträgt</small></span></label>
       <label class="opt"><input type="checkbox" id="optv" checked>
@@ -739,9 +758,12 @@ function gross(){
 }
 
 /* ---------- Picker ---------- */
+let suchtext='';
+const normS=s=>s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
 function baue(){
   const grp={};
-  FOODS.forEach(f=>{(grp[f.regal]=grp[f.regal]||[]).push(f);});
+  FOODS.filter(f=>!suchtext || normS(f.name).includes(suchtext) || normS(f.regal).includes(suchtext))
+       .forEach(f=>{(grp[f.regal]=grp[f.regal]||[]).push(f);});
   const ORD=["🍞 Brot & Gebäck","🥣 Frühstück","🍎 Obst","🥬 Gemüse","🧀 Milch & Käse",
              "🍔 Fleisch & Fast Food","🍽️ Fertige Teller","🍦 Eis & Kuchen","🍫 Süßes",
              "🧈 Fette & Würze","🧃 Getränke","🥪 Gerichte"];
@@ -759,6 +781,7 @@ function baue(){
         </span></div>`;
     });
   });
+  if(!h) h='<div class="streffer">🔍 Nichts gefunden.<br>Probier ein anderes Wort — z.&nbsp;B. „Käse" oder „Obst".</div>';
   const P=document.getElementById('picker'); P.innerHTML=h;
   P.querySelectorAll('[data-p]').forEach(b=>b.onclick=e=>{e.stopPropagation();
     const id=b.dataset.p; const wasLeer=leer();
@@ -769,6 +792,15 @@ function baue(){
     teller[id]--; if(!teller[id])delete teller[id]; render();});
   P.querySelectorAll('.it .em, .it .nm').forEach(el=>el.onclick=()=>{waehle(F(el.parentElement.dataset.id));render();});
 }
+const SUCHE=document.getElementById('suche'), SUCHEX=document.getElementById('suchex');
+SUCHE.oninput=()=>{
+  suchtext=normS(SUCHE.value.trim());
+  SUCHEX.classList.toggle('aus',!SUCHE.value);
+  baue(); render();
+};
+SUCHEX.onclick=()=>{ SUCHE.value=''; SUCHE.oninput(); SUCHE.focus(); };
+SUCHE.onkeydown=e=>{ if(e.key==='Escape' && SUCHE.value){ e.stopPropagation(); SUCHE.value=''; SUCHE.oninput(); } };
+
 function waehle(f,leise){
   aktiv=f; wdi=0;
   document.querySelectorAll('.it').forEach(e=>e.classList.toggle('aktiv',e.dataset.id===f.id));
