@@ -10,6 +10,11 @@ Deployed via GitHub Pages: https://blurayne.github.io/game-of-food/
 
 Proof of concept — a single self-contained `index.html` (responsive layout), no build step.
 
+## Docs & Daten
+
+- [`SPEC.md`](SPEC.md) — vollständige Spezifikation (Datenmodell, Mechaniken, Layout)
+- [`lebensmittel.json`](lebensmittel.json) — Lebensmittel-Datenbasis (v10.0: 111 Zutaten, 16 Gerichte, Tagesbedarf)
+
 ## Deployment
 
 Every push to `main` (or the current POC branch) runs `.github/workflows/deploy-pages.yml`,
