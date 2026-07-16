@@ -469,7 +469,9 @@ Der frühere automatische „👁️ Vorschau"-Badge ist damit **abgelöst** —
 | **Klick aufs Chart** | Modal mit der großen Ansicht (Pfeile, Labels, Funktionen). `Esc` / `✕` schließt |
 | **☑ ✕ Nutzlose ausgrauen** | markiert Lebensmittel, die zu **keinem** Nährstoff unter 100 % noch ≥ 2 % beitragen |
 | **☑ ⚖️ Verhältnis anzeigen** | blendet das Fett:KH:Eiweiß-Feld ein/aus |
-| **🎚 🖼️ Hintergrund** | Schieberegler für die Deckkraft der Hintergrund-Textur (0–100 %, Standard 50 %) |
+| **⚙️ Einstellungen** | Zahnrad-Button in der Top-Leiste öffnet einen Dialog mit allen Optionen (Nutzlose ausgrauen, Verhältnis, Fruchtzucker, Hintergrund-Deckkraft). ✕ / `Esc` / Klick daneben schließt. **Alle Einstellungen überleben einen Reload** (`localStorage`, Schlüssel `einstellungen`) |
+| **⤢ Vollbild** | Button in der Top-Leiste schaltet echtes Browser-Vollbild an/aus (Fullscreen API); Icon wechselt ⤢/⤡, `Esc` verlässt wie gewohnt |
+| **🎚 🖼️ Hintergrund** | Schieberegler (im ⚙️-Dialog) für die Deckkraft der Hintergrund-Textur (0–100 %, Standard 50 %) |
 | **↔️ Spalten-Griffe** | Zwei schmale vertikale Griffe zwischen den drei Spalten (Desktop): **Ziehen** (Maus/Touch, Pointer Events) macht Picker bzw. rechte Spalte breiter/schmaler (CSS-Variablen `--c1`/`--c3`, per `clamp()` begrenzt), **Doppelklick** setzt zurück, Breiten überleben Reload (`localStorage`). Im gestapelten Portrait-Layout ausgeblendet |
 | **☐ 🍎 Fruchtzucker wie Zucker** | **Standard: aus.** Zucker aus ganzem Obst (Regal 🍎) zählt dann als normale Kohlenhydrate — WHO-Logik „freie Zucker": intrinsischer Fruchtzucker fällt nicht unters 45-g-Limit, *Trauben werden nicht bestraft*. **Eingeschaltet** zählt Obst-Zucker überall wie einfacher Zucker: 🍬-Zähler & Warnung, Teller-Liste, Tropfen-Treemap (pinker Block statt braunem KH-Block), Hover-Tipps und Modal. Säfte, Smoothies & Trockenobst gelten immer als Zucker (stehen nicht im Obst-Regal). |
 | **Zähler** | Energie + Zucker mit Balken. Über 45 g Zucker: **das ganze Feld wird rot** + Bezifferung der Überschreitung |

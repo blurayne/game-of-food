@@ -36,6 +36,14 @@ body{font-family:'Nunito',sans-serif;color:var(--tinte);min-height:100dvh;displa
 .top .tagbtn{display:none;background:var(--wiese-tief);color:#fff;border:none;border-radius:999px;
   font-family:'Fredoka';font-weight:500;font-size:12px;padding:6px 13px;cursor:pointer;align-items:center;gap:5px;white-space:nowrap}
 .top .tagbtn:active{transform:scale(.96)}
+.icobtn{background:#fff;border:none;border-radius:9px;width:26px;height:26px;cursor:pointer;font-size:13px;
+  display:grid;place-items:center;box-shadow:var(--sk);flex:0 0 auto;transition:.12s}
+.icobtn:hover{transform:scale(1.1)}
+.icobtn:focus-visible{outline:3px solid var(--sonne);outline-offset:1px}
+.sbox{background:var(--papier);border-radius:18px;width:min(430px,94vw);max-height:86vh;
+  display:flex;flex-direction:column;overflow:hidden;box-shadow:var(--sk2)}
+.spad{padding:12px 14px 14px;overflow-y:auto;display:flex;flex-direction:column}
+.spad .opt{background:var(--papier-tief);box-shadow:none}
 .pad{flex:1 1 auto;padding:12px;display:grid;gap:0;min-height:0;
   grid-template-columns:clamp(180px,var(--c1,255px),34vw) 16px minmax(0,1fr) 16px clamp(240px,var(--c3,340px),40vw)}
 
@@ -361,6 +369,8 @@ body{font-family:'Nunito',sans-serif;color:var(--tinte);min-height:100dvh;displa
     <span class="titel">🍽️ Tagesplaner</span>
     <span class="stand" id="stand">Noch nichts auf dem Teller</span>
     <button class="tagbtn" id="tagbtn">🥧 Dein Tag</button>
+    <button class="icobtn" id="setbtn" title="Einstellungen" aria-label="Einstellungen">⚙️</button>
+    <button class="icobtn" id="fsbtn" title="Vollbild" aria-label="Vollbild umschalten">⤢</button>
     <span class="alter">7 J.</span>
   </div>
   <div class="pad">
@@ -371,14 +381,6 @@ body{font-family:'Nunito',sans-serif;color:var(--tinte);min-height:100dvh;displa
         <input type="search" id="suche" placeholder="Essen suchen …" autocomplete="off" aria-label="Essen suchen">
         <button class="sx aus" id="suchex" aria-label="Suche löschen">✕</button>
       </div>
-      <label class="opt"><input type="checkbox" id="optx">
-        <span>✕ Nutzlose ausgrauen<small>markiert, was nichts mehr zum Tagesbedarf beiträgt</small></span></label>
-      <label class="opt"><input type="checkbox" id="optv" checked>
-        <span>⚖️ Verhältnis anzeigen<small>Fett : Kohlenhydrate : Eiweiß</small></span></label>
-      <label class="opt"><input type="checkbox" id="optf">
-        <span>🍎 Fruchtzucker wie Zucker<small>Zucker aus Obst zählt zum 🍬-Limit und wird pink angezeigt</small></span></label>
-      <label class="opt optbg"><span>🖼️ Hintergrund<small>Deckkraft des Musters</small></span>
-        <input type="range" id="optbg" min="0" max="100" value="50" aria-label="Hintergrund-Deckkraft"></label>
       <div class="picker" id="picker"></div>
     </div>
 
@@ -451,6 +453,22 @@ body{font-family:'Nunito',sans-serif;color:var(--tinte);min-height:100dvh;displa
           </div>
           <div class="luecke" id="luecke"></div>
         </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal" id="setmodal">
+    <div class="sbox">
+      <div class="mbar"><span class="t">⚙️ Einstellungen</span>
+        <button class="zu" id="setzu" aria-label="Einstellungen schließen">✕</button></div>
+      <div class="spad">
+        <label class="opt"><input type="checkbox" id="optx">
+          <span>✕ Nutzlose ausgrauen<small>markiert, was nichts mehr zum Tagesbedarf beiträgt</small></span></label>
+        <label class="opt"><input type="checkbox" id="optv" checked>
+          <span>⚖️ Verhältnis anzeigen<small>Fett : Kohlenhydrate : Eiweiß</small></span></label>
+        <label class="opt"><input type="checkbox" id="optf">
+          <span>🍎 Fruchtzucker wie Zucker<small>Zucker aus Obst zählt zum 🍬-Limit und wird pink angezeigt</small></span></label>
+        <label class="opt optbg"><span>🖼️ Hintergrund<small>Deckkraft des Musters</small></span>
+          <input type="range" id="optbg" min="0" max="100" value="50" aria-label="Hintergrund-Deckkraft"></label>
       </div>
     </div>
   </div>
@@ -855,7 +873,8 @@ document.getElementById('tagbtn').onclick=openTag;
 document.getElementById('chartbox').onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();document.getElementById('chartbox').click();}};
 document.getElementById('zu').onclick=()=>document.getElementById('modal').classList.remove('on');
 document.getElementById('modal').onclick=e=>{if(e.target.id==='modal')e.currentTarget.classList.remove('on');};
-document.addEventListener('keydown',e=>{if(e.key==='Escape')document.getElementById('modal').classList.remove('on');});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){document.getElementById('modal').classList.remove('on');
+  document.getElementById('setmodal').classList.remove('on');}});
 document.getElementById('reset').onclick=()=>{teller={};baue();render();};
 
 
@@ -894,11 +913,35 @@ function bindeTip(root){
 const _render=render, _gross=gross;
 render=function(){_render(); bindeTip(document.getElementById('minichart'));};
 gross =function(){_gross();  bindeTip(document.getElementById('grosschart'));};
-document.getElementById('optx').onchange=e=>{zeigX=e.target.checked; render();};
-document.getElementById('optv').onchange=e=>{zeigV=e.target.checked; render();};
-document.getElementById('optf').onchange=e=>{fruchtAlsZucker=e.target.checked; zeichneFood(aktiv); render();
+/* ---------- Einstellungen: Persistenz + Dialog + Vollbild ---------- */
+const EINST=(()=>{try{return JSON.parse(localStorage.getItem('einstellungen')||'{}')}catch(e){return{}}})();
+const einstMerk=(k,v)=>{EINST[k]=v;try{localStorage.setItem('einstellungen',JSON.stringify(EINST))}catch(e){}};
+
+document.getElementById('optx').onchange=e=>{zeigX=e.target.checked; einstMerk('zeigX',zeigX); render();};
+document.getElementById('optv').onchange=e=>{zeigV=e.target.checked; einstMerk('zeigV',zeigV); render();};
+document.getElementById('optf').onchange=e=>{fruchtAlsZucker=e.target.checked; einstMerk('fruchtAlsZucker',fruchtAlsZucker);
+  zeichneFood(aktiv); render();
   if(document.getElementById('modal').classList.contains('on')) gross();};
-document.getElementById('optbg').oninput=e=>document.documentElement.style.setProperty('--bgop',e.target.value/100);
+document.getElementById('optbg').oninput=e=>{const v=e.target.value/100;
+  document.documentElement.style.setProperty('--bgop',v); einstMerk('bgop',v);};
+
+// gespeicherte Einstellungen anwenden (vor dem ersten Render)
+if(EINST.zeigX!==undefined){zeigX=!!EINST.zeigX; document.getElementById('optx').checked=zeigX;}
+if(EINST.zeigV!==undefined){zeigV=!!EINST.zeigV; document.getElementById('optv').checked=zeigV;}
+if(EINST.fruchtAlsZucker!==undefined){fruchtAlsZucker=!!EINST.fruchtAlsZucker; document.getElementById('optf').checked=fruchtAlsZucker;}
+if(EINST.bgop!==undefined){document.getElementById('optbg').value=Math.round(EINST.bgop*100);
+  document.documentElement.style.setProperty('--bgop',EINST.bgop);}
+
+const setmodal=document.getElementById('setmodal');
+document.getElementById('setbtn').onclick=()=>setmodal.classList.add('on');
+document.getElementById('setzu').onclick=()=>setmodal.classList.remove('on');
+setmodal.onclick=e=>{if(e.target===setmodal)setmodal.classList.remove('on');};
+
+const fsbtn=document.getElementById('fsbtn');
+fsbtn.onclick=()=>{ if(document.fullscreenElement) document.exitFullscreen();
+  else document.documentElement.requestFullscreen().catch(()=>{}); };
+document.addEventListener('fullscreenchange',()=>{ const an=!!document.fullscreenElement;
+  fsbtn.textContent=an?'⤡':'⤢'; fsbtn.title=an?'Vollbild verlassen':'Vollbild'; });
 
 /* ---------- Spalten-Griffe: Panes per Maus/Touch skalieren ---------- */
 (function(){
