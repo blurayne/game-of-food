@@ -359,6 +359,8 @@ body{font-family:'Nunito',sans-serif;color:var(--tinte);background:linear-gradie
         <span>✕ Nutzlose ausgrauen<small>markiert, was nichts mehr zum Tagesbedarf beiträgt</small></span></label>
       <label class="opt"><input type="checkbox" id="optv" checked>
         <span>⚖️ Verhältnis anzeigen<small>Fett : Kohlenhydrate : Eiweiß</small></span></label>
+      <label class="opt"><input type="checkbox" id="optf">
+        <span>🍎 Fruchtzucker wie Zucker<small>Zucker aus Obst zählt zum 🍬-Limit und wird pink angezeigt</small></span></label>
       <div class="picker" id="picker"></div>
     </div>
 
@@ -450,6 +452,16 @@ const WDF={gut:"#4F9142",schlecht:"#E4572E",wow:"#F4A300"};
 const WDT={gut:"Gute Nachricht",schlecht:"Schade, aber wahr",wow:"Wusstest du?"};
 const F=id=>FOODS.find(f=>f.id===id);
 
+/* Setting 🍎: Fruchtzucker wie einfachen Zucker behandeln?
+   Aus (Standard): Zucker aus ganzem Obst zählt als normale Kohlenhydrate
+   (WHO-Logik „freie Zucker" — intrinsischer Fruchtzucker fällt nicht unters Limit).
+   An: Obst-Zucker zählt und erscheint überall wie einfacher Zucker. */
+let fruchtAlsZucker=false;
+const istObst=f=>f.regal==="🍎 Obst";
+const zuckerVon=f=>(fruchtAlsZucker||!istObst(f))?f.n.zucker:0;
+const anteileVon=f=>{ if(fruchtAlsZucker||!istObst(f)) return f.a;
+  const a={...f.a}; a.kh=(a.kh||0)+(a.zucker||0); a.zucker=0; return a; };
+
 let teller={};
 let zeigX=false;
 let modus='aktuell';
@@ -484,7 +496,7 @@ function squarify(items,x,y,w,h){
 /* ---------- Der Tropfen (Mitte) ---------- */
 const BASE=200, MINPX=58, MAXPX=200;
 function zeichneFood(f){
-  const a=f.a, tr=Object.values(a).reduce((x,y)=>x+y,0), gesamt=f.portion;
+  const a=anteileVon(f), tr=Object.values(a).reduce((x,y)=>x+y,0), gesamt=f.portion;
   const t=Math.max(0,Math.min(1,(f.wnat-10)/40));
   let W=Math.sqrt(gesamt*BASE), zoom=1;
   if(W>MAXPX)zoom=MAXPX/W; else if(W<MINPX&&W>0)zoom=Math.min(3,MINPX/W);
@@ -540,7 +552,7 @@ const leer=()=>!Object.keys(teller).length;
 function summeVon(q){
   const s={}; SEG.forEach(g=>s[g.k]=0); s.kcal=0; s.zucker=0; s.natrium=0;
   for(const id in q){const f=F(id), n=q[id];
-    for(const k in f.n) s[k]=(s[k]||0)+f.n[k]*n;}
+    for(const k in f.n) s[k]=(s[k]||0)+(k==='zucker'?zuckerVon(f):f.n[k])*n;}
   return s;
 }
 const tagSumme    = ()=>summeVon(teller);                 // immer der GANZE Tag
@@ -724,7 +736,7 @@ function render(){
   if(!anz){ L.innerHTML='<div class="leer2">Noch leer.<br>Klick links auf <b>+</b>, um etwas zu essen.</div>'; }
   else L.innerHTML=Object.keys(teller).map(id=>{const f=F(id),n=teller[id];
     return `<div class="li"><span class="em">${f.emoji}</span><span class="nm">${f.name}${n>1?` <b>×${n}</b>`:''}
-      <small>${Math.round(f.n.kcal*n)} kcal · ${Math.round(f.n.zucker*n)} g 🍬</small></span>
+      <small>${Math.round(f.n.kcal*n)} kcal · ${Math.round(zuckerVon(f)*n)} g 🍬</small></span>
       <button class="x" data-del="${id}">✕</button></div>`;}).join('');
   L.querySelectorAll('[data-del]').forEach(b=>b.onclick=()=>{delete teller[b.dataset.del];baue();render();});
 
@@ -831,8 +843,9 @@ function tipAn(e,k,pct){
     if(!t.length) h+=`<div class="voll" style="color:var(--rot-tief)">⚠️ Dafür gibt es noch kein Lebensmittel.</div>`;
     else{
       h+=`<div class="st">Das würde helfen</div>`;
-      t.forEach(x=>{h+=`<div class="v"><span class="em">${x.emoji}</span><span class="n">${x.name}
-        <small>${x.kcal} kcal${x.zucker>2?` · ${x.zucker} g 🍬`:''}</small></span><span class="p">+${x.pct}%</span></div>`;});
+      t.forEach(x=>{const xf=F(x.id), xz=xf?zuckerVon(xf):x.zucker;
+        h+=`<div class="v"><span class="em">${x.emoji}</span><span class="n">${x.name}
+        <small>${x.kcal} kcal${xz>2?` · ${Math.round(xz)} g 🍬`:''}</small></span><span class="p">+${x.pct}%</span></div>`;});
     }
   }
   TIP.innerHTML=h; TIP.classList.add('on');
@@ -853,6 +866,8 @@ render=function(){_render(); bindeTip(document.getElementById('minichart'));};
 gross =function(){_gross();  bindeTip(document.getElementById('grosschart'));};
 document.getElementById('optx').onchange=e=>{zeigX=e.target.checked; render();};
 document.getElementById('optv').onchange=e=>{zeigV=e.target.checked; render();};
+document.getElementById('optf').onchange=e=>{fruchtAlsZucker=e.target.checked; zeichneFood(aktiv); render();
+  if(document.getElementById('modal').classList.contains('on')) gross();};
 document.querySelectorAll('.us').forEach(b=>b.onclick=()=>setModus(b.dataset.m,true));
 
 baue(); waehle(aktiv); render();

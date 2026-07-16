@@ -442,6 +442,7 @@ Der frühere automatische „👁️ Vorschau"-Badge ist damit **abgelöst** —
 
 | | |
 |---|---|
+| **🔍 Suche** | Suchfeld über dem Picker: filtert live nach Name **und** Regal, Umlaut-tolerant („kase" findet „Käse"). ✕ oder `Esc` leert; Treffer-los zeigt einen freundlichen Hinweis |
 | **+ / −** | addiert/entfernt; Mehrfach möglich (`×2`, `×3`) |
 | **Klick auf Name/Emoji** | inspiziert das Lebensmittel in der Mitte (fügt **nicht** hinzu) |
 | **🔀 Umschalter** | `🥕 Dieses Essen` ⇄ `🍽️ Ganzer Tag` — siehe §6.1 |
@@ -450,6 +451,7 @@ Der frühere automatische „👁️ Vorschau"-Badge ist damit **abgelöst** —
 | **Klick aufs Chart** | Modal mit der großen Ansicht (Pfeile, Labels, Funktionen). `Esc` / `✕` schließt |
 | **☑ ✕ Nutzlose ausgrauen** | markiert Lebensmittel, die zu **keinem** Nährstoff unter 100 % noch ≥ 2 % beitragen |
 | **☑ ⚖️ Verhältnis anzeigen** | blendet das Fett:KH:Eiweiß-Feld ein/aus |
+| **☐ 🍎 Fruchtzucker wie Zucker** | **Standard: aus.** Zucker aus ganzem Obst (Regal 🍎) zählt dann als normale Kohlenhydrate — WHO-Logik „freie Zucker": intrinsischer Fruchtzucker fällt nicht unters 45-g-Limit, *Trauben werden nicht bestraft*. **Eingeschaltet** zählt Obst-Zucker überall wie einfacher Zucker: 🍬-Zähler & Warnung, Teller-Liste, Tropfen-Treemap (pinker Block statt braunem KH-Block), Hover-Tipps und Modal. Säfte, Smoothies & Trockenobst gelten immer als Zucker (stehen nicht im Obst-Regal). |
 | **Zähler** | Energie + Zucker mit Balken. Über 45 g Zucker: **das ganze Feld wird rot** + Bezifferung der Überschreitung |
 | **⚖️ Verhältnis** | Drei Kästchen (Breite = Soll-Anteil). Der Ist-Balken **überdehnt sichtbar** in die Nachbarzone, wenn ein Makro zu viel wird. Bei leerem Teller: Hinweis, dass das Verhältnis nur für den **ganzen Tag** gilt |
 
