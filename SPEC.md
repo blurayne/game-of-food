@@ -270,7 +270,8 @@ Die Blöcke im Tropfen-Treemap sind nicht flach, sondern tragen **fotorealistisc
 |---|---|---|
 | 🍬 Zucker | weiße Zuckerkristalle | Farbton-Overlay `--zucker` 28 % (Farbcode bleibt lesbar) |
 | 🌾 Kohlenhydrate | Körnerbrot-Kruste | Overlay `--kh` 28 % |
-| 🧈 Fett (ges. + unges.) | überbackener Käse | Overlay `--fett-ges` bzw. `--fett-unges` 28 % unterscheidet die beiden |
+| 🧈 Fett gesättigt | überbackener Käse | Overlay `--fett-ges` 28 % |
+| 🌿 Pflanzenfett (unges.) | grün schimmernde Öl-Oberfläche | Overlay `--fett-unges` 28 % |
 | 🥦 Ballaststoffe | grünes Gemüse (Artischocke/Brokkoli/Spargel) | auch im Kreis-Chart (Ballast-Segment) |
 | 💧 Wassertropfen (Hülle) | fotorealistische Wasseroberfläche | mit leichtem Blau-Gradient-Overlay; Tropfenform, Rotation und Glanzlicht unverändert |
 | Eiweiß | — bleibt flach blau | |
