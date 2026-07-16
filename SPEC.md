@@ -466,6 +466,7 @@ Der frühere automatische „👁️ Vorschau"-Badge ist damit **abgelöst** —
 | **🔀 Umschalter** | `🥕 Dieses Essen` ⇄ `🍽️ Ganzer Tag` — siehe §6.1 |
 | **Nach dem ersten +** | springt automatisch auf `Ganzer Tag`, danach manuell steuerbar |
 | **Hover auf Segment** | Popup: Funktion + **Top 3**, was es füllen würde. Wenn ≥ 100 %: *"✅ Schon gedeckt"* |
+| **Klick auf Segment** | pinnt das Popup fest und **umrandet das angeklickte Stück** (dunkle Kontur, kein Fokus-Rechteck). Lösen: nochmal klicken, woanders klicken oder `Esc` |
 | **🔍 Lupe im Chart** | **Nur** der Lupen-Button (oben rechts in der Chartbox) öffnet das Modal mit der großen Ansicht (Pfeile, Labels, Funktionen); Hover übers Chart zeigt weiterhin die Segment-Popups. `Esc` / `✕` schließt |
 | **☑ ✕ Nutzlose ausgrauen** | markiert Lebensmittel, die zu **keinem** Nährstoff unter 100 % noch ≥ 2 % beitragen |
 | **☑ ⚖️ Verhältnis anzeigen** | blendet das Fett:KH:Eiweiß-Feld ein/aus |

@@ -134,6 +134,8 @@ body{font-family:'Nunito',sans-serif;color:var(--tinte);min-height:100dvh;displa
 .chartbox .h{font-family:'Fredoka';font-weight:600;font-size:13.5px;margin-bottom:2px}
 .chartbox .sub{font-size:9.5px;font-weight:800;color:var(--tinte-weich);text-transform:uppercase;letter-spacing:.4px}
 .chartbox svg{display:block;margin:2px auto 0;max-width:100%;height:auto}
+.chartbox svg,.mchart svg,path.hit{outline:none;-webkit-tap-highlight-color:transparent}
+path.hit.aktivseg{stroke:var(--tinte);stroke-width:2.5;stroke-linejoin:round;fill:rgba(44,52,40,.05)}
 .klick{text-align:center;font-size:10px;font-weight:800;color:var(--wiese-tief);margin-top:2px}
 .zaehler{display:grid;grid-template-columns:1fr 1fr;gap:7px}
 .zl{background:#fff;border-radius:11px;padding:7px 9px;box-shadow:var(--sk)}
@@ -875,7 +877,7 @@ document.getElementById('tagbtn').onclick=openTag;
 document.getElementById('zu').onclick=()=>document.getElementById('modal').classList.remove('on');
 document.getElementById('modal').onclick=e=>{if(e.target.id==='modal')e.currentTarget.classList.remove('on');};
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){document.getElementById('modal').classList.remove('on');
-  document.getElementById('setmodal').classList.remove('on');}});
+  document.getElementById('setmodal').classList.remove('on'); entpinnen();}});
 document.getElementById('reset').onclick=()=>{teller={};baue();render();};
 
 
@@ -905,12 +907,22 @@ function tipAn(e,k,pct){
   if(y+r.height>innerHeight-8) y=e.clientY-r.height-14;
   TIP.style.left=x+'px'; TIP.style.top=y+'px';
 }
+/* Klick auf ein Segment: Popup anpinnen + Stück umranden (kein Fokus-Rechteck) */
+let pinEl=null;
+function entpinnen(){ if(pinEl){pinEl.classList.remove('aktivseg');pinEl=null;} TIP.classList.remove('on'); }
 function bindeTip(root){
+  entpinnen();
   root.querySelectorAll('.hit').forEach(el=>{
-    el.onmousemove=e=>tipAn(e,el.dataset.seg,+el.dataset.pct);
-    el.onmouseleave=()=>TIP.classList.remove('on');
+    el.onmousemove=e=>{ if(!pinEl) tipAn(e,el.dataset.seg,+el.dataset.pct); };
+    el.onmouseleave=()=>{ if(!pinEl) TIP.classList.remove('on'); };
+    el.onclick=e=>{ e.stopPropagation();
+      if(pinEl===el){ entpinnen(); return; }
+      if(pinEl) pinEl.classList.remove('aktivseg');
+      pinEl=el; el.classList.add('aktivseg');
+      tipAn(e,el.dataset.seg,+el.dataset.pct); };
   });
 }
+document.addEventListener('click',e=>{ if(pinEl && !e.target.closest('.hit')) entpinnen(); });
 const _render=render, _gross=gross;
 render=function(){_render(); bindeTip(document.getElementById('minichart'));};
 gross =function(){_gross();  bindeTip(document.getElementById('grosschart'));};
