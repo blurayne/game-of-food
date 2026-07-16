@@ -123,11 +123,14 @@ body{font-family:'Nunito',sans-serif;color:var(--tinte);min-height:100dvh;displa
 
 /* ===== RECHTS: Tages-Chart ===== */
 .rechts{display:flex;flex-direction:column;gap:9px;min-height:0;overflow-y:auto}
-.chartbox{background:var(--papier-tief);border-radius:14px;padding:10px;cursor:pointer;transition:.16s;
+.chartbox{background:var(--papier-tief);border-radius:14px;padding:10px;transition:.16s;
   border:2.5px solid transparent;position:relative}
-.chartbox:hover{border-color:var(--wiese);transform:translateY(-2px)}
-.chartbox:focus-visible{outline:3px solid var(--sonne);outline-offset:2px}
-.chartbox .lupe{position:absolute;top:9px;right:10px;font-size:14px;opacity:.45}
+.chartbox:hover{border-color:var(--wiese)}
+.chartbox .lupe{position:absolute;top:8px;right:9px;z-index:5;width:26px;height:26px;font-size:13px;
+  background:#fff;border:none;border-radius:9px;cursor:pointer;display:grid;place-items:center;
+  box-shadow:var(--sk);transition:.12s}
+.chartbox .lupe:hover{transform:scale(1.12)}
+.chartbox .lupe:focus-visible{outline:3px solid var(--sonne);outline-offset:1px}
 .chartbox .h{font-family:'Fredoka';font-weight:600;font-size:13.5px;margin-bottom:2px}
 .chartbox .sub{font-size:9.5px;font-weight:800;color:var(--tinte-weich);text-transform:uppercase;letter-spacing:.4px}
 .chartbox svg{display:block;margin:2px auto 0;max-width:100%;height:auto}
@@ -304,8 +307,7 @@ body{font-family:'Nunito',sans-serif;color:var(--tinte);min-height:100dvh;displa
   .mitte{background:var(--papier-tief);border-radius:14px;padding:10px}
   .teller{flex:none}
   .liste{max-height:none}
-  .klick{display:none}          /* auf Touch kein „Klick" */
-  .chartbox .lupe{opacity:.7}
+  .klick{display:none}          /* auf Touch kein Hover-Hinweis */
   .fuss{padding-bottom:24px}
 }
 
@@ -361,7 +363,7 @@ body{font-family:'Nunito',sans-serif;color:var(--tinte);min-height:100dvh;displa
 
 <header class="kopf">
   <h1>🍽️ Energie-Tag — Tagesplaner</h1>
-  <p>Mit <b>+ / −</b> zusammenstellen · das Chart rechts addiert live mit · <b>draufklicken</b> für die große Ansicht</p>
+  <p>Mit <b>+ / −</b> zusammenstellen · das Chart rechts addiert live mit · <b>🔍</b> für die große Ansicht</p>
 </header>
 
 <div class="app"><div class="screen">
@@ -405,12 +407,12 @@ body{font-family:'Nunito',sans-serif;color:var(--tinte);min-height:100dvh;displa
         <button class="us" data-m="gesamt" role="tab">🍽️ Ganzer Tag <span class="n" id="usn"></span></button>
       </div>
 
-      <div class="chartbox" id="chartbox" tabindex="0" role="button" aria-label="Chart vergrößern">
-        <span class="lupe">🔍</span>
+      <div class="chartbox" id="chartbox">
+        <button class="lupe" id="lupe" title="Große Ansicht öffnen" aria-label="Große Tagesansicht öffnen">🔍</button>
         <div class="h" id="ch">🥧 Dein Tag</div>
         <div class="sub" id="csub">0 von 20 Nährstoffen</div>
         <div id="minichart"></div>
-        <div class="klick">👆 Klick für die große Ansicht</div>
+        <div class="klick">🖱️ Zeigen erklärt jedes Segment · 🔍 öffnet die große Ansicht</div>
       </div>
 
       <div class="zaehler">
@@ -868,9 +870,8 @@ function waehle(f,leise){
 }
 
 function openTag(){document.getElementById('modal').classList.add('on');gross();}
-document.getElementById('chartbox').onclick=openTag;
+document.getElementById('lupe').onclick=openTag;
 document.getElementById('tagbtn').onclick=openTag;
-document.getElementById('chartbox').onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();document.getElementById('chartbox').click();}};
 document.getElementById('zu').onclick=()=>document.getElementById('modal').classList.remove('on');
 document.getElementById('modal').onclick=e=>{if(e.target.id==='modal')e.currentTarget.classList.remove('on');};
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){document.getElementById('modal').classList.remove('on');
