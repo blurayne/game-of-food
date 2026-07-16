@@ -262,6 +262,22 @@ Beta-Carotin wird nur *nach Bedarf* umgewandelt. Eisen-Überdosis aus Essen: unm
 
 > ⚠️ Calcium hatte ursprünglich `#4A9FD8` — **kollidierte mit Wasser**. Verschoben auf `#2E6F95`.
 
+### 5.1b Texturen
+
+Die Blöcke im Tropfen-Treemap sind nicht flach, sondern tragen **fotorealistische Kachel-Texturen** (WebP, 256 px, als Data-URI eingebettet, ein gemeinsamer `<pattern>`-Satz pro Dokument):
+
+| Block | Textur | Zusatz |
+|---|---|---|
+| 🍬 Zucker | weiße Zuckerkristalle | Farbton-Overlay `--zucker` 28 % (Farbcode bleibt lesbar) |
+| 🌾 Kohlenhydrate | Körnerbrot-Kruste | Overlay `--kh` 28 % |
+| 🧈 Fett (ges. + unges.) | überbackener Käse | Overlay `--fett-ges` bzw. `--fett-unges` 28 % unterscheidet die beiden |
+| 🥦 Ballaststoffe | grünes Gemüse (Artischocke/Brokkoli/Spargel) | auch im Kreis-Chart (Ballast-Segment) |
+| Eiweiß | — bleibt flach blau | |
+
+Prozent-Beschriftungen auf Textur-Blöcken: weiß mit dunkler Kontur (`paint-order:stroke`). Die Zucker-Textur füllt außerdem den 🍬-Zähler und seinen Fortschrittsbalken.
+
+**App-Hintergrund:** Food-Doodle-Kacheltextur hinter Body und Screen, Deckkraft per Regler **🖼️ Hintergrund** einstellbar (0–100 %, Standard 50 %; innerhalb des Screens auf ~55 % gedämpft, damit Inhalte lesbar bleiben).
+
 **Schrift:** Fredoka (Display) · Nunito (Body) · IBM Plex Mono (Zahlen). Hell, kindgerecht — *nicht* die Observatory-Dunkelästhetik.
 
 ### 5.2 Flächen-Diagramm
@@ -451,6 +467,8 @@ Der frühere automatische „👁️ Vorschau"-Badge ist damit **abgelöst** —
 | **Klick aufs Chart** | Modal mit der großen Ansicht (Pfeile, Labels, Funktionen). `Esc` / `✕` schließt |
 | **☑ ✕ Nutzlose ausgrauen** | markiert Lebensmittel, die zu **keinem** Nährstoff unter 100 % noch ≥ 2 % beitragen |
 | **☑ ⚖️ Verhältnis anzeigen** | blendet das Fett:KH:Eiweiß-Feld ein/aus |
+| **🎚 🖼️ Hintergrund** | Schieberegler für die Deckkraft der Hintergrund-Textur (0–100 %, Standard 50 %) |
+| **↔️ Spalten-Griffe** | Zwei schmale vertikale Griffe zwischen den drei Spalten (Desktop): **Ziehen** (Maus/Touch, Pointer Events) macht Picker bzw. rechte Spalte breiter/schmaler (CSS-Variablen `--c1`/`--c3`, per `clamp()` begrenzt), **Doppelklick** setzt zurück, Breiten überleben Reload (`localStorage`). Im gestapelten Portrait-Layout ausgeblendet |
 | **☐ 🍎 Fruchtzucker wie Zucker** | **Standard: aus.** Zucker aus ganzem Obst (Regal 🍎) zählt dann als normale Kohlenhydrate — WHO-Logik „freie Zucker": intrinsischer Fruchtzucker fällt nicht unters 45-g-Limit, *Trauben werden nicht bestraft*. **Eingeschaltet** zählt Obst-Zucker überall wie einfacher Zucker: 🍬-Zähler & Warnung, Teller-Liste, Tropfen-Treemap (pinker Block statt braunem KH-Block), Hover-Tipps und Modal. Säfte, Smoothies & Trockenobst gelten immer als Zucker (stehen nicht im Obst-Regal). |
 | **Zähler** | Energie + Zucker mit Balken. Über 45 g Zucker: **das ganze Feld wird rot** + Bezifferung der Überschreitung |
 | **⚖️ Verhältnis** | Drei Kästchen (Breite = Soll-Anteil). Der Ist-Balken **überdehnt sichtbar** in die Nachbarzone, wenn ein Makro zu viel wird. Bei leerem Teller: Hinweis, dass das Verhältnis nur für den **ganzen Tag** gilt |
