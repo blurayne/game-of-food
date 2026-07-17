@@ -307,8 +307,8 @@ path.hit.aktivseg{stroke:var(--segcol,var(--tinte));stroke-width:3;stroke-linejo
   .screen{display:block;overflow:visible}
   .kopf p{display:none}
   .top{position:sticky;top:0;z-index:40;box-shadow:0 2px 10px rgba(44,52,40,.12)}
-  .top .titel{display:none}
-  .top .tagbtn{display:inline-flex}
+  .top .titel,.top .stand,.top .alter{display:none}   /* mobil: keine Stand-Zeile, kein Alter */
+  .top .tagbtn{display:inline-flex;margin-right:auto}
   .pad{display:flex;flex-direction:column;gap:11px;padding:11px;overflow:visible}
   .griff{display:none}
   /* Reihenfolge: erst zusammenstellen, dann prüfen */
