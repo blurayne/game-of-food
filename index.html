@@ -248,6 +248,9 @@ path.hit.aktivseg{stroke:var(--segcol,var(--tinte));stroke-width:3;stroke-linejo
 .opt span small{display:block;font-weight:700;color:var(--tinte-weich);font-size:8.5px}
 .opt.optbg span{flex:0 0 auto}
 .opt input[type=range]{flex:1;min-width:50px;accent-color:var(--wiese);cursor:pointer;height:14px}
+.opt.optzoom>span:first-child{flex:1}
+.optzoom .pm button.minus{visibility:visible;background:#f3d9d2;color:var(--rot-tief)}
+.optzoom .pm .z{width:38px}
 .suche{display:flex;align-items:center;gap:6px;background:#fff;border:2px solid transparent;border-radius:9px;
   padding:6px 9px;margin-bottom:6px;box-shadow:var(--sk)}
 .suche:focus-within{border-color:var(--wiese)}
@@ -490,6 +493,12 @@ path.hit.aktivseg{stroke:var(--segcol,var(--tinte));stroke-width:3;stroke-linejo
           <span>🍎 Fruchtzucker wie Zucker<small>Zucker aus Obst zählt zum 🍬-Limit und wird pink angezeigt</small></span></label>
         <label class="opt optbg"><span>🖼️ Hintergrund<small>Deckkraft des Musters</small></span>
           <input type="range" id="optbg" min="0" max="100" value="50" aria-label="Hintergrund-Deckkraft"></label>
+        <div class="opt optzoom"><span>🔎 Zoom<small>Größe der ganzen Oberfläche</small></span>
+          <span class="pm">
+            <button class="minus" id="zoomminus" aria-label="Ansicht verkleinern">−</button>
+            <span class="z" id="zoomwert">100%</span>
+            <button class="plus" id="zoomplus" aria-label="Ansicht vergrößern">+</button>
+          </span></div>
       </div>
     </div>
   </div>
@@ -972,6 +981,16 @@ if(EINST.zeigV!==undefined){zeigV=!!EINST.zeigV; document.getElementById('optv')
 if(EINST.fruchtAlsZucker!==undefined){fruchtAlsZucker=!!EINST.fruchtAlsZucker; document.getElementById('optf').checked=fruchtAlsZucker;}
 if(EINST.bgop!==undefined){document.getElementById('optbg').value=Math.round(EINST.bgop*100);
   document.documentElement.style.setProperty('--bgop',EINST.bgop);}
+
+/* CSS-Zoom in Stufen von 10 % (60–160 %) */
+let zoomWert=EINST.zoom||1;
+function zoomAnwenden(){ document.documentElement.style.zoom=zoomWert;
+  document.getElementById('zoomwert').textContent=Math.round(zoomWert*100)+'%'; }
+document.getElementById('zoomplus').onclick=()=>{ zoomWert=Math.min(1.6,Math.round((zoomWert+.1)*10)/10);
+  einstMerk('zoom',zoomWert); zoomAnwenden(); };
+document.getElementById('zoomminus').onclick=()=>{ zoomWert=Math.max(.6,Math.round((zoomWert-.1)*10)/10);
+  einstMerk('zoom',zoomWert); zoomAnwenden(); };
+zoomAnwenden();
 
 const setmodal=document.getElementById('setmodal');
 document.getElementById('setbtn').onclick=()=>setmodal.classList.add('on');
