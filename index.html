@@ -724,7 +724,7 @@ function verhaeltnis(){
   if(!zeigV) return;
   const box=document.getElementById('vinhalt');
   const einzeln = modus==='aktuell';
-  document.getElementById('vinfo').textContent = einzeln ? 'nur beschrieben, nicht bewertet' : 'Anteil an der Energie';
+  document.getElementById('vinfo').textContent = einzeln ? 'Anteile in diesem Lebensmittel — kein Soll' : 'Anteil an der Energie';
   if(!einzeln && leer()){
     box.innerHTML='<div class="vleer">Das Verhältnis gilt für den <b>ganzen Tag</b>, nicht für ein einzelnes Lebensmittel.<br>Butter ist 100 % Fett — das ist völlig normal.</div>';
     return;
@@ -735,11 +735,29 @@ function verhaeltnis(){
   if(G<1){ box.innerHTML='<div class="vleer">Noch keine Energie auf dem Teller.</div>'; return; }
   const ist={}; VM.forEach(([k])=>ist[k]=E[k]/G*100);
 
-  // Kästchen — Breite = SOLL-Anteil, Inhalt = IST
+  if(einzeln){
+    // EINZELANSICHT: Gewichtung = echte Anteile DIESES Lebensmittels — kein Soll-Raster
+    let h='<div class="vboxen">';
+    VM.forEach(([k,lab,col])=>{ const v=ist[k]; if(v<0.5) return;
+      h+=`<div class="vb" style="--vc:${col};flex:${v} 1 0">
+          <div class="lab">${lab}</div>
+          <div class="ist">${v.toFixed(0)}%</div></div>`;
+    });
+    h+='</div><div class="vbahn einzel">';
+    let x=0;
+    VM.forEach(([k,,col])=>{ const v=ist[k];
+      h+=`<div class="vseg" style="left:${x}%;width:${v}%;background:${col}"></div>`; x+=v; });
+    h+='</div>';
+    const top=VM.slice().sort((a,b)=>ist[b[0]]-ist[a[0]])[0];
+    h+=`<div class="vhint neutral">Dieses Lebensmittel ist vor allem <b>${top[1]}</b> (${ist[top[0]].toFixed(0)} %).<br>Einzelne Lebensmittel sind fast immer einseitig — <b>bewertet wird nur der ganze Tag.</b></div>`;
+    box.innerHTML=h; return;
+  }
+
+  // TAGESANSICHT — Kästchen: Breite = SOLL-Anteil, Inhalt = IST
   let h='<div class="vboxen">';
   VM.forEach(([k,lab,col])=>{
     const S=SOLL[k], v=ist[k];
-    const cls = einzeln ? '' : (v>S.max?'zuviel' : (v<S.min?'zuwenig':''));   // Einzelnes NIE bewerten
+    const cls = v>S.max?'zuviel' : (v<S.min?'zuwenig':'');
     h+=`<div class="vb ${cls}" style="--vc:${col};flex:${S.ziel} 1 0">
         <div class="lab">${lab}</div>
         <div class="ist">${v.toFixed(0)}%</div>
@@ -753,19 +771,13 @@ function verhaeltnis(){
   VM.forEach(([k,,col])=>{ h+=`<div class="vzone" style="left:${z}%;width:${SOLL[k].ziel}%;background:${col}"></div>`; z+=SOLL[k].ziel; });
   let x=0;
   VM.forEach(([k,,col])=>{
-    const v=ist[k], zuviel=!einzeln && v>SOLL[k].max;
+    const v=ist[k], zuviel=v>SOLL[k].max;
     h+=`<div class="vseg${zuviel?' zuviel':''}" style="left:${x}%;width:${v}%;background:${col}"></div>`;
     x+=v;
   });
   z=0;
   VM.forEach(([k],i)=>{ z+=SOLL[k].ziel; if(i<2) h+=`<div class="vtick" style="left:${z}%"></div>`; });
   h+='</div>';
-
-  if(einzeln){
-    const top=VM.slice().sort((a,b)=>ist[b[0]]-ist[a[0]])[0];
-    h+=`<div class="vhint neutral">Dieses Lebensmittel ist vor allem <b>${top[1]}</b> (${ist[top[0]].toFixed(0)} %).<br>Einzelne Lebensmittel sind fast immer einseitig — <b>bewertet wird nur der ganze Tag.</b></div>`;
-    box.innerHTML=h; return;
-  }
   const drueber=VM.filter(([k])=>ist[k]>SOLL[k].max);
   const drunter=VM.filter(([k])=>ist[k]<SOLL[k].min);
   if(!drueber.length && !drunter.length)
