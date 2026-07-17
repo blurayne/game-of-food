@@ -40,8 +40,8 @@ body{font-family:'Nunito',sans-serif;color:var(--tinte);min-height:100dvh;displa
   display:grid;place-items:center;box-shadow:var(--sk);flex:0 0 auto;transition:.12s}
 .icobtn:hover{transform:scale(1.1)}
 .icobtn:focus-visible{outline:3px solid var(--sonne);outline-offset:1px}
-.sbox{background:var(--papier);border-radius:18px;width:min(430px,94vw);max-height:86vh;
-  display:flex;flex-direction:column;overflow:hidden;box-shadow:var(--sk2)}
+.sbox{background:var(--papier);border-radius:18px;width:min(430px,calc(95vw/var(--zf,1)));
+  max-height:calc(86vh/var(--zf,1));display:flex;flex-direction:column;overflow:hidden;box-shadow:var(--sk2)}
 .spad{padding:12px 14px 14px;overflow-y:auto;display:flex;flex-direction:column}
 .spad .opt{background:var(--papier-tief);box-shadow:none}
 .pad{flex:1 1 auto;padding:12px;display:grid;gap:0;min-height:0;
@@ -269,7 +269,8 @@ path.hit.aktivseg{stroke:var(--segcol,var(--tinte));stroke-width:3;stroke-linejo
   font-size:9px;font-weight:800;padding:3px 8px;border-radius:999px;box-shadow:var(--sk);z-index:3}
 .vorschau.aus{display:none}
 .tip{position:fixed;z-index:99;background:#fff;border-radius:12px;padding:10px 12px;box-shadow:var(--sk2);
-  border-top:4px solid var(--tc,#F4A300);pointer-events:none;opacity:0;transition:opacity .12s;max-width:270px}
+  border-top:4px solid var(--tc,#F4A300);pointer-events:none;opacity:0;transition:opacity .12s;
+  max-width:min(270px,calc(95vw/var(--zf,1)))}
 .tip.on{opacity:1}
 .tip .h{font-family:'Fredoka';font-weight:600;font-size:13px;display:flex;gap:5px;align-items:center}
 .tip .f{font-size:10px;font-weight:700;color:var(--tinte-weich);line-height:1.35;margin:2px 0 7px}
@@ -1002,6 +1003,7 @@ if(EINST.bgop!==undefined){document.getElementById('optbg').value=Math.round(EIN
 /* CSS-Zoom in Stufen von 10 % (60–160 %) */
 let zoomWert=EINST.zoom||1;
 function zoomAnwenden(){ document.documentElement.style.zoom=zoomWert;
+  document.documentElement.style.setProperty('--zf',zoomWert);   // für vw/vh-Korrekturen in Dialogen
   document.getElementById('zoomwert').textContent=Math.round(zoomWert*100)+'%'; }
 document.getElementById('zoomplus').onclick=()=>{ zoomWert=Math.min(1.6,Math.round((zoomWert+.1)*10)/10);
   einstMerk('zoom',zoomWert); zoomAnwenden(); };
