@@ -153,6 +153,14 @@ path.hit.aktivseg{stroke:var(--segcol,var(--tinte));stroke-width:3;stroke-linejo
 .li .em{font-size:14px}
 .li .nm{flex:1;font-size:10px;font-weight:800;line-height:1.15}
 .li .nm small{display:block;font-family:'IBM Plex Mono';font-size:8px;font-weight:600;color:var(--tinte-weich)}
+.li{cursor:pointer;transition:.12s}
+.li:hover{box-shadow:var(--sk),inset 0 0 0 2px var(--papier-rand)}
+.li.aktiv{box-shadow:var(--sk),inset 0 0 0 2px var(--wiese-tief)}
+.li.ignoriert{opacity:.5}
+.li.ignoriert .nm small{color:var(--rot-tief);font-style:italic}
+.li .ig{background:none;border:none;cursor:pointer;font-size:11px;opacity:.3;transition:.12s;filter:grayscale(1)}
+.li .ig:hover{opacity:1;transform:scale(1.15)}
+.li .ig.an{opacity:1;filter:none}
 .li .x{background:none;border:none;cursor:pointer;font-size:12px;opacity:.4;transition:.12s}
 .li .x:hover{opacity:1;transform:scale(1.2)}
 .leer2{text-align:center;font-size:11px;font-weight:700;color:var(--tinte-weich);font-style:italic;padding:14px 6px;line-height:1.5}
@@ -616,7 +624,9 @@ function summeVon(q){
     for(const k in f.n) s[k]=(s[k]||0)+(k==='zucker'?zuckerVon(f):f.n[k])*n;}
   return s;
 }
-const tagSumme    = ()=>summeVon(teller);                 // immer der GANZE Tag
+let ignoriert={};                                          // ids, die nicht mitgezählt werden (🚫)
+const tellerAktiv = ()=>{const q={};for(const id in teller)if(!ignoriert[id])q[id]=teller[id];return q;};
+const tagSumme    = ()=>summeVon(tellerAktiv());          // der GANZE Tag ohne Ignorierte
 const summe       = ()=>modus==='aktuell' ? summeVon({[aktiv.id]:1}) : tagSumme();  // was das Chart zeigt
 
 // Trägt f noch zu einem Nährstoff bei, der unter 100 % liegt?  (immer gegen den TAG)
@@ -789,20 +799,26 @@ function render(){
                : `🔴 ${zu-BED.zucker_max} g über dem Limit (${BED.zucker_max} g)`);
   verhaeltnis();
 
-  const anz=Object.values(teller).reduce((a,b)=>a+b,0);
+  const anz=Object.values(tellerAktiv()).reduce((a,b)=>a+b,0);          // zählt nur Nicht-Ignorierte
+  const anzAlle=Object.values(teller).reduce((a,b)=>a+b,0);
   const t=tagSumme();
   document.getElementById('usn').textContent = anz? `(${anz})` : '';
-  document.getElementById('stand').textContent = anz
-    ? `${anz} Sache${anz>1?'n':''} · ${Math.round(t.kcal)} kcal · ${Math.round(t.zucker)} g Zucker`
+  document.getElementById('stand').textContent = anzAlle
+    ? `${anz} Sache${anz===1?'':'n'} · ${Math.round(t.kcal)} kcal · ${Math.round(t.zucker)} g Zucker${anzAlle>anz?` · ${anzAlle-anz}× 🚫`:''}`
     : 'Noch nichts auf dem Teller';
 
   const L=document.getElementById('liste');
-  if(!anz){ L.innerHTML='<div class="leer2">Noch leer.<br>Klick links auf <b>+</b>, um etwas zu essen.</div>'; }
-  else L.innerHTML=Object.keys(teller).map(id=>{const f=F(id),n=teller[id];
-    return `<div class="li"><span class="em">${f.emoji}</span><span class="nm">${f.name}${n>1?` <b>×${n}</b>`:''}
-      <small>${Math.round(f.n.kcal*n)} kcal · ${Math.round(zuckerVon(f)*n)} g 🍬</small></span>
-      <button class="x" data-del="${id}">✕</button></div>`;}).join('');
-  L.querySelectorAll('[data-del]').forEach(b=>b.onclick=()=>{delete teller[b.dataset.del];baue();render();});
+  if(!anzAlle){ L.innerHTML='<div class="leer2">Noch leer.<br>Klick links auf <b>+</b>, um etwas zu essen.</div>'; }
+  else L.innerHTML=Object.keys(teller).map(id=>{const f=F(id),n=teller[id],ig=ignoriert[id];
+    return `<div class="li${ig?' ignoriert':''}${f.id===aktiv.id?' aktiv':''}" data-li="${id}"><span class="em">${f.emoji}</span><span class="nm">${f.name}${n>1?` <b>×${n}</b>`:''}
+      <small>${ig?'🚫 zählt heute nicht mit':`${Math.round(f.n.kcal*n)} kcal · ${Math.round(zuckerVon(f)*n)} g 🍬`}</small></span>
+      <button class="ig${ig?' an':''}" data-ig="${id}" title="${ig?'wieder mitzählen':'ignorieren — aus der Tagessumme ausschließen'}" aria-pressed="${ig?'true':'false'}">🚫</button>
+      <button class="x" data-del="${id}" title="vom Teller nehmen">✕</button></div>`;}).join('');
+  L.querySelectorAll('[data-del]').forEach(b=>b.onclick=e=>{e.stopPropagation();
+    delete teller[b.dataset.del]; delete ignoriert[b.dataset.del]; baue(); render();});
+  L.querySelectorAll('[data-ig]').forEach(b=>b.onclick=e=>{e.stopPropagation();
+    const id=b.dataset.ig; if(ignoriert[id]) delete ignoriert[id]; else ignoriert[id]=true; render();});
+  L.querySelectorAll('[data-li]').forEach(el=>el.onclick=()=>{waehle(F(el.dataset.li)); setModus('aktuell',true);});
 
   document.querySelectorAll('.it').forEach(el=>{
     const n=teller[el.dataset.id]||0, f=F(el.dataset.id);
@@ -890,7 +906,7 @@ document.getElementById('zu').onclick=()=>document.getElementById('modal').class
 document.getElementById('modal').onclick=e=>{if(e.target.id==='modal')e.currentTarget.classList.remove('on');};
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){document.getElementById('modal').classList.remove('on');
   document.getElementById('setmodal').classList.remove('on'); entpinnen();}});
-document.getElementById('reset').onclick=()=>{teller={};baue();render();};
+document.getElementById('reset').onclick=()=>{teller={};ignoriert={};baue();render();};
 
 
 /* ---------- Tooltip: was füllt dieses Segment? ---------- */

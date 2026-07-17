@@ -466,6 +466,8 @@ Der frühere automatische „👁️ Vorschau"-Badge ist damit **abgelöst** —
 | **+ / −** | addiert/entfernt; Mehrfach möglich (`×2`, `×3`) |
 | **Klick auf Name/Emoji** | inspiziert das Lebensmittel in der Mitte (fügt **nicht** hinzu) |
 | **🔀 Umschalter** | `🥕 Dieses Essen` ⇄ `🍽️ Ganzer Tag` — siehe §6.1 |
+| **Klick in „Heute gegessen"** | wählt das Item an (Tropfen in der Mitte) und schaltet automatisch auf die **Einzelansicht**; das angewählte Item bekommt eine grüne Umrandung |
+| **🚫 Ignorieren** | Toggle-Button pro „Heute gegessen"-Item: schließt es aus der **gesamten Tagesberechnung** aus (Chart, Zähler, Verhältnis, Stand-Zeile zeigt `n× 🚫`), es bleibt aber halbtransparent auf dem Teller. Nochmal klicken zählt es wieder mit; ✕ räumt den Ignoriert-Status mit auf |
 | **Nach dem ersten +** | springt automatisch auf `Ganzer Tag`, danach manuell steuerbar |
 | **Hover auf Segment** | Popup: Funktion + **Top 3**, was es füllen würde. Wenn ≥ 100 %: *"✅ Schon gedeckt"* |
 | **Klick auf Segment** | pinnt das Popup fest und **umrandet das angeklickte Stück in seiner Segmentfarbe** (20 % abgedunkelt, kein Fokus-Rechteck). Lösen: nochmal klicken, woanders klicken oder `Esc` |
