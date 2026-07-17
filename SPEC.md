@@ -469,7 +469,7 @@ Der frühere automatische „👁️ Vorschau"-Badge ist damit **abgelöst** —
 | **Klick in „Heute gegessen"** | wählt das Item an (Tropfen in der Mitte) und schaltet automatisch auf die **Einzelansicht**; das angewählte Item bekommt eine grüne Umrandung |
 | **🚫 Ignorieren** | Toggle-Button pro „Heute gegessen"-Item: schließt es aus der **gesamten Tagesberechnung** aus (Chart, Zähler, Verhältnis, Stand-Zeile zeigt `n× 🚫`), es bleibt aber halbtransparent auf dem Teller. Nochmal klicken zählt es wieder mit; ✕ räumt den Ignoriert-Status mit auf |
 | **Nach dem ersten +** | springt automatisch auf `Ganzer Tag`, danach manuell steuerbar |
-| **Hover auf Segment** | Popup: Funktion + **Top 3**, was es füllen würde. Wenn ≥ 100 %: *"✅ Schon gedeckt"* |
+| **Hover auf Segment** | Popup: Funktion + **Top 3**, was es füllen würde. Wenn ≥ 100 %: *"✅ Schon gedeckt"*. Das Popup klappt an den Rändern um und wird **immer vollständig im Anzeigebereich** gehalten (auch bei aktivem 🔎-Zoom) |
 | **Klick auf Segment** | pinnt das Popup fest und **umrandet das angeklickte Stück in seiner Segmentfarbe** (20 % abgedunkelt, kein Fokus-Rechteck). Lösen: nochmal klicken, woanders klicken oder `Esc` |
 | **🔍 Lupe im Chart** | **Nur** der Lupen-Button (oben rechts in der Chartbox) öffnet das Modal mit der großen Ansicht (Pfeile, Labels, Funktionen); Hover übers Chart zeigt weiterhin die Segment-Popups. `Esc` / `✕` schließt |
 | **☑ ✕ Nutzlose ausgrauen** | markiert Lebensmittel, die zu **keinem** Nährstoff unter 100 % noch ≥ 2 % beitragen |
