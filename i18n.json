@@ -183,7 +183,13 @@
   "set_kisearch_s": "With an active search, show a “look up with AI” row in the results list (needs a key).",
   "ki_search_row": "🤖 Look up „{q}“ with AI",
   "search_none": "🔍 Nothing found.<br>Try another word — e.g. „cheese“ or „fruit“.",
-  "ki_hint": "🤖 With your own API key (⚙️ Settings) the AI can look up unknown foods."
+  "ki_hint": "🤖 With your own API key (⚙️ Settings) the AI can look up unknown foods.",
+  "key_test": "🔑 Test key",
+  "key_testing": "🔑 Testing …",
+  "key_ok": "✅ Key works — credit is available.",
+  "key_invalid": "Key invalid",
+  "key_none": "⚠️ No API key entered.",
+  "key_neterr": "Network error"
  },
  "es": {
   "title": "🍽️ Día de Energía — Planificador diario",
@@ -369,7 +375,13 @@
   "set_kisearch_s": "Con una búsqueda activa, muestra una fila „buscar con IA“ en los resultados (necesita clave).",
   "ki_search_row": "🤖 Buscar „{q}“ con IA",
   "search_none": "🔍 No se encontró nada.<br>Prueba otra palabra — p. ej. „queso“ o „fruta“.",
-  "ki_hint": "🤖 Con tu propia clave API (⚙️ Ajustes) la IA puede buscar alimentos desconocidos."
+  "ki_hint": "🤖 Con tu propia clave API (⚙️ Ajustes) la IA puede buscar alimentos desconocidos.",
+  "key_test": "🔑 Probar clave",
+  "key_testing": "🔑 Probando …",
+  "key_ok": "✅ La clave funciona — hay saldo.",
+  "key_invalid": "Clave inválida",
+  "key_none": "⚠️ No se introdujo ninguna clave API.",
+  "key_neterr": "Error de red"
  },
  "fr": {
   "title": "🍽️ Jour d'Énergie — Planificateur",
@@ -555,7 +567,13 @@
   "set_kisearch_s": "Avec une recherche active, affiche une ligne « chercher avec l’IA » dans les résultats (clé requise).",
   "ki_search_row": "🤖 Chercher „{q}“ avec l’IA",
   "search_none": "🔍 Rien trouvé.<br>Essaie un autre mot — p. ex. „fromage“ ou „fruit“.",
-  "ki_hint": "🤖 Avec ta propre clé API (⚙️ Réglages) l’IA peut chercher des aliments inconnus."
+  "ki_hint": "🤖 Avec ta propre clé API (⚙️ Réglages) l’IA peut chercher des aliments inconnus.",
+  "key_test": "🔑 Tester la clé",
+  "key_testing": "🔑 Test …",
+  "key_ok": "✅ La clé fonctionne — crédit disponible.",
+  "key_invalid": "Clé invalide",
+  "key_none": "⚠️ Aucune clé API saisie.",
+  "key_neterr": "Erreur réseau"
  },
  "it": {
   "title": "🍽️ Giorno di Energia — Pianificatore",
@@ -741,7 +759,13 @@
   "set_kisearch_s": "Con una ricerca attiva, mostra una riga „cerca con IA“ nei risultati (serve una chiave).",
   "ki_search_row": "🤖 Cerca „{q}“ con IA",
   "search_none": "🔍 Niente trovato.<br>Prova un’altra parola — es. „formaggio“ o „frutta“.",
-  "ki_hint": "🤖 Con la tua chiave API (⚙️ Impostazioni) l’IA può cercare cibi sconosciuti."
+  "ki_hint": "🤖 Con la tua chiave API (⚙️ Impostazioni) l’IA può cercare cibi sconosciuti.",
+  "key_test": "🔑 Testa la chiave",
+  "key_testing": "🔑 Test …",
+  "key_ok": "✅ La chiave funziona — credito disponibile.",
+  "key_invalid": "Chiave non valida",
+  "key_none": "⚠️ Nessuna chiave API inserita.",
+  "key_neterr": "Errore di rete"
  },
  "sv": {
   "title": "🍽️ Energidag — Dagsplanerare",
@@ -927,7 +951,13 @@
   "set_kisearch_s": "Vid aktiv sökning, visa en „slå upp med AI“-rad i resultaten (kräver nyckel).",
   "ki_search_row": "🤖 Slå upp „{q}“ med AI",
   "search_none": "🔍 Inget hittat.<br>Prova ett annat ord — t.ex. „ost“ eller „frukt“.",
-  "ki_hint": "🤖 Med egen API-nyckel (⚙️ Inställningar) kan AI slå upp okänd mat."
+  "ki_hint": "🤖 Med egen API-nyckel (⚙️ Inställningar) kan AI slå upp okänd mat.",
+  "key_test": "🔑 Testa nyckel",
+  "key_testing": "🔑 Testar …",
+  "key_ok": "✅ Nyckeln fungerar — det finns saldo.",
+  "key_invalid": "Ogiltig nyckel",
+  "key_none": "⚠️ Ingen API-nyckel angiven.",
+  "key_neterr": "Nätverksfel"
  },
  "no": {
   "title": "🍽️ Energidag — Dagsplanlegger",
@@ -1113,7 +1143,13 @@
   "set_kisearch_s": "Ved aktivt søk, vis en „slå opp med KI“-rad i resultatene (krever nøkkel).",
   "ki_search_row": "🤖 Slå opp „{q}“ med KI",
   "search_none": "🔍 Ingenting funnet.<br>Prøv et annet ord — f.eks. „ost“ eller „frukt“.",
-  "ki_hint": "🤖 Med egen API-nøkkel (⚙️ Innstillinger) kan KI slå opp ukjent mat."
+  "ki_hint": "🤖 Med egen API-nøkkel (⚙️ Innstillinger) kan KI slå opp ukjent mat.",
+  "key_test": "🔑 Test nøkkel",
+  "key_testing": "🔑 Tester …",
+  "key_ok": "✅ Nøkkelen virker — det er saldo.",
+  "key_invalid": "Ugyldig nøkkel",
+  "key_none": "⚠️ Ingen API-nøkkel angitt.",
+  "key_neterr": "Nettverksfeil"
  },
  "fi": {
   "title": "🍽️ Energiapäivä — Päiväsuunnittelija",
@@ -1299,7 +1335,13 @@
   "set_kisearch_s": "Aktiivisessa haussa näytä „hae tekoälyllä“-rivi tuloksissa (vaatii avaimen).",
   "ki_search_row": "🤖 Hae „{q}“ tekoälyllä",
   "search_none": "🔍 Ei löytynyt.<br>Kokeile toista sanaa — esim. „juusto“ tai „hedelmä“.",
-  "ki_hint": "🤖 Omalla API-avaimella (⚙️ Asetukset) tekoäly voi hakea tuntemattomia ruokia."
+  "ki_hint": "🤖 Omalla API-avaimella (⚙️ Asetukset) tekoäly voi hakea tuntemattomia ruokia.",
+  "key_test": "🔑 Testaa avain",
+  "key_testing": "🔑 Testataan …",
+  "key_ok": "✅ Avain toimii — saldoa on.",
+  "key_invalid": "Virheellinen avain",
+  "key_none": "⚠️ API-avainta ei annettu.",
+  "key_neterr": "Verkkovirhe"
  },
  "he": {
   "title": "🍽️ יום אנרגיה — מתכנן יומי",
@@ -1485,7 +1527,13 @@
   "set_kisearch_s": "בחיפוש פעיל, הצג שורת „חפש עם בינה“ ברשימת התוצאות (דרוש מפתח).",
   "ki_search_row": "🤖 חפש „{q}“ עם בינה",
   "search_none": "🔍 לא נמצא כלום.<br>נסו מילה אחרת — למשל „גבינה“ או „פרי“.",
-  "ki_hint": "🤖 עם מפתח API משלכם (⚙️ הגדרות) הבינה יכולה לחפש מאכלים לא מוכרים."
+  "ki_hint": "🤖 עם מפתח API משלכם (⚙️ הגדרות) הבינה יכולה לחפש מאכלים לא מוכרים.",
+  "key_test": "🔑 בדוק מפתח",
+  "key_testing": "🔑 בודק …",
+  "key_ok": "✅ המפתח עובד — יש יתרה.",
+  "key_invalid": "מפתח לא תקין",
+  "key_none": "⚠️ לא הוזן מפתח API.",
+  "key_neterr": "שגיאת רשת"
  },
  "yi": {
   "title": "🍽️ ענערגיע־טאָג — טאָג־פּלאַנער",
@@ -1671,7 +1719,13 @@
   "set_kisearch_s": "בײַ אַן אַקטיװער זוך, װײַז אַ „זוך מיט קי“־שורה אין די רעזולטאַטן (דאַרף אַ שליסל).",
   "ki_search_row": "🤖 זוך „{q}“ מיט קי",
   "search_none": "🔍 גאָרנישט געפֿונען.<br>פּרוּװט אַן אַנדער װאָרט — למשל „קעז“ אָדער „פֿרוכט“.",
-  "ki_hint": "🤖 מיט אַן אײגענעם API־שליסל (⚙️ אײַנשטעלונגען) קען די קי זוכן אומבאַקאַנטע עסן."
+  "ki_hint": "🤖 מיט אַן אײגענעם API־שליסל (⚙️ אײַנשטעלונגען) קען די קי זוכן אומבאַקאַנטע עסן.",
+  "key_test": "🔑 פּרוּװ שליסל",
+  "key_testing": "🔑 פּרוּװט …",
+  "key_ok": "✅ דער שליסל אַרבעט — עס איז דאָ גוטהאָבן.",
+  "key_invalid": "שליסל אומגילטיק",
+  "key_none": "⚠️ קײן API־שליסל אײַנגעגעבן.",
+  "key_neterr": "נעץ־פֿעלער"
  },
  "sjn": {
   "title": "🍽️ Aur en-Vellas — Govaded Aur",
@@ -1857,7 +1911,13 @@
   "set_kisearch_s": "Ir ceno cuil, tíro rî „ceno na-nûr“ vi in-rain (baur pân).",
   "ki_search_row": "🤖 Ceno „{q}“ na-nûr",
   "search_none": "🔍 Ú-nad hirnen.<br>Iesto beth eb — sui „bass-laug“ egor „yávë“.",
-  "ki_hint": "🤖 Na pân-nûr lín (⚙️ Peniath) i-nûr pôl ceno vaist ú-istassen."
+  "ki_hint": "🤖 Na pân-nûr lín (⚙️ Peniath) i-nûr pôl ceno vaist ú-istassen.",
+  "key_test": "🔑 Tíro i-bân",
+  "key_testing": "🔑 Tíra …",
+  "key_ok": "✅ I-bân matha — mîr ammen.",
+  "key_invalid": "Pân ú-vaer",
+  "key_none": "⚠️ Ú-bân API annen.",
+  "key_neterr": "Delu na-nûr"
  },
  "bar": {
   "title": "🍽️ Energie-Dog — Dogsplaner",
@@ -2043,7 +2103,13 @@
   "set_kisearch_s": "Bei aktiva Suach a „mit KI nochschaung“-Zeu in de Ergebnis zoang (braucht Schlissl).",
   "ki_search_row": "🤖 „{q}“ mit KI nochschaung",
   "search_none": "🔍 Nix gfundn.<br>Probiar a andas Wort — z.&nbsp;B. „Kas“ oda „Obst“.",
-  "ki_hint": "🤖 Mit eignem API-Schlissl (⚙️ Eistöllunga) ko de KI unbekannte Essn nochschaung."
+  "ki_hint": "🤖 Mit eignem API-Schlissl (⚙️ Eistöllunga) ko de KI unbekannte Essn nochschaung.",
+  "key_test": "🔑 Schlissl testn",
+  "key_testing": "🔑 Test …",
+  "key_ok": "✅ Da Schlissl geht — Guthaben is do.",
+  "key_invalid": "Schlissl ungüiti",
+  "key_none": "⚠️ Koa API-Schlissl eigebn.",
+  "key_neterr": "Netzwerkfeoler"
  },
  "mainz": {
   "title": "🍽️ Energie-Daach — Daachsplaner",
@@ -2229,7 +2295,13 @@
   "set_kisearch_s": "Bei aktiver Suche e „mit KI nochgucke“-Zeil in de Ergebnis zeische (brauch Schlissel).",
   "ki_search_row": "🤖 „{q}“ mit KI nochgucke",
   "search_none": "🔍 Nix gefunne.<br>Probier e anner Wort — z.&nbsp;B. „Kees“ odder „Obst“.",
-  "ki_hint": "🤖 Mit eischenem API-Schlissel (⚙️ Eischtellunge) kann die KI unbekannte Esse nochgucke."
+  "ki_hint": "🤖 Mit eischenem API-Schlissel (⚙️ Eischtellunge) kann die KI unbekannte Esse nochgucke.",
+  "key_test": "🔑 Schlissel teste",
+  "key_testing": "🔑 Teste …",
+  "key_ok": "✅ Der Schlissel geht — Guthabe is do.",
+  "key_invalid": "Schlissel ungildisch",
+  "key_none": "⚠️ Kaa API-Schlissel aagebe.",
+  "key_neterr": "Netzwerkfehler"
  },
  "hess": {
   "title": "🍽️ Energie-Daach — Daachesplaner",
@@ -2415,6 +2487,12 @@
   "set_kisearch_s": "Bei aktiver Suche e „mit KI nochgucke“-Zeil in de Ergebnis zeische (brauch Schlissel).",
   "ki_search_row": "🤖 „{q}“ mit KI nochgucke",
   "search_none": "🔍 Nix gefunne.<br>Probier e anner Wort — z.&nbsp;B. „Kees“ odder „Obst“.",
-  "ki_hint": "🤖 Mit eischenem API-Schlissel (⚙️ Eistellunge) kann die KI unbekannte Esse nochgucke."
+  "ki_hint": "🤖 Mit eischenem API-Schlissel (⚙️ Eistellunge) kann die KI unbekannte Esse nochgucke.",
+  "key_test": "🔑 Schlissel teste",
+  "key_testing": "🔑 Teste …",
+  "key_ok": "✅ Der Schlissel geht — Guthabe is do.",
+  "key_invalid": "Schlissel ungildisch",
+  "key_none": "⚠️ Kaa API-Schlissel aagebe.",
+  "key_neterr": "Netzwerkfehler"
  }
 }
