@@ -178,7 +178,12 @@
   "makro_sport": "Athletic / Sports",
   "makro_lowcarb": "Low-Carb / Fat loss",
   "makro_keto": "Ketogenic",
-  "fuss": "Chart: radius ∝ % of daily need, <b>capped at 100 %</b> · beyond → <code>colour gets darker</code><br>Daily need: 7-year-old child (D-A-CH) · sugar limit 45 g (WHO) · sodium cap 1800 mg"
+  "fuss": "Chart: radius ∝ % of daily need, <b>capped at 100 %</b> · beyond → <code>colour gets darker</code><br>Daily need: 7-year-old child (D-A-CH) · sugar limit 45 g (WHO) · sodium cap 1800 mg",
+  "set_kisearch": "🔎 AI row in search",
+  "set_kisearch_s": "With an active search, show a “look up with AI” row in the results list (needs a key).",
+  "ki_search_row": "🤖 Look up „{q}“ with AI",
+  "search_none": "🔍 Nothing found.<br>Try another word — e.g. „cheese“ or „fruit“.",
+  "ki_hint": "🤖 With your own API key (⚙️ Settings) the AI can look up unknown foods."
  },
  "es": {
   "title": "🍽️ Día de Energía — Planificador diario",
@@ -359,7 +364,12 @@
   "makro_sport": "Deportivo / Atleta",
   "makro_lowcarb": "Low-Carb / Pérdida de grasa",
   "makro_keto": "Cetogénico",
-  "fuss": "Gráfico: radio ∝ % de la necesidad diaria, <b>tope al 100 %</b> · más allá → <code>el color se oscurece</code><br>Necesidad diaria: niño de 7 años (D-A-CH) · límite de azúcar 45 g (OMS) · tope de sodio 1800 mg"
+  "fuss": "Gráfico: radio ∝ % de la necesidad diaria, <b>tope al 100 %</b> · más allá → <code>el color se oscurece</code><br>Necesidad diaria: niño de 7 años (D-A-CH) · límite de azúcar 45 g (OMS) · tope de sodio 1800 mg",
+  "set_kisearch": "🔎 Fila de IA en la búsqueda",
+  "set_kisearch_s": "Con una búsqueda activa, muestra una fila „buscar con IA“ en los resultados (necesita clave).",
+  "ki_search_row": "🤖 Buscar „{q}“ con IA",
+  "search_none": "🔍 No se encontró nada.<br>Prueba otra palabra — p. ej. „queso“ o „fruta“.",
+  "ki_hint": "🤖 Con tu propia clave API (⚙️ Ajustes) la IA puede buscar alimentos desconocidos."
  },
  "fr": {
   "title": "🍽️ Jour d'Énergie — Planificateur",
@@ -540,7 +550,12 @@
   "makro_sport": "Sportif / Athlète",
   "makro_lowcarb": "Low-Carb / Perte de gras",
   "makro_keto": "Cétogène",
-  "fuss": "Graphique : rayon ∝ % du besoin journalier, <b>plafonné à 100 %</b> · au-delà → <code>la couleur fonce</code><br>Besoin journalier : enfant de 7 ans (D-A-CH) · limite de sucre 45 g (OMS) · plafond de sodium 1800 mg"
+  "fuss": "Graphique : rayon ∝ % du besoin journalier, <b>plafonné à 100 %</b> · au-delà → <code>la couleur fonce</code><br>Besoin journalier : enfant de 7 ans (D-A-CH) · limite de sucre 45 g (OMS) · plafond de sodium 1800 mg",
+  "set_kisearch": "🔎 Ligne IA dans la recherche",
+  "set_kisearch_s": "Avec une recherche active, affiche une ligne « chercher avec l’IA » dans les résultats (clé requise).",
+  "ki_search_row": "🤖 Chercher „{q}“ avec l’IA",
+  "search_none": "🔍 Rien trouvé.<br>Essaie un autre mot — p. ex. „fromage“ ou „fruit“.",
+  "ki_hint": "🤖 Avec ta propre clé API (⚙️ Réglages) l’IA peut chercher des aliments inconnus."
  },
  "it": {
   "title": "🍽️ Giorno di Energia — Pianificatore",
@@ -721,7 +736,12 @@
   "makro_sport": "Sportivo / Atleta",
   "makro_lowcarb": "Low-Carb / Dimagrimento",
   "makro_keto": "Chetogenico",
-  "fuss": "Grafico: raggio ∝ % del fabbisogno giornaliero, <b>limitato al 100 %</b> · oltre → <code>il colore si scurisce</code><br>Fabbisogno giornaliero: bambino di 7 anni (D-A-CH) · limite zucchero 45 g (OMS) · limite sodio 1800 mg"
+  "fuss": "Grafico: raggio ∝ % del fabbisogno giornaliero, <b>limitato al 100 %</b> · oltre → <code>il colore si scurisce</code><br>Fabbisogno giornaliero: bambino di 7 anni (D-A-CH) · limite zucchero 45 g (OMS) · limite sodio 1800 mg",
+  "set_kisearch": "🔎 Riga IA nella ricerca",
+  "set_kisearch_s": "Con una ricerca attiva, mostra una riga „cerca con IA“ nei risultati (serve una chiave).",
+  "ki_search_row": "🤖 Cerca „{q}“ con IA",
+  "search_none": "🔍 Niente trovato.<br>Prova un’altra parola — es. „formaggio“ o „frutta“.",
+  "ki_hint": "🤖 Con la tua chiave API (⚙️ Impostazioni) l’IA può cercare cibi sconosciuti."
  },
  "sv": {
   "title": "🍽️ Energidag — Dagsplanerare",
@@ -902,7 +922,12 @@
   "makro_sport": "Sportig / Atlet",
   "makro_lowcarb": "Low-Carb / Fettminskning",
   "makro_keto": "Ketogen",
-  "fuss": "Diagram: radie ∝ % av dagsbehovet, <b>maxad vid 100 %</b> · däröver → <code>färgen mörknar</code><br>Dagsbehov: 7-årigt barn (D-A-CH) · sockergräns 45 g (WHO) · natriumtak 1800 mg"
+  "fuss": "Diagram: radie ∝ % av dagsbehovet, <b>maxad vid 100 %</b> · däröver → <code>färgen mörknar</code><br>Dagsbehov: 7-årigt barn (D-A-CH) · sockergräns 45 g (WHO) · natriumtak 1800 mg",
+  "set_kisearch": "🔎 AI-rad i sökningen",
+  "set_kisearch_s": "Vid aktiv sökning, visa en „slå upp med AI“-rad i resultaten (kräver nyckel).",
+  "ki_search_row": "🤖 Slå upp „{q}“ med AI",
+  "search_none": "🔍 Inget hittat.<br>Prova ett annat ord — t.ex. „ost“ eller „frukt“.",
+  "ki_hint": "🤖 Med egen API-nyckel (⚙️ Inställningar) kan AI slå upp okänd mat."
  },
  "no": {
   "title": "🍽️ Energidag — Dagsplanlegger",
@@ -1083,7 +1108,12 @@
   "makro_sport": "Sporty / Atlet",
   "makro_lowcarb": "Low-Carb / Fettreduksjon",
   "makro_keto": "Ketogen",
-  "fuss": "Diagram: radius ∝ % av dagsbehovet, <b>maks 100 %</b> · utover → <code>fargen mørkner</code><br>Dagsbehov: 7-årig barn (D-A-CH) · sukkergrense 45 g (WHO) · natriumtak 1800 mg"
+  "fuss": "Diagram: radius ∝ % av dagsbehovet, <b>maks 100 %</b> · utover → <code>fargen mørkner</code><br>Dagsbehov: 7-årig barn (D-A-CH) · sukkergrense 45 g (WHO) · natriumtak 1800 mg",
+  "set_kisearch": "🔎 KI-rad i søket",
+  "set_kisearch_s": "Ved aktivt søk, vis en „slå opp med KI“-rad i resultatene (krever nøkkel).",
+  "ki_search_row": "🤖 Slå opp „{q}“ med KI",
+  "search_none": "🔍 Ingenting funnet.<br>Prøv et annet ord — f.eks. „ost“ eller „frukt“.",
+  "ki_hint": "🤖 Med egen API-nøkkel (⚙️ Innstillinger) kan KI slå opp ukjent mat."
  },
  "fi": {
   "title": "🍽️ Energiapäivä — Päiväsuunnittelija",
@@ -1264,7 +1294,12 @@
   "makro_sport": "Urheilullinen / Atleetti",
   "makro_lowcarb": "Vähähiilihydraattinen",
   "makro_keto": "Ketogeeninen",
-  "fuss": "Kaavio: säde ∝ % päivittäistarpeesta, <b>katto 100 %</b> · yli → <code>väri tummenee</code><br>Päivittäistarve: 7-vuotias lapsi (D-A-CH) · sokeriraja 45 g (WHO) · natriumkatto 1800 mg"
+  "fuss": "Kaavio: säde ∝ % päivittäistarpeesta, <b>katto 100 %</b> · yli → <code>väri tummenee</code><br>Päivittäistarve: 7-vuotias lapsi (D-A-CH) · sokeriraja 45 g (WHO) · natriumkatto 1800 mg",
+  "set_kisearch": "🔎 Tekoälyrivi haussa",
+  "set_kisearch_s": "Aktiivisessa haussa näytä „hae tekoälyllä“-rivi tuloksissa (vaatii avaimen).",
+  "ki_search_row": "🤖 Hae „{q}“ tekoälyllä",
+  "search_none": "🔍 Ei löytynyt.<br>Kokeile toista sanaa — esim. „juusto“ tai „hedelmä“.",
+  "ki_hint": "🤖 Omalla API-avaimella (⚙️ Asetukset) tekoäly voi hakea tuntemattomia ruokia."
  },
  "he": {
   "title": "🍽️ יום אנרגיה — מתכנן יומי",
@@ -1445,7 +1480,12 @@
   "makro_sport": "ספורטיבי / אתלט",
   "makro_lowcarb": "דל-פחמימות",
   "makro_keto": "קֶטוֹגֶני",
-  "fuss": "תרשים: רדיוס ∝ % מהצורך היומי, <b>מוגבל ל-100%</b> · מעבר לכך → <code>הצבע מתכהה</code><br>צורך יומי: ילד בן 7 (D-A-CH) · מגבלת סוכר 45 g (WHO) · תקרת נתרן 1800 mg"
+  "fuss": "תרשים: רדיוס ∝ % מהצורך היומי, <b>מוגבל ל-100%</b> · מעבר לכך → <code>הצבע מתכהה</code><br>צורך יומי: ילד בן 7 (D-A-CH) · מגבלת סוכר 45 g (WHO) · תקרת נתרן 1800 mg",
+  "set_kisearch": "🔎 שורת בינה בחיפוש",
+  "set_kisearch_s": "בחיפוש פעיל, הצג שורת „חפש עם בינה“ ברשימת התוצאות (דרוש מפתח).",
+  "ki_search_row": "🤖 חפש „{q}“ עם בינה",
+  "search_none": "🔍 לא נמצא כלום.<br>נסו מילה אחרת — למשל „גבינה“ או „פרי“.",
+  "ki_hint": "🤖 עם מפתח API משלכם (⚙️ הגדרות) הבינה יכולה לחפש מאכלים לא מוכרים."
  },
  "yi": {
   "title": "🍽️ ענערגיע־טאָג — טאָג־פּלאַנער",
@@ -1626,7 +1666,12 @@
   "makro_sport": "ספּאָרטיש / אַטלעט",
   "makro_lowcarb": "נידעריק־קױלנהידראַט",
   "makro_keto": "קעטאָגעניש",
-  "fuss": "טשאַרט: ראַדיוס ∝ % פֿונעם טעגלעכן דאַרף, <b>באַגרענעצט בײַ 100%</b> · װײַטער → <code>די פֿאַרב װערט טונקעלער</code><br>טעגלעכער דאַרף: 7־יאָריק קינד (D-A-CH) · צוקער־גרענעץ 45 g (WHO) · נאַטריום־גרענעץ 1800 mg"
+  "fuss": "טשאַרט: ראַדיוס ∝ % פֿונעם טעגלעכן דאַרף, <b>באַגרענעצט בײַ 100%</b> · װײַטער → <code>די פֿאַרב װערט טונקעלער</code><br>טעגלעכער דאַרף: 7־יאָריק קינד (D-A-CH) · צוקער־גרענעץ 45 g (WHO) · נאַטריום־גרענעץ 1800 mg",
+  "set_kisearch": "🔎 קי־שורה אין זוכן",
+  "set_kisearch_s": "בײַ אַן אַקטיװער זוך, װײַז אַ „זוך מיט קי“־שורה אין די רעזולטאַטן (דאַרף אַ שליסל).",
+  "ki_search_row": "🤖 זוך „{q}“ מיט קי",
+  "search_none": "🔍 גאָרנישט געפֿונען.<br>פּרוּװט אַן אַנדער װאָרט — למשל „קעז“ אָדער „פֿרוכט“.",
+  "ki_hint": "🤖 מיט אַן אײגענעם API־שליסל (⚙️ אײַנשטעלונגען) קען די קי זוכן אומבאַקאַנטע עסן."
  },
  "sjn": {
   "title": "🍽️ Aur en-Vellas — Govaded Aur",
@@ -1807,7 +1852,12 @@
   "makro_sport": "Maetheg / Ohtar",
   "makro_lowcarb": "Bast-dithen",
   "makro_keto": "Ketogen",
-  "fuss": "Canad: rân ∝ % o i-vaur aur, <b>ided na 100 %</b> · or → <code>i-liw morna</code><br>Baur aur: hên 7 idhrinn (D-A-CH) · ided lisg 45 g (WHO) · ided sâlt 1800 mg"
+  "fuss": "Canad: rân ∝ % o i-vaur aur, <b>ided na 100 %</b> · or → <code>i-liw morna</code><br>Baur aur: hên 7 idhrinn (D-A-CH) · ided lisg 45 g (WHO) · ided sâlt 1800 mg",
+  "set_kisearch": "🔎 Rî-nûr vi ceno",
+  "set_kisearch_s": "Ir ceno cuil, tíro rî „ceno na-nûr“ vi in-rain (baur pân).",
+  "ki_search_row": "🤖 Ceno „{q}“ na-nûr",
+  "search_none": "🔍 Ú-nad hirnen.<br>Iesto beth eb — sui „bass-laug“ egor „yávë“.",
+  "ki_hint": "🤖 Na pân-nûr lín (⚙️ Peniath) i-nûr pôl ceno vaist ú-istassen."
  },
  "bar": {
   "title": "🍽️ Energie-Dog — Dogsplaner",
@@ -1988,7 +2038,12 @@
   "makro_sport": "Sportlich / Athlet",
   "makro_lowcarb": "Low-Carb / Fettobbau",
   "makro_keto": "Ketogen",
-  "fuss": "Chart: Radius ∝ % vom Dogsbedarf, <b>kappt bei 100 %</b> · drüwa → <code>d’Farb wead dunkla</code><br>Dogsbedarf: 7-jährigs Kind (D-A-CH) · Zucka-Limit 45 g (WHO) · Natrium-Obagrenz 1800 mg"
+  "fuss": "Chart: Radius ∝ % vom Dogsbedarf, <b>kappt bei 100 %</b> · drüwa → <code>d’Farb wead dunkla</code><br>Dogsbedarf: 7-jährigs Kind (D-A-CH) · Zucka-Limit 45 g (WHO) · Natrium-Obagrenz 1800 mg",
+  "set_kisearch": "🔎 KI-Zeu in da Suach",
+  "set_kisearch_s": "Bei aktiva Suach a „mit KI nochschaung“-Zeu in de Ergebnis zoang (braucht Schlissl).",
+  "ki_search_row": "🤖 „{q}“ mit KI nochschaung",
+  "search_none": "🔍 Nix gfundn.<br>Probiar a andas Wort — z.&nbsp;B. „Kas“ oda „Obst“.",
+  "ki_hint": "🤖 Mit eignem API-Schlissl (⚙️ Eistöllunga) ko de KI unbekannte Essn nochschaung."
  },
  "mainz": {
   "title": "🍽️ Energie-Daach — Daachsplaner",
@@ -2169,7 +2224,12 @@
   "makro_sport": "Sportlich / Athlet",
   "makro_lowcarb": "Low-Carb / Fettabbau",
   "makro_keto": "Ketogen",
-  "fuss": "Chart: Radius ∝ % vum Daachesbedarf, <b>kappt bei 100 %</b> · driwwer → <code>die Farb werd dunkler</code><br>Daachesbedarf: 7-jähriges Kind (D-A-CH) · Zucker-Limit 45 g (WHO) · Natrium-Owwergrenz 1800 mg"
+  "fuss": "Chart: Radius ∝ % vum Daachesbedarf, <b>kappt bei 100 %</b> · driwwer → <code>die Farb werd dunkler</code><br>Daachesbedarf: 7-jähriges Kind (D-A-CH) · Zucker-Limit 45 g (WHO) · Natrium-Owwergrenz 1800 mg",
+  "set_kisearch": "🔎 KI-Zeil in de Suche",
+  "set_kisearch_s": "Bei aktiver Suche e „mit KI nochgucke“-Zeil in de Ergebnis zeische (brauch Schlissel).",
+  "ki_search_row": "🤖 „{q}“ mit KI nochgucke",
+  "search_none": "🔍 Nix gefunne.<br>Probier e anner Wort — z.&nbsp;B. „Kees“ odder „Obst“.",
+  "ki_hint": "🤖 Mit eischenem API-Schlissel (⚙️ Eischtellunge) kann die KI unbekannte Esse nochgucke."
  },
  "hess": {
   "title": "🍽️ Energie-Daach — Daachesplaner",
@@ -2350,6 +2410,11 @@
   "makro_sport": "Sportlich / Athlet",
   "makro_lowcarb": "Low-Carb / Fettabbau",
   "makro_keto": "Ketogen",
-  "fuss": "Chart: Radius ∝ % vum Daachesbedarf, <b>kappt bei 100 %</b> · driwwer → <code>die Farb werd dunkler</code><br>Daachesbedarf: 7-jähriges Kind (D-A-CH) · Zucker-Limit 45 g (WHO) · Natrium-Owwergrenz 1800 mg"
+  "fuss": "Chart: Radius ∝ % vum Daachesbedarf, <b>kappt bei 100 %</b> · driwwer → <code>die Farb werd dunkler</code><br>Daachesbedarf: 7-jähriges Kind (D-A-CH) · Zucker-Limit 45 g (WHO) · Natrium-Owwergrenz 1800 mg",
+  "set_kisearch": "🔎 KI-Zeil in de Suche",
+  "set_kisearch_s": "Bei aktiver Suche e „mit KI nochgucke“-Zeil in de Ergebnis zeische (brauch Schlissel).",
+  "ki_search_row": "🤖 „{q}“ mit KI nochgucke",
+  "search_none": "🔍 Nix gefunne.<br>Probier e anner Wort — z.&nbsp;B. „Kees“ odder „Obst“.",
+  "ki_hint": "🤖 Mit eischenem API-Schlissel (⚙️ Eistellunge) kann die KI unbekannte Esse nochgucke."
  }
 }

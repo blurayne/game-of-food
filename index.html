@@ -270,6 +270,10 @@ path.hit.aktivseg{stroke:var(--segcol,var(--tinte));stroke-width:3;stroke-linejo
 .kibtn:hover{transform:scale(1.02)}
 .kibtn:disabled{opacity:.6;cursor:wait}
 .kihinweis{font-size:9.5px;font-weight:700;color:var(--tinte-weich);text-align:center;padding:6px 10px;line-height:1.45}
+.optsub{display:flex;gap:8px;align-items:flex-start;margin-top:8px;cursor:pointer}
+.optsub input{margin-top:2px;flex:0 0 auto}
+.optsub small{display:block;font-size:9px;font-weight:700;color:var(--tinte-weich);line-height:1.4;margin-top:2px}
+.kisuchbtn{margin-top:10px}
 .optzoom .pm button.minus{visibility:visible;background:#f3d9d2;color:var(--rot-tief)}
 .optzoom .pm .z{width:38px}
 .suche{display:flex;align-items:center;gap:6px;background:#fff;border:2px solid transparent;border-radius:9px;
@@ -558,7 +562,9 @@ path.hit.aktivseg{stroke:var(--segcol,var(--tinte));stroke-width:3;stroke-linejo
           </span></div>
         <div class="opt optki"><span><span data-i18n="set_ai">🤖 KI-Nachschlagen</span><small>Eigener Anthropic API-Key — bleibt nur in diesem Browser (localStorage).
           Findet die Suche nichts, kann die KI Nährwerte für neue Lebensmittel nachschlagen.</small>
-          <input type="password" id="optkey" class="keyfeld" placeholder="sk-ant-…" autocomplete="off" aria-label="Anthropic API-Key"></span></div>
+          <input type="password" id="optkey" class="keyfeld" placeholder="sk-ant-…" autocomplete="off" aria-label="Anthropic API-Key">
+          <label class="optsub"><input type="checkbox" id="optkisuch">
+            <span><span data-i18n="set_kisearch">🔎 KI-Zeile in der Suche</span><small data-i18n="set_kisearch_s">Bei aktiver Suche eine „mit KI nachschlagen"-Zeile in der Ergebnisliste zeigen (nur mit Key).</small></span></label></span></div>
       </div>
     </div>
   </div>
@@ -996,19 +1002,21 @@ function baue(){
         </span></div>`;
     });
   });
+  const roh=suchtext ? document.getElementById('suche').value.trim()
+      .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;') : '';
+  const kiZeile=()=>`<button class="kibtn kisuchbtn" data-kisuche>${TF('ki_search_row','🤖 „{q}" mit KI nachschlagen',{q:roh})}</button>`;
   if(!h){
-    h='<div class="streffer">🔍 Nichts gefunden.<br>Probier ein anderes Wort — z.&nbsp;B. „Käse" oder „Obst".</div>';
+    h=`<div class="streffer">${T('search_none','🔍 Nichts gefunden.<br>Probier ein anderes Wort — z.&nbsp;B. „Käse" oder „Obst".')}</div>`;
     if(suchtext){
-      const roh=document.getElementById('suche').value.trim()
-        .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-      h+= kiKeyDa()
-        ? `<button class="kibtn" id="kibtn">🤖 „${roh}" mit KI nachschlagen</button>`
-        : '<div class="kihinweis">🤖 Mit eigenem API-Key (⚙️ Einstellungen) kann die KI unbekannte Lebensmittel nachschlagen.</div>';
+      h+= (kiKeyDa() && kiSuchRow) ? kiZeile()
+        : (kiKeyDa() ? '' : `<div class="kihinweis">${T('ki_hint','🤖 Mit eigenem API-Key (⚙️ Einstellungen) kann die KI unbekannte Lebensmittel nachschlagen.')}</div>`);
     }
   }
+  else if(suchtext && kiKeyDa() && kiSuchRow){   // Treffer vorhanden → KI-Zeile ans Ende
+    h+=kiZeile();
+  }
   const P=document.getElementById('picker'); P.innerHTML=h;
-  const KB=document.getElementById('kibtn');
-  if(KB) KB.onclick=()=>kiSuche(KB);
+  P.querySelectorAll('[data-kisuche]').forEach(b=>b.onclick=()=>kiSuche(b));
   P.querySelectorAll('[data-p]').forEach(b=>b.onclick=e=>{e.stopPropagation();
     const id=b.dataset.p; const wasLeer=leer();
     teller[id]=(teller[id]||0)+1; waehle(F(id),true);
@@ -1271,6 +1279,7 @@ function segLab(g){ const d=_langData(); const s=d&&d._seg&&d._seg[g.k]; return 
 function segFun(g){ const d=_langData(); const s=d&&d._seg&&d._seg[g.k]; return (s&&s.fun)||g.fun; }
 /* Lebensmittel-Namen + „Wusstest du?"-Fakten übersetzen (KI, in localStorage) */
 let FOODT={};
+let kiSuchRow=true;   // KI-Zeile in der Suchergebnisliste (nur bei aktivem Key)
 function foodTLoad(l){ FOODT={}; if(!l||l==='de')return;
   try{FOODT=JSON.parse(localStorage.getItem('foodT_'+l)||'{}')}catch(e){FOODT={}} }
 function nameOf(f){ const t=FOODT[f.id]; return (t&&t.name)||f.name; }
@@ -1312,6 +1321,7 @@ document.getElementById('optbg').oninput=e=>{const v=e.target.value/100;
   document.documentElement.style.setProperty('--bgop',v); einstMerk('bgop',v);};
 document.getElementById('opthl').onchange=e=>{zeigHilite=e.target.checked; einstMerk('zeigHilite',zeigHilite);
   render(); if(document.getElementById('modal').classList.contains('on')) gross();};
+document.getElementById('optkisuch').onchange=e=>{kiSuchRow=e.target.checked; einstMerk('kiSuchRow',kiSuchRow); baue();};
 
 // gespeicherte Einstellungen anwenden (vor dem ersten Render)
 if(EINST.zeigX!==undefined){zeigX=!!EINST.zeigX; document.getElementById('optx').checked=zeigX;}
@@ -1325,6 +1335,8 @@ if(EINST.zeigX!==undefined){zeigX=!!EINST.zeigX; document.getElementById('optx')
 })();
 if(EINST.fruchtAlsZucker!==undefined){fruchtAlsZucker=!!EINST.fruchtAlsZucker; document.getElementById('optf').checked=fruchtAlsZucker;}
 if(EINST.zeigHilite!==undefined){zeigHilite=!!EINST.zeigHilite; document.getElementById('opthl').checked=zeigHilite;}
+kiSuchRow = EINST.kiSuchRow!==false;   // Default: an
+document.getElementById('optkisuch').checked=kiSuchRow;
 if(EINST.bgop!==undefined){document.getElementById('optbg').value=Math.round(EINST.bgop*100);
   document.documentElement.style.setProperty('--bgop',EINST.bgop);}
 
