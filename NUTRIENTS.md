@@ -8,7 +8,7 @@ Referenzwerte für die **23 Nährstoffe**, die *Game of Food* trackt — aufgef�
 
 ## Inhalt
 - [Makronährstoffe](#makronährstoffe) · [Mineralstoffe](#mineralstoffe) · [Vitamine](#vitamine)
-- [Sport-Zuschläge](#-sport-zuschläge) · [Obergrenzen & Sicherheit](#-obergrenzen--sicherheit) · [App-Profil (7 J.)](#-app-profil-des-spiels-7-jahre) · [KI-Prompt](#-ki-prompt-keyvalue)
+- [Sport-Zuschläge](#-sport-zuschläge) · [Obergrenzen & Sicherheit](#-obergrenzen--sicherheit) · [App-Profil (7 J.)](#-app-profil-des-spiels-7-jahre) · [Wusstest du?](#-wusstest-du) · [KI-Prompt](#-ki-prompt-keyvalue)
 
 ## Makronährstoffe
 
@@ -271,6 +271,12 @@ Die Werte, mit denen *Game of Food* aktuell rechnet (Tagesbedarf eines 7-jährig
 | 🌱 Folat (B9) | 180 | 180 | µg |
 
 > Das Spiel rundet großzügig und setzt Energie (1800 kcal) und Kalium höher an als die DGE-Werte für 7–9 J. — didaktisch gewollt, damit die Balken „gut befüllbar" bleiben.
+
+## 💡 Wusstest du?
+
+- 🍊➡️🩸 **Vitamin C öffnet die Eisen-Tür.** Isst du etwas mit Vitamin C (Paprika, Orange, Erdbeeren) zusammen mit pflanzlichem Eisen (Haferflocken, Linsen, Vollkornbrot), nimmt dein Körper bis zu **3× mehr Eisen** auf. Ein Glas O-Saft zum Müsli wirkt also echt.
+- ☀️ **Vitamin D baut dein Körper fast komplett selbst** — aus Sonnenlicht auf der Haut. Deshalb gilt der Zufuhr-Wert von 20 µg nur, wenn zu wenig Sonne da ist (typisch im Winter). Kein anderer Nährstoff in dieser Tabelle kommt so wenig aus dem Essen.
+- 🧂🍞 **Die größte Salzquelle ist Brot, nicht Chips.** Nicht weil Brot besonders salzig wäre, sondern weil man einfach so viel davon isst. Beim Salz zählt die Menge über den ganzen Tag — genau wie beim Zucker.
 
 ## 🤖 KI-Prompt (key:value)
 
