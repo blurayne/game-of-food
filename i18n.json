@@ -189,7 +189,8 @@
   "key_ok": "✅ Key works — credit is available.",
   "key_invalid": "Key invalid",
   "key_none": "⚠️ No API key entered.",
-  "key_neterr": "Network error"
+  "key_neterr": "Network error",
+  "key_credit_hint": "ℹ️ The key is <b>valid</b>, but the Anthropic account has no API credit. Check in the <b>Console</b>: correct <b>organization</b> (top left), credit actually <b>purchased</b> (not just a card added) and the workspace <b>spend limit</b> &gt; 0. API credit is separate from Claude&nbsp;Pro / claude.ai."
  },
  "es": {
   "title": "🍽️ Día de Energía — Planificador diario",
@@ -381,7 +382,8 @@
   "key_ok": "✅ La clave funciona — hay saldo.",
   "key_invalid": "Clave inválida",
   "key_none": "⚠️ No se introdujo ninguna clave API.",
-  "key_neterr": "Error de red"
+  "key_neterr": "Error de red",
+  "key_credit_hint": "ℹ️ La clave es <b>válida</b>, pero la cuenta de Anthropic no tiene saldo de API. Comprueba en la <b>Consola</b>: la <b>organización</b> correcta (arriba a la izquierda), que el saldo se haya <b>comprado</b> de verdad (no solo añadir tarjeta) y el <b>límite de gasto</b> del workspace &gt; 0. El saldo de API es independiente de Claude&nbsp;Pro / claude.ai."
  },
  "fr": {
   "title": "🍽️ Jour d'Énergie — Planificateur",
@@ -573,7 +575,8 @@
   "key_ok": "✅ La clé fonctionne — crédit disponible.",
   "key_invalid": "Clé invalide",
   "key_none": "⚠️ Aucune clé API saisie.",
-  "key_neterr": "Erreur réseau"
+  "key_neterr": "Erreur réseau",
+  "key_credit_hint": "ℹ️ La clé est <b>valide</b>, mais le compte Anthropic n’a pas de crédit API. Vérifie dans la <b>Console</b> : la bonne <b>organisation</b> (en haut à gauche), un crédit réellement <b>acheté</b> (pas seulement une carte ajoutée) et la <b>limite de dépense</b> du workspace &gt; 0. Le crédit API est distinct de Claude&nbsp;Pro / claude.ai."
  },
  "it": {
   "title": "🍽️ Giorno di Energia — Pianificatore",
@@ -765,7 +768,8 @@
   "key_ok": "✅ La chiave funziona — credito disponibile.",
   "key_invalid": "Chiave non valida",
   "key_none": "⚠️ Nessuna chiave API inserita.",
-  "key_neterr": "Errore di rete"
+  "key_neterr": "Errore di rete",
+  "key_credit_hint": "ℹ️ La chiave è <b>valida</b>, ma l’account Anthropic non ha credito API. Controlla nella <b>Console</b>: l’<b>organizzazione</b> giusta (in alto a sinistra), il credito davvero <b>acquistato</b> (non solo carta aggiunta) e il <b>limite di spesa</b> del workspace &gt; 0. Il credito API è separato da Claude&nbsp;Pro / claude.ai."
  },
  "sv": {
   "title": "🍽️ Energidag — Dagsplanerare",
@@ -957,7 +961,8 @@
   "key_ok": "✅ Nyckeln fungerar — det finns saldo.",
   "key_invalid": "Ogiltig nyckel",
   "key_none": "⚠️ Ingen API-nyckel angiven.",
-  "key_neterr": "Nätverksfel"
+  "key_neterr": "Nätverksfel",
+  "key_credit_hint": "ℹ️ Nyckeln är <b>giltig</b>, men Anthropic-kontot har inget API-saldo. Kontrollera i <b>Console</b>: rätt <b>organisation</b> (uppe till vänster), att saldo verkligen <b>köpts</b> (inte bara kort tillagt) och workspacets <b>utgiftsgräns</b> &gt; 0. API-saldo är skilt från Claude&nbsp;Pro / claude.ai."
  },
  "no": {
   "title": "🍽️ Energidag — Dagsplanlegger",
@@ -1149,7 +1154,8 @@
   "key_ok": "✅ Nøkkelen virker — det er saldo.",
   "key_invalid": "Ugyldig nøkkel",
   "key_none": "⚠️ Ingen API-nøkkel angitt.",
-  "key_neterr": "Nettverksfeil"
+  "key_neterr": "Nettverksfeil",
+  "key_credit_hint": "ℹ️ Nøkkelen er <b>gyldig</b>, men Anthropic-kontoen har ingen API-saldo. Sjekk i <b>Console</b>: riktig <b>organisasjon</b> (øverst til venstre), at saldo faktisk er <b>kjøpt</b> (ikke bare kort lagt til) og workspacets <b>forbruksgrense</b> &gt; 0. API-saldo er atskilt fra Claude&nbsp;Pro / claude.ai."
  },
  "fi": {
   "title": "🍽️ Energiapäivä — Päiväsuunnittelija",
@@ -1341,7 +1347,8 @@
   "key_ok": "✅ Avain toimii — saldoa on.",
   "key_invalid": "Virheellinen avain",
   "key_none": "⚠️ API-avainta ei annettu.",
-  "key_neterr": "Verkkovirhe"
+  "key_neterr": "Verkkovirhe",
+  "key_credit_hint": "ℹ️ Avain on <b>kelvollinen</b>, mutta Anthropic-tilillä ei ole API-saldoa. Tarkista <b>Consolessa</b>: oikea <b>organisaatio</b> (ylhäällä vasemmalla), että saldo on todella <b>ostettu</b> (ei vain lisätty korttia) ja työtilan <b>kulutusraja</b> &gt; 0. API-saldo on erillään Claude&nbsp;Pro / claude.ai -tilistä."
  },
  "he": {
   "title": "🍽️ יום אנרגיה — מתכנן יומי",
@@ -1533,7 +1540,8 @@
   "key_ok": "✅ המפתח עובד — יש יתרה.",
   "key_invalid": "מפתח לא תקין",
   "key_none": "⚠️ לא הוזן מפתח API.",
-  "key_neterr": "שגיאת רשת"
+  "key_neterr": "שגיאת רשת",
+  "key_credit_hint": "ℹ️ המפתח <b>תקין</b>, אבל בחשבון Anthropic אין יתרת API. בדקו ב-<b>Console</b>: <b>ארגון</b> נכון (למעלה משמאל), שהיתרה באמת <b>נרכשה</b> (לא רק הוספת כרטיס) ו<b>מגבלת ההוצאה</b> של סביבת העבודה &gt; 0. יתרת API נפרדת מ-Claude&nbsp;Pro / claude.ai."
  },
  "yi": {
   "title": "🍽️ ענערגיע־טאָג — טאָג־פּלאַנער",
@@ -1725,7 +1733,8 @@
   "key_ok": "✅ דער שליסל אַרבעט — עס איז דאָ גוטהאָבן.",
   "key_invalid": "שליסל אומגילטיק",
   "key_none": "⚠️ קײן API־שליסל אײַנגעגעבן.",
-  "key_neterr": "נעץ־פֿעלער"
+  "key_neterr": "נעץ־פֿעלער",
+  "key_credit_hint": "ℹ️ דער שליסל איז <b>גילטיק</b>, אָבער דער Anthropic־קאָנטע האָט קײן API־גוטהאָבן. קוקט אין דער <b>Console</b>: ריכטיקע <b>אָרגאַניזאַציע</b> (אויבן לינקס), אַז דאָס גוטהאָבן איז טאַקע <b>געקויפֿט</b> (נישט בלויז אַ קאַרטל צוגעלייגט) און דער <b>אויסגאַב־גרענעץ</b> פֿון דער וואָרקספּעйс &gt; 0. API־גוטהאָבן איז באַזונדער פֿון Claude&nbsp;Pro / claude.ai."
  },
  "sjn": {
   "title": "🍽️ Aur en-Vellas — Govaded Aur",
@@ -1917,7 +1926,8 @@
   "key_ok": "✅ I-bân matha — mîr ammen.",
   "key_invalid": "Pân ú-vaer",
   "key_none": "⚠️ Ú-bân API annen.",
-  "key_neterr": "Delu na-nûr"
+  "key_neterr": "Delu na-nûr",
+  "key_credit_hint": "ℹ️ I-bân <b>vaer</b>, dan i-gonath Anthropic ú-mîr API. Tíro vi <b>Console</b>: i-<b>gonath</b> vaer (or-forven), i-mîr <b>bangannen</b> (ú-eriol i-cardol) a i-<b>ided-vangad</b> en-workspace &gt; 0. Mîr API sen o Claude&nbsp;Pro / claude.ai."
  },
  "bar": {
   "title": "🍽️ Energie-Dog — Dogsplaner",
@@ -2109,7 +2119,8 @@
   "key_ok": "✅ Da Schlissl geht — Guthaben is do.",
   "key_invalid": "Schlissl ungüiti",
   "key_none": "⚠️ Koa API-Schlissl eigebn.",
-  "key_neterr": "Netzwerkfeoler"
+  "key_neterr": "Netzwerkfeoler",
+  "key_credit_hint": "ℹ️ Da Key is <b>güiti</b>, aba des Anthropic-Konto hod koa API-Guthaben. In da <b>Console</b> schaung: richtige <b>Organisation</b> (obn links), Guthaben wiaklich <b>kafft</b> (ned bloß a Kartn hinterlegt) und des <b>Ausgabelimit</b> vo da Workspace &gt; 0. API-Guthaben is getrennt vo Claude&nbsp;Pro / claude.ai."
  },
  "mainz": {
   "title": "🍽️ Energie-Daach — Daachsplaner",
@@ -2301,7 +2312,8 @@
   "key_ok": "✅ Der Schlissel geht — Guthabe is do.",
   "key_invalid": "Schlissel ungildisch",
   "key_none": "⚠️ Kaa API-Schlissel aagebe.",
-  "key_neterr": "Netzwerkfehler"
+  "key_neterr": "Netzwerkfehler",
+  "key_credit_hint": "ℹ️ Der Key is <b>gildisch</b>, awwer des Anthropic-Konto hat kaa API-Guthabe. In de <b>Console</b> gucke: richtische <b>Organisation</b> (owwe links), Guthabe wärklisch <b>gekaaft</b> (net nur e Kart hinnerlescht) un es <b>Ausgabelimit</b> vun de Workspace &gt; 0. API-Guthabe is getrennt vun Claude&nbsp;Pro / claude.ai."
  },
  "hess": {
   "title": "🍽️ Energie-Daach — Daachesplaner",
@@ -2493,6 +2505,7 @@
   "key_ok": "✅ Der Schlissel geht — Guthabe is do.",
   "key_invalid": "Schlissel ungildisch",
   "key_none": "⚠️ Kaa API-Schlissel aagebe.",
-  "key_neterr": "Netzwerkfehler"
+  "key_neterr": "Netzwerkfehler",
+  "key_credit_hint": "ℹ️ Der Key is <b>gildisch</b>, awwer des Anthropic-Konto hat kaa API-Guthabe. In de <b>Console</b> gucke: richtische <b>Organisation</b> (owwe links), Guthabe wärklisch <b>gekaaft</b> (net nur e Kart hinnerlescht) un des <b>Ausgabelimit</b> vun de Workspace &gt; 0. API-Guthabe is getrennt vun Claude&nbsp;Pro / claude.ai."
  }
 }
