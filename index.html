@@ -253,6 +253,10 @@ path.hit.aktivseg{stroke:var(--segcol,var(--tinte));stroke-width:3;stroke-linejo
 .keyfeld{display:block;width:100%;margin-top:6px;border:2px solid var(--papier-rand);border-radius:8px;
   padding:6px 9px;font-family:'IBM Plex Mono';font-size:11px;background:#fff;color:var(--tinte)}
 .keyfeld:focus{outline:none;border-color:var(--wiese)}
+.opt.optsel>span{flex:1}
+.selfeld{display:block;width:100%;margin-top:6px;border:2px solid var(--papier-rand);border-radius:8px;
+  padding:6px 9px;font-family:'Nunito',sans-serif;font-size:11.5px;font-weight:800;background:#fff;color:var(--tinte);cursor:pointer}
+.selfeld:focus{outline:none;border-color:var(--wiese)}
 .kibtn{display:block;width:calc(100% - 8px);margin:6px auto;background:var(--wiese-tief);color:#fff;border:none;
   border-radius:10px;padding:9px 10px;font-family:'Fredoka';font-weight:500;font-size:12px;cursor:pointer;transition:.12s}
 .kibtn:hover{transform:scale(1.02)}
@@ -499,8 +503,14 @@ path.hit.aktivseg{stroke:var(--segcol,var(--tinte));stroke-width:3;stroke-linejo
       <div class="spad">
         <label class="opt"><input type="checkbox" id="optx">
           <span>✕ Nutzlose ausgrauen<small>markiert, was nichts mehr zum Tagesbedarf beiträgt</small></span></label>
-        <label class="opt"><input type="checkbox" id="optv" checked>
-          <span>⚖️ Verhältnis anzeigen<small>Fett : Kohlenhydrate : Eiweiß</small></span></label>
+        <div class="opt optsel"><span>🥗 Makro-Verteilung<small>Soll fürs Verhältnis-Feld (KH · Eiweiß · Fett)</small>
+          <select id="optmakro" class="selfeld" aria-label="Makro-Verteilung">
+            <option value="dge">DGE Standard (53 · 15 · 32)</option>
+            <option value="sport">Sportlich / Athlet (50 · 22 · 28)</option>
+            <option value="lowcarb">Low-Carb / Fettabbau (20 · 35 · 45)</option>
+            <option value="keto">Ketogen (5 · 22 · 73)</option>
+            <option value="aus">— ausblenden —</option>
+          </select></span></div>
         <label class="opt"><input type="checkbox" id="optf">
           <span>🍎 Fruchtzucker wie Zucker<small>Zucker aus Obst zählt zum 🍬-Limit und wird pink angezeigt</small></span></label>
         <label class="opt"><input type="checkbox" id="opthl">
@@ -755,7 +765,15 @@ function torte(gross){
 }
 
 
-const SOLL=D.soll;
+/* Makro-Verteilungs-Profile (Soll in % der Energie, ziel summiert = 100) */
+const MAKRO={
+  dge:    {lab:'DGE Standard',        fett:{min:30,max:35,ziel:32}, kh:{min:50,max:55,ziel:53}, eiweiss:{min:10,max:15,ziel:15}},
+  sport:  {lab:'Sportlich / Athlet',  fett:{min:25,max:30,ziel:28}, kh:{min:45,max:55,ziel:50}, eiweiss:{min:20,max:25,ziel:22}},
+  lowcarb:{lab:'Low-Carb / Fettabbau',fett:{min:40,max:50,ziel:45}, kh:{min:10,max:25,ziel:20}, eiweiss:{min:30,max:40,ziel:35}},
+  keto:   {lab:'Ketogen',             fett:{min:70,max:75,ziel:73}, kh:{min:0, max:10,ziel:5},  eiweiss:{min:20,max:25,ziel:22}},
+};
+let makroProfil='dge';
+let SOLL=MAKRO[makroProfil];
 const VM=[["fett","🧈 Fett","#E0BC3C"],["kh","🌾 Kohlenhydrate","#A85742"],["eiweiss","💪 Eiweiß","#3E86C8"]];
 let zeigV=true;
 
@@ -765,7 +783,7 @@ function verhaeltnis(){
   if(!zeigV) return;
   const box=document.getElementById('vinhalt');
   const einzeln = modus==='aktuell';
-  document.getElementById('vinfo').textContent = einzeln ? 'Anteile in diesem Lebensmittel — kein Soll' : 'Anteil an der Energie';
+  document.getElementById('vinfo').textContent = einzeln ? 'Anteile in diesem Lebensmittel — kein Soll' : ('Soll: '+MAKRO[makroProfil].lab);
   if(!einzeln && leer()){
     box.innerHTML='<div class="vleer">Das Verhältnis gilt für den <b>ganzen Tag</b>, nicht für ein einzelnes Lebensmittel.<br>Butter ist 100 % Fett — das ist völlig normal.</div>';
     return;
@@ -1135,7 +1153,10 @@ const EINST=(()=>{try{return JSON.parse(localStorage.getItem('einstellungen')||'
 const einstMerk=(k,v)=>{EINST[k]=v;try{localStorage.setItem('einstellungen',JSON.stringify(EINST))}catch(e){}};
 
 document.getElementById('optx').onchange=e=>{zeigX=e.target.checked; einstMerk('zeigX',zeigX); render();};
-document.getElementById('optv').onchange=e=>{zeigV=e.target.checked; einstMerk('zeigV',zeigV); render();};
+document.getElementById('optmakro').onchange=e=>{const v=e.target.value;
+  if(v==='aus'){ zeigV=false; }
+  else { makroProfil=v; SOLL=MAKRO[v]; zeigV=true; }
+  einstMerk('makro',v); render();};
 document.getElementById('optf').onchange=e=>{fruchtAlsZucker=e.target.checked; einstMerk('fruchtAlsZucker',fruchtAlsZucker);
   zeichneFood(aktiv); render();
   if(document.getElementById('modal').classList.contains('on')) gross();};
@@ -1146,7 +1167,14 @@ document.getElementById('opthl').onchange=e=>{zeigHilite=e.target.checked; einst
 
 // gespeicherte Einstellungen anwenden (vor dem ersten Render)
 if(EINST.zeigX!==undefined){zeigX=!!EINST.zeigX; document.getElementById('optx').checked=zeigX;}
-if(EINST.zeigV!==undefined){zeigV=!!EINST.zeigV; document.getElementById('optv').checked=zeigV;}
+(function(){const MS=document.getElementById('optmakro');
+  let v=EINST.makro;
+  if(v===undefined) v=(EINST.zeigV===false)?'aus':'dge';   // Migration alter Einstellung
+  if(v==='aus'){ zeigV=false; }
+  else if(MAKRO[v]){ makroProfil=v; SOLL=MAKRO[v]; zeigV=true; }
+  else v='dge';
+  MS.value=v;
+})();
 if(EINST.fruchtAlsZucker!==undefined){fruchtAlsZucker=!!EINST.fruchtAlsZucker; document.getElementById('optf').checked=fruchtAlsZucker;}
 if(EINST.zeigHilite!==undefined){zeigHilite=!!EINST.zeigHilite; document.getElementById('opthl').checked=zeigHilite;}
 if(EINST.bgop!==undefined){document.getElementById('optbg').value=Math.round(EINST.bgop*100);
