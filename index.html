@@ -725,6 +725,7 @@ function summeVon(q){
 }
 let ignoriert={};                                          // ids, die nicht mitgezählt werden (🚫)
 const tellerAktiv = ()=>{const q={};for(const id in teller)if(!ignoriert[id])q[id]=teller[id];return q;};
+function merkTeller(){ try{localStorage.setItem('teller',JSON.stringify({t:teller,i:ignoriert}))}catch(e){} }
 const tagSumme    = ()=>summeVon(tellerAktiv());          // der GANZE Tag ohne Ignorierte
 const summe       = ()=>modus==='aktuell' ? summeVon({[aktiv.id]:1}) : tagSumme();  // was das Chart zeigt
 
@@ -967,9 +968,9 @@ function render(){
       <button class="ig${ig?' an':''}" data-ig="${id}" title="${ig?'wieder mitzählen':'ignorieren — aus der Tagessumme ausschließen'}" aria-pressed="${ig?'true':'false'}">🚫</button>
       <button class="x" data-del="${id}" title="vom Teller nehmen">✕</button></div>`;}).join('');
   L.querySelectorAll('[data-del]').forEach(b=>b.onclick=e=>{e.stopPropagation();
-    delete teller[b.dataset.del]; delete ignoriert[b.dataset.del]; baue(); render();});
+    delete teller[b.dataset.del]; delete ignoriert[b.dataset.del]; merkTeller(); baue(); render();});
   L.querySelectorAll('[data-ig]').forEach(b=>b.onclick=e=>{e.stopPropagation();
-    const id=b.dataset.ig; if(ignoriert[id]) delete ignoriert[id]; else ignoriert[id]=true; render();});
+    const id=b.dataset.ig; if(ignoriert[id]) delete ignoriert[id]; else ignoriert[id]=true; merkTeller(); render();});
   L.querySelectorAll('[data-li]').forEach(el=>el.onclick=()=>{waehle(F(el.dataset.li)); setModus('aktuell',true);});
 
   document.querySelectorAll('.it').forEach(el=>{
@@ -1043,11 +1044,11 @@ function baue(){
   P.querySelectorAll('[data-kisuche]').forEach(b=>b.onclick=()=>kiSuche(b));
   P.querySelectorAll('[data-p]').forEach(b=>b.onclick=e=>{e.stopPropagation();
     const id=b.dataset.p; const wasLeer=leer();
-    teller[id]=(teller[id]||0)+1; waehle(F(id),true);
+    teller[id]=(teller[id]||0)+1; merkTeller(); waehle(F(id),true);
     if(wasLeer && !manuell) setModus('gesamt'); else render();});
   P.querySelectorAll('[data-m]').forEach(b=>b.onclick=e=>{e.stopPropagation();
     const id=b.dataset.m; if(!teller[id])return;
-    teller[id]--; if(!teller[id])delete teller[id]; render();});
+    teller[id]--; if(!teller[id])delete teller[id]; merkTeller(); render();});
   P.querySelectorAll('.it .em, .it .nm').forEach(el=>el.onclick=()=>{waehle(F(el.parentElement.dataset.id));render();});
 }
 const SUCHE=document.getElementById('suche'), SUCHEX=document.getElementById('suchex');
@@ -1072,7 +1073,7 @@ document.getElementById('zu').onclick=()=>document.getElementById('modal').class
 document.getElementById('modal').onclick=e=>{if(e.target.id==='modal')e.currentTarget.classList.remove('on');};
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){document.getElementById('modal').classList.remove('on');
   document.getElementById('setmodal').classList.remove('on'); entpinnen();}});
-document.getElementById('reset').onclick=()=>{teller={};ignoriert={};baue();render();};
+document.getElementById('reset').onclick=()=>{teller={};ignoriert={};merkTeller();baue();render();};
 
 
 /* ---------- Tooltip: was füllt dieses Segment? ---------- */
@@ -1250,6 +1251,12 @@ function kiZuFood(k){
 let eigene=[]; try{eigene=JSON.parse(localStorage.getItem('eigeneFoods')||'[]')}catch(e){}
 eigene.forEach(f=>{ if(!F(f.id)) FOODS.push(f); });
 const merkEigene=()=>{try{localStorage.setItem('eigeneFoods',JSON.stringify(eigene))}catch(e){}};
+// gespeicherten Teller wiederherstellen (nur ids, deren Lebensmittel es noch gibt)
+try{ const sp=JSON.parse(localStorage.getItem('teller')||'null');
+  if(sp&&sp.t){ for(const id in sp.t){ if(F(id)&&sp.t[id]>0) teller[id]=sp.t[id]; }
+    if(sp.i) for(const id in sp.i){ if(teller[id]) ignoriert[id]=true; } }
+}catch(e){}
+if(Object.keys(teller).length) modus='gesamt';   // gespeicherter Tag → Tagesansicht
 
 async function kiSuche(btn){
   const begriff=document.getElementById('suche').value.trim();
@@ -1260,6 +1267,7 @@ async function kiSuche(btn){
     let f=kiZuFood(roh);
     if(F(f.id)) f=F(f.id);
     else { FOODS.push(f); eigene.push(f); merkEigene(); }
+    teller[f.id]=(teller[f.id]||0)+1; merkTeller();   // gefundenes Essen direkt auf den Teller
     const S=document.getElementById('suche');
     S.value=''; S.oninput();
     waehle(f); setModus('aktuell',true);
@@ -1525,7 +1533,9 @@ document.addEventListener('fullscreenchange',()=>{ const an=!!document.fullscree
 })();
 document.querySelectorAll('.us').forEach(b=>b.onclick=()=>setModus(b.dataset.m,true));
 
-baue(); waehle(aktiv); render();
+baue(); waehle(aktiv);
+document.querySelectorAll('.us').forEach(b=>b.classList.toggle('on',b.dataset.m===modus));
+render();
 
 /* ---------- Sprache initialisieren ---------- */
 i18nInit();
