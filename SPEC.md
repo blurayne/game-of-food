@@ -472,6 +472,7 @@ Der frühere automatische „👁️ Vorschau"-Badge ist damit **abgelöst** —
 | **Hover auf Segment** | Popup: Funktion + **Top 3**, was es füllen würde. Wenn ≥ 100 %: *"✅ Schon gedeckt"*. Das Popup klappt an den Rändern um und wird **immer vollständig im Anzeigebereich** gehalten (auch bei aktivem 🔎-Zoom) |
 | **Klick auf Segment** | pinnt das Popup fest und **umrandet das angeklickte Stück in seiner Segmentfarbe** (20 % abgedunkelt, kein Fokus-Rechteck). Lösen: nochmal klicken, woanders klicken oder `Esc` |
 | **🔍 Lupe im Chart** | **Nur** der Lupen-Button (oben rechts in der Chartbox) öffnet das Modal mit der großen Ansicht (Pfeile, Labels, Funktionen); Hover übers Chart zeigt weiterhin die Segment-Popups. `Esc` / `✕` schließt |
+| **⭐ Wichtige Mikros hervorheben** | Toggle im ⚙️-Dialog: hebt **Kalium, Vitamin D, Eisen, Calcium** im Kreis-Chart hervor — schraffierter (diagonaler) Hintergrund in Segmentfarbe, ⭐ vor dem Label (große Ansicht) und ein Kurz-Hinweis im Hover-Popup (z. B. „Kalium: Gegenspieler zu Salz"). Persistiert |
 | **☑ ✕ Nutzlose ausgrauen** | markiert Lebensmittel, die zu **keinem** Nährstoff unter 100 % noch ≥ 2 % beitragen |
 | **☑ ⚖️ Verhältnis anzeigen** | blendet das Fett:KH:Eiweiß-Feld ein/aus |
 | **⚙️ Einstellungen** | Zahnrad-Button in der Top-Leiste öffnet einen Dialog mit allen Optionen (Nutzlose ausgrauen, Verhältnis, Fruchtzucker, Hintergrund-Deckkraft). ✕ / `Esc` / Klick daneben schließt. **Alle Einstellungen überleben einen Reload** (`localStorage`, Schlüssel `einstellungen`) |

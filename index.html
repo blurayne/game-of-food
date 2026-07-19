@@ -291,6 +291,8 @@ path.hit.aktivseg{stroke:var(--segcol,var(--tinte));stroke-width:3;stroke-linejo
 .tip .v .n small{display:block;font-family:'IBM Plex Mono';font-size:8px;font-weight:600;color:var(--tinte-weich)}
 .tip .v .p{font-family:'IBM Plex Mono';font-size:11px;font-weight:600;color:var(--tc,#F4A300)}
 .tip .voll{font-size:10.5px;font-weight:800;color:var(--wiese-tief)}
+.tip .hilitehint{font-size:10px;font-weight:700;color:var(--tinte-weich);line-height:1.35;margin:5px 0 7px;
+  padding:5px 7px;background:var(--papier-tief);border-radius:7px}
 
 
 /* ══════════ TABLET / kleineres Querformat (≤1080px) ══════════ */
@@ -501,6 +503,8 @@ path.hit.aktivseg{stroke:var(--segcol,var(--tinte));stroke-width:3;stroke-linejo
           <span>⚖️ Verhältnis anzeigen<small>Fett : Kohlenhydrate : Eiweiß</small></span></label>
         <label class="opt"><input type="checkbox" id="optf">
           <span>🍎 Fruchtzucker wie Zucker<small>Zucker aus Obst zählt zum 🍬-Limit und wird pink angezeigt</small></span></label>
+        <label class="opt"><input type="checkbox" id="opthl">
+          <span>⭐ Wichtige Mikros hervorheben<small>schraffiert im Kreis: Kalium, Vitamin&nbsp;D, Eisen, Calcium</small></span></label>
         <label class="opt optbg"><span>🖼️ Hintergrund<small>Deckkraft des Musters</small></span>
           <input type="range" id="optbg" min="0" max="100" value="50" aria-label="Hintergrund-Deckkraft"></label>
         <div class="opt optzoom"><span>🔎 Zoom<small>Größe der ganzen Oberfläche</small></span>
@@ -667,6 +671,16 @@ function setModus(m,vonHand){
   render();
 }
 
+/* ---------- Hervorhebung wichtiger Mikronährstoffe ---------- */
+let zeigHilite=false;
+const HILITE=new Set(['kalium','vitd','eisen','calcium']);
+const HILITE_INFO={
+  kalium:'Gegenspieler zu Salz — reguliert Blutdruck & Muskelfunktion.',
+  vitd:'In nördlichen Breiten oft Mangelware — Knochen & Immunsystem.',
+  eisen:'Wichtig — Sauerstoff-Transport & Konzentration.',
+  calcium:'Wichtig — baut Knochen & Zähne.'
+};
+
 /* ---------- Der Kreis ---------- */
 function torte(gross){
   const s=summe(), n=SEG.length, step=360/n;
@@ -694,7 +708,10 @@ function torte(gross){
     const istBallast=g.k==='ballast'; const segFill=istBallast?'url(#texP_rest)':fill;
     const P=(rr,a)=>[CX+rr*Math.cos(a),CY+rr*Math.sin(a)];
     const [xi0,yi0]=P(R_IN,a0),[xi1,yi1]=P(R_IN,a1),[xo0,yo0]=P(R_OUT,a0),[xo1,yo1]=P(R_OUT,a1);
-    p+=`<path d="M ${xi0} ${yi0} L ${xo0} ${yo0} A ${R_OUT} ${R_OUT} 0 0 1 ${xo1} ${yo1} L ${xi1} ${yi1} A ${R_IN} ${R_IN} 0 0 0 ${xi0} ${yi0} Z" fill="${heller(g.col,.84)}"/>`;
+    const bgD=`M ${xi0} ${yi0} L ${xo0} ${yo0} A ${R_OUT} ${R_OUT} 0 0 1 ${xo1} ${yo1} L ${xi1} ${yi1} A ${R_IN} ${R_IN} 0 0 0 ${xi0} ${yi0} Z`;
+    const hilite=zeigHilite && HILITE.has(g.k);
+    p+=`<path d="${bgD}" fill="${heller(g.col,.84)}"/>`;
+    if(hilite) p+=`<path d="${bgD}" fill="url(#hatch_${g.k}_${gross?'g':'k'})"/>`;
     if(pct>0.4){
       const [x0,y0]=P(r,a0),[x1,y1]=P(r,a1);
       const dF=`M ${xi0} ${yi0} L ${x0} ${y0} A ${r} ${r} 0 0 1 ${x1} ${y1} L ${xi1} ${yi1} A ${R_IN} ${R_IN} 0 0 0 ${xi0} ${yi0} Z`;
@@ -714,7 +731,8 @@ function torte(gross){
       p+=`<path d="M ${ax} ${ay} L ${ex} ${ey} L ${tx} ${ey}" stroke="${g.col}" stroke-width="1.6" fill="none" opacity=".75"/>`;
       p+=`<circle cx="${tx}" cy="${ey}" r="2.6" fill="${g.col}"/>`;
       const lx=tx+(rechts?7:-7), an=rechts?"start":"end";
-      p+=`<text x="${lx}" y="${ey-3}" font-family="Nunito" font-size="12.5" font-weight="800" fill="#2c3428" text-anchor="${an}">${g.em} ${g.lab} <tspan font-family="IBM Plex Mono" font-size="11" font-weight="600" fill="${dunkler(g.col,.15)}">${pct.toFixed(0)}%</tspan></text>`;
+      const stern = (zeigHilite && HILITE.has(g.k)) ? '⭐ ' : '';
+      p+=`<text x="${lx}" y="${ey-3}" font-family="Nunito" font-size="12.5" font-weight="800" fill="#2c3428" text-anchor="${an}">${stern}${g.em} ${g.lab} <tspan font-family="IBM Plex Mono" font-size="11" font-weight="600" fill="${dunkler(g.col,.15)}">${pct.toFixed(0)}%</tspan></text>`;
       p+=`<text x="${lx}" y="${ey+9}" font-family="Nunito" font-size="10" font-weight="700" fill="#5e6a56" text-anchor="${an}">${g.fun}</text>`;
     }
   });
@@ -723,7 +741,17 @@ function torte(gross){
   p+=`<text x="${CX}" y="${CY-(gross?14:8)}" font-family="Fredoka" font-size="${fs}" font-weight="600" fill="#3f6b3a" text-anchor="middle">${modus==='aktuell'?'Dieses Essen':'Tagesabdeckung'}</text>`;
   p+=`<text x="${CX}" y="${CY+(gross?10:8)}" font-family="IBM Plex Mono" font-size="${gross?14:12}" font-weight="600" fill="#5e6a56" text-anchor="middle">${Math.round(s.kcal)} kcal</text>`;
   if(gross) p+=`<text x="${CX}" y="${CY+32}" font-family="IBM Plex Mono" font-size="12" font-weight="600" fill="#E5477E" text-anchor="middle">${Math.round(s.zucker)} g Zucker</text>`;
-  return {svg:`<svg viewBox="0 0 ${SZ} ${SZ}" width="${gross?700:230}" height="${gross?700:230}">${p}</svg>`, luecken, s};
+  let defs='';
+  if(zeigHilite){
+    const sfx=gross?'g':'k', sz=gross?7:5;
+    defs='<defs>'+[...HILITE].map(k=>{const seg=SEG.find(x=>x.k===k); if(!seg)return'';
+      const c=dunkler(seg.col,.1);
+      return `<pattern id="hatch_${k}_${sfx}" patternUnits="userSpaceOnUse" width="${sz}" height="${sz}" patternTransform="rotate(45)">`
+        +`<rect width="${sz}" height="${sz}" fill="${seg.col}" opacity="0.10"/>`
+        +`<line x1="0" y1="0" x2="0" y2="${sz}" stroke="${c}" stroke-width="1.4" opacity="0.55"/></pattern>`;
+    }).join('')+'</defs>';
+  }
+  return {svg:`<svg viewBox="0 0 ${SZ} ${SZ}" width="${gross?700:230}" height="${gross?700:230}">${defs}${p}</svg>`, luecken, s};
 }
 
 
@@ -960,8 +988,10 @@ function tipAn(e,k,pct){
   const g=SEG.find(x=>x.k===k); if(!g) return;
   const voll=pct>=100;
   TIP.style.setProperty('--tc',g.col);
-  let h=`<div class="h">${g.em} ${g.lab} <span style="margin-left:auto;font-family:'IBM Plex Mono';font-size:12px;color:${g.col}">${pct}%</span></div>`
+  const stern = (zeigHilite && HILITE.has(k)) ? '⭐ ' : '';
+  let h=`<div class="h">${stern}${g.em} ${g.lab} <span style="margin-left:auto;font-family:'IBM Plex Mono';font-size:12px;color:${g.col}">${pct}%</span></div>`
        +`<div class="f">${g.fun}</div>`;
+  if(zeigHilite && HILITE_INFO[k]) h+=`<div class="hilitehint">⭐ ${HILITE_INFO[k]}</div>`;
   if(voll){ h+=`<div class="voll">✅ Schon gedeckt — hier fehlt nichts mehr.</div>`; }
   else{
     const t=TOP[k]||[];
@@ -1111,11 +1141,14 @@ document.getElementById('optf').onchange=e=>{fruchtAlsZucker=e.target.checked; e
   if(document.getElementById('modal').classList.contains('on')) gross();};
 document.getElementById('optbg').oninput=e=>{const v=e.target.value/100;
   document.documentElement.style.setProperty('--bgop',v); einstMerk('bgop',v);};
+document.getElementById('opthl').onchange=e=>{zeigHilite=e.target.checked; einstMerk('zeigHilite',zeigHilite);
+  render(); if(document.getElementById('modal').classList.contains('on')) gross();};
 
 // gespeicherte Einstellungen anwenden (vor dem ersten Render)
 if(EINST.zeigX!==undefined){zeigX=!!EINST.zeigX; document.getElementById('optx').checked=zeigX;}
 if(EINST.zeigV!==undefined){zeigV=!!EINST.zeigV; document.getElementById('optv').checked=zeigV;}
 if(EINST.fruchtAlsZucker!==undefined){fruchtAlsZucker=!!EINST.fruchtAlsZucker; document.getElementById('optf').checked=fruchtAlsZucker;}
+if(EINST.zeigHilite!==undefined){zeigHilite=!!EINST.zeigHilite; document.getElementById('opthl').checked=zeigHilite;}
 if(EINST.bgop!==undefined){document.getElementById('optbg').value=Math.round(EINST.bgop*100);
   document.documentElement.style.setProperty('--bgop',EINST.bgop);}
 
