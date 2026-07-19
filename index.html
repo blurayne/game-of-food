@@ -400,15 +400,15 @@ path.hit.aktivseg{stroke:var(--segcol,var(--tinte));stroke-width:3;stroke-linejo
 <body>
 
 <header class="kopf">
-  <h1>🍽️ Energie-Tag — Tagesplaner</h1>
-  <p>Mit <b>+ / −</b> zusammenstellen · das Chart rechts addiert live mit · <b>🔍</b> für die große Ansicht</p>
+  <h1 data-i18n="title">🍽️ Energie-Tag — Tagesplaner</h1>
+  <p data-i18n="subtitle">Zusammenstellen · das Chart rechts addiert live mit · 🔍 für die große Ansicht</p>
 </header>
 
 <div class="app"><div class="screen">
   <div class="top">
-    <span class="titel">🍽️ Tagesplaner</span>
-    <span class="stand" id="stand">Noch nichts auf dem Teller</span>
-    <button class="tagbtn" id="tagbtn">🥧 Dein Tag</button>
+    <span class="titel" data-i18n="top_title">🍽️ Tagesplaner</span>
+    <span class="stand" id="stand" data-i18n="stand_empty">Noch nichts auf dem Teller</span>
+    <button class="tagbtn" id="tagbtn" data-i18n="day_btn">🥧 Dein Tag</button>
     <button class="icobtn" id="setbtn" title="Einstellungen" aria-label="Einstellungen">⚙️</button>
     <button class="icobtn" id="fsbtn" title="Vollbild" aria-label="Vollbild umschalten">⤢</button>
     <span class="alter">7 J.</span>
@@ -418,7 +418,7 @@ path.hit.aktivseg{stroke:var(--segcol,var(--tinte));stroke-width:3;stroke-linejo
     <div class="pickerwrap">
       <div class="suche">
         <span class="ic">🔍</span>
-        <input type="search" id="suche" placeholder="Essen suchen …" autocomplete="off" aria-label="Essen suchen">
+        <input type="search" id="suche" placeholder="Essen suchen …" data-i18n-ph="search_ph" autocomplete="off" aria-label="Essen suchen">
         <button class="sx aus" id="suchex" aria-label="Suche löschen">✕</button>
       </div>
       <div class="picker" id="picker"></div>
@@ -441,8 +441,8 @@ path.hit.aktivseg{stroke:var(--segcol,var(--tinte));stroke-width:3;stroke-linejo
 
     <div class="rechts">
       <div class="umschalt" id="umschalt" role="tablist">
-        <button class="us on" data-m="aktuell" role="tab">🥕 Dieses Essen</button>
-        <button class="us" data-m="gesamt" role="tab">🍽️ Ganzer Tag <span class="n" id="usn"></span></button>
+        <button class="us on" data-m="aktuell" role="tab" data-i18n="view_food">🥕 Dieses Essen</button>
+        <button class="us" data-m="gesamt" role="tab"><span data-i18n="view_day">🍽️ Ganzer Tag</span> <span class="n" id="usn"></span></button>
       </div>
 
       <div class="chartbox" id="chartbox">
@@ -450,25 +450,25 @@ path.hit.aktivseg{stroke:var(--segcol,var(--tinte));stroke-width:3;stroke-linejo
         <div class="h" id="ch">🥧 Dein Tag</div>
         <div class="sub" id="csub">0 von 20 Nährstoffen</div>
         <div id="minichart"></div>
-        <div class="klick">🖱️ Zeigen erklärt jedes Segment · 🔍 öffnet die große Ansicht</div>
+        <div class="klick" data-i18n="hint_chart">🖱️ Zeigen erklärt jedes Segment · 🔍 öffnet die große Ansicht</div>
       </div>
 
       <div class="zaehler">
-        <div class="zl" id="zkcal"><div class="l">Energie</div><div class="v">0 kcal</div>
+        <div class="zl" id="zkcal"><div class="l" data-i18n="energy">Energie</div><div class="v">0 kcal</div>
           <div class="bahn"><i style="width:0%;background:var(--sonne-tief)"></i></div>
           <div class="anteil" id="kanteil"></div></div>
-        <div class="zl" id="zzuck"><div class="l">🍬 Zucker</div><div class="v">0 g</div>
+        <div class="zl" id="zzuck"><div class="l" data-i18n="sugar">🍬 Zucker</div><div class="v">0 g</div>
           <div class="bahn"><i style="width:0%;background:var(--zucker)"></i></div>
           <div class="ueber" id="zueber"></div></div>
       </div>
 
       <div class="verh" id="verh">
-        <div class="h">⚖️ Fett : Kohlenhydrate : Eiweiß <small id="vinfo">Anteil an der Energie</small></div>
+        <div class="h"><span data-i18n="ratio_title">⚖️ Fett : Kohlenhydrate : Eiweiß</span> <small id="vinfo">Anteil an der Energie</small></div>
         <div id="vinhalt"></div>
       </div>
 
       <div class="teller">
-        <div class="h">🍽️ Heute gegessen <button class="rs" id="reset">Alles leeren</button></div>
+        <div class="h"><span data-i18n="plate_title">🍽️ Heute gegessen</span> <button class="rs" id="reset" data-i18n="plate_reset">Alles leeren</button></div>
         <div class="liste" id="liste"></div>
       </div>
     </div>
@@ -476,7 +476,7 @@ path.hit.aktivseg{stroke:var(--segcol,var(--tinte));stroke-width:3;stroke-linejo
 
   <div class="modal" id="modal">
     <div class="mbox">
-      <div class="mbar"><span class="t">🥧 Dein Tag — was der Körper daraus bekommt</span>
+      <div class="mbar"><span class="t" data-i18n="modal_title">🥧 Dein Tag — was der Körper daraus bekommt</span>
         <span id="mstand" style="font-family:'IBM Plex Mono';font-size:11px;font-weight:600;color:var(--tinte-weich)"></span>
         <button class="zu" id="zu">✕</button></div>
       <div class="mpad">
@@ -498,12 +498,29 @@ path.hit.aktivseg{stroke:var(--segcol,var(--tinte));stroke-width:3;stroke-linejo
   </div>
   <div class="modal" id="setmodal">
     <div class="sbox">
-      <div class="mbar"><span class="t">⚙️ Einstellungen</span>
+      <div class="mbar"><span class="t" data-i18n="settings_title">⚙️ Einstellungen</span>
         <button class="zu" id="setzu" aria-label="Einstellungen schließen">✕</button></div>
       <div class="spad">
+        <div class="opt optsel"><span><span data-i18n="set_lang">🌍 Sprache</span><small>Language · Sproch · שפה · Lam</small>
+          <select id="optlang" class="selfeld" aria-label="Sprache / Language">
+            <option value="de">Deutsch</option>
+            <option value="bar">Bairisch</option>
+            <option value="mainz">Mainzerisch</option>
+            <option value="hess">Hessisch</option>
+            <option value="en">English</option>
+            <option value="es">Español</option>
+            <option value="fr">Français</option>
+            <option value="it">Italiano</option>
+            <option value="sv">Svenska</option>
+            <option value="no">Norsk</option>
+            <option value="fi">Suomi</option>
+            <option value="he">עברית</option>
+            <option value="yi">ייִדיש</option>
+            <option value="sjn">Sindarin</option>
+          </select></span></div>
         <label class="opt"><input type="checkbox" id="optx">
-          <span>✕ Nutzlose ausgrauen<small>markiert, was nichts mehr zum Tagesbedarf beiträgt</small></span></label>
-        <div class="opt optsel"><span>🥗 Makro-Verteilung<small>Soll fürs Verhältnis-Feld (KH · Eiweiß · Fett)</small>
+          <span><span data-i18n="set_gray">✕ Nutzlose ausgrauen</span><small>markiert, was nichts mehr zum Tagesbedarf beiträgt</small></span></label>
+        <div class="opt optsel"><span><span data-i18n="set_macro">🥗 Makro-Verteilung</span><small>Soll fürs Verhältnis-Feld (KH · Eiweiß · Fett)</small>
           <select id="optmakro" class="selfeld" aria-label="Makro-Verteilung">
             <option value="dge">DGE Standard (53 · 15 · 32)</option>
             <option value="sport">Sportlich / Athlet (50 · 22 · 28)</option>
@@ -512,18 +529,18 @@ path.hit.aktivseg{stroke:var(--segcol,var(--tinte));stroke-width:3;stroke-linejo
             <option value="aus">— ausblenden —</option>
           </select></span></div>
         <label class="opt"><input type="checkbox" id="optf">
-          <span>🍎 Fruchtzucker wie Zucker<small>Zucker aus Obst zählt zum 🍬-Limit und wird pink angezeigt</small></span></label>
+          <span><span data-i18n="set_fructose">🍎 Fruchtzucker wie Zucker</span><small>Zucker aus Obst zählt zum 🍬-Limit und wird pink angezeigt</small></span></label>
         <label class="opt"><input type="checkbox" id="opthl">
-          <span>⭐ Wichtige Mikros hervorheben<small>schraffiert im Kreis: Kalium, Vitamin&nbsp;D, Eisen, Calcium</small></span></label>
-        <label class="opt optbg"><span>🖼️ Hintergrund<small>Deckkraft des Musters</small></span>
+          <span><span data-i18n="set_hilite">⭐ Wichtige Mikros hervorheben</span><small>schraffiert im Kreis: Kalium, Vitamin&nbsp;D, Eisen, Calcium</small></span></label>
+        <label class="opt optbg"><span><span data-i18n="set_bg">🖼️ Hintergrund</span><small>Deckkraft des Musters</small></span>
           <input type="range" id="optbg" min="0" max="100" value="50" aria-label="Hintergrund-Deckkraft"></label>
-        <div class="opt optzoom"><span>🔎 Zoom<small>Größe der ganzen Oberfläche</small></span>
+        <div class="opt optzoom"><span><span data-i18n="set_zoom">🔎 Zoom</span><small>Größe der ganzen Oberfläche</small></span>
           <span class="pm">
             <button class="minus" id="zoomminus" aria-label="Ansicht verkleinern">−</button>
             <span class="z" id="zoomwert">100%</span>
             <button class="plus" id="zoomplus" aria-label="Ansicht vergrößern">+</button>
           </span></div>
-        <div class="opt optki"><span>🤖 KI-Nachschlagen<small>Eigener Anthropic API-Key — bleibt nur in diesem Browser (localStorage).
+        <div class="opt optki"><span><span data-i18n="set_ai">🤖 KI-Nachschlagen</span><small>Eigener Anthropic API-Key — bleibt nur in diesem Browser (localStorage).
           Findet die Suche nichts, kann die KI Nährwerte für neue Lebensmittel nachschlagen.</small>
           <input type="password" id="optkey" class="keyfeld" placeholder="sk-ant-…" autocomplete="off" aria-label="Anthropic API-Key"></span></div>
       </div>
@@ -748,7 +765,7 @@ function torte(gross){
   });
   p+=`<circle cx="${CX}" cy="${CY}" r="${R_IN-(gross?6:4)}" fill="#fbf7ef"/>`;
   const fs=gross?15:11;
-  p+=`<text x="${CX}" y="${CY-(gross?14:8)}" font-family="Fredoka" font-size="${fs}" font-weight="600" fill="#3f6b3a" text-anchor="middle">${modus==='aktuell'?'Dieses Essen':'Tagesabdeckung'}</text>`;
+  p+=`<text x="${CX}" y="${CY-(gross?14:8)}" font-family="Fredoka" font-size="${fs}" font-weight="600" fill="#3f6b3a" text-anchor="middle">${modus==='aktuell'?T('center_food','Dieses Essen'):T('center_day','Tagesabdeckung')}</text>`;
   p+=`<text x="${CX}" y="${CY+(gross?10:8)}" font-family="IBM Plex Mono" font-size="${gross?14:12}" font-weight="600" fill="#5e6a56" text-anchor="middle">${Math.round(s.kcal)} kcal</text>`;
   if(gross) p+=`<text x="${CX}" y="${CY+32}" font-family="IBM Plex Mono" font-size="12" font-weight="600" fill="#E5477E" text-anchor="middle">${Math.round(s.zucker)} g Zucker</text>`;
   let defs='';
@@ -857,7 +874,7 @@ function render(){
   document.getElementById('minichart').innerHTML=svg;
   document.getElementById('chartbox').classList.toggle('aktuellmodus', einzeln);
   const voll=SEG.filter(g=>(s[g.k]||0)/BED[g.k]*100>=100).length;
-  document.getElementById('ch').textContent = einzeln ? `${aktiv.emoji} ${aktiv.name}` : '🥧 Dein Tag';
+  document.getElementById('ch').textContent = einzeln ? `${aktiv.emoji} ${aktiv.name}` : T('day_btn','🥧 Dein Tag');
   document.getElementById('csub').textContent = einzeln
     ? `füllt ${voll} von ${SEG.length} Nährstoffen ganz` : `${voll} von ${SEG.length} Nährstoffen voll`;
 
@@ -885,7 +902,7 @@ function render(){
   document.getElementById('usn').textContent = anz? `(${anz})` : '';
   document.getElementById('stand').textContent = anzAlle
     ? `${anz} Sache${anz===1?'':'n'} · ${Math.round(t.kcal)} kcal · ${Math.round(t.zucker)} g Zucker${anzAlle>anz?` · ${anzAlle-anz}× 🚫`:''}`
-    : 'Noch nichts auf dem Teller';
+    : T('stand_empty','Noch nichts auf dem Teller');
 
   const L=document.getElementById('liste');
   if(!anzAlle){ L.innerHTML='<div class="leer2">Noch leer.<br>Klick links auf <b>+</b>, um etwas zu essen.</div>'; }
@@ -1150,6 +1167,25 @@ async function kiSuche(btn){
 
 /* ---------- Einstellungen: Persistenz + Dialog + Vollbild ---------- */
 const EINST=(()=>{try{return JSON.parse(localStorage.getItem('einstellungen')||'{}')}catch(e){return{}}})();
+
+/* ---------- Mehrsprachigkeit (Default Deutsch, Rest aus i18n.json) ---------- */
+let LANG='de', I18N=null;
+function T(k,de){ const d=(LANG!=='de'&&I18N)?I18N[LANG]:null; return (d&&d[k]!=null)?d[k]:de; }
+function i18nInit(){
+  document.querySelectorAll('[data-i18n]').forEach(el=>{ if(el.dataset.i18nDe===undefined) el.dataset.i18nDe=el.textContent; });
+  document.querySelectorAll('[data-i18n-ph]').forEach(el=>{ if(el.dataset.i18nPhDe===undefined) el.dataset.i18nPhDe=el.getAttribute('placeholder')||''; });
+}
+function applyLang(l){
+  LANG=l;
+  const rtl=(l==='he'||l==='yi');
+  document.documentElement.setAttribute('lang', ({he:'he',yi:'yi',en:'en',es:'es',fr:'fr',it:'it',sv:'sv',no:'no',fi:'fi'})[l]||'de');
+  document.documentElement.setAttribute('dir', rtl?'rtl':'ltr');
+  const d=(l!=='de'&&I18N)?I18N[l]:null;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.dataset.i18n; el.textContent=(d&&d[k]!=null)?d[k]:el.dataset.i18nDe;});
+  document.querySelectorAll('[data-i18n-ph]').forEach(el=>{const k=el.dataset.i18nPh; el.setAttribute('placeholder',(d&&d[k]!=null)?d[k]:el.dataset.i18nPhDe);});
+  if(typeof render==='function') render();
+  if(typeof baue==='function') baue();
+}
 const einstMerk=(k,v)=>{EINST[k]=v;try{localStorage.setItem('einstellungen',JSON.stringify(EINST))}catch(e){}};
 
 document.getElementById('optx').onchange=e=>{zeigX=e.target.checked; einstMerk('zeigX',zeigX); render();};
@@ -1230,6 +1266,15 @@ document.addEventListener('fullscreenchange',()=>{ const an=!!document.fullscree
 document.querySelectorAll('.us').forEach(b=>b.onclick=()=>setModus(b.dataset.m,true));
 
 baue(); waehle(aktiv); render();
+
+/* ---------- Sprache initialisieren ---------- */
+i18nInit();
+const LSEL=document.getElementById('optlang');
+LANG = (EINST.lang && document.querySelector(`#optlang option[value="${EINST.lang}"]`)) ? EINST.lang : 'de';
+LSEL.value=LANG;
+LSEL.onchange=()=>{ einstMerk('lang',LSEL.value); applyLang(LSEL.value); };
+if(LANG!=='de') applyLang(LANG);   // zeigt bis zum Laden Deutsch, dann Übersetzung
+fetch('i18n.json').then(r=>r.json()).then(j=>{ I18N=j; if(LANG!=='de') applyLang(LANG); }).catch(()=>{});
 </script>
 </body>
 </html>
