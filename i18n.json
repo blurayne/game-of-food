@@ -25,7 +25,160 @@
   "set_ai": "🤖 AI lookup",
   "stand_empty": "Nothing on the plate yet",
   "center_day": "Daily coverage",
-  "center_food": "This food"
+  "center_food": "This food",
+  "_shelves": {
+   "🍞 Brot & Gebäck": "🍞 Bread & Pastry",
+   "🥣 Frühstück": "🥣 Breakfast",
+   "🍎 Obst": "🍎 Fruit",
+   "🥬 Gemüse": "🥬 Vegetables",
+   "🧀 Milch & Käse": "🧀 Milk & Cheese",
+   "🍔 Fleisch & Fast Food": "🍔 Meat & Fast Food",
+   "🍽️ Fertige Teller": "🍽️ Ready Meals",
+   "🍦 Eis & Kuchen": "🍦 Ice Cream & Cake",
+   "🍫 Süßes": "🍫 Sweets",
+   "🧈 Fette & Würze": "🧈 Fats & Seasoning",
+   "🧃 Getränke": "🧃 Drinks",
+   "🥪 Gerichte": "🥪 Dishes"
+  },
+  "_seg": {
+   "eiweiss": {
+    "lab": "Protein",
+    "fun": "Repair & building blocks for cells — muscles above all"
+   },
+   "kh": {
+    "lab": "Carbohydrates",
+    "fun": "Fuel for the brain"
+   },
+   "fett": {
+    "lab": "Fat",
+    "fun": "Cell membranes & protection for the nerves"
+   },
+   "ballast": {
+    "lab": "Fibre",
+    "fun": "Food for the good gut bacteria"
+   },
+   "wasser": {
+    "lab": "Water",
+    "fun": "Transport, cooling — everything"
+   },
+   "eisen": {
+    "lab": "Iron",
+    "fun": "Oxygen to the brain — keeps you awake"
+   },
+   "calcium": {
+    "lab": "Calcium",
+    "fun": "Builds bones and teeth"
+   },
+   "magnesium": {
+    "lab": "Magnesium",
+    "fun": "Lets muscles relax again"
+   },
+   "kalium": {
+    "lab": "Potassium",
+    "fun": "For heart and muscles"
+   },
+   "zink": {
+    "lab": "Zinc",
+    "fun": "Defence & growth"
+   },
+   "jod": {
+    "lab": "Iodine",
+    "fun": "Tunes the body’s engine"
+   },
+   "selen": {
+    "lab": "Selenium",
+    "fun": "Protects the cells"
+   },
+   "vita": {
+    "lab": "Vitamin A",
+    "fun": "So you can see in the dark"
+   },
+   "vitc": {
+    "lab": "Vitamin C",
+    "fun": "Defence — opens the iron door"
+   },
+   "vitd": {
+    "lab": "Vitamin D",
+    "fun": "Bones — comes almost only from the sun"
+   },
+   "vite": {
+    "lab": "Vitamin E",
+    "fun": "Protects the cells"
+   },
+   "vitk": {
+    "lab": "Vitamin K",
+    "fun": "So wounds stop bleeding"
+   },
+   "b6": {
+    "lab": "Vitamin B6",
+    "fun": "For brain and nerves"
+   },
+   "b12": {
+    "lab": "Vitamin B12",
+    "fun": "Brain and red blood cells"
+   },
+   "folat": {
+    "lab": "Folate (B9)",
+    "fun": "So you grow"
+   }
+  },
+  "wd_empty": "No “Did you know?” for this food yet.",
+  "li_ignored": "🚫 not counted today",
+  "modal_food": "what’s inside",
+  "modal_day": "🥧 Your Day — what the body gets from it",
+  "cover_full": "Covers the whole day alone for",
+  "cover_none": "No nutrient is filled by this alone.",
+  "cover_none2": "That’s normal — a day needs many different things.",
+  "cover_empty": "<b>Nothing eaten yet.</b> Add something with <b>+</b> on the left — the circle fills right away.",
+  "cover_ok": "🎉 <b>All above 10 %!</b> No nutrient stays empty.",
+  "cover_miss": "Still almost missing",
+  "tip_helps": "This would help",
+  "tip_full": "✅ Already covered — nothing missing here.",
+  "tip_nofood": "⚠️ No food for this yet.",
+  "ueb_info": "🍎 Translate food names & facts (needs AI key)",
+  "ueb_btn": "🌍 Translate with AI",
+  "ueb_btn_re": "🔄 Re-translate",
+  "ueb_have": "✅ Names & facts are translated.",
+  "ueb_needkey": "🔑 AI key needed (⚙️ above)",
+  "grp_macro": "MACRONUTRIENTS",
+  "grp_mineral": "MINERALS",
+  "grp_vitamin": "VITAMINS",
+  "csub_food": "fills {v} of {n} nutrients fully",
+  "csub_day": "{v} of {n} nutrients full",
+  "kanteil": "{p} % of your day",
+  "plate_empty": "Still empty.<br>Click <b>+</b> on the left to eat something.",
+  "note_water": "water",
+  "note_drop": "💧 Drop",
+  "note_box": "🔲 Box",
+  "note_mid": "◆ In between",
+  "badge_none": "— nothing above 15 % —",
+  "w_sugar": "Sugar",
+  "w_salt": "Salt",
+  "z_over_self": "🔴 over the daily limit on its own ({max} g)",
+  "z_over": "🔴 {d} g over the limit ({max} g)",
+  "stand_line": "{n} {things} · {kcal} kcal · {zuck} g {sugar}",
+  "things_1": "item",
+  "things_n": "items",
+  "scale": "Scale ×",
+  "wdt_gut": "Good news",
+  "wdt_schlecht": "Too bad, but true",
+  "wdt_wow": "Did you know?",
+  "v_own": "Shares in this food — no target",
+  "v_soll": "Target: {p}",
+  "v_butter": "The ratio is for the <b>whole day</b>, not a single food.<br>Butter is 100 % fat — that’s perfectly normal.",
+  "v_noenergy": "No energy on the plate yet.",
+  "v_single": "This food is mostly <b>{top}</b> ({pct} %).<br>Single foods are almost always one-sided — <b>only the whole day counts.</b>",
+  "v_ok": "🎉 <b>Good ratio</b> — all three are in the recommended range.",
+  "v_toomuch": "<b>{a} is too much</b> — the bar pushes over the line and steals space from <b>{weg}</b>.",
+  "v_toolittle_one": "{list} is still too little.",
+  "v_toolittle_more": "{list} are still too little.",
+  "w_and": " and ",
+  "v_others": "the others",
+  "makro_dge": "DGE Standard",
+  "makro_sport": "Athletic / Sports",
+  "makro_lowcarb": "Low-Carb / Fat loss",
+  "makro_keto": "Ketogenic",
+  "fuss": "Chart: radius ∝ % of daily need, <b>capped at 100 %</b> · beyond → <code>colour gets darker</code><br>Daily need: 7-year-old child (D-A-CH) · sugar limit 45 g (WHO) · sodium cap 1800 mg"
  },
  "es": {
   "title": "🍽️ Día de Energía — Planificador diario",
@@ -53,7 +206,160 @@
   "set_ai": "🤖 Consulta con IA",
   "stand_empty": "Aún no hay nada en el plato",
   "center_day": "Cobertura diaria",
-  "center_food": "Este alimento"
+  "center_food": "Este alimento",
+  "_shelves": {
+   "🍞 Brot & Gebäck": "🍞 Pan y bollería",
+   "🥣 Frühstück": "🥣 Desayuno",
+   "🍎 Obst": "🍎 Fruta",
+   "🥬 Gemüse": "🥬 Verduras",
+   "🧀 Milch & Käse": "🧀 Leche y queso",
+   "🍔 Fleisch & Fast Food": "🍔 Carne y comida rápida",
+   "🍽️ Fertige Teller": "🍽️ Platos listos",
+   "🍦 Eis & Kuchen": "🍦 Helado y pastel",
+   "🍫 Süßes": "🍫 Dulces",
+   "🧈 Fette & Würze": "🧈 Grasas y condimentos",
+   "🧃 Getränke": "🧃 Bebidas",
+   "🥪 Gerichte": "🥪 Platos"
+  },
+  "_seg": {
+   "eiweiss": {
+    "lab": "Proteína",
+    "fun": "Reparación y bloques para las células — sobre todo músculos"
+   },
+   "kh": {
+    "lab": "Carbohidratos",
+    "fun": "Combustible para el cerebro"
+   },
+   "fett": {
+    "lab": "Grasa",
+    "fun": "Membranas celulares y protección de los nervios"
+   },
+   "ballast": {
+    "lab": "Fibra",
+    "fun": "Alimento para las buenas bacterias intestinales"
+   },
+   "wasser": {
+    "lab": "Agua",
+    "fun": "Transporte, refrigeración — todo"
+   },
+   "eisen": {
+    "lab": "Hierro",
+    "fun": "Oxígeno al cerebro — te mantiene despierto"
+   },
+   "calcium": {
+    "lab": "Calcio",
+    "fun": "Construye huesos y dientes"
+   },
+   "magnesium": {
+    "lab": "Magnesio",
+    "fun": "Relaja los músculos"
+   },
+   "kalium": {
+    "lab": "Potasio",
+    "fun": "Para el corazón y los músculos"
+   },
+   "zink": {
+    "lab": "Zinc",
+    "fun": "Defensa y crecimiento"
+   },
+   "jod": {
+    "lab": "Yodo",
+    "fun": "Ajusta el motor del cuerpo"
+   },
+   "selen": {
+    "lab": "Selenio",
+    "fun": "Protege las células"
+   },
+   "vita": {
+    "lab": "Vitamina A",
+    "fun": "Para ver en la oscuridad"
+   },
+   "vitc": {
+    "lab": "Vitamina C",
+    "fun": "Defensa — abre la puerta del hierro"
+   },
+   "vitd": {
+    "lab": "Vitamina D",
+    "fun": "Huesos — casi solo del sol"
+   },
+   "vite": {
+    "lab": "Vitamina E",
+    "fun": "Protege las células"
+   },
+   "vitk": {
+    "lab": "Vitamina K",
+    "fun": "Para que las heridas dejen de sangrar"
+   },
+   "b6": {
+    "lab": "Vitamina B6",
+    "fun": "Para el cerebro y los nervios"
+   },
+   "b12": {
+    "lab": "Vitamina B12",
+    "fun": "Cerebro y glóbulos rojos"
+   },
+   "folat": {
+    "lab": "Folato (B9)",
+    "fun": "Para que crezcas"
+   }
+  },
+  "wd_empty": "Aún no hay “¿Sabías que?” para este alimento.",
+  "li_ignored": "🚫 hoy no cuenta",
+  "modal_food": "qué contiene",
+  "modal_day": "🥧 Tu día — lo que el cuerpo obtiene",
+  "cover_full": "Cubre todo el día por sí solo en",
+  "cover_none": "Ningún nutriente se llena solo con esto.",
+  "cover_none2": "Es normal — un día necesita muchas cosas distintas.",
+  "cover_empty": "<b>Aún no has comido nada.</b> Añade algo con <b>+</b> a la izquierda — el círculo se llena al instante.",
+  "cover_ok": "🎉 <b>¡Todo por encima del 10 %!</b> Ningún nutriente queda vacío.",
+  "cover_miss": "Aún casi falta",
+  "tip_helps": "Esto ayudaría",
+  "tip_full": "✅ Ya cubierto — aquí no falta nada.",
+  "tip_nofood": "⚠️ Aún no hay alimento para esto.",
+  "ueb_info": "🍎 Traducir nombres y datos (necesita clave IA)",
+  "ueb_btn": "🌍 Traducir con IA",
+  "ueb_btn_re": "🔄 Volver a traducir",
+  "ueb_have": "✅ Nombres y datos traducidos.",
+  "ueb_needkey": "🔑 Se necesita clave IA (⚙️ arriba)",
+  "grp_macro": "MACRONUTRIENTES",
+  "grp_mineral": "MINERALES",
+  "grp_vitamin": "VITAMINAS",
+  "csub_food": "llena {v} de {n} nutrientes por completo",
+  "csub_day": "{v} de {n} nutrientes llenos",
+  "kanteil": "{p} % de tu día",
+  "plate_empty": "Aún vacío.<br>Pulsa <b>+</b> a la izquierda para comer algo.",
+  "note_water": "agua",
+  "note_drop": "💧 Gota",
+  "note_box": "🔲 Caja",
+  "note_mid": "◆ Intermedio",
+  "badge_none": "— nada por encima del 15 % —",
+  "w_sugar": "Azúcar",
+  "w_salt": "Sal",
+  "z_over_self": "🔴 ya supera el límite diario por sí solo ({max} g)",
+  "z_over": "🔴 {d} g por encima del límite ({max} g)",
+  "stand_line": "{n} {things} · {kcal} kcal · {zuck} g {sugar}",
+  "things_1": "cosa",
+  "things_n": "cosas",
+  "scale": "Escala ×",
+  "wdt_gut": "Buena noticia",
+  "wdt_schlecht": "Lástima, pero cierto",
+  "wdt_wow": "¿Sabías que?",
+  "v_own": "Proporciones en este alimento — sin objetivo",
+  "v_soll": "Objetivo: {p}",
+  "v_butter": "La proporción es para <b>todo el día</b>, no para un solo alimento.<br>La mantequilla es 100 % grasa — es totalmente normal.",
+  "v_noenergy": "Aún no hay energía en el plato.",
+  "v_single": "Este alimento es sobre todo <b>{top}</b> ({pct} %).<br>Los alimentos sueltos casi siempre son unilaterales — <b>solo cuenta el día entero.</b>",
+  "v_ok": "🎉 <b>Buena proporción</b> — los tres están en el rango recomendado.",
+  "v_toomuch": "<b>{a} es demasiado</b> — la barra sobrepasa la línea y le quita espacio a <b>{weg}</b>.",
+  "v_toolittle_one": "{list} aún es muy poco.",
+  "v_toolittle_more": "{list} aún son muy poco.",
+  "w_and": " y ",
+  "v_others": "los demás",
+  "makro_dge": "DGE Estándar",
+  "makro_sport": "Deportivo / Atleta",
+  "makro_lowcarb": "Low-Carb / Pérdida de grasa",
+  "makro_keto": "Cetogénico",
+  "fuss": "Gráfico: radio ∝ % de la necesidad diaria, <b>tope al 100 %</b> · más allá → <code>el color se oscurece</code><br>Necesidad diaria: niño de 7 años (D-A-CH) · límite de azúcar 45 g (OMS) · tope de sodio 1800 mg"
  },
  "fr": {
   "title": "🍽️ Jour d'Énergie — Planificateur",
@@ -81,7 +387,160 @@
   "set_ai": "🤖 Recherche IA",
   "stand_empty": "Rien dans l'assiette pour l'instant",
   "center_day": "Couverture du jour",
-  "center_food": "Cet aliment"
+  "center_food": "Cet aliment",
+  "_shelves": {
+   "🍞 Brot & Gebäck": "🍞 Pain & viennoiseries",
+   "🥣 Frühstück": "🥣 Petit-déjeuner",
+   "🍎 Obst": "🍎 Fruits",
+   "🥬 Gemüse": "🥬 Légumes",
+   "🧀 Milch & Käse": "🧀 Lait & fromage",
+   "🍔 Fleisch & Fast Food": "🍔 Viande & fast-food",
+   "🍽️ Fertige Teller": "🍽️ Plats préparés",
+   "🍦 Eis & Kuchen": "🍦 Glace & gâteau",
+   "🍫 Süßes": "🍫 Sucreries",
+   "🧈 Fette & Würze": "🧈 Graisses & épices",
+   "🧃 Getränke": "🧃 Boissons",
+   "🥪 Gerichte": "🥪 Plats"
+  },
+  "_seg": {
+   "eiweiss": {
+    "lab": "Protéines",
+    "fun": "Réparation & briques des cellules — surtout les muscles"
+   },
+   "kh": {
+    "lab": "Glucides",
+    "fun": "Carburant du cerveau"
+   },
+   "fett": {
+    "lab": "Lipides",
+    "fun": "Membranes cellulaires & protection des nerfs"
+   },
+   "ballast": {
+    "lab": "Fibres",
+    "fun": "Nourriture des bonnes bactéries intestinales"
+   },
+   "wasser": {
+    "lab": "Eau",
+    "fun": "Transport, refroidissement — tout"
+   },
+   "eisen": {
+    "lab": "Fer",
+    "fun": "De l’oxygène au cerveau — te garde éveillé"
+   },
+   "calcium": {
+    "lab": "Calcium",
+    "fun": "Construit os et dents"
+   },
+   "magnesium": {
+    "lab": "Magnésium",
+    "fun": "Détend les muscles"
+   },
+   "kalium": {
+    "lab": "Potassium",
+    "fun": "Pour le cœur et les muscles"
+   },
+   "zink": {
+    "lab": "Zinc",
+    "fun": "Défense & croissance"
+   },
+   "jod": {
+    "lab": "Iode",
+    "fun": "Règle le moteur du corps"
+   },
+   "selen": {
+    "lab": "Sélénium",
+    "fun": "Protège les cellules"
+   },
+   "vita": {
+    "lab": "Vitamine A",
+    "fun": "Pour voir dans le noir"
+   },
+   "vitc": {
+    "lab": "Vitamine C",
+    "fun": "Défense — ouvre la porte du fer"
+   },
+   "vitd": {
+    "lab": "Vitamine D",
+    "fun": "Os — vient presque uniquement du soleil"
+   },
+   "vite": {
+    "lab": "Vitamine E",
+    "fun": "Protège les cellules"
+   },
+   "vitk": {
+    "lab": "Vitamine K",
+    "fun": "Pour que les blessures cessent de saigner"
+   },
+   "b6": {
+    "lab": "Vitamine B6",
+    "fun": "Pour le cerveau et les nerfs"
+   },
+   "b12": {
+    "lab": "Vitamine B12",
+    "fun": "Cerveau et globules rouges"
+   },
+   "folat": {
+    "lab": "Folate (B9)",
+    "fun": "Pour que tu grandisses"
+   }
+  },
+  "wd_empty": "Pas encore de « Le savais-tu ? » pour cet aliment.",
+  "li_ignored": "🚫 pas compté aujourd’hui",
+  "modal_food": "ce qu’il contient",
+  "modal_day": "🥧 Ta journée — ce que le corps en retire",
+  "cover_full": "Couvre toute la journée à lui seul pour",
+  "cover_none": "Aucun nutriment n’est rempli par cela seul.",
+  "cover_none2": "C’est normal — une journée a besoin de beaucoup de choses différentes.",
+  "cover_empty": "<b>Rien mangé pour l’instant.</b> Ajoute quelque chose avec <b>+</b> à gauche — le cercle se remplit aussitôt.",
+  "cover_ok": "🎉 <b>Tout au-dessus de 10 %!</b> Aucun nutriment ne reste vide.",
+  "cover_miss": "Manque encore presque tout",
+  "tip_helps": "Ceci aiderait",
+  "tip_full": "✅ Déjà couvert — rien ne manque ici.",
+  "tip_nofood": "⚠️ Pas encore d’aliment pour cela.",
+  "ueb_info": "🍎 Traduire les noms et les infos (clé IA requise)",
+  "ueb_btn": "🌍 Traduire avec l’IA",
+  "ueb_btn_re": "🔄 Retraduire",
+  "ueb_have": "✅ Noms et infos traduits.",
+  "ueb_needkey": "🔑 Clé IA nécessaire (⚙️ ci-dessus)",
+  "grp_macro": "MACRONUTRIMENTS",
+  "grp_mineral": "MINÉRAUX",
+  "grp_vitamin": "VITAMINES",
+  "csub_food": "remplit {v} des {n} nutriments entièrement",
+  "csub_day": "{v} des {n} nutriments pleins",
+  "kanteil": "{p} % de ta journée",
+  "plate_empty": "Encore vide.<br>Clique sur <b>+</b> à gauche pour manger quelque chose.",
+  "note_water": "eau",
+  "note_drop": "💧 Goutte",
+  "note_box": "🔲 Cube",
+  "note_mid": "◆ Entre-deux",
+  "badge_none": "— rien au-dessus de 15 % —",
+  "w_sugar": "Sucre",
+  "w_salt": "Sel",
+  "z_over_self": "🔴 dépasse déjà la limite quotidienne à lui seul ({max} g)",
+  "z_over": "🔴 {d} g au-dessus de la limite ({max} g)",
+  "stand_line": "{n} {things} · {kcal} kcal · {zuck} g {sugar}",
+  "things_1": "chose",
+  "things_n": "choses",
+  "scale": "Échelle ×",
+  "wdt_gut": "Bonne nouvelle",
+  "wdt_schlecht": "Dommage, mais vrai",
+  "wdt_wow": "Le savais-tu ?",
+  "v_own": "Parts dans cet aliment — pas d’objectif",
+  "v_soll": "Objectif : {p}",
+  "v_butter": "Le rapport concerne <b>toute la journée</b>, pas un seul aliment.<br>Le beurre est 100 % gras — c’est tout à fait normal.",
+  "v_noenergy": "Pas encore d’énergie dans l’assiette.",
+  "v_single": "Cet aliment est surtout <b>{top}</b> ({pct} %).<br>Les aliments isolés sont presque toujours déséquilibrés — <b>seule la journée entière compte.</b>",
+  "v_ok": "🎉 <b>Bon rapport</b> — les trois sont dans la plage recommandée.",
+  "v_toomuch": "<b>{a} est en trop</b> — la barre dépasse la ligne et prend la place de <b>{weg}</b>.",
+  "v_toolittle_one": "{list} est encore trop peu.",
+  "v_toolittle_more": "{list} sont encore trop peu.",
+  "w_and": " et ",
+  "v_others": "les autres",
+  "makro_dge": "DGE Standard",
+  "makro_sport": "Sportif / Athlète",
+  "makro_lowcarb": "Low-Carb / Perte de gras",
+  "makro_keto": "Cétogène",
+  "fuss": "Graphique : rayon ∝ % du besoin journalier, <b>plafonné à 100 %</b> · au-delà → <code>la couleur fonce</code><br>Besoin journalier : enfant de 7 ans (D-A-CH) · limite de sucre 45 g (OMS) · plafond de sodium 1800 mg"
  },
  "it": {
   "title": "🍽️ Giorno di Energia — Pianificatore",
@@ -109,7 +568,160 @@
   "set_ai": "🤖 Ricerca IA",
   "stand_empty": "Ancora niente nel piatto",
   "center_day": "Copertura del giorno",
-  "center_food": "Questo cibo"
+  "center_food": "Questo cibo",
+  "_shelves": {
+   "🍞 Brot & Gebäck": "🍞 Pane & dolci",
+   "🥣 Frühstück": "🥣 Colazione",
+   "🍎 Obst": "🍎 Frutta",
+   "🥬 Gemüse": "🥬 Verdura",
+   "🧀 Milch & Käse": "🧀 Latte & formaggio",
+   "🍔 Fleisch & Fast Food": "🍔 Carne & fast food",
+   "🍽️ Fertige Teller": "🍽️ Piatti pronti",
+   "🍦 Eis & Kuchen": "🍦 Gelato & torta",
+   "🍫 Süßes": "🍫 Dolciumi",
+   "🧈 Fette & Würze": "🧈 Grassi & spezie",
+   "🧃 Getränke": "🧃 Bevande",
+   "🥪 Gerichte": "🥪 Piatti"
+  },
+  "_seg": {
+   "eiweiss": {
+    "lab": "Proteine",
+    "fun": "Riparazione e mattoni per le cellule — soprattutto i muscoli"
+   },
+   "kh": {
+    "lab": "Carboidrati",
+    "fun": "Carburante per il cervello"
+   },
+   "fett": {
+    "lab": "Grassi",
+    "fun": "Membrane cellulari e protezione dei nervi"
+   },
+   "ballast": {
+    "lab": "Fibre",
+    "fun": "Cibo per i batteri buoni dell’intestino"
+   },
+   "wasser": {
+    "lab": "Acqua",
+    "fun": "Trasporto, raffreddamento — tutto"
+   },
+   "eisen": {
+    "lab": "Ferro",
+    "fun": "Ossigeno al cervello — ti tiene sveglio"
+   },
+   "calcium": {
+    "lab": "Calcio",
+    "fun": "Costruisce ossa e denti"
+   },
+   "magnesium": {
+    "lab": "Magnesio",
+    "fun": "Rilassa i muscoli"
+   },
+   "kalium": {
+    "lab": "Potassio",
+    "fun": "Per cuore e muscoli"
+   },
+   "zink": {
+    "lab": "Zinco",
+    "fun": "Difesa e crescita"
+   },
+   "jod": {
+    "lab": "Iodio",
+    "fun": "Regola il motore del corpo"
+   },
+   "selen": {
+    "lab": "Selenio",
+    "fun": "Protegge le cellule"
+   },
+   "vita": {
+    "lab": "Vitamina A",
+    "fun": "Per vedere al buio"
+   },
+   "vitc": {
+    "lab": "Vitamina C",
+    "fun": "Difesa — apre la porta del ferro"
+   },
+   "vitd": {
+    "lab": "Vitamina D",
+    "fun": "Ossa — viene quasi solo dal sole"
+   },
+   "vite": {
+    "lab": "Vitamina E",
+    "fun": "Protegge le cellule"
+   },
+   "vitk": {
+    "lab": "Vitamina K",
+    "fun": "Perché le ferite smettano di sanguinare"
+   },
+   "b6": {
+    "lab": "Vitamina B6",
+    "fun": "Per cervello e nervi"
+   },
+   "b12": {
+    "lab": "Vitamina B12",
+    "fun": "Cervello e globuli rossi"
+   },
+   "folat": {
+    "lab": "Folato (B9)",
+    "fun": "Perché tu cresca"
+   }
+  },
+  "wd_empty": "Ancora nessun “Lo sapevi?” per questo cibo.",
+  "li_ignored": "🚫 oggi non conta",
+  "modal_food": "cosa contiene",
+  "modal_day": "🥧 La tua giornata — cosa ne ricava il corpo",
+  "cover_full": "Copre da solo l’intera giornata per",
+  "cover_none": "Nessun nutriente si riempie solo con questo.",
+  "cover_none2": "È normale — una giornata ha bisogno di tante cose diverse.",
+  "cover_empty": "<b>Ancora niente mangiato.</b> Aggiungi qualcosa con <b>+</b> a sinistra — il cerchio si riempie subito.",
+  "cover_ok": "🎉 <b>Tutto sopra il 10 %!</b> Nessun nutriente resta vuoto.",
+  "cover_miss": "Manca ancora quasi tutto",
+  "tip_helps": "Questo aiuterebbe",
+  "tip_full": "✅ Già coperto — qui non manca nulla.",
+  "tip_nofood": "⚠️ Ancora nessun cibo per questo.",
+  "ueb_info": "🍎 Traduci nomi e curiosità (serve chiave IA)",
+  "ueb_btn": "🌍 Traduci con IA",
+  "ueb_btn_re": "🔄 Ritraduci",
+  "ueb_have": "✅ Nomi e curiosità tradotti.",
+  "ueb_needkey": "🔑 Serve la chiave IA (⚙️ sopra)",
+  "grp_macro": "MACRONUTRIENTI",
+  "grp_mineral": "MINERALI",
+  "grp_vitamin": "VITAMINE",
+  "csub_food": "riempie {v} di {n} nutrienti del tutto",
+  "csub_day": "{v} di {n} nutrienti pieni",
+  "kanteil": "{p} % della tua giornata",
+  "plate_empty": "Ancora vuoto.<br>Tocca <b>+</b> a sinistra per mangiare qualcosa.",
+  "note_water": "acqua",
+  "note_drop": "💧 Goccia",
+  "note_box": "🔲 Cubo",
+  "note_mid": "◆ Via di mezzo",
+  "badge_none": "— niente sopra il 15 % —",
+  "w_sugar": "Zucchero",
+  "w_salt": "Sale",
+  "z_over_self": "🔴 supera da solo il limite giornaliero ({max} g)",
+  "z_over": "🔴 {d} g oltre il limite ({max} g)",
+  "stand_line": "{n} {things} · {kcal} kcal · {zuck} g {sugar}",
+  "things_1": "cosa",
+  "things_n": "cose",
+  "scale": "Scala ×",
+  "wdt_gut": "Buona notizia",
+  "wdt_schlecht": "Peccato, ma vero",
+  "wdt_wow": "Lo sapevi?",
+  "v_own": "Quote in questo cibo — senza obiettivo",
+  "v_soll": "Obiettivo: {p}",
+  "v_butter": "Il rapporto vale per <b>l’intera giornata</b>, non per un singolo cibo.<br>Il burro è 100 % grasso — è del tutto normale.",
+  "v_noenergy": "Ancora nessuna energia nel piatto.",
+  "v_single": "Questo cibo è soprattutto <b>{top}</b> ({pct} %).<br>I singoli cibi sono quasi sempre sbilanciati — <b>conta solo l’intera giornata.</b>",
+  "v_ok": "🎉 <b>Buon rapporto</b> — tutti e tre sono nell’intervallo consigliato.",
+  "v_toomuch": "<b>{a} è troppo</b> — la barra supera la linea e ruba spazio a <b>{weg}</b>.",
+  "v_toolittle_one": "{list} è ancora troppo poco.",
+  "v_toolittle_more": "{list} sono ancora troppo poco.",
+  "w_and": " e ",
+  "v_others": "gli altri",
+  "makro_dge": "DGE Standard",
+  "makro_sport": "Sportivo / Atleta",
+  "makro_lowcarb": "Low-Carb / Dimagrimento",
+  "makro_keto": "Chetogenico",
+  "fuss": "Grafico: raggio ∝ % del fabbisogno giornaliero, <b>limitato al 100 %</b> · oltre → <code>il colore si scurisce</code><br>Fabbisogno giornaliero: bambino di 7 anni (D-A-CH) · limite zucchero 45 g (OMS) · limite sodio 1800 mg"
  },
  "sv": {
   "title": "🍽️ Energidag — Dagsplanerare",
@@ -137,7 +749,160 @@
   "set_ai": "🤖 AI-uppslag",
   "stand_empty": "Inget på tallriken än",
   "center_day": "Dagstäckning",
-  "center_food": "Denna mat"
+  "center_food": "Denna mat",
+  "_shelves": {
+   "🍞 Brot & Gebäck": "🍞 Bröd & bakverk",
+   "🥣 Frühstück": "🥣 Frukost",
+   "🍎 Obst": "🍎 Frukt",
+   "🥬 Gemüse": "🥬 Grönsaker",
+   "🧀 Milch & Käse": "🧀 Mjölk & ost",
+   "🍔 Fleisch & Fast Food": "🍔 Kött & snabbmat",
+   "🍽️ Fertige Teller": "🍽️ Färdigrätter",
+   "🍦 Eis & Kuchen": "🍦 Glass & kaka",
+   "🍫 Süßes": "🍫 Godis",
+   "🧈 Fette & Würze": "🧈 Fetter & krydda",
+   "🧃 Getränke": "🧃 Drycker",
+   "🥪 Gerichte": "🥪 Rätter"
+  },
+  "_seg": {
+   "eiweiss": {
+    "lab": "Protein",
+    "fun": "Reparation & byggstenar för celler — särskilt muskler"
+   },
+   "kh": {
+    "lab": "Kolhydrater",
+    "fun": "Bränsle för hjärnan"
+   },
+   "fett": {
+    "lab": "Fett",
+    "fun": "Cellmembran & skydd för nerverna"
+   },
+   "ballast": {
+    "lab": "Fibrer",
+    "fun": "Mat för de goda tarmbakterierna"
+   },
+   "wasser": {
+    "lab": "Vatten",
+    "fun": "Transport, kylning — allt"
+   },
+   "eisen": {
+    "lab": "Järn",
+    "fun": "Syre till hjärnan — håller dig vaken"
+   },
+   "calcium": {
+    "lab": "Kalcium",
+    "fun": "Bygger ben och tänder"
+   },
+   "magnesium": {
+    "lab": "Magnesium",
+    "fun": "Låter musklerna slappna av"
+   },
+   "kalium": {
+    "lab": "Kalium",
+    "fun": "För hjärta och muskler"
+   },
+   "zink": {
+    "lab": "Zink",
+    "fun": "Försvar & tillväxt"
+   },
+   "jod": {
+    "lab": "Jod",
+    "fun": "Ställer in kroppens motor"
+   },
+   "selen": {
+    "lab": "Selen",
+    "fun": "Skyddar cellerna"
+   },
+   "vita": {
+    "lab": "Vitamin A",
+    "fun": "Så att du ser i mörkret"
+   },
+   "vitc": {
+    "lab": "Vitamin C",
+    "fun": "Försvar — öppnar järndörren"
+   },
+   "vitd": {
+    "lab": "Vitamin D",
+    "fun": "Ben — kommer nästan bara från solen"
+   },
+   "vite": {
+    "lab": "Vitamin E",
+    "fun": "Skyddar cellerna"
+   },
+   "vitk": {
+    "lab": "Vitamin K",
+    "fun": "Så att sår slutar blöda"
+   },
+   "b6": {
+    "lab": "Vitamin B6",
+    "fun": "För hjärna och nerver"
+   },
+   "b12": {
+    "lab": "Vitamin B12",
+    "fun": "Hjärna och röda blodkroppar"
+   },
+   "folat": {
+    "lab": "Folat (B9)",
+    "fun": "Så att du växer"
+   }
+  },
+  "wd_empty": "Inget “Visste du?” för denna mat än.",
+  "li_ignored": "🚫 räknas inte idag",
+  "modal_food": "vad som finns i",
+  "modal_day": "🥧 Din dag — vad kroppen får ut av den",
+  "cover_full": "Täcker hela dagen ensam för",
+  "cover_none": "Inget näringsämne fylls av bara detta.",
+  "cover_none2": "Det är normalt — en dag behöver många olika saker.",
+  "cover_empty": "<b>Inget ätet än.</b> Lägg till något med <b>+</b> till vänster — cirkeln fylls direkt.",
+  "cover_ok": "🎉 <b>Allt över 10 %!</b> Inget näringsämne blir tomt.",
+  "cover_miss": "Saknas nästan helt än",
+  "tip_helps": "Detta skulle hjälpa",
+  "tip_full": "✅ Redan täckt — inget saknas här.",
+  "tip_nofood": "⚠️ Ingen mat för detta än.",
+  "ueb_info": "🍎 Översätt namn & fakta (kräver AI-nyckel)",
+  "ueb_btn": "🌍 Översätt med AI",
+  "ueb_btn_re": "🔄 Översätt igen",
+  "ueb_have": "✅ Namn & fakta är översatta.",
+  "ueb_needkey": "🔑 AI-nyckel krävs (⚙️ ovan)",
+  "grp_macro": "MAKRONÄRINGSÄMNEN",
+  "grp_mineral": "MINERALER",
+  "grp_vitamin": "VITAMINER",
+  "csub_food": "fyller {v} av {n} näringsämnen helt",
+  "csub_day": "{v} av {n} näringsämnen fulla",
+  "kanteil": "{p} % av din dag",
+  "plate_empty": "Fortfarande tomt.<br>Klicka på <b>+</b> till vänster för att äta något.",
+  "note_water": "vatten",
+  "note_drop": "💧 Droppe",
+  "note_box": "🔲 Låda",
+  "note_mid": "◆ Mittemellan",
+  "badge_none": "— inget över 15 % —",
+  "w_sugar": "Socker",
+  "w_salt": "Salt",
+  "z_over_self": "🔴 över dagsgränsen på egen hand ({max} g)",
+  "z_over": "🔴 {d} g över gränsen ({max} g)",
+  "stand_line": "{n} {things} · {kcal} kcal · {zuck} g {sugar}",
+  "things_1": "sak",
+  "things_n": "saker",
+  "scale": "Skala ×",
+  "wdt_gut": "Goda nyheter",
+  "wdt_schlecht": "Synd, men sant",
+  "wdt_wow": "Visste du?",
+  "v_own": "Andelar i denna mat — inget mål",
+  "v_soll": "Mål: {p}",
+  "v_butter": "Förhållandet gäller <b>hela dagen</b>, inte en enda mat.<br>Smör är 100 % fett — det är helt normalt.",
+  "v_noenergy": "Ingen energi på tallriken än.",
+  "v_single": "Denna mat är mest <b>{top}</b> ({pct} %).<br>Enskild mat är nästan alltid ensidig — <b>bara hela dagen räknas.</b>",
+  "v_ok": "🎉 <b>Bra förhållande</b> — alla tre ligger inom rekommenderat intervall.",
+  "v_toomuch": "<b>{a} är för mycket</b> — stapeln trycker över linjen och tar plats från <b>{weg}</b>.",
+  "v_toolittle_one": "{list} är fortfarande för lite.",
+  "v_toolittle_more": "{list} är fortfarande för lite.",
+  "w_and": " och ",
+  "v_others": "de andra",
+  "makro_dge": "DGE Standard",
+  "makro_sport": "Sportig / Atlet",
+  "makro_lowcarb": "Low-Carb / Fettminskning",
+  "makro_keto": "Ketogen",
+  "fuss": "Diagram: radie ∝ % av dagsbehovet, <b>maxad vid 100 %</b> · däröver → <code>färgen mörknar</code><br>Dagsbehov: 7-årigt barn (D-A-CH) · sockergräns 45 g (WHO) · natriumtak 1800 mg"
  },
  "no": {
   "title": "🍽️ Energidag — Dagsplanlegger",
@@ -165,7 +930,160 @@
   "set_ai": "🤖 AI-oppslag",
   "stand_empty": "Ingenting på tallerkenen ennå",
   "center_day": "Dagsdekning",
-  "center_food": "Denne maten"
+  "center_food": "Denne maten",
+  "_shelves": {
+   "🍞 Brot & Gebäck": "🍞 Brød & bakverk",
+   "🥣 Frühstück": "🥣 Frokost",
+   "🍎 Obst": "🍎 Frukt",
+   "🥬 Gemüse": "🥬 Grønnsaker",
+   "🧀 Milch & Käse": "🧀 Melk & ost",
+   "🍔 Fleisch & Fast Food": "🍔 Kjøtt & hurtigmat",
+   "🍽️ Fertige Teller": "🍽️ Ferdigretter",
+   "🍦 Eis & Kuchen": "🍦 Iskrem & kake",
+   "🍫 Süßes": "🍫 Godteri",
+   "🧈 Fette & Würze": "🧈 Fett & krydder",
+   "🧃 Getränke": "🧃 Drikke",
+   "🥪 Gerichte": "🥪 Retter"
+  },
+  "_seg": {
+   "eiweiss": {
+    "lab": "Protein",
+    "fun": "Reparasjon & byggeklosser for celler — særlig muskler"
+   },
+   "kh": {
+    "lab": "Karbohydrater",
+    "fun": "Drivstoff for hjernen"
+   },
+   "fett": {
+    "lab": "Fett",
+    "fun": "Cellemembraner & vern for nervene"
+   },
+   "ballast": {
+    "lab": "Fiber",
+    "fun": "Mat for de gode tarmbakteriene"
+   },
+   "wasser": {
+    "lab": "Vann",
+    "fun": "Transport, kjøling — alt"
+   },
+   "eisen": {
+    "lab": "Jern",
+    "fun": "Oksygen til hjernen — holder deg våken"
+   },
+   "calcium": {
+    "lab": "Kalsium",
+    "fun": "Bygger bein og tenner"
+   },
+   "magnesium": {
+    "lab": "Magnesium",
+    "fun": "Lar musklene slappe av"
+   },
+   "kalium": {
+    "lab": "Kalium",
+    "fun": "For hjerte og muskler"
+   },
+   "zink": {
+    "lab": "Sink",
+    "fun": "Forsvar & vekst"
+   },
+   "jod": {
+    "lab": "Jod",
+    "fun": "Stiller inn kroppens motor"
+   },
+   "selen": {
+    "lab": "Selen",
+    "fun": "Beskytter cellene"
+   },
+   "vita": {
+    "lab": "Vitamin A",
+    "fun": "Så du ser i mørket"
+   },
+   "vitc": {
+    "lab": "Vitamin C",
+    "fun": "Forsvar — åpner jerndøren"
+   },
+   "vitd": {
+    "lab": "Vitamin D",
+    "fun": "Bein — kommer nesten bare fra sola"
+   },
+   "vite": {
+    "lab": "Vitamin E",
+    "fun": "Beskytter cellene"
+   },
+   "vitk": {
+    "lab": "Vitamin K",
+    "fun": "Så sår slutter å blø"
+   },
+   "b6": {
+    "lab": "Vitamin B6",
+    "fun": "For hjerne og nerver"
+   },
+   "b12": {
+    "lab": "Vitamin B12",
+    "fun": "Hjerne og røde blodceller"
+   },
+   "folat": {
+    "lab": "Folat (B9)",
+    "fun": "Så du vokser"
+   }
+  },
+  "wd_empty": "Ingen “Visste du?” for denne maten ennå.",
+  "li_ignored": "🚫 telles ikke i dag",
+  "modal_food": "hva som er i",
+  "modal_day": "🥧 Din dag — hva kroppen får ut av den",
+  "cover_full": "Dekker hele dagen alene for",
+  "cover_none": "Ingen næringsstoff fylles av dette alene.",
+  "cover_none2": "Det er normalt — en dag trenger mange forskjellige ting.",
+  "cover_empty": "<b>Ingenting spist ennå.</b> Legg til noe med <b>+</b> til venstre — sirkelen fylles med en gang.",
+  "cover_ok": "🎉 <b>Alt over 10 %!</b> Ingen næringsstoff blir tomt.",
+  "cover_miss": "Mangler nesten helt ennå",
+  "tip_helps": "Dette ville hjelpe",
+  "tip_full": "✅ Allerede dekket — ingenting mangler her.",
+  "tip_nofood": "⚠️ Ingen mat for dette ennå.",
+  "ueb_info": "🍎 Oversett navn og fakta (krever KI-nøkkel)",
+  "ueb_btn": "🌍 Oversett med KI",
+  "ueb_btn_re": "🔄 Oversett på nytt",
+  "ueb_have": "✅ Navn og fakta er oversatt.",
+  "ueb_needkey": "🔑 KI-nøkkel kreves (⚙️ over)",
+  "grp_macro": "MAKRONÆRINGSSTOFFER",
+  "grp_mineral": "MINERALER",
+  "grp_vitamin": "VITAMINER",
+  "csub_food": "fyller {v} av {n} næringsstoffer helt",
+  "csub_day": "{v} av {n} næringsstoffer fulle",
+  "kanteil": "{p} % av dagen din",
+  "plate_empty": "Fortsatt tomt.<br>Klikk på <b>+</b> til venstre for å spise noe.",
+  "note_water": "vann",
+  "note_drop": "💧 Dråpe",
+  "note_box": "🔲 Boks",
+  "note_mid": "◆ Midt imellom",
+  "badge_none": "— ingenting over 15 % —",
+  "w_sugar": "Sukker",
+  "w_salt": "Salt",
+  "z_over_self": "🔴 over daggrensen alene ({max} g)",
+  "z_over": "🔴 {d} g over grensen ({max} g)",
+  "stand_line": "{n} {things} · {kcal} kcal · {zuck} g {sugar}",
+  "things_1": "ting",
+  "things_n": "ting",
+  "scale": "Skala ×",
+  "wdt_gut": "Gode nyheter",
+  "wdt_schlecht": "Synd, men sant",
+  "wdt_wow": "Visste du?",
+  "v_own": "Andeler i denne maten — ingen mål",
+  "v_soll": "Mål: {p}",
+  "v_butter": "Forholdet gjelder <b>hele dagen</b>, ikke én enkelt mat.<br>Smør er 100 % fett — det er helt normalt.",
+  "v_noenergy": "Ingen energi på tallerkenen ennå.",
+  "v_single": "Denne maten er mest <b>{top}</b> ({pct} %).<br>Enkeltmat er nesten alltid ensidig — <b>bare hele dagen teller.</b>",
+  "v_ok": "🎉 <b>Godt forhold</b> — alle tre er i anbefalt område.",
+  "v_toomuch": "<b>{a} er for mye</b> — stolpen skyver over linjen og tar plass fra <b>{weg}</b>.",
+  "v_toolittle_one": "{list} er fortsatt for lite.",
+  "v_toolittle_more": "{list} er fortsatt for lite.",
+  "w_and": " og ",
+  "v_others": "de andre",
+  "makro_dge": "DGE Standard",
+  "makro_sport": "Sporty / Atlet",
+  "makro_lowcarb": "Low-Carb / Fettreduksjon",
+  "makro_keto": "Ketogen",
+  "fuss": "Diagram: radius ∝ % av dagsbehovet, <b>maks 100 %</b> · utover → <code>fargen mørkner</code><br>Dagsbehov: 7-årig barn (D-A-CH) · sukkergrense 45 g (WHO) · natriumtak 1800 mg"
  },
  "fi": {
   "title": "🍽️ Energiapäivä — Päiväsuunnittelija",
@@ -193,7 +1111,160 @@
   "set_ai": "🤖 Tekoälyhaku",
   "stand_empty": "Lautasella ei vielä mitään",
   "center_day": "Päivän kattavuus",
-  "center_food": "Tämä ruoka"
+  "center_food": "Tämä ruoka",
+  "_shelves": {
+   "🍞 Brot & Gebäck": "🍞 Leipä & leivonnaiset",
+   "🥣 Frühstück": "🥣 Aamiainen",
+   "🍎 Obst": "🍎 Hedelmät",
+   "🥬 Gemüse": "🥬 Vihannekset",
+   "🧀 Milch & Käse": "🧀 Maito & juusto",
+   "🍔 Fleisch & Fast Food": "🍔 Liha & pikaruoka",
+   "🍽️ Fertige Teller": "🍽️ Valmisateriat",
+   "🍦 Eis & Kuchen": "🍦 Jäätelö & kakku",
+   "🍫 Süßes": "🍫 Makeiset",
+   "🧈 Fette & Würze": "🧈 Rasvat & mausteet",
+   "🧃 Getränke": "🧃 Juomat",
+   "🥪 Gerichte": "🥪 Ruoat"
+  },
+  "_seg": {
+   "eiweiss": {
+    "lab": "Proteiini",
+    "fun": "Solujen korjaus ja rakennuspalikat — ennen kaikkea lihakset"
+   },
+   "kh": {
+    "lab": "Hiilihydraatit",
+    "fun": "Aivojen polttoaine"
+   },
+   "fett": {
+    "lab": "Rasva",
+    "fun": "Solukalvot ja hermojen suoja"
+   },
+   "ballast": {
+    "lab": "Kuitu",
+    "fun": "Ruokaa hyville suolistobakteereille"
+   },
+   "wasser": {
+    "lab": "Vesi",
+    "fun": "Kuljetus, jäähdytys — kaikki"
+   },
+   "eisen": {
+    "lab": "Rauta",
+    "fun": "Happea aivoihin — pitää virkeänä"
+   },
+   "calcium": {
+    "lab": "Kalsium",
+    "fun": "Rakentaa luut ja hampaat"
+   },
+   "magnesium": {
+    "lab": "Magnesium",
+    "fun": "Rentouttaa lihakset"
+   },
+   "kalium": {
+    "lab": "Kalium",
+    "fun": "Sydämelle ja lihaksille"
+   },
+   "zink": {
+    "lab": "Sinkki",
+    "fun": "Puolustus ja kasvu"
+   },
+   "jod": {
+    "lab": "Jodi",
+    "fun": "Säätää kehon moottorin"
+   },
+   "selen": {
+    "lab": "Seleeni",
+    "fun": "Suojaa soluja"
+   },
+   "vita": {
+    "lab": "A-vitamiini",
+    "fun": "Jotta näet pimeässä"
+   },
+   "vitc": {
+    "lab": "C-vitamiini",
+    "fun": "Puolustus — avaa raudan oven"
+   },
+   "vitd": {
+    "lab": "D-vitamiini",
+    "fun": "Luut — tulee lähes vain auringosta"
+   },
+   "vite": {
+    "lab": "E-vitamiini",
+    "fun": "Suojaa soluja"
+   },
+   "vitk": {
+    "lab": "K-vitamiini",
+    "fun": "Jotta haavat lakkaavat vuotamasta"
+   },
+   "b6": {
+    "lab": "B6-vitamiini",
+    "fun": "Aivoille ja hermoille"
+   },
+   "b12": {
+    "lab": "B12-vitamiini",
+    "fun": "Aivot ja punasolut"
+   },
+   "folat": {
+    "lab": "Folaatti (B9)",
+    "fun": "Jotta kasvat"
+   }
+  },
+  "wd_empty": "Tälle ruoalle ei vielä “Tiesitkö?”-tietoa.",
+  "li_ignored": "🚫 ei lasketa tänään",
+  "modal_food": "mitä sisältää",
+  "modal_day": "🥧 Päiväsi — mitä keho siitä saa",
+  "cover_full": "Kattaa yksin koko päivän kohteessa",
+  "cover_none": "Mikään ravintoaine ei täyty pelkästään tästä.",
+  "cover_none2": "Se on normaalia — päivä tarvitsee monia eri asioita.",
+  "cover_empty": "<b>Ei vielä syötyä.</b> Lisää jotain <b>+</b>-painikkeella vasemmalta — ympyrä täyttyy heti.",
+  "cover_ok": "🎉 <b>Kaikki yli 10 %!</b> Mikään ravintoaine ei jää tyhjäksi.",
+  "cover_miss": "Puuttuu vielä lähes kokonaan",
+  "tip_helps": "Tämä auttaisi",
+  "tip_full": "✅ Jo katettu — täältä ei puutu mitään.",
+  "tip_nofood": "⚠️ Tälle ei ole vielä ruokaa.",
+  "ueb_info": "🍎 Käännä nimet & faktat (vaatii tekoälyavaimen)",
+  "ueb_btn": "🌍 Käännä tekoälyllä",
+  "ueb_btn_re": "🔄 Käännä uudelleen",
+  "ueb_have": "✅ Nimet & faktat on käännetty.",
+  "ueb_needkey": "🔑 Tekoälyavain tarvitaan (⚙️ yllä)",
+  "grp_macro": "MAKRORAVINTOAINEET",
+  "grp_mineral": "KIVENNÄISAINEET",
+  "grp_vitamin": "VITAMIINIT",
+  "csub_food": "täyttää {v}/{n} ravintoainetta kokonaan",
+  "csub_day": "{v}/{n} ravintoainetta täynnä",
+  "kanteil": "{p} % päivästäsi",
+  "plate_empty": "Vielä tyhjä.<br>Napsauta <b>+</b> vasemmalta syödäksesi jotain.",
+  "note_water": "vettä",
+  "note_drop": "💧 Pisara",
+  "note_box": "🔲 Laatikko",
+  "note_mid": "◆ Välimuoto",
+  "badge_none": "— ei mitään yli 15 % —",
+  "w_sugar": "Sokeri",
+  "w_salt": "Suola",
+  "z_over_self": "🔴 ylittää yksin päivärajan ({max} g)",
+  "z_over": "🔴 {d} g yli rajan ({max} g)",
+  "stand_line": "{n} {things} · {kcal} kcal · {zuck} g {sugar}",
+  "things_1": "asia",
+  "things_n": "asiaa",
+  "scale": "Mittakaava ×",
+  "wdt_gut": "Hyviä uutisia",
+  "wdt_schlecht": "Harmi, mutta totta",
+  "wdt_wow": "Tiesitkö?",
+  "v_own": "Osuudet tässä ruoassa — ei tavoitetta",
+  "v_soll": "Tavoite: {p}",
+  "v_butter": "Suhde koskee <b>koko päivää</b>, ei yhtä ruokaa.<br>Voi on 100 % rasvaa — se on täysin normaalia.",
+  "v_noenergy": "Lautasella ei vielä energiaa.",
+  "v_single": "Tämä ruoka on enimmäkseen <b>{top}</b> ({pct} %).<br>Yksittäiset ruoat ovat lähes aina yksipuolisia — <b>vain koko päivä ratkaisee.</b>",
+  "v_ok": "🎉 <b>Hyvä suhde</b> — kaikki kolme ovat suositellulla alueella.",
+  "v_toomuch": "<b>{a} on liikaa</b> — palkki työntyy viivan yli ja vie tilaa kohteelta <b>{weg}</b>.",
+  "v_toolittle_one": "{list} on vielä liian vähän.",
+  "v_toolittle_more": "{list} on vielä liian vähän.",
+  "w_and": " ja ",
+  "v_others": "muut",
+  "makro_dge": "DGE-standardi",
+  "makro_sport": "Urheilullinen / Atleetti",
+  "makro_lowcarb": "Vähähiilihydraattinen",
+  "makro_keto": "Ketogeeninen",
+  "fuss": "Kaavio: säde ∝ % päivittäistarpeesta, <b>katto 100 %</b> · yli → <code>väri tummenee</code><br>Päivittäistarve: 7-vuotias lapsi (D-A-CH) · sokeriraja 45 g (WHO) · natriumkatto 1800 mg"
  },
  "he": {
   "title": "🍽️ יום אנרגיה — מתכנן יומי",
@@ -221,7 +1292,160 @@
   "set_ai": "🤖 חיפוש בינה מלאכותית",
   "stand_empty": "עדיין אין כלום בצלחת",
   "center_day": "כיסוי יומי",
-  "center_food": "מאכל זה"
+  "center_food": "מאכל זה",
+  "_shelves": {
+   "🍞 Brot & Gebäck": "🍞 לחם ומאפים",
+   "🥣 Frühstück": "🥣 ארוחת בוקר",
+   "🍎 Obst": "🍎 פירות",
+   "🥬 Gemüse": "🥬 ירקות",
+   "🧀 Milch & Käse": "🧀 חלב וגבינה",
+   "🍔 Fleisch & Fast Food": "🍔 בשר ומזון מהיר",
+   "🍽️ Fertige Teller": "🍽️ מנות מוכנות",
+   "🍦 Eis & Kuchen": "🍦 גלידה ועוגה",
+   "🍫 Süßes": "🍫 ממתקים",
+   "🧈 Fette & Würze": "🧈 שומנים ותבלינים",
+   "🧃 Getränke": "🧃 משקאות",
+   "🥪 Gerichte": "🥪 מנות"
+  },
+  "_seg": {
+   "eiweiss": {
+    "lab": "חלבון",
+    "fun": "תיקון ואבני בניין לתאים — בעיקר שרירים"
+   },
+   "kh": {
+    "lab": "פחמימות",
+    "fun": "דלק למוח"
+   },
+   "fett": {
+    "lab": "שומן",
+    "fun": "קרומי תאים והגנה על העצבים"
+   },
+   "ballast": {
+    "lab": "סיבים",
+    "fun": "מזון לחיידקי המעיים הטובים"
+   },
+   "wasser": {
+    "lab": "מים",
+    "fun": "הובלה, קירור — הכול"
+   },
+   "eisen": {
+    "lab": "ברזל",
+    "fun": "חמצן למוח — שומר עֵר"
+   },
+   "calcium": {
+    "lab": "סידן",
+    "fun": "בונה עצמות ושיניים"
+   },
+   "magnesium": {
+    "lab": "מגנזיום",
+    "fun": "מרפה את השרירים"
+   },
+   "kalium": {
+    "lab": "אשלגן",
+    "fun": "ללב ולשרירים"
+   },
+   "zink": {
+    "lab": "אבץ",
+    "fun": "הגנה וצמיחה"
+   },
+   "jod": {
+    "lab": "יוד",
+    "fun": "מכוונן את מנוע הגוף"
+   },
+   "selen": {
+    "lab": "סלניום",
+    "fun": "מגן על התאים"
+   },
+   "vita": {
+    "lab": "ויטמין A",
+    "fun": "כדי לראות בחושך"
+   },
+   "vitc": {
+    "lab": "ויטמין C",
+    "fun": "הגנה — פותח את דלת הברזל"
+   },
+   "vitd": {
+    "lab": "ויטמין D",
+    "fun": "עצמות — מגיע כמעט רק מהשמש"
+   },
+   "vite": {
+    "lab": "ויטמין E",
+    "fun": "מגן על התאים"
+   },
+   "vitk": {
+    "lab": "ויטמין K",
+    "fun": "כדי שפצעים יפסיקו לדמם"
+   },
+   "b6": {
+    "lab": "ויטמין B6",
+    "fun": "למוח ולעצבים"
+   },
+   "b12": {
+    "lab": "ויטמין B12",
+    "fun": "מוח וכדוריות דם אדומות"
+   },
+   "folat": {
+    "lab": "פולאט (B9)",
+    "fun": "כדי שתגדל"
+   }
+  },
+  "wd_empty": "עדיין אין “הידעת?” למאכל הזה.",
+  "li_ignored": "🚫 לא נספר היום",
+  "modal_food": "מה יש בפנים",
+  "modal_day": "🥧 היום שלך — מה הגוף מקבל מזה",
+  "cover_full": "מכסה לבד את כל היום ב",
+  "cover_none": "שום רכיב לא מתמלא מזה לבד.",
+  "cover_none2": "זה נורמלי — יום צריך הרבה דברים שונים.",
+  "cover_empty": "<b>עדיין לא נאכל כלום.</b> הוסיפו משהו עם <b>+</b> משמאל — העיגול מתמלא מיד.",
+  "cover_ok": "🎉 <b>הכול מעל 10%!</b> שום רכיב לא נשאר ריק.",
+  "cover_miss": "עדיין חסר כמעט לגמרי",
+  "tip_helps": "זה יעזור",
+  "tip_full": "✅ כבר מכוסה — כאן לא חסר כלום.",
+  "tip_nofood": "⚠️ עדיין אין מאכל לזה.",
+  "ueb_info": "🍎 תרגמו שמות ועובדות (דרוש מפתח בינה)",
+  "ueb_btn": "🌍 תרגמו עם בינה",
+  "ueb_btn_re": "🔄 תרגמו מחדש",
+  "ueb_have": "✅ שמות ועובדות תורגמו.",
+  "ueb_needkey": "🔑 דרוש מפתח בינה (⚙️ למעלה)",
+  "grp_macro": "מאקרו־רכיבים",
+  "grp_mineral": "מינרלים",
+  "grp_vitamin": "ויטמינים",
+  "csub_food": "ממלא {v} מתוך {n} רכיבים לגמרי",
+  "csub_day": "{v} מתוך {n} רכיבים מלאים",
+  "kanteil": "{p} % מהיום שלך",
+  "plate_empty": "עדיין ריק.<br>לחצו על <b>+</b> משמאל כדי לאכול משהו.",
+  "note_water": "מים",
+  "note_drop": "💧 טיפה",
+  "note_box": "🔲 קופסה",
+  "note_mid": "◆ באמצע",
+  "badge_none": "— כלום מעל 15% —",
+  "w_sugar": "סוכר",
+  "w_salt": "מלח",
+  "z_over_self": "🔴 חורג לבדו מהמגבלה היומית ({max} g)",
+  "z_over": "🔴 {d} g מעל המגבלה ({max} g)",
+  "stand_line": "{n} {things} · {kcal} קלוריות · {zuck} g {sugar}",
+  "things_1": "דבר",
+  "things_n": "דברים",
+  "scale": "קנה מידה ×",
+  "wdt_gut": "חדשות טובות",
+  "wdt_schlecht": "חבל, אבל נכון",
+  "wdt_wow": "הידעת?",
+  "v_own": "חלקים במאכל הזה — בלי יעד",
+  "v_soll": "יעד: {p}",
+  "v_butter": "היחס הוא ל<b>יום שלם</b>, לא למאכל בודד.<br>חמאה היא 100% שומן — זה נורמלי לגמרי.",
+  "v_noenergy": "עדיין אין אנרגיה בצלחת.",
+  "v_single": "המאכל הזה הוא בעיקר <b>{top}</b> ({pct} %).<br>מאכלים בודדים כמעט תמיד חד-צדדיים — <b>רק היום השלם נחשב.</b>",
+  "v_ok": "🎉 <b>יחס טוב</b> — כל השלושה בטווח המומלץ.",
+  "v_toomuch": "<b>{a} יותר מדי</b> — הפס חוצה את הקו וגוזל מקום מ־<b>{weg}</b>.",
+  "v_toolittle_one": "{list} עדיין מעט מדי.",
+  "v_toolittle_more": "{list} עדיין מעט מדי.",
+  "w_and": " ו־ ",
+  "v_others": "האחרים",
+  "makro_dge": "תקן DGE",
+  "makro_sport": "ספורטיבי / אתלט",
+  "makro_lowcarb": "דל-פחמימות",
+  "makro_keto": "קֶטוֹגֶני",
+  "fuss": "תרשים: רדיוס ∝ % מהצורך היומי, <b>מוגבל ל-100%</b> · מעבר לכך → <code>הצבע מתכהה</code><br>צורך יומי: ילד בן 7 (D-A-CH) · מגבלת סוכר 45 g (WHO) · תקרת נתרן 1800 mg"
  },
  "yi": {
   "title": "🍽️ ענערגיע־טאָג — טאָג־פּלאַנער",
@@ -249,7 +1473,160 @@
   "set_ai": "🤖 קי־זוכן",
   "stand_empty": "נאָך גאָרנישט אויפֿן טעלער",
   "center_day": "טאָג־דעקונג",
-  "center_food": "דאָס עסן"
+  "center_food": "דאָס עסן",
+  "_shelves": {
+   "🍞 Brot & Gebäck": "🍞 ברויט און געבעקס",
+   "🥣 Frühstück": "🥣 פֿרישטיק",
+   "🍎 Obst": "🍎 פֿרוכט",
+   "🥬 Gemüse": "🥬 גרינסן",
+   "🧀 Milch & Käse": "🧀 מילך און קעז",
+   "🍔 Fleisch & Fast Food": "🍔 פֿלייש און שנעל־עסן",
+   "🍽️ Fertige Teller": "🍽️ פֿאַרטיקע טעלער",
+   "🍦 Eis & Kuchen": "🍦 אײַזקרעם און קוכן",
+   "🍫 Süßes": "🍫 זיסוואַרג",
+   "🧈 Fette & Würze": "🧈 פֿעטס און געווירצן",
+   "🧃 Getränke": "🧃 געטראַנקען",
+   "🥪 Gerichte": "🥪 מאכלים"
+  },
+  "_seg": {
+   "eiweiss": {
+    "lab": "פּראָטעין",
+    "fun": "פֿאַרריכטן און בוי־שטיינער פֿאַר צעלן — בפֿרט מוסקלען"
+   },
+   "kh": {
+    "lab": "קוילנהידראַטן",
+    "fun": "ברענוואַרג פֿאַרן מוח"
+   },
+   "fett": {
+    "lab": "פֿעטס",
+    "fun": "צעל־הײַטלעך און שוץ פֿאַר די נערוון"
+   },
+   "ballast": {
+    "lab": "פֿאָדעם",
+    "fun": "שפּײַז פֿאַר די גוטע קישקע־באַקטעריעס"
+   },
+   "wasser": {
+    "lab": "וואַסער",
+    "fun": "טראַנספּאָרט, קילונג — אַלץ"
+   },
+   "eisen": {
+    "lab": "אײַזן",
+    "fun": "זויערשטאָף צום מוח — האַלט וואַך"
+   },
+   "calcium": {
+    "lab": "קאַלציום",
+    "fun": "בויט ביינער און ציין"
+   },
+   "magnesium": {
+    "lab": "מאַגנעזיום",
+    "fun": "לאָזט די מוסקלען אָפּרוען"
+   },
+   "kalium": {
+    "lab": "קאַליום",
+    "fun": "פֿאַר האַרץ און מוסקלען"
+   },
+   "zink": {
+    "lab": "צינק",
+    "fun": "שוץ און וווּקס"
+   },
+   "jod": {
+    "lab": "יאָד",
+    "fun": "שטעלט אײַן דעם מאָטאָר פֿונעם גוף"
+   },
+   "selen": {
+    "lab": "סעלען",
+    "fun": "באַשיצט די צעלן"
+   },
+   "vita": {
+    "lab": "וויטאַמין A",
+    "fun": "כּדי צו זען אין דער פֿינצטער"
+   },
+   "vitc": {
+    "lab": "וויטאַמין C",
+    "fun": "שוץ — עפֿנט די אײַזן־טיר"
+   },
+   "vitd": {
+    "lab": "וויטאַמין D",
+    "fun": "ביינער — קומט כּמעט נאָר פֿון דער זון"
+   },
+   "vite": {
+    "lab": "וויטאַמין E",
+    "fun": "באַשיצט די צעלן"
+   },
+   "vitk": {
+    "lab": "וויטאַמין K",
+    "fun": "כּדי ווונדן זאָלן אויפֿהערן בלוטיקן"
+   },
+   "b6": {
+    "lab": "וויטאַמין B6",
+    "fun": "פֿאַר מוח און נערוון"
+   },
+   "b12": {
+    "lab": "וויטאַמין B12",
+    "fun": "מוח און רויטע בלוט־קערנדלעך"
+   },
+   "folat": {
+    "lab": "פֿאָלאַט (B9)",
+    "fun": "כּדי דו זאָלסט וואַקסן"
+   }
+  },
+  "wd_empty": "נאָך קיין “װײסטו?” פֿאַר דעם עסן.",
+  "li_ignored": "🚫 װערט הײַנט נישט געצײלט",
+  "modal_food": "װאָס איז אינעװײניק",
+  "modal_day": "🥧 אײַער טאָג — װאָס דער גוף באַקומט",
+  "cover_full": "דעקט אַלײן דעם גאַנצן טאָג בײַ",
+  "cover_none": "קײן נערשטאָף װערט נישט פֿול נאָר פֿון דעם.",
+  "cover_none2": "דאָס איז נאָרמאַל — אַ טאָג דאַרף אַ סך פֿאַרשײדענע זאַכן.",
+  "cover_empty": "<b>נאָך גאָרנישט געגעסן.</b> לײגט צו עפּעס מיט <b>+</b> לינקס — דער קרײז פֿילט זיך גלײַך אָן.",
+  "cover_ok": "🎉 <b>אַלץ העכער 10%!</b> קײן נערשטאָף בלײַבט נישט לײדיק.",
+  "cover_miss": "פֿעלט נאָך כּמעט אין גאַנצן",
+  "tip_helps": "דאָס װאָלט געהאָלפֿן",
+  "tip_full": "✅ שױן געדעקט — דאָ פֿעלט גאָרנישט.",
+  "tip_nofood": "⚠️ נאָך קײן עסן פֿאַר דעם.",
+  "ueb_info": "🍎 פֿאַרטײַטשט נעמען און פֿאַקטן (דאַרף קי־שליסל)",
+  "ueb_btn": "🌍 פֿאַרטײַטשן מיט קי",
+  "ueb_btn_re": "🔄 איבערטײַטשן",
+  "ueb_have": "✅ נעמען און פֿאַקטן זײַנען פֿאַרטײַטשט.",
+  "ueb_needkey": "🔑 מען דאַרף אַ קי־שליסל (⚙️ אויבן)",
+  "grp_macro": "מאַקראָ־נערשטאָפֿן",
+  "grp_mineral": "מינעראַלן",
+  "grp_vitamin": "וויטאַמינען",
+  "csub_food": "פֿילט {v} פֿון {n} נערשטאָפֿן אין גאַנצן",
+  "csub_day": "{v} פֿון {n} נערשטאָפֿן פֿול",
+  "kanteil": "{p} % פֿון אײַער טאָג",
+  "plate_empty": "נאָך לײדיק.<br>קליקט <b>+</b> לינקס צו עסן עפּעס.",
+  "note_water": "וואַסער",
+  "note_drop": "💧 טראָפּן",
+  "note_box": "🔲 קעסטל",
+  "note_mid": "◆ צווישן",
+  "badge_none": "— גאָרנישט העכער 15% —",
+  "w_sugar": "צוקער",
+  "w_salt": "זאַלץ",
+  "z_over_self": "🔴 שוין אַלײן העכער דעם טאָג־גרענעץ ({max} g)",
+  "z_over": "🔴 {d} g העכער דעם גרענעץ ({max} g)",
+  "stand_line": "{n} {things} · {kcal} kcal · {zuck} g {sugar}",
+  "things_1": "זאַך",
+  "things_n": "זאַכן",
+  "scale": "מאָס ×",
+  "wdt_gut": "גוטע נײַעס",
+  "wdt_schlecht": "אַ שאָד, אָבער אמת",
+  "wdt_wow": "װײסטו?",
+  "v_own": "טײלן אין דעם עסן — קײן ציל",
+  "v_soll": "ציל: {p}",
+  "v_butter": "דער פֿאַרהעלטעניש איז פֿאַרן <b>גאַנצן טאָג</b>, נישט פֿאַר אײן עסן.<br>פּוטער איז 100% פֿעטס — דאָס איז גאָר נאָרמאַל.",
+  "v_noenergy": "נאָך קײן ענערגיע אױפֿן טעלער.",
+  "v_single": "דאָס עסן איז דער עיקר <b>{top}</b> ({pct} %).<br>אײנצלנע עסנװאַרג זײַנען כּמעט שטענדיק אײנזײַטיק — <b>נאָר דער גאַנצער טאָג רעכנט זיך.</b>",
+  "v_ok": "🎉 <b>גוטער פֿאַרהעלטעניש</b> — אַלע דרײַ זײַנען אין רעקאָמענדירטן שטח.",
+  "v_toomuch": "<b>{a} צו פֿיל</b> — דער באַלקן שטופּט זיך איבערן ליניע און נעמט אַװעק פּלאַץ בײַ <b>{weg}</b>.",
+  "v_toolittle_one": "{list} איז נאָך צו װײניק.",
+  "v_toolittle_more": "{list} זײַנען נאָך צו װײניק.",
+  "w_and": " און ",
+  "v_others": "די אַנדערע",
+  "makro_dge": "DGE־סטאַנדאַרד",
+  "makro_sport": "ספּאָרטיש / אַטלעט",
+  "makro_lowcarb": "נידעריק־קױלנהידראַט",
+  "makro_keto": "קעטאָגעניש",
+  "fuss": "טשאַרט: ראַדיוס ∝ % פֿונעם טעגלעכן דאַרף, <b>באַגרענעצט בײַ 100%</b> · װײַטער → <code>די פֿאַרב װערט טונקעלער</code><br>טעגלעכער דאַרף: 7־יאָריק קינד (D-A-CH) · צוקער־גרענעץ 45 g (WHO) · נאַטריום־גרענעץ 1800 mg"
  },
  "sjn": {
   "title": "🍽️ Aur en-Vellas — Govaded Aur",
@@ -277,7 +1654,160 @@
   "set_ai": "🤖 Ceno na-nûr",
   "stand_empty": "Ú-nad na i-basar",
   "center_day": "Panrad en-aur",
-  "center_food": "I-vast hen"
+  "center_food": "I-vast hen",
+  "_shelves": {
+   "🍞 Brot & Gebäck": "🍞 Bast a Basgorn",
+   "🥣 Frühstück": "🥣 Aes-vinui",
+   "🍎 Obst": "🍎 Yávë",
+   "🥬 Gemüse": "🥬 Salab",
+   "🧀 Milch & Käse": "🧀 Nen-lô a Ceû",
+   "🍔 Fleisch & Fast Food": "🍔 Aes a Aes-lim",
+   "🍽️ Fertige Teller": "🍽️ Aes-gwain",
+   "🍦 Eis & Kuchen": "🍦 Helch a Cramb",
+   "🍫 Süßes": "🍫 Lisgui",
+   "🧈 Fette & Würze": "🧈 Laug a Salph",
+   "🧃 Getränke": "🧃 Sûg",
+   "🥪 Gerichte": "🥪 Aes"
+  },
+  "_seg": {
+   "eiweiss": {
+    "lab": "Rond",
+    "fun": "Nesta a gebaid an gwî — laew i-velig"
+   },
+   "kh": {
+    "lab": "Bast",
+    "fun": "Naur an i-gûr"
+   },
+   "fett": {
+    "lab": "Laug",
+    "fun": "Rimb en-gwî a beriad an i-thûl"
+   },
+   "ballast": {
+    "lab": "Fîn",
+    "fun": "Aes an i-vîr vaer"
+   },
+   "wasser": {
+    "lab": "Nen",
+    "fun": "Toltha, ring — bân"
+   },
+   "eisen": {
+    "lab": "Ang",
+    "fun": "Thûl an i-gûr — hebo cuil"
+   },
+   "calcium": {
+    "lab": "Sarch",
+    "fun": "Cared axan a nelig"
+   },
+   "magnesium": {
+    "lab": "Maden",
+    "fun": "Leithia i-velig"
+   },
+   "kalium": {
+    "lab": "Celeb-nen",
+    "fun": "An gûr a velig"
+   },
+   "zink": {
+    "lab": "Tinc",
+    "fun": "Beriad a alad"
+   },
+   "jod": {
+    "lab": "Iand",
+    "fun": "Nesta i-hûr en-rhaw"
+   },
+   "selen": {
+    "lab": "Selen",
+    "fun": "Beria i-gwî"
+   },
+   "vita": {
+    "lab": "Galad A",
+    "fun": "An i-cened vi môr"
+   },
+   "vitc": {
+    "lab": "Galad C",
+    "fun": "Beriad — panna i-fen ango"
+   },
+   "vitd": {
+    "lab": "Galad D",
+    "fun": "Axan — tôl o Anor"
+   },
+   "vite": {
+    "lab": "Galad E",
+    "fun": "Beria i-gwî"
+   },
+   "vitk": {
+    "lab": "Galad K",
+    "fun": "An i-harn ú-sniel"
+   },
+   "b6": {
+    "lab": "Galad B6",
+    "fun": "An gûr a nelig"
+   },
+   "b12": {
+    "lab": "Galad B12",
+    "fun": "Gûr a gyrn-crist"
+   },
+   "folat": {
+    "lab": "Folad (B9)",
+    "fun": "An i-alagos"
+   }
+  },
+  "wd_empty": "Ú-‘Man istog?’ an i-vast hen an-uir.",
+  "li_ignored": "🚫 ú-noded sír",
+  "modal_food": "man mi",
+  "modal_day": "🥧 Aur lín — man i-rhaw câb",
+  "cover_full": "Câb i-aur bân er an",
+  "cover_none": "Ú-nad na-‘waew erui o han.",
+  "cover_none2": "Sen mae — aur baur laew nedh.",
+  "cover_empty": "<b>Ú-annen mad.</b> Ado nad na <b>+</b> na-forven — i-corf pathra lim.",
+  "cover_ok": "🎉 <b>Bân or 10%!</b> Ú-‘waew losta lost.",
+  "cover_miss": "Baur an-uir",
+  "tip_helps": "Sen natha",
+  "tip_full": "✅ Câb io — ú-nad baur sí.",
+  "tip_nofood": "⚠️ Ú-vast an han an-uir.",
+  "ueb_info": "🍎 Reitho i-nain a i-phith (baur pân-nûr)",
+  "ueb_btn": "🌍 Reitho na-nûr",
+  "ueb_btn_re": "🔄 Ad-reitho",
+  "ueb_have": "✅ I-nain a i-phith reithanner.",
+  "ueb_needkey": "🔑 Baur pân-nûr (⚙️ or)",
+  "grp_macro": "I-CHAER-VELLAS",
+  "grp_mineral": "GÂN-SEDRYN",
+  "grp_vitamin": "VITHÍL",
+  "csub_food": "panna {v} o {n} chaer ben",
+  "csub_day": "{v} o {n} chaer pann",
+  "kanteil": "{p} % o aur lín",
+  "plate_empty": "Lost hen.<br>Tolo <b>+</b> na-forven an medi nad.",
+  "note_water": "nen",
+  "note_drop": "💧 Lint",
+  "note_box": "🔲 Cast",
+  "note_mid": "◆ Nedh",
+  "badge_none": "— ú-nad or 15% —",
+  "w_sugar": "Lisg",
+  "w_salt": "Sâlt",
+  "z_over_self": "🔴 erui or i-ided en-aur ({max} g)",
+  "z_over": "🔴 {d} g or i-ided ({max} g)",
+  "stand_line": "{n} {things} · {kcal} kcal · {zuck} g {sugar}",
+  "things_1": "nad",
+  "things_n": "naid",
+  "scale": "Tî ×",
+  "wdt_gut": "Sûl vaer",
+  "wdt_schlecht": "Naeg, dan thenid",
+  "wdt_wow": "Man istog?",
+  "v_own": "Rain vi vast hen — ú-ided",
+  "v_soll": "Ided: {p}",
+  "v_butter": "I-rî na <b>i-aur bân</b>, ú-na vast er.<br>Bass-laug laug pân — sen mae.",
+  "v_noenergy": "Ú-vellas na i-basar an-uir.",
+  "v_single": "I-vast hen anann <b>{top}</b> ({pct} %).<br>Vaist er nauth erui — <b>i-aur bân eriol nauth.</b>",
+  "v_ok": "🎉 <b>Rî vaer</b> — i-neledh mi i-rain vaer.",
+  "v_toomuch": "<b>{a} an-laew</b> — i-thang bâd or i-rem a mâb i-had o <b>{weg}</b>.",
+  "v_toolittle_one": "{list} ú-far an-uir.",
+  "v_toolittle_more": "{list} ú-far an-uir.",
+  "w_and": " a ",
+  "v_others": "in edaer",
+  "makro_dge": "DGE Bân",
+  "makro_sport": "Maetheg / Ohtar",
+  "makro_lowcarb": "Bast-dithen",
+  "makro_keto": "Ketogen",
+  "fuss": "Canad: rân ∝ % o i-vaur aur, <b>ided na 100 %</b> · or → <code>i-liw morna</code><br>Baur aur: hên 7 idhrinn (D-A-CH) · ided lisg 45 g (WHO) · ided sâlt 1800 mg"
  },
  "bar": {
   "title": "🍽️ Energie-Dog — Dogsplaner",
@@ -305,7 +1835,160 @@
   "set_ai": "🤖 KI-Nochschaung",
   "stand_empty": "No nix am Teller",
   "center_day": "Dogsdeckung",
-  "center_food": "Des Essn"
+  "center_food": "Des Essn",
+  "_shelves": {
+   "🍞 Brot & Gebäck": "🍞 Brot & Gebäck",
+   "🥣 Frühstück": "🥣 Fruahstuck",
+   "🍎 Obst": "🍎 Obst",
+   "🥬 Gemüse": "🥬 Gmias",
+   "🧀 Milch & Käse": "🧀 Milli & Kas",
+   "🍔 Fleisch & Fast Food": "🍔 Fleisch & Fast Food",
+   "🍽️ Fertige Teller": "🍽️ Fertige Teller",
+   "🍦 Eis & Kuchen": "🍦 Eis & Kuacha",
+   "🍫 Süßes": "🍫 Süaßs",
+   "🧈 Fette & Würze": "🧈 Fett & Wirze",
+   "🧃 Getränke": "🧃 Getränk",
+   "🥪 Gerichte": "🥪 Gricht"
+  },
+  "_seg": {
+   "eiweiss": {
+    "lab": "Eiweiß",
+    "fun": "Repratur & Bausteä fia d’Zeun — vor allem Muskln"
+   },
+   "kh": {
+    "lab": "Kohlnhydrat",
+    "fun": "Treibstoff fian Kopf"
+   },
+   "fett": {
+    "lab": "Fett",
+    "fun": "Zeuhoitn & Schutz fia d’Nervn"
+   },
+   "ballast": {
+    "lab": "Ballaststoff",
+    "fun": "Fuada fia de guadn Darmbaktern"
+   },
+   "wasser": {
+    "lab": "Wossa",
+    "fun": "Transport, Kiehlung — ois"
+   },
+   "eisen": {
+    "lab": "Eisn",
+    "fun": "Sauastoff in Kopf — mocht munta"
+   },
+   "calcium": {
+    "lab": "Kalzium",
+    "fun": "Baut Knocha und Zähnd"
+   },
+   "magnesium": {
+    "lab": "Magnesium",
+    "fun": "Lasst d’Muskln wieda locka"
+   },
+   "kalium": {
+    "lab": "Kalium",
+    "fun": "Fia Herz und Muskln"
+   },
+   "zink": {
+    "lab": "Zink",
+    "fun": "Abwehr & Wachstum"
+   },
+   "jod": {
+    "lab": "Jod",
+    "fun": "Stöht in Motor vom Kärpa ei"
+   },
+   "selen": {
+    "lab": "Selen",
+    "fun": "Schitzt de Zeun"
+   },
+   "vita": {
+    "lab": "Vitamin A",
+    "fun": "Damit’st im Dunkln siagst"
+   },
+   "vitc": {
+    "lab": "Vitamin C",
+    "fun": "Abwehr — mocht d’Eisn-Tia auf"
+   },
+   "vitd": {
+    "lab": "Vitamin D",
+    "fun": "Knocha — kimmt fost nur vo da Sunn"
+   },
+   "vite": {
+    "lab": "Vitamin E",
+    "fun": "Schitzt de Zeun"
+   },
+   "vitk": {
+    "lab": "Vitamin K",
+    "fun": "Damit d’Wundn afhean zom bluadn"
+   },
+   "b6": {
+    "lab": "Vitamin B6",
+    "fun": "Fian Kopf und d’Nervn"
+   },
+   "b12": {
+    "lab": "Vitamin B12",
+    "fun": "Kopf und rode Bluatkerperl"
+   },
+   "folat": {
+    "lab": "Folat (B9)",
+    "fun": "Damit’st wachst"
+   }
+  },
+  "wd_empty": "Zu dem Essn gibts no koa „Woaßt as?“.",
+  "li_ignored": "🚫 zäht heid net mit",
+  "modal_food": "wos drin is",
+  "modal_day": "🥧 Dei Dog — wos da Kärpa davo hod",
+  "cover_full": "Deckt ganz alloa an ganzn Dog bei",
+  "cover_none": "Koa Nährstoff wead alloa davo voi.",
+  "cover_none2": "Des is normal — a Dog braucht vui vaschiedane Sacha.",
+  "cover_empty": "<b>No nix gessn.</b> Gib links mit <b>+</b> wos dazua — da Kroas fuit se glei.",
+  "cover_ok": "🎉 <b>Ois iba 10 %!</b> Koa Nährstoff bleibt lea.",
+  "cover_miss": "Fäht no fast ganz",
+  "tip_helps": "Des dad hejfa",
+  "tip_full": "✅ Scho deckt — do fäht nix mehr.",
+  "tip_nofood": "⚠️ Dafia gibts no koa Essn.",
+  "ueb_info": "🍎 Essn-Nam & Fakten übasetzn (braucht KI-Schlissl)",
+  "ueb_btn": "🌍 Mit KI übasetzn",
+  "ueb_btn_re": "🔄 Nei übasetzn",
+  "ueb_have": "✅ Nam & Fakten san übasetzt.",
+  "ueb_needkey": "🔑 KI-Schlissl braucht (⚙️ obm)",
+  "grp_macro": "MAKRO-NÄHRSTOFFE",
+  "grp_mineral": "MINERALSTOFFE",
+  "grp_vitamin": "VITAMINE",
+  "csub_food": "fuit {v} vo {n} Nährstoff ganz",
+  "csub_day": "{v} vo {n} Nährstoff voi",
+  "kanteil": "{p} % vo deim Dog",
+  "plate_empty": "No lea.<br>Drah links af <b>+</b>, dass d’ was isst.",
+  "note_water": "Wossa",
+  "note_drop": "💧 Tropfa",
+  "note_box": "🔲 Kastl",
+  "note_mid": "◆ Dazwischn",
+  "badge_none": "— nix iba 15 % —",
+  "w_sugar": "Zucka",
+  "w_salt": "Soiz",
+  "z_over_self": "🔴 scho alloa iba’m Dogs-Limit ({max} g)",
+  "z_over": "🔴 {d} g iba’m Limit ({max} g)",
+  "stand_line": "{n} {things} · {kcal} kcal · {zuck} g {sugar}",
+  "things_1": "Sach",
+  "things_n": "Sacha",
+  "scale": "Maßstab ×",
+  "wdt_gut": "Guade Nachricht",
+  "wdt_schlecht": "Schod, oba woa",
+  "wdt_wow": "Woaßt as?",
+  "v_own": "Andeu in dem Essn — koa Soi",
+  "v_soll": "Soi: {p}",
+  "v_butter": "Des Vahäitnis güit fian <b>ganzn Dog</b>, ned fia oa Essn.<br>Budda is 100 % Fett — des is ganz normal.",
+  "v_noenergy": "No koa Energie aufm Teller.",
+  "v_single": "Des Essn is vua oim <b>{top}</b> ({pct} %).<br>Oanzlne Essn san fast oiwei oaseitig — <b>bewert wead nua da ganze Dog.</b>",
+  "v_ok": "🎉 <b>Guads Vahäitnis</b> — olle drei san im empfoihnen Bereich.",
+  "v_toomuch": "<b>{a} is z’vui</b> — da Balkn schiabt se iba d’Linie und nimmt <b>{weg}</b> den Plotz weg.",
+  "v_toolittle_one": "{list} is no z’weng.",
+  "v_toolittle_more": "{list} san no z’weng.",
+  "w_and": " und ",
+  "v_others": "de andan",
+  "makro_dge": "DGE Standard",
+  "makro_sport": "Sportlich / Athlet",
+  "makro_lowcarb": "Low-Carb / Fettobbau",
+  "makro_keto": "Ketogen",
+  "fuss": "Chart: Radius ∝ % vom Dogsbedarf, <b>kappt bei 100 %</b> · drüwa → <code>d’Farb wead dunkla</code><br>Dogsbedarf: 7-jährigs Kind (D-A-CH) · Zucka-Limit 45 g (WHO) · Natrium-Obagrenz 1800 mg"
  },
  "mainz": {
   "title": "🍽️ Energie-Daach — Daachsplaner",
@@ -333,7 +2016,160 @@
   "set_ai": "🤖 KI-Nochgucke",
   "stand_empty": "Noch nix uffm Teller",
   "center_day": "Daachsdeckung",
-  "center_food": "Des Esse"
+  "center_food": "Des Esse",
+  "_shelves": {
+   "🍞 Brot & Gebäck": "🍞 Brot & Gebäck",
+   "🥣 Frühstück": "🥣 Frühstück",
+   "🍎 Obst": "🍎 Obst",
+   "🥬 Gemüse": "🥬 Gemies",
+   "🧀 Milch & Käse": "🧀 Millisch & Kees",
+   "🍔 Fleisch & Fast Food": "🍔 Fleesch & Fast Food",
+   "🍽️ Fertige Teller": "🍽️ Fertische Teller",
+   "🍦 Eis & Kuchen": "🍦 Eis & Kuche",
+   "🍫 Süßes": "🍫 Siesses",
+   "🧈 Fette & Würze": "🧈 Fett & Wärz",
+   "🧃 Getränke": "🧃 Getränke",
+   "🥪 Gerichte": "🥪 Gerischde"
+  },
+  "_seg": {
+   "eiweiss": {
+    "lab": "Eiweiß",
+    "fun": "Repratur & Bausteinsche fer die Zelle — vor allem Muskle"
+   },
+   "kh": {
+    "lab": "Kohlehydrate",
+    "fun": "Treibstoff fers Gehern"
+   },
+   "fett": {
+    "lab": "Fett",
+    "fun": "Zellhülle & Schutz fer die Nerve"
+   },
+   "ballast": {
+    "lab": "Ballaststoff",
+    "fun": "Fudder fer die gude Darmbakterie"
+   },
+   "wasser": {
+    "lab": "Wasser",
+    "fun": "Transport, Kühlung — alles"
+   },
+   "eisen": {
+    "lab": "Eise",
+    "fun": "Sauerstoff ins Gehern — macht wach"
+   },
+   "calcium": {
+    "lab": "Kalzium",
+    "fun": "Baut Knoche un Zähn"
+   },
+   "magnesium": {
+    "lab": "Magnesium",
+    "fun": "Lässt die Muskle widder locker"
+   },
+   "kalium": {
+    "lab": "Kalium",
+    "fun": "Fer Herz un Muskle"
+   },
+   "zink": {
+    "lab": "Zink",
+    "fun": "Abwehr & Wachstum"
+   },
+   "jod": {
+    "lab": "Jod",
+    "fun": "Stellt de Motor vom Kerper ei"
+   },
+   "selen": {
+    "lab": "Selen",
+    "fun": "Schitzt die Zelle"
+   },
+   "vita": {
+    "lab": "Vitamin A",
+    "fun": "Damit de im Dunkle siehst"
+   },
+   "vitc": {
+    "lab": "Vitamin C",
+    "fun": "Abwehr — macht die Eise-Tür uff"
+   },
+   "vitd": {
+    "lab": "Vitamin D",
+    "fun": "Knoche — kimmt fast nur vun de Sunn"
+   },
+   "vite": {
+    "lab": "Vitamin E",
+    "fun": "Schitzt die Zelle"
+   },
+   "vitk": {
+    "lab": "Vitamin K",
+    "fun": "Damit Wunde uffheere se blude"
+   },
+   "b6": {
+    "lab": "Vitamin B6",
+    "fun": "Fers Gehern un die Nerve"
+   },
+   "b12": {
+    "lab": "Vitamin B12",
+    "fun": "Gehern un rode Blutkerpersche"
+   },
+   "folat": {
+    "lab": "Folat (B9)",
+    "fun": "Damit de wächst"
+   }
+  },
+  "wd_empty": "Zu dem Esse gibts noch kaa „Waaßte was?“.",
+  "li_ignored": "🚫 zählt heit net mett",
+  "modal_food": "was drin is",
+  "modal_day": "🥧 Dei Daach — was de Kerper devo hat",
+  "cover_full": "Deckt ganz allaa de ganze Daach bei",
+  "cover_none": "Kaa Nährstoff werd allaa devo voll.",
+  "cover_none2": "Des is normal — e Daach brauch vill verschiedene Sache.",
+  "cover_empty": "<b>Noch nix gesse.</b> Gib links mit <b>+</b> was dezu — de Kreis füllt sich glei.",
+  "cover_ok": "🎉 <b>Alles iwwer 10 %!</b> Kaa Nährstoff bleibt leer.",
+  "cover_miss": "Fehlt noch fast ganz",
+  "tip_helps": "Des dät helfe",
+  "tip_full": "✅ Schon gedeckt — do fehlt nix mehr.",
+  "tip_nofood": "⚠️ Defer gibts noch kaa Esse.",
+  "ueb_info": "🍎 Esse-Name & Fakte iwwersetze (brauch KI-Schlissel)",
+  "ueb_btn": "🌍 Mit KI iwwersetze",
+  "ueb_btn_re": "🔄 Nei iwwersetze",
+  "ueb_have": "✅ Name & Fakte sinn iwwersetzt.",
+  "ueb_needkey": "🔑 KI-Schlissel gebrauch (⚙️ owwe)",
+  "grp_macro": "MAKRO-NÄHRSTOFFE",
+  "grp_mineral": "MINERALSTOFFE",
+  "grp_vitamin": "VITAMINE",
+  "csub_food": "füllt {v} vun {n} Nährstoff ganz",
+  "csub_day": "{v} vun {n} Nährstoff voll",
+  "kanteil": "{p} % vun deim Daach",
+  "plate_empty": "Noch leer.<br>Klick links uff <b>+</b>, fer was zu esse.",
+  "note_water": "Wasser",
+  "note_drop": "💧 Tropfe",
+  "note_box": "🔲 Kaste",
+  "note_mid": "◆ Dezwische",
+  "badge_none": "— nix iwwer 15 % —",
+  "w_sugar": "Zucker",
+  "w_salt": "Salz",
+  "z_over_self": "🔴 schon allaa iwwerm Daaches-Limit ({max} g)",
+  "z_over": "🔴 {d} g iwwerm Limit ({max} g)",
+  "stand_line": "{n} {things} · {kcal} kcal · {zuck} g {sugar}",
+  "things_1": "Sach",
+  "things_n": "Sache",
+  "scale": "Maßstab ×",
+  "wdt_gut": "Gude Nachricht",
+  "wdt_schlecht": "Schad, awwer wahr",
+  "wdt_wow": "Waaßte was?",
+  "v_own": "Andeel in dem Esse — kaa Soll",
+  "v_soll": "Soll: {p}",
+  "v_butter": "Es Verhältnis gilt fer de <b>ganze Daach</b>, net fer aa Esse.<br>Butter is 100 % Fett — des is ganz normal.",
+  "v_noenergy": "Noch kaa Energie uffm Teller.",
+  "v_single": "Des Esse is vor allem <b>{top}</b> ({pct} %).<br>Aanzelne Esse sinn fast immer aaseitig — <b>bewert werd nur de ganze Daach.</b>",
+  "v_ok": "🎉 <b>Gudes Verhältnis</b> — alle drei liesche im empfohlene Bereich.",
+  "v_toomuch": "<b>{a} is zu viel</b> — de Balke schiebt sich iwwer die Linie un nimmt <b>{weg}</b> de Platz weg.",
+  "v_toolittle_one": "{list} is noch zu wenisch.",
+  "v_toolittle_more": "{list} sinn noch zu wenisch.",
+  "w_and": " un ",
+  "v_others": "de annere",
+  "makro_dge": "DGE Standard",
+  "makro_sport": "Sportlich / Athlet",
+  "makro_lowcarb": "Low-Carb / Fettabbau",
+  "makro_keto": "Ketogen",
+  "fuss": "Chart: Radius ∝ % vum Daachesbedarf, <b>kappt bei 100 %</b> · driwwer → <code>die Farb werd dunkler</code><br>Daachesbedarf: 7-jähriges Kind (D-A-CH) · Zucker-Limit 45 g (WHO) · Natrium-Owwergrenz 1800 mg"
  },
  "hess": {
   "title": "🍽️ Energie-Daach — Daachesplaner",
@@ -361,6 +2197,159 @@
   "set_ai": "🤖 KI-Nachgucke",
   "stand_empty": "Noch nix uffm Teller",
   "center_day": "Daachesdeckung",
-  "center_food": "Des Esse"
+  "center_food": "Des Esse",
+  "_shelves": {
+   "🍞 Brot & Gebäck": "🍞 Brot & Gebäck",
+   "🥣 Frühstück": "🥣 Frühstück",
+   "🍎 Obst": "🍎 Obst",
+   "🥬 Gemüse": "🥬 Gemies",
+   "🧀 Milch & Käse": "🧀 Millisch & Kees",
+   "🍔 Fleisch & Fast Food": "🍔 Fleesch & Fast Food",
+   "🍽️ Fertige Teller": "🍽️ Fertische Teller",
+   "🍦 Eis & Kuchen": "🍦 Eis & Kuche",
+   "🍫 Süßes": "🍫 Siesses",
+   "🧈 Fette & Würze": "🧈 Fett & Wärz",
+   "🧃 Getränke": "🧃 Gedränke",
+   "🥪 Gerichte": "🥪 Gerischde"
+  },
+  "_seg": {
+   "eiweiss": {
+    "lab": "Eiweiß",
+    "fun": "Repratur & Bausteinsche fer die Zelle — vor allem Muskle"
+   },
+   "kh": {
+    "lab": "Kohlehydrate",
+    "fun": "Treibstoff fers Gehern"
+   },
+   "fett": {
+    "lab": "Fett",
+    "fun": "Zellhülle & Schutz fer die Nerve"
+   },
+   "ballast": {
+    "lab": "Ballaststoff",
+    "fun": "Fudder fer die gude Darmbakterie"
+   },
+   "wasser": {
+    "lab": "Wasser",
+    "fun": "Transport, Kühlung — alles"
+   },
+   "eisen": {
+    "lab": "Eise",
+    "fun": "Sauerstoff ins Gehern — macht wach"
+   },
+   "calcium": {
+    "lab": "Kalzium",
+    "fun": "Baut Knoche un Zähn"
+   },
+   "magnesium": {
+    "lab": "Magnesium",
+    "fun": "Lässt die Muskle widder locker"
+   },
+   "kalium": {
+    "lab": "Kalium",
+    "fun": "Fer Herz un Muskle"
+   },
+   "zink": {
+    "lab": "Zink",
+    "fun": "Abwehr & Wachstum"
+   },
+   "jod": {
+    "lab": "Jod",
+    "fun": "Stellt de Motor vum Kerper ei"
+   },
+   "selen": {
+    "lab": "Selen",
+    "fun": "Schitzt die Zelle"
+   },
+   "vita": {
+    "lab": "Vitamin A",
+    "fun": "Damit de im Dunkle siehst"
+   },
+   "vitc": {
+    "lab": "Vitamin C",
+    "fun": "Abwehr — macht die Eise-Tür uff"
+   },
+   "vitd": {
+    "lab": "Vitamin D",
+    "fun": "Knoche — kimmt fast nur vun de Sonn"
+   },
+   "vite": {
+    "lab": "Vitamin E",
+    "fun": "Schitzt die Zelle"
+   },
+   "vitk": {
+    "lab": "Vitamin K",
+    "fun": "Damit Wunne uffheern se blude"
+   },
+   "b6": {
+    "lab": "Vitamin B6",
+    "fun": "Fers Gehern un die Nerve"
+   },
+   "b12": {
+    "lab": "Vitamin B12",
+    "fun": "Gehern un rode Blutkerbersche"
+   },
+   "folat": {
+    "lab": "Folat (B9)",
+    "fun": "Damit de wächst"
+   }
+  },
+  "wd_empty": "Zu dem Esse gibts noch kaa „Waaßte was?“.",
+  "li_ignored": "🚫 zählt heut net mit",
+  "modal_food": "was drin is",
+  "modal_day": "🥧 Dei Daach — was der Kerber devo hat",
+  "cover_full": "Deckt ganz allaa de ganze Daach bei",
+  "cover_none": "Kaa Nährstoff werd allaa devo voll.",
+  "cover_none2": "Des is normal — e Daach brauch viel verschiedene Sache.",
+  "cover_empty": "<b>Noch nix gesse.</b> Gebb links mit <b>+</b> was dezu — der Kreis füllt sich glei.",
+  "cover_ok": "🎉 <b>Alles iwwer 10 %!</b> Kaa Nährstoff bleibt leer.",
+  "cover_miss": "Fehlt noch fast ganz",
+  "tip_helps": "Des dät helfe",
+  "tip_full": "✅ Schon gedeckt — do fehlt nix mehr.",
+  "tip_nofood": "⚠️ Dodefor gibts noch kaa Esse.",
+  "ueb_info": "🍎 Esse-Name & Fakte iwwersetze (brauch KI-Schlissel)",
+  "ueb_btn": "🌍 Mit KI iwwersetze",
+  "ueb_btn_re": "🔄 Nei iwwersetze",
+  "ueb_have": "✅ Name & Fakte sinn iwwersetzt.",
+  "ueb_needkey": "🔑 KI-Schlissel gebrauch (⚙️ owwe)",
+  "grp_macro": "MAKRO-NÄHRSTOFFE",
+  "grp_mineral": "MINERALSTOFFE",
+  "grp_vitamin": "VITAMINE",
+  "csub_food": "füllt {v} vun {n} Nährstoff ganz",
+  "csub_day": "{v} vun {n} Nährstoff voll",
+  "kanteil": "{p} % vun deim Daach",
+  "plate_empty": "Noch leer.<br>Klick links uff <b>+</b>, fer ebbes zu esse.",
+  "note_water": "Wasser",
+  "note_drop": "💧 Tropfe",
+  "note_box": "🔲 Kaste",
+  "note_mid": "◆ Dezwische",
+  "badge_none": "— nix iwwer 15 % —",
+  "w_sugar": "Zucker",
+  "w_salt": "Salz",
+  "z_over_self": "🔴 schon allaa iwwerm Daaches-Limit ({max} g)",
+  "z_over": "🔴 {d} g iwwerm Limit ({max} g)",
+  "stand_line": "{n} {things} · {kcal} kcal · {zuck} g {sugar}",
+  "things_1": "Sach",
+  "things_n": "Sache",
+  "scale": "Maßstab ×",
+  "wdt_gut": "Gude Nachricht",
+  "wdt_schlecht": "Schad, awwer wahr",
+  "wdt_wow": "Waaßte was?",
+  "v_own": "Andeel in dem Esse — kaa Soll",
+  "v_soll": "Soll: {p}",
+  "v_butter": "Des Verhältnis gilt fer de <b>ganze Daach</b>, net fer aa Esse.<br>Butter is 100 % Fett — des is ganz normal.",
+  "v_noenergy": "Noch kaa Energie uffm Teller.",
+  "v_single": "Des Esse is vor allem <b>{top}</b> ({pct} %).<br>Aanzelne Esse sinn fast immer aaseitig — <b>bewert werd nur de ganze Daach.</b>",
+  "v_ok": "🎉 <b>Gudes Verhältnis</b> — alle drei liesche im empfohlene Bereich.",
+  "v_toomuch": "<b>{a} is zu viel</b> — der Balke schiebt sich iwwer die Linie un nimmt <b>{weg}</b> de Platz weg.",
+  "v_toolittle_one": "{list} is noch zu wenisch.",
+  "v_toolittle_more": "{list} sinn noch zu wenisch.",
+  "w_and": " un ",
+  "v_others": "die annere",
+  "makro_dge": "DGE Standard",
+  "makro_sport": "Sportlich / Athlet",
+  "makro_lowcarb": "Low-Carb / Fettabbau",
+  "makro_keto": "Ketogen",
+  "fuss": "Chart: Radius ∝ % vum Daachesbedarf, <b>kappt bei 100 %</b> · driwwer → <code>die Farb werd dunkler</code><br>Daachesbedarf: 7-jähriges Kind (D-A-CH) · Zucker-Limit 45 g (WHO) · Natrium-Owwergrenz 1800 mg"
  }
 }

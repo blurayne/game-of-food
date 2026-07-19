@@ -257,6 +257,14 @@ path.hit.aktivseg{stroke:var(--segcol,var(--tinte));stroke-width:3;stroke-linejo
 .selfeld{display:block;width:100%;margin-top:6px;border:2px solid var(--papier-rand);border-radius:8px;
   padding:6px 9px;font-family:'Nunito',sans-serif;font-size:11.5px;font-weight:800;background:#fff;color:var(--tinte);cursor:pointer}
 .selfeld:focus{outline:none;border-color:var(--wiese)}
+.uebbox{margin-top:7px}.uebbox.aus{display:none}
+.uebbox small{display:block;font-size:9.5px;font-weight:700;color:var(--tinte-weich);line-height:1.4;margin-bottom:5px}
+.uebrow{display:flex;gap:5px}
+.uebbtn{flex:1;background:var(--wiese-tief);color:#fff;border:none;border-radius:8px;padding:7px 8px;
+  font-family:'Fredoka';font-weight:500;font-size:11px;cursor:pointer;transition:.12s;white-space:nowrap}
+.uebbtn:hover{transform:scale(1.02)}.uebbtn:disabled{opacity:.6;cursor:wait;transform:none}
+.uebbtn.ghost{flex:0 0 auto;background:var(--papier-tief);color:var(--tinte)}
+.uebbtn.aus{display:none}
 .kibtn{display:block;width:calc(100% - 8px);margin:6px auto;background:var(--wiese-tief);color:#fff;border:none;
   border-radius:10px;padding:9px 10px;font-family:'Fredoka';font-weight:500;font-size:12px;cursor:pointer;transition:.12s}
 .kibtn:hover{transform:scale(1.02)}
@@ -517,7 +525,15 @@ path.hit.aktivseg{stroke:var(--segcol,var(--tinte));stroke-width:3;stroke-linejo
             <option value="he">עברית</option>
             <option value="yi">ייִדיש</option>
             <option value="sjn">Sindarin</option>
-          </select></span></div>
+          </select>
+          <div class="uebbox aus" id="uebbox">
+            <small id="uebinfo" data-i18n="ueb_info">🍎 Lebensmittel-Namen &amp; Fakten übersetzen (braucht KI-Key)</small>
+            <div class="uebrow">
+              <button class="uebbtn" id="uebbtn" data-i18n="ueb_btn">🌍 Mit KI übersetzen</button>
+              <button class="uebbtn ghost aus" id="uebdl" data-i18n="ueb_dl" title="foods.&lt;lang&gt;.json">⬇︎</button>
+              <button class="uebbtn ghost aus" id="uebdel" data-i18n="ueb_del" title="Übersetzung löschen">🗑</button>
+            </div>
+          </div></span></div>
         <label class="opt"><input type="checkbox" id="optx">
           <span><span data-i18n="set_gray">✕ Nutzlose ausgrauen</span><small>markiert, was nichts mehr zum Tagesbedarf beiträgt</small></span></label>
         <div class="opt optsel"><span><span data-i18n="set_macro">🥗 Makro-Verteilung</span><small>Soll fürs Verhältnis-Feld (KH · Eiweiß · Fett)</small>
@@ -549,7 +565,7 @@ path.hit.aktivseg{stroke:var(--segcol,var(--tinte));stroke-width:3;stroke-linejo
 </div></div>
 <div class="tip" id="tip"></div>
 
-<footer class="fuss">
+<footer class="fuss" data-i18n-html="fuss">
   Chart: Radius ∝ % vom Tagesbedarf, <b>gekappt bei 100 %</b> · darüber → <code>Farbe wird dunkler</code><br>
   Tagesbedarf: 7-jähriges Kind (D-A-CH) · Zucker-Limit 45 g (WHO) · Natrium-Obergrenze 1800 mg
 </footer>
@@ -623,7 +639,7 @@ function zeichneFood(f){
   W*=zoom;
   const An=tr*BASE*zoom*zoom;
   const zt=document.getElementById('zoomtag');
-  if(Math.abs(zoom-1)>.02){zt.classList.remove('aus');zt.textContent='Maßstab ×'+zoom.toFixed(2);}else zt.classList.add('aus');
+  if(Math.abs(zoom-1)>.02){zt.classList.remove('aus');zt.textContent=T('scale','Maßstab ×')+zoom.toFixed(2);}else zt.classList.add('aus');
   let svg='';
   if(An>1){
     const Dg=W*(1+.4142*(1-t)), K=(Dg*Dg)/An;
@@ -647,24 +663,24 @@ function zeichneFood(f){
   lm.style.setProperty('--seite',Math.max(8,W).toFixed(1)+'px');
   lm.style.setProperty('--t',t.toFixed(3));
   document.getElementById('inhalt').innerHTML=svg;
-  document.getElementById('note').textContent=`${gesamt} g · 💧 ${f.wnat}% Wasser · ${t>=.98?'💧 Tropfen':(t<=.02?'🔲 Kasten':'◆ Übergang')}`;
-  document.getElementById('mtitel').innerHTML=`${f.emoji} ${f.name}<small>${f.portion} g · ${Math.round(f.n.kcal)} kcal</small>`;
+  document.getElementById('note').textContent=`${gesamt} g · 💧 ${f.wnat}% ${T('note_water','Wasser')} · ${t>=.98?T('note_drop','💧 Tropfen'):(t<=.02?T('note_box','🔲 Kasten'):T('note_mid','◆ Übergang'))}`;
+  document.getElementById('mtitel').innerHTML=`${f.emoji} ${nameOf(f)}<small>${f.portion} g · ${Math.round(f.n.kcal)} kcal</small>`;
   const b=document.getElementById('badges');
   b.innerHTML=(f.bd||[]).slice(0,5).map(x=>{
     const kr = x.typ==="V" ? `<span class="k${x.lab.length>1?' kl':''}" style="background:${x.farbe}">${x.lab}</span>`
                            : `<span class="p" style="background:${x.farbe}">${x.lab}</span>`;
     return `<span class="bd" title="${x.lang}">${kr}<span class="w">${x.emoji} ${x.kurz}</span><span class="d${x.stufe===2?' gross':''}">👍</span></span>`;
-  }).join('') || '<span style="font-size:10px;font-weight:700;color:var(--tinte-weich);font-style:italic">— nichts über 15 % —</span>';
+  }).join('') || `<span style="font-size:10px;font-weight:700;color:var(--tinte-weich);font-style:italic">${T('badge_none','— nichts über 15 % —')}</span>`;
   wusstest(f);
 }
 function wusstest(f){
-  const el=document.getElementById('wd'), L=f.wd||[];
-  if(!L.length){el.className='wd leer';el.innerHTML='<div class="txt">Zu diesem Lebensmittel gibt es noch kein „Wusstest du?".</div>';return;}
+  const el=document.getElementById('wd'), L=factsOf(f);
+  if(!L.length){el.className='wd leer';el.innerHTML=`<div class="txt">${T('wd_empty','Zu diesem Lebensmittel gibt es noch kein „Wusstest du?".')}</div>`;return;}
   if(wdi>=L.length)wdi=0;
   const w=L[wdi];
   el.className='wd'; el.style.setProperty('--wdc',WDF[w.stimmung]||"#F4A300");
   const kette=w.icons.match(/\p{Extended_Pictographic}(\uFE0F)?/gu)||[...w.icons];
-  el.innerHTML=`<div class="kop"><span>💡</span><span class="t">${WDT[w.stimmung]}</span><button class="nx${L.length>1?'':' aus'}">🔄</button></div>`
+  el.innerHTML=`<div class="kop"><span>💡</span><span class="t">${T('wdt_'+w.stimmung,WDT[w.stimmung])}</span><button class="nx${L.length>1?'':' aus'}">🔄</button></div>`
     +`<div class="kette">${kette.map((k,i)=>(i?'<i>→</i>':'')+`<span>${k}</span>`).join('')}</div><div class="txt">${w.text}</div>`;
   const b=el.querySelector('.nx'); if(b)b.onclick=()=>{wdi=(wdi+1)%L.length;wusstest(f);};
 }
@@ -716,7 +732,7 @@ function torte(gross){
   const R_IN = gross?92:44, R_OUT = gross?290:112, R_LAB=gross?330:0;
   let p='';
   if(gross){
-    [["MAKRONÄHRSTOFFE",0,5,"#8a9a84"],["MINERALSTOFFE",5,12,"#9a8a84"],["VITAMINE",12,20,"#a89a6a"]].forEach(([g,i0,i1,c])=>{
+    [[T('grp_macro','MAKRONÄHRSTOFFE'),0,5,"#8a9a84"],[T('grp_mineral','MINERALSTOFFE'),5,12,"#9a8a84"],[T('grp_vitamin','VITAMINE'),12,20,"#a89a6a"]].forEach(([g,i0,i1,c])=>{
       const a0=(i0*step-90)*Math.PI/180, a1=(i1*step-90)*Math.PI/180, rr=R_OUT+13;
       const big=(i1-i0)*step>180?1:0;
       p+=`<path d="M ${CX+rr*Math.cos(a0)} ${CY+rr*Math.sin(a0)} A ${rr} ${rr} 0 ${big} 1 ${CX+rr*Math.cos(a1)} ${CY+rr*Math.sin(a1)}" stroke="${c}" stroke-width="4" fill="none" opacity=".5" stroke-linecap="round"/>`;
@@ -742,7 +758,7 @@ function torte(gross){
     if(pct>0.4){
       const [x0,y0]=P(r,a0),[x1,y1]=P(r,a1);
       const dF=`M ${xi0} ${yi0} L ${x0} ${y0} A ${r} ${r} 0 0 1 ${x1} ${y1} L ${xi1} ${yi1} A ${R_IN} ${R_IN} 0 0 0 ${xi0} ${yi0} Z`;
-      p+=`<path d="${dF}" fill="${segFill}"><title>${g.lab}: ${pct.toFixed(0)} % — ${g.fun}</title></path>`;
+      p+=`<path d="${dF}" fill="${segFill}"><title>${segLab(g)}: ${pct.toFixed(0)} % — ${segFun(g)}</title></path>`;
       if(istBallast && pct>100) p+=`<path d="${dF}" fill="#16330f" opacity="${Math.min(.5,ueber*3)}"/>`;
     }
     if(pct<10) luecken.push(g);
@@ -759,8 +775,8 @@ function torte(gross){
       p+=`<circle cx="${tx}" cy="${ey}" r="2.6" fill="${g.col}"/>`;
       const lx=tx+(rechts?7:-7), an=rechts?"start":"end";
       const stern = (zeigHilite && HILITE.has(g.k)) ? '⭐ ' : '';
-      p+=`<text x="${lx}" y="${ey-3}" font-family="Nunito" font-size="12.5" font-weight="800" fill="#2c3428" text-anchor="${an}">${stern}${g.em} ${g.lab} <tspan font-family="IBM Plex Mono" font-size="11" font-weight="600" fill="${dunkler(g.col,.15)}">${pct.toFixed(0)}%</tspan></text>`;
-      p+=`<text x="${lx}" y="${ey+9}" font-family="Nunito" font-size="10" font-weight="700" fill="#5e6a56" text-anchor="${an}">${g.fun}</text>`;
+      p+=`<text x="${lx}" y="${ey-3}" font-family="Nunito" font-size="12.5" font-weight="800" fill="#2c3428" text-anchor="${an}">${stern}${g.em} ${segLab(g)} <tspan font-family="IBM Plex Mono" font-size="11" font-weight="600" fill="${dunkler(g.col,.15)}">${pct.toFixed(0)}%</tspan></text>`;
+      p+=`<text x="${lx}" y="${ey+9}" font-family="Nunito" font-size="10" font-weight="700" fill="#5e6a56" text-anchor="${an}">${segFun(g)}</text>`;
     }
   });
   p+=`<circle cx="${CX}" cy="${CY}" r="${R_IN-(gross?6:4)}" fill="#fbf7ef"/>`;
@@ -800,38 +816,42 @@ function verhaeltnis(){
   if(!zeigV) return;
   const box=document.getElementById('vinhalt');
   const einzeln = modus==='aktuell';
-  document.getElementById('vinfo').textContent = einzeln ? 'Anteile in diesem Lebensmittel — kein Soll' : ('Soll: '+MAKRO[makroProfil].lab);
+  // übersetzte Labels (Emoji + Segment-Name aus _seg)
+  const VMT=VM.map(([k,lab,col])=>[k, lab.split(' ')[0]+' '+segLab({k,lab:lab.split(' ').slice(1).join(' ')}), col]);
+  const wort=lab=>lab.split(' ').slice(1).join(' ');
+  const makroLab=T('makro_'+makroProfil, MAKRO[makroProfil].lab);
+  document.getElementById('vinfo').textContent = einzeln ? T('v_own','Anteile in diesem Lebensmittel — kein Soll') : TF('v_soll','Soll: {p}',{p:makroLab});
   if(!einzeln && leer()){
-    box.innerHTML='<div class="vleer">Das Verhältnis gilt für den <b>ganzen Tag</b>, nicht für ein einzelnes Lebensmittel.<br>Butter ist 100 % Fett — das ist völlig normal.</div>';
+    box.innerHTML=`<div class="vleer">${T('v_butter','Das Verhältnis gilt für den <b>ganzen Tag</b>, nicht für ein einzelnes Lebensmittel.<br>Butter ist 100 % Fett — das ist völlig normal.')}</div>`;
     return;
   }
   const s=summe();
   const E={fett:s.fett*9, kh:s.kh*4, eiweiss:s.eiweiss*4};
   const G=E.fett+E.kh+E.eiweiss;
-  if(G<1){ box.innerHTML='<div class="vleer">Noch keine Energie auf dem Teller.</div>'; return; }
-  const ist={}; VM.forEach(([k])=>ist[k]=E[k]/G*100);
+  if(G<1){ box.innerHTML=`<div class="vleer">${T('v_noenergy','Noch keine Energie auf dem Teller.')}</div>`; return; }
+  const ist={}; VMT.forEach(([k])=>ist[k]=E[k]/G*100);
 
   if(einzeln){
     // EINZELANSICHT: Gewichtung = echte Anteile DIESES Lebensmittels — kein Soll-Raster
     let h='<div class="vboxen">';
-    VM.forEach(([k,lab,col])=>{ const v=ist[k]; if(v<0.5) return;
+    VMT.forEach(([k,lab,col])=>{ const v=ist[k]; if(v<0.5) return;
       h+=`<div class="vb" style="--vc:${col};flex:${v} 1 0">
           <div class="lab">${lab}</div>
           <div class="ist">${v.toFixed(0)}%</div></div>`;
     });
     h+='</div><div class="vbahn einzel">';
     let x=0;
-    VM.forEach(([k,,col])=>{ const v=ist[k];
+    VMT.forEach(([k,,col])=>{ const v=ist[k];
       h+=`<div class="vseg" style="left:${x}%;width:${v}%;background:${col}"></div>`; x+=v; });
     h+='</div>';
-    const top=VM.slice().sort((a,b)=>ist[b[0]]-ist[a[0]])[0];
-    h+=`<div class="vhint neutral">Dieses Lebensmittel ist vor allem <b>${top[1]}</b> (${ist[top[0]].toFixed(0)} %).<br>Einzelne Lebensmittel sind fast immer einseitig — <b>bewertet wird nur der ganze Tag.</b></div>`;
+    const top=VMT.slice().sort((a,b)=>ist[b[0]]-ist[a[0]])[0];
+    h+=`<div class="vhint neutral">${TF('v_single','Dieses Lebensmittel ist vor allem <b>{top}</b> ({pct} %).<br>Einzelne Lebensmittel sind fast immer einseitig — <b>bewertet wird nur der ganze Tag.</b>',{top:top[1],pct:ist[top[0]].toFixed(0)})}</div>`;
     box.innerHTML=h; return;
   }
 
   // TAGESANSICHT — Kästchen: Breite = SOLL-Anteil, Inhalt = IST
   let h='<div class="vboxen">';
-  VM.forEach(([k,lab,col])=>{
+  VMT.forEach(([k,lab,col])=>{
     const S=SOLL[k], v=ist[k];
     const cls = v>S.max?'zuviel' : (v<S.min?'zuwenig':'');
     h+=`<div class="vb ${cls}" style="--vc:${col};flex:${S.ziel} 1 0">
@@ -844,26 +864,27 @@ function verhaeltnis(){
   // Balken: IST-Segmente über den SOLL-Zonen. Wer zu viel hat, DEHNT SICH IN DIE ANDEREN.
   h+='<div class="vbahn">';
   let z=0;
-  VM.forEach(([k,,col])=>{ h+=`<div class="vzone" style="left:${z}%;width:${SOLL[k].ziel}%;background:${col}"></div>`; z+=SOLL[k].ziel; });
+  VMT.forEach(([k,,col])=>{ h+=`<div class="vzone" style="left:${z}%;width:${SOLL[k].ziel}%;background:${col}"></div>`; z+=SOLL[k].ziel; });
   let x=0;
-  VM.forEach(([k,,col])=>{
+  VMT.forEach(([k,,col])=>{
     const v=ist[k], zuviel=v>SOLL[k].max;
     h+=`<div class="vseg${zuviel?' zuviel':''}" style="left:${x}%;width:${v}%;background:${col}"></div>`;
     x+=v;
   });
   z=0;
-  VM.forEach(([k],i)=>{ z+=SOLL[k].ziel; if(i<2) h+=`<div class="vtick" style="left:${z}%"></div>`; });
+  VMT.forEach(([k],i)=>{ z+=SOLL[k].ziel; if(i<2) h+=`<div class="vtick" style="left:${z}%"></div>`; });
   h+='</div>';
-  const drueber=VM.filter(([k])=>ist[k]>SOLL[k].max);
-  const drunter=VM.filter(([k])=>ist[k]<SOLL[k].min);
+  const drueber=VMT.filter(([k])=>ist[k]>SOLL[k].max);
+  const drunter=VMT.filter(([k])=>ist[k]<SOLL[k].min);
+  const UND=T('w_and',' und ');
   if(!drueber.length && !drunter.length)
-    h+='<div class="vhint ok">🎉 <b>Gutes Verhältnis</b> — alle drei liegen im empfohlenen Bereich.</div>';
+    h+=`<div class="vhint ok">${T('v_ok','🎉 <b>Gutes Verhältnis</b> — alle drei liegen im empfohlenen Bereich.')}</div>`;
   else if(drueber.length){
     const a=drueber[0];
-    const weg = drunter.length ? drunter.map(x=>x[1].split(' ')[1]).join(' und ') : 'den anderen';
-    h+=`<div class="vhint"><b>${a[1]} ist zu viel</b> — der Balken schiebt sich über die Linie und nimmt <b>${weg}</b> den Platz weg.</div>`;
+    const weg = drunter.length ? drunter.map(x=>wort(x[1])).join(UND) : T('v_others','den anderen');
+    h+=`<div class="vhint">${TF('v_toomuch','<b>{a} ist zu viel</b> — der Balken schiebt sich über die Linie und nimmt <b>{weg}</b> den Platz weg.',{a:a[1],weg:weg})}</div>`;
   }
-  else h+=`<div class="vhint">${drunter.map(x=>x[1]).join(' und ')} ${drunter.length>1?'sind':'ist'} noch zu wenig.</div>`;
+  else h+=`<div class="vhint">${TF(drunter.length>1?'v_toolittle_more':'v_toolittle_one','{list} '+(drunter.length>1?'sind':'ist')+' noch zu wenig.',{list:drunter.map(x=>x[1]).join(UND)})}</div>`;
   box.innerHTML=h;
 }
 
@@ -874,16 +895,17 @@ function render(){
   document.getElementById('minichart').innerHTML=svg;
   document.getElementById('chartbox').classList.toggle('aktuellmodus', einzeln);
   const voll=SEG.filter(g=>(s[g.k]||0)/BED[g.k]*100>=100).length;
-  document.getElementById('ch').textContent = einzeln ? `${aktiv.emoji} ${aktiv.name}` : T('day_btn','🥧 Dein Tag');
+  document.getElementById('ch').textContent = einzeln ? `${aktiv.emoji} ${nameOf(aktiv)}` : T('day_btn','🥧 Dein Tag');
   document.getElementById('csub').textContent = einzeln
-    ? `füllt ${voll} von ${SEG.length} Nährstoffen ganz` : `${voll} von ${SEG.length} Nährstoffen voll`;
+    ? TF('csub_food','füllt {v} von {n} Nährstoffen ganz',{v:voll,n:SEG.length})
+    : TF('csub_day','{v} von {n} Nährstoffen voll',{v:voll,n:SEG.length});
 
   const kc=Math.round(s.kcal), zu=Math.round(s.zucker);
   const zk=document.getElementById('zkcal'), zz=document.getElementById('zzuck');
   zk.querySelector('.v').textContent=kc+' kcal';
   zk.querySelector('.bahn i').style.width=Math.min(100,kc/BED.kcal*100)+'%';
   zk.classList.toggle('warn', !einzeln && kc>BED.kcal);
-  document.getElementById('kanteil').textContent = einzeln ? `${Math.round(kc/BED.kcal*100)} % deines Tages` : '';
+  document.getElementById('kanteil').textContent = einzeln ? TF('kanteil','{p} % deines Tages',{p:Math.round(kc/BED.kcal*100)}) : '';
   zz.querySelector('.v').textContent=zu+' g';
   zz.querySelector('.bahn i').style.width=Math.min(100,zu/BED.zucker_max*100)+'%';
   const zproz=zu/BED.zucker_max*100;
@@ -892,8 +914,8 @@ function render(){
   zz.classList.toggle('doppelt', zproz>=200);         // ab 200 %: schneller blinken (0,4 s)
   const drueber = zu>BED.zucker_max;
   document.getElementById('zueber').textContent = !drueber ? ''
-    : (einzeln ? `🔴 allein schon über dem Tages-Limit (${BED.zucker_max} g)`
-               : `🔴 ${zu-BED.zucker_max} g über dem Limit (${BED.zucker_max} g)`);
+    : (einzeln ? TF('z_over_self','🔴 allein schon über dem Tages-Limit ({max} g)',{max:BED.zucker_max})
+               : TF('z_over','🔴 {d} g über dem Limit ({max} g)',{d:zu-BED.zucker_max,max:BED.zucker_max}));
   verhaeltnis();
 
   const anz=Object.values(tellerAktiv()).reduce((a,b)=>a+b,0);          // zählt nur Nicht-Ignorierte
@@ -901,14 +923,17 @@ function render(){
   const t=tagSumme();
   document.getElementById('usn').textContent = anz? `(${anz})` : '';
   document.getElementById('stand').textContent = anzAlle
-    ? `${anz} Sache${anz===1?'':'n'} · ${Math.round(t.kcal)} kcal · ${Math.round(t.zucker)} g Zucker${anzAlle>anz?` · ${anzAlle-anz}× 🚫`:''}`
+    ? TF('stand_line','{n} {things} · {kcal} kcal · {zuck} g {sugar}',
+        {n:anz, things:(anz===1?T('things_1','Sache'):T('things_n','Sachen')),
+         kcal:Math.round(t.kcal), zuck:Math.round(t.zucker), sugar:T('w_sugar','Zucker')})
+      + (anzAlle>anz?` · ${anzAlle-anz}× 🚫`:'')
     : T('stand_empty','Noch nichts auf dem Teller');
 
   const L=document.getElementById('liste');
-  if(!anzAlle){ L.innerHTML='<div class="leer2">Noch leer.<br>Klick links auf <b>+</b>, um etwas zu essen.</div>'; }
+  if(!anzAlle){ L.innerHTML=`<div class="leer2">${T('plate_empty','Noch leer.<br>Klick links auf <b>+</b>, um etwas zu essen.')}</div>`; }
   else L.innerHTML=Object.keys(teller).map(id=>{const f=F(id),n=teller[id],ig=ignoriert[id];
-    return `<div class="li${ig?' ignoriert':''}${f.id===aktiv.id?' aktiv':''}" data-li="${id}"><span class="em">${f.emoji}</span><span class="nm">${f.name}${n>1?` <b>×${n}</b>`:''}
-      <small>${ig?'🚫 zählt heute nicht mit':`${Math.round(f.n.kcal*n)} kcal · ${Math.round(zuckerVon(f)*n)} g 🍬`}</small></span>
+    return `<div class="li${ig?' ignoriert':''}${f.id===aktiv.id?' aktiv':''}" data-li="${id}"><span class="em">${f.emoji}</span><span class="nm">${nameOf(f)}${n>1?` <b>×${n}</b>`:''}
+      <small>${ig?T('li_ignored','🚫 zählt heute nicht mit'):`${Math.round(f.n.kcal*n)} kcal · ${Math.round(zuckerVon(f)*n)} g 🍬`}</small></span>
       <button class="ig${ig?' an':''}" data-ig="${id}" title="${ig?'wieder mitzählen':'ignorieren — aus der Tagessumme ausschließen'}" aria-pressed="${ig?'true':'false'}">🚫</button>
       <button class="x" data-del="${id}" title="vom Teller nehmen">✕</button></div>`;}).join('');
   L.querySelectorAll('[data-del]').forEach(b=>b.onclick=e=>{e.stopPropagation();
@@ -931,19 +956,19 @@ function gross(){
   const {svg,luecken,s}=torte(true);
   document.getElementById('grosschart').innerHTML=svg;
   document.querySelector('.mbar .t').textContent = einzeln
-    ? `${aktiv.emoji} ${aktiv.name} — was drinsteckt` : '🥧 Dein Tag — was der Körper daraus bekommt';
-  document.getElementById('mstand').textContent=`${Math.round(s.kcal)} kcal · ${Math.round(s.zucker)} g Zucker · ${Math.round(s.natrium)} mg Salz`;
+    ? `${aktiv.emoji} ${nameOf(aktiv)} — ${T('modal_food','was drinsteckt')}` : T('modal_day','🥧 Dein Tag — was der Körper daraus bekommt');
+  document.getElementById('mstand').textContent=`${Math.round(s.kcal)} kcal · ${Math.round(s.zucker)} g ${T('w_sugar','Zucker')} · ${Math.round(s.natrium)} mg ${T('w_salt','Salz')}`;
   const L=document.getElementById('luecke');
   const anz=Object.values(teller).reduce((a,b)=>a+b,0);
   if(einzeln){
     const voll=SEG.filter(g=>(s[g.k]||0)/BED[g.k]*100>=100);
     L.innerHTML = voll.length
-      ? `<b>Deckt allein den ganzen Tag bei (${voll.length}):</b><br>`+voll.map(g=>`${g.em} ${g.lab}`).join(' · ')
-      : `<b>Kein Nährstoff wird allein davon voll.</b> Das ist normal — ein Tag braucht viele verschiedene Sachen.`;
+      ? `<b>${T('cover_full','Deckt allein den ganzen Tag bei')} (${voll.length}):</b><br>`+voll.map(g=>`${g.em} ${segLab(g)}`).join(' · ')
+      : `<b>${T('cover_none','Kein Nährstoff wird allein davon voll.')}</b> ${T('cover_none2','Das ist normal — ein Tag braucht viele verschiedene Sachen.')}`;
   }
-  else if(!anz) L.innerHTML='<b>Noch nichts gegessen.</b> Füg links mit <b>+</b> etwas hinzu — der Kreis füllt sich sofort.';
-  else if(!luecken.length) L.innerHTML='🎉 <b>Alles über 10 %!</b> Kein Nährstoff bleibt leer.';
-  else L.innerHTML=`<b>Fehlt noch fast ganz (${luecken.length}):</b><br>`+luecken.map(g=>`${g.em} ${g.lab}`).join(' · ');
+  else if(!anz) L.innerHTML=T('cover_empty','<b>Noch nichts gegessen.</b> Füg links mit <b>+</b> etwas hinzu — der Kreis füllt sich sofort.');
+  else if(!luecken.length) L.innerHTML=T('cover_ok','🎉 <b>Alles über 10 %!</b> Kein Nährstoff bleibt leer.');
+  else L.innerHTML=`<b>${T('cover_miss','Fehlt noch fast ganz')} (${luecken.length}):</b><br>`+luecken.map(g=>`${g.em} ${segLab(g)}`).join(' · ');
 }
 
 /* ---------- Picker ---------- */
@@ -951,18 +976,19 @@ let suchtext='';
 const normS=s=>s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
 function baue(){
   const grp={};
-  FOODS.filter(f=>!suchtext || normS(f.name).includes(suchtext) || normS(f.regal).includes(suchtext))
+  FOODS.filter(f=>!suchtext || normS(f.name).includes(suchtext) || normS(nameOf(f)).includes(suchtext)
+                  || normS(f.regal).includes(suchtext) || normS(shelfLab(f.regal)).includes(suchtext))
        .forEach(f=>{(grp[f.regal]=grp[f.regal]||[]).push(f);});
   const ORD=["🍞 Brot & Gebäck","🥣 Frühstück","🍎 Obst","🥬 Gemüse","🧀 Milch & Käse",
              "🍔 Fleisch & Fast Food","🍽️ Fertige Teller","🍦 Eis & Kuchen","🍫 Süßes",
              "🧈 Fette & Würze","🧃 Getränke","🥪 Gerichte"];
   let h='';
   ORD.forEach(r=>{ if(!grp[r])return;
-    h+=`<div class="grp">${r}</div>`;
+    h+=`<div class="grp">${shelfLab(r)}</div>`;
     grp[r].forEach(f=>{ const n=teller[f.id]||0;
       h+=`<div class="it${n?' drin':''}${f.id===aktiv.id?' aktiv':''}" data-id="${f.id}">
         <span class="em">${f.emoji}</span>
-        <span class="nm"><b>${f.name}</b><small>${f.portion} g · ${Math.round(f.n.kcal)} kcal</small></span>
+        <span class="nm"><b>${nameOf(f)}</b><small>${f.portion} g · ${Math.round(f.n.kcal)} kcal</small></span>
         <span class="pm">
           <button class="minus" data-m="${f.id}">−</button>
           <span class="z">${n||''}</span>
@@ -1024,17 +1050,17 @@ function tipAn(e,k,pct){
   const voll=pct>=100;
   TIP.style.setProperty('--tc',g.col);
   const stern = (zeigHilite && HILITE.has(k)) ? '⭐ ' : '';
-  let h=`<div class="h">${stern}${g.em} ${g.lab} <span style="margin-left:auto;font-family:'IBM Plex Mono';font-size:12px;color:${g.col}">${pct}%</span></div>`
-       +`<div class="f">${g.fun}</div>`;
+  let h=`<div class="h">${stern}${g.em} ${segLab(g)} <span style="margin-left:auto;font-family:'IBM Plex Mono';font-size:12px;color:${g.col}">${pct}%</span></div>`
+       +`<div class="f">${segFun(g)}</div>`;
   if(zeigHilite && HILITE_INFO[k]) h+=`<div class="hilitehint">⭐ ${HILITE_INFO[k]}</div>`;
-  if(voll){ h+=`<div class="voll">✅ Schon gedeckt — hier fehlt nichts mehr.</div>`; }
+  if(voll){ h+=`<div class="voll">${T('tip_full','✅ Schon gedeckt — hier fehlt nichts mehr.')}</div>`; }
   else{
     const t=TOP[k]||[];
-    if(!t.length) h+=`<div class="voll" style="color:var(--rot-tief)">⚠️ Dafür gibt es noch kein Lebensmittel.</div>`;
+    if(!t.length) h+=`<div class="voll" style="color:var(--rot-tief)">${T('tip_nofood','⚠️ Dafür gibt es noch kein Lebensmittel.')}</div>`;
     else{
-      h+=`<div class="st">Das würde helfen</div>`;
+      h+=`<div class="st">${T('tip_helps','Das würde helfen')}</div>`;
       t.forEach(x=>{const xf=F(x.id), xz=xf?zuckerVon(xf):x.zucker;
-        h+=`<div class="v"><span class="em">${x.emoji}</span><span class="n">${x.name}
+        h+=`<div class="v"><span class="em">${x.emoji}</span><span class="n">${xf?nameOf(xf):x.name}
         <small>${x.kcal} kcal${xz>2?` · ${Math.round(xz)} g 🍬`:''}</small></span><span class="p">+${x.pct}%</span></div>`;});
     }
   }
@@ -1165,15 +1191,96 @@ async function kiSuche(btn){
   }
 }
 
+/* ---------- KI-Übersetzung der Lebensmittel-Namen + „Wusstest du?"-Fakten ---------- */
+const LANGNAME={bar:'Bavarian (Bairisch)',mainz:'Mainz dialect (Mainzerisch)',hess:'Hessian (Hessisch)',
+  en:'English',es:'Spanish',fr:'French',it:'Italian',sv:'Swedish',no:'Norwegian (Bokmål)',fi:'Finnish',
+  he:'Hebrew',yi:'Yiddish',sjn:'Sindarin (Tolkien Elvish)'};
+const UEB_SCHEMA={type:'object',additionalProperties:false,properties:{items:{type:'array',items:{
+  type:'object',additionalProperties:false,
+  properties:{id:{type:'string'},name:{type:'string'},wd:{type:'array',items:{type:'string'}}},
+  required:['id','name','wd']}}},required:['items']};
+async function uebBatch(l,batch){
+  const src=batch.map(f=>({id:f.id, name:f.name, wd:(f.wd||[]).map(w=>w.text)}));
+  const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{
+    'content-type':'application/json','x-api-key':EINST.apiKey.trim(),
+    'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
+    body:JSON.stringify({model:'claude-opus-4-8',max_tokens:4000,
+      system:'You translate content for a children\'s nutrition learning game (target: a 7-year-old). '
+        +'Translate every "name" and every string in "wd" into '+LANGNAME[l]+'. '
+        +'Keep it simple, warm and child-friendly. IMPORTANT: preserve all HTML tags (e.g. <b>…</b>) '
+        +'and all emoji exactly as in the source. Keep parenthetical portion hints like "(klein)". '
+        +'Return the SAME ids and the SAME number of wd strings per item, in the same order.',
+      messages:[{role:'user',content:JSON.stringify({items:src})}],
+      output_config:{format:{type:'json_schema',schema:UEB_SCHEMA}}})});
+  if(!res.ok){ if(res.status===401) throw new Error('API-Key ungültig');
+    const e=await res.json().catch(()=>null);
+    throw new Error((e&&e.error&&e.error.message)?e.error.message.slice(0,80):('HTTP '+res.status)); }
+  const d=await res.json();
+  if(d.stop_reason==='refusal') throw new Error('Anfrage abgelehnt');
+  const t=(d.content||[]).find(b=>b.type==='text');
+  return JSON.parse(t.text).items||[];
+}
+async function uebersetzenFoods(btn){
+  const l=LANG; if(l==='de'||!kiKeyDa()) return;
+  const orig=btn.textContent; btn.disabled=true;
+  const store={}; const N=18; const total=Math.ceil(FOODS.length/N);
+  try{
+    for(let i=0;i<FOODS.length;i+=N){
+      btn.textContent=`🌍 ${Math.floor(i/N)+1}/${total} …`;
+      const items=await uebBatch(l,FOODS.slice(i,i+N));
+      items.forEach(it=>{ if(it&&it.id) store[it.id]={name:it.name, wd:Array.isArray(it.wd)?it.wd:[]}; });
+    }
+    try{localStorage.setItem('foodT_'+l,JSON.stringify(store))}catch(e){}
+    if(LANG===l){ FOODT=store; baue(); if(aktiv) zeichneFood(aktiv); render();
+      if(document.getElementById('modal').classList.contains('on')) gross(); }
+    btn.textContent='✅ '+Object.keys(store).length; setTimeout(()=>{btn.textContent=orig;btn.disabled=false;uebersetzenBtnSync();},1500);
+  }catch(e){ btn.textContent='❌ '+(e.message||'Fehler'); btn.disabled=false;
+    setTimeout(()=>{btn.textContent=orig;uebersetzenBtnSync();},2800); }
+}
+function uebDownload(){ if(LANG==='de')return;
+  const data=localStorage.getItem('foodT_'+LANG); if(!data)return;
+  const blob=new Blob([data],{type:'application/json'});
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob);
+  a.download='foods.'+LANG+'.json'; a.click(); setTimeout(()=>URL.revokeObjectURL(a.href),1000); }
+function uebersetzenBtnSync(){
+  const box=document.getElementById('uebbox'); if(!box) return;
+  const on = LANG!=='de';
+  box.classList.toggle('aus', !on);
+  if(!on) return;
+  const has = Object.keys(FOODT).length>0;
+  const btn=document.getElementById('uebbtn'), dl=document.getElementById('uebdl'), del=document.getElementById('uebdel');
+  const info=document.getElementById('uebinfo');
+  if(!kiKeyDa()){ btn.disabled=true; btn.textContent=T('ueb_needkey','🔑 KI-Key nötig (⚙️ oben)'); }
+  else { btn.disabled=false; btn.textContent = has ? T('ueb_btn_re','🔄 Neu übersetzen') : T('ueb_btn','🌍 Mit KI übersetzen'); }
+  dl.classList.toggle('aus', !has);
+  del.classList.toggle('aus', !has);
+  if(info) info.textContent = has ? T('ueb_have','✅ Namen & Fakten sind übersetzt.') : T('ueb_info','🍎 Lebensmittel-Namen & Fakten übersetzen (braucht KI-Key)');
+}
+
 /* ---------- Einstellungen: Persistenz + Dialog + Vollbild ---------- */
 const EINST=(()=>{try{return JSON.parse(localStorage.getItem('einstellungen')||'{}')}catch(e){return{}}})();
 
 /* ---------- Mehrsprachigkeit (Default Deutsch, Rest aus i18n.json) ---------- */
 let LANG='de', I18N=null;
 function T(k,de){ const d=(LANG!=='de'&&I18N)?I18N[LANG]:null; return (d&&d[k]!=null)?d[k]:de; }
+function TF(k,de,vars){ let s=T(k,de); for(const p in vars) s=s.split('{'+p+'}').join(vars[p]); return s; }
+/* Daten-Übersetzung: Regale + Segmente (aus i18n.json _shelves / _seg) */
+const _langData=()=>(LANG!=='de'&&I18N)?I18N[LANG]:null;
+function shelfLab(r){ const d=_langData(); return (d&&d._shelves&&d._shelves[r])||r; }
+function segLab(g){ const d=_langData(); const s=d&&d._seg&&d._seg[g.k]; return (s&&s.lab)||g.lab; }
+function segFun(g){ const d=_langData(); const s=d&&d._seg&&d._seg[g.k]; return (s&&s.fun)||g.fun; }
+/* Lebensmittel-Namen + „Wusstest du?"-Fakten übersetzen (KI, in localStorage) */
+let FOODT={};
+function foodTLoad(l){ FOODT={}; if(!l||l==='de')return;
+  try{FOODT=JSON.parse(localStorage.getItem('foodT_'+l)||'{}')}catch(e){FOODT={}} }
+function nameOf(f){ const t=FOODT[f.id]; return (t&&t.name)||f.name; }
+function factsOf(f){ const L=f.wd||[], t=FOODT[f.id];
+  if(!t||!t.wd) return L;
+  return L.map((w,i)=> t.wd[i]!=null ? Object.assign({},w,{text:t.wd[i]}) : w); }
 function i18nInit(){
   document.querySelectorAll('[data-i18n]').forEach(el=>{ if(el.dataset.i18nDe===undefined) el.dataset.i18nDe=el.textContent; });
   document.querySelectorAll('[data-i18n-ph]').forEach(el=>{ if(el.dataset.i18nPhDe===undefined) el.dataset.i18nPhDe=el.getAttribute('placeholder')||''; });
+  document.querySelectorAll('[data-i18n-html]').forEach(el=>{ if(el.dataset.i18nHtmlDe===undefined) el.dataset.i18nHtmlDe=el.innerHTML.trim(); });
 }
 function applyLang(l){
   LANG=l;
@@ -1183,8 +1290,13 @@ function applyLang(l){
   const d=(l!=='de'&&I18N)?I18N[l]:null;
   document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.dataset.i18n; el.textContent=(d&&d[k]!=null)?d[k]:el.dataset.i18nDe;});
   document.querySelectorAll('[data-i18n-ph]').forEach(el=>{const k=el.dataset.i18nPh; el.setAttribute('placeholder',(d&&d[k]!=null)?d[k]:el.dataset.i18nPhDe);});
-  if(typeof render==='function') render();
+  document.querySelectorAll('[data-i18n-html]').forEach(el=>{const k=el.dataset.i18nHtml; el.innerHTML=(d&&d[k]!=null)?d[k]:el.dataset.i18nHtmlDe;});
+  foodTLoad(l);
   if(typeof baue==='function') baue();
+  if(typeof aktiv==='object' && aktiv && typeof zeichneFood==='function') zeichneFood(aktiv);
+  if(typeof render==='function') render();
+  if(typeof uebersetzenBtnSync==='function') uebersetzenBtnSync();
+  if(document.getElementById('modal').classList.contains('on') && typeof gross==='function') gross();
 }
 const einstMerk=(k,v)=>{EINST[k]=v;try{localStorage.setItem('einstellungen',JSON.stringify(EINST))}catch(e){}};
 
@@ -1218,7 +1330,7 @@ if(EINST.bgop!==undefined){document.getElementById('optbg').value=Math.round(EIN
 
 const KEYFELD=document.getElementById('optkey');
 if(EINST.apiKey) KEYFELD.value=EINST.apiKey;
-KEYFELD.onchange=()=>{ einstMerk('apiKey', KEYFELD.value.trim()||undefined); baue(); };
+KEYFELD.onchange=()=>{ einstMerk('apiKey', KEYFELD.value.trim()||undefined); baue(); uebersetzenBtnSync(); };
 
 /* CSS-Zoom in Stufen von 10 % (60–160 %) */
 let zoomWert=EINST.zoom||1;
@@ -1235,6 +1347,15 @@ const setmodal=document.getElementById('setmodal');
 document.getElementById('setbtn').onclick=()=>setmodal.classList.add('on');
 document.getElementById('setzu').onclick=()=>setmodal.classList.remove('on');
 setmodal.onclick=e=>{if(e.target===setmodal)setmodal.classList.remove('on');};
+
+/* Übersetzungs-Buttons */
+document.getElementById('uebbtn').onclick=e=>uebersetzenFoods(e.currentTarget);
+document.getElementById('uebdl').onclick=uebDownload;
+document.getElementById('uebdel').onclick=()=>{ if(LANG==='de')return;
+  try{localStorage.removeItem('foodT_'+LANG)}catch(e){}
+  FOODT={}; baue(); if(aktiv) zeichneFood(aktiv); render();
+  if(document.getElementById('modal').classList.contains('on')) gross();
+  uebersetzenBtnSync(); };
 
 const fsbtn=document.getElementById('fsbtn');
 fsbtn.onclick=()=>{ if(document.fullscreenElement) document.exitFullscreen();
@@ -1273,8 +1394,9 @@ const LSEL=document.getElementById('optlang');
 LANG = (EINST.lang && document.querySelector(`#optlang option[value="${EINST.lang}"]`)) ? EINST.lang : 'de';
 LSEL.value=LANG;
 LSEL.onchange=()=>{ einstMerk('lang',LSEL.value); applyLang(LSEL.value); };
-if(LANG!=='de') applyLang(LANG);   // zeigt bis zum Laden Deutsch, dann Übersetzung
-fetch('i18n.json').then(r=>r.json()).then(j=>{ I18N=j; if(LANG!=='de') applyLang(LANG); }).catch(()=>{});
+foodTLoad(LANG); uebersetzenBtnSync();
+if(LANG!=='de'){ baue(); if(aktiv) zeichneFood(aktiv); render(); applyLang(LANG); }   // zeigt bis zum Laden Deutsch, dann Übersetzung
+fetch('i18n.json').then(r=>r.json()).then(j=>{ I18N=j; applyLang(LANG); }).catch(()=>{});
 </script>
 </body>
 </html>
