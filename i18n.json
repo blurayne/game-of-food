@@ -22,7 +22,7 @@
   "set_hilite": "⭐ Highlight key micros",
   "set_bg": "🖼️ Background",
   "set_zoom": "🔎 Zoom",
-  "set_ai": "🤖 AI lookup",
+  "set_ai": "🤖 AI provider",
   "stand_empty": "Nothing on the plate yet",
   "center_day": "Daily coverage",
   "center_food": "This food",
@@ -190,7 +190,12 @@
   "key_invalid": "Key invalid",
   "key_none": "⚠️ No API key entered.",
   "key_neterr": "Network error",
-  "key_credit_hint": "ℹ️ The key is <b>valid</b>, but the Anthropic account has no API credit. Check in the <b>Console</b>: correct <b>organization</b> (top left), credit actually <b>purchased</b> (not just a card added) and the workspace <b>spend limit</b> &gt; 0. API credit is separate from Claude&nbsp;Pro / claude.ai."
+  "key_credit_hint": "ℹ️ The key is <b>valid</b>, but the Anthropic account has no API credit. Check in the <b>Console</b>: correct <b>organization</b> (top left), credit actually <b>purchased</b> (not just a card added) and the workspace <b>spend limit</b> &gt; 0. API credit is separate from Claude&nbsp;Pro / claude.ai.",
+  "set_ai_s": "Your own API key — stays only in this browser (localStorage), saved per provider. Called directly from the browser: the provider must allow CORS (Anthropic & Gemini do).",
+  "model_ph": "Model name",
+  "endpoint_ph": "Endpoint URL",
+  "key_getlink": "🔑 Get API key ↗ ({host})",
+  "key_bill_hint": "ℹ️ The key is valid, but the provider account has no credit/quota. In the provider account (same organization) check credit/billing and a spend limit &gt; 0. API credit is separate from chat plans like Claude&nbsp;Pro / ChatGPT&nbsp;Plus."
  },
  "es": {
   "title": "🍽️ Día de Energía — Planificador diario",
@@ -215,7 +220,7 @@
   "set_hilite": "⭐ Resaltar micros clave",
   "set_bg": "🖼️ Fondo",
   "set_zoom": "🔎 Zoom",
-  "set_ai": "🤖 Consulta con IA",
+  "set_ai": "🤖 Proveedor de IA",
   "stand_empty": "Aún no hay nada en el plato",
   "center_day": "Cobertura diaria",
   "center_food": "Este alimento",
@@ -383,7 +388,12 @@
   "key_invalid": "Clave inválida",
   "key_none": "⚠️ No se introdujo ninguna clave API.",
   "key_neterr": "Error de red",
-  "key_credit_hint": "ℹ️ La clave es <b>válida</b>, pero la cuenta de Anthropic no tiene saldo de API. Comprueba en la <b>Consola</b>: la <b>organización</b> correcta (arriba a la izquierda), que el saldo se haya <b>comprado</b> de verdad (no solo añadir tarjeta) y el <b>límite de gasto</b> del workspace &gt; 0. El saldo de API es independiente de Claude&nbsp;Pro / claude.ai."
+  "key_credit_hint": "ℹ️ La clave es <b>válida</b>, pero la cuenta de Anthropic no tiene saldo de API. Comprueba en la <b>Consola</b>: la <b>organización</b> correcta (arriba a la izquierda), que el saldo se haya <b>comprado</b> de verdad (no solo añadir tarjeta) y el <b>límite de gasto</b> del workspace &gt; 0. El saldo de API es independiente de Claude&nbsp;Pro / claude.ai.",
+  "set_ai_s": "Tu propia clave API — se queda solo en este navegador (localStorage), guardada por proveedor. Se llama directo desde el navegador: el proveedor debe permitir CORS (Anthropic y Gemini lo hacen).",
+  "model_ph": "Nombre del modelo",
+  "endpoint_ph": "URL del endpoint",
+  "key_getlink": "🔑 Obtener clave API ↗ ({host})",
+  "key_bill_hint": "ℹ️ La clave es válida, pero la cuenta del proveedor no tiene saldo/cuota. En la cuenta del proveedor (misma organización) revisa saldo/facturación y un límite de gasto &gt; 0. El saldo de API es independiente de planes de chat como Claude&nbsp;Pro / ChatGPT&nbsp;Plus."
  },
  "fr": {
   "title": "🍽️ Jour d'Énergie — Planificateur",
@@ -408,7 +418,7 @@
   "set_hilite": "⭐ Surligner les micros clés",
   "set_bg": "🖼️ Fond",
   "set_zoom": "🔎 Zoom",
-  "set_ai": "🤖 Recherche IA",
+  "set_ai": "🤖 Fournisseur IA",
   "stand_empty": "Rien dans l'assiette pour l'instant",
   "center_day": "Couverture du jour",
   "center_food": "Cet aliment",
@@ -576,7 +586,12 @@
   "key_invalid": "Clé invalide",
   "key_none": "⚠️ Aucune clé API saisie.",
   "key_neterr": "Erreur réseau",
-  "key_credit_hint": "ℹ️ La clé est <b>valide</b>, mais le compte Anthropic n’a pas de crédit API. Vérifie dans la <b>Console</b> : la bonne <b>organisation</b> (en haut à gauche), un crédit réellement <b>acheté</b> (pas seulement une carte ajoutée) et la <b>limite de dépense</b> du workspace &gt; 0. Le crédit API est distinct de Claude&nbsp;Pro / claude.ai."
+  "key_credit_hint": "ℹ️ La clé est <b>valide</b>, mais le compte Anthropic n’a pas de crédit API. Vérifie dans la <b>Console</b> : la bonne <b>organisation</b> (en haut à gauche), un crédit réellement <b>acheté</b> (pas seulement une carte ajoutée) et la <b>limite de dépense</b> du workspace &gt; 0. Le crédit API est distinct de Claude&nbsp;Pro / claude.ai.",
+  "set_ai_s": "Ta propre clé API — reste uniquement dans ce navigateur (localStorage), enregistrée par fournisseur. Appelée directement depuis le navigateur : le fournisseur doit autoriser CORS (Anthropic et Gemini le font).",
+  "model_ph": "Nom du modèle",
+  "endpoint_ph": "URL du endpoint",
+  "key_getlink": "🔑 Obtenir une clé API ↗ ({host})",
+  "key_bill_hint": "ℹ️ La clé est valide, mais le compte du fournisseur n’a pas de crédit/quota. Dans le compte du fournisseur (même organisation) vérifie crédit/facturation et une limite de dépense &gt; 0. Le crédit API est distinct des abonnements chat comme Claude&nbsp;Pro / ChatGPT&nbsp;Plus."
  },
  "it": {
   "title": "🍽️ Giorno di Energia — Pianificatore",
@@ -601,7 +616,7 @@
   "set_hilite": "⭐ Evidenzia micro chiave",
   "set_bg": "🖼️ Sfondo",
   "set_zoom": "🔎 Zoom",
-  "set_ai": "🤖 Ricerca IA",
+  "set_ai": "🤖 Fornitore IA",
   "stand_empty": "Ancora niente nel piatto",
   "center_day": "Copertura del giorno",
   "center_food": "Questo cibo",
@@ -769,7 +784,12 @@
   "key_invalid": "Chiave non valida",
   "key_none": "⚠️ Nessuna chiave API inserita.",
   "key_neterr": "Errore di rete",
-  "key_credit_hint": "ℹ️ La chiave è <b>valida</b>, ma l’account Anthropic non ha credito API. Controlla nella <b>Console</b>: l’<b>organizzazione</b> giusta (in alto a sinistra), il credito davvero <b>acquistato</b> (non solo carta aggiunta) e il <b>limite di spesa</b> del workspace &gt; 0. Il credito API è separato da Claude&nbsp;Pro / claude.ai."
+  "key_credit_hint": "ℹ️ La chiave è <b>valida</b>, ma l’account Anthropic non ha credito API. Controlla nella <b>Console</b>: l’<b>organizzazione</b> giusta (in alto a sinistra), il credito davvero <b>acquistato</b> (non solo carta aggiunta) e il <b>limite di spesa</b> del workspace &gt; 0. Il credito API è separato da Claude&nbsp;Pro / claude.ai.",
+  "set_ai_s": "La tua chiave API — resta solo in questo browser (localStorage), salvata per fornitore. Chiamata direttamente dal browser: il fornitore deve permettere il CORS (Anthropic e Gemini lo fanno).",
+  "model_ph": "Nome del modello",
+  "endpoint_ph": "URL endpoint",
+  "key_getlink": "🔑 Ottieni chiave API ↗ ({host})",
+  "key_bill_hint": "ℹ️ La chiave è valida, ma l’account del fornitore non ha credito/quota. Nell’account del fornitore (stessa organizzazione) controlla credito/fatturazione e un limite di spesa &gt; 0. Il credito API è separato dagli abbonamenti chat come Claude&nbsp;Pro / ChatGPT&nbsp;Plus."
  },
  "sv": {
   "title": "🍽️ Energidag — Dagsplanerare",
@@ -794,7 +814,7 @@
   "set_hilite": "⭐ Markera viktiga mikro",
   "set_bg": "🖼️ Bakgrund",
   "set_zoom": "🔎 Zoom",
-  "set_ai": "🤖 AI-uppslag",
+  "set_ai": "🤖 AI-leverantör",
   "stand_empty": "Inget på tallriken än",
   "center_day": "Dagstäckning",
   "center_food": "Denna mat",
@@ -962,7 +982,12 @@
   "key_invalid": "Ogiltig nyckel",
   "key_none": "⚠️ Ingen API-nyckel angiven.",
   "key_neterr": "Nätverksfel",
-  "key_credit_hint": "ℹ️ Nyckeln är <b>giltig</b>, men Anthropic-kontot har inget API-saldo. Kontrollera i <b>Console</b>: rätt <b>organisation</b> (uppe till vänster), att saldo verkligen <b>köpts</b> (inte bara kort tillagt) och workspacets <b>utgiftsgräns</b> &gt; 0. API-saldo är skilt från Claude&nbsp;Pro / claude.ai."
+  "key_credit_hint": "ℹ️ Nyckeln är <b>giltig</b>, men Anthropic-kontot har inget API-saldo. Kontrollera i <b>Console</b>: rätt <b>organisation</b> (uppe till vänster), att saldo verkligen <b>köpts</b> (inte bara kort tillagt) och workspacets <b>utgiftsgräns</b> &gt; 0. API-saldo är skilt från Claude&nbsp;Pro / claude.ai.",
+  "set_ai_s": "Din egen API-nyckel — stannar bara i denna webbläsare (localStorage), sparad per leverantör. Anropas direkt från webbläsaren: leverantören måste tillåta CORS (Anthropic & Gemini gör det).",
+  "model_ph": "Modellnamn",
+  "endpoint_ph": "Endpoint-URL",
+  "key_getlink": "🔑 Hämta API-nyckel ↗ ({host})",
+  "key_bill_hint": "ℹ️ Nyckeln är giltig, men leverantörskontot har inget saldo/kvot. Kontrollera saldo/fakturering och en utgiftsgräns &gt; 0 i leverantörskontot (samma organisation). API-saldo är skilt från chattabonnemang som Claude&nbsp;Pro / ChatGPT&nbsp;Plus."
  },
  "no": {
   "title": "🍽️ Energidag — Dagsplanlegger",
@@ -987,7 +1012,7 @@
   "set_hilite": "⭐ Uthev viktige mikro",
   "set_bg": "🖼️ Bakgrunn",
   "set_zoom": "🔎 Zoom",
-  "set_ai": "🤖 AI-oppslag",
+  "set_ai": "🤖 KI-leverandør",
   "stand_empty": "Ingenting på tallerkenen ennå",
   "center_day": "Dagsdekning",
   "center_food": "Denne maten",
@@ -1155,7 +1180,12 @@
   "key_invalid": "Ugyldig nøkkel",
   "key_none": "⚠️ Ingen API-nøkkel angitt.",
   "key_neterr": "Nettverksfeil",
-  "key_credit_hint": "ℹ️ Nøkkelen er <b>gyldig</b>, men Anthropic-kontoen har ingen API-saldo. Sjekk i <b>Console</b>: riktig <b>organisasjon</b> (øverst til venstre), at saldo faktisk er <b>kjøpt</b> (ikke bare kort lagt til) og workspacets <b>forbruksgrense</b> &gt; 0. API-saldo er atskilt fra Claude&nbsp;Pro / claude.ai."
+  "key_credit_hint": "ℹ️ Nøkkelen er <b>gyldig</b>, men Anthropic-kontoen har ingen API-saldo. Sjekk i <b>Console</b>: riktig <b>organisasjon</b> (øverst til venstre), at saldo faktisk er <b>kjøpt</b> (ikke bare kort lagt til) og workspacets <b>forbruksgrense</b> &gt; 0. API-saldo er atskilt fra Claude&nbsp;Pro / claude.ai.",
+  "set_ai_s": "Din egen API-nøkkel — blir bare i denne nettleseren (localStorage), lagret per leverandør. Kalles direkte fra nettleseren: leverandøren må tillate CORS (Anthropic & Gemini gjør det).",
+  "model_ph": "Modellnavn",
+  "endpoint_ph": "Endpoint-URL",
+  "key_getlink": "🔑 Hent API-nøkkel ↗ ({host})",
+  "key_bill_hint": "ℹ️ Nøkkelen er gyldig, men leverandørkontoen har ingen saldo/kvote. Sjekk saldo/fakturering og en forbruksgrense &gt; 0 i leverandørkontoen (samme organisasjon). API-saldo er atskilt fra chat-abonnement som Claude&nbsp;Pro / ChatGPT&nbsp;Plus."
  },
  "fi": {
   "title": "🍽️ Energiapäivä — Päiväsuunnittelija",
@@ -1180,7 +1210,7 @@
   "set_hilite": "⭐ Korosta tärkeät hivenaineet",
   "set_bg": "🖼️ Tausta",
   "set_zoom": "🔎 Zoomaus",
-  "set_ai": "🤖 Tekoälyhaku",
+  "set_ai": "🤖 Tekoälytarjoaja",
   "stand_empty": "Lautasella ei vielä mitään",
   "center_day": "Päivän kattavuus",
   "center_food": "Tämä ruoka",
@@ -1348,7 +1378,12 @@
   "key_invalid": "Virheellinen avain",
   "key_none": "⚠️ API-avainta ei annettu.",
   "key_neterr": "Verkkovirhe",
-  "key_credit_hint": "ℹ️ Avain on <b>kelvollinen</b>, mutta Anthropic-tilillä ei ole API-saldoa. Tarkista <b>Consolessa</b>: oikea <b>organisaatio</b> (ylhäällä vasemmalla), että saldo on todella <b>ostettu</b> (ei vain lisätty korttia) ja työtilan <b>kulutusraja</b> &gt; 0. API-saldo on erillään Claude&nbsp;Pro / claude.ai -tilistä."
+  "key_credit_hint": "ℹ️ Avain on <b>kelvollinen</b>, mutta Anthropic-tilillä ei ole API-saldoa. Tarkista <b>Consolessa</b>: oikea <b>organisaatio</b> (ylhäällä vasemmalla), että saldo on todella <b>ostettu</b> (ei vain lisätty korttia) ja työtilan <b>kulutusraja</b> &gt; 0. API-saldo on erillään Claude&nbsp;Pro / claude.ai -tilistä.",
+  "set_ai_s": "Oma API-avaimesi — pysyy vain tässä selaimessa (localStorage), tallennettu tarjoajakohtaisesti. Kutsutaan suoraan selaimesta: tarjoajan on sallittava CORS (Anthropic ja Gemini sallivat).",
+  "model_ph": "Mallin nimi",
+  "endpoint_ph": "Endpoint-URL",
+  "key_getlink": "🔑 Hae API-avain ↗ ({host})",
+  "key_bill_hint": "ℹ️ Avain on kelvollinen, mutta tarjoajan tilillä ei ole saldoa/kiintiötä. Tarkista tarjoajan tililtä (sama organisaatio) saldo/laskutus ja kulutusraja &gt; 0. API-saldo on erillään chat-tilauksista kuten Claude&nbsp;Pro / ChatGPT&nbsp;Plus."
  },
  "he": {
   "title": "🍽️ יום אנרגיה — מתכנן יומי",
@@ -1373,7 +1408,7 @@
   "set_hilite": "⭐ הדגש מיקרו חשובים",
   "set_bg": "🖼️ רקע",
   "set_zoom": "🔎 זום",
-  "set_ai": "🤖 חיפוש בינה מלאכותית",
+  "set_ai": "🤖 ספק בינה",
   "stand_empty": "עדיין אין כלום בצלחת",
   "center_day": "כיסוי יומי",
   "center_food": "מאכל זה",
@@ -1541,7 +1576,12 @@
   "key_invalid": "מפתח לא תקין",
   "key_none": "⚠️ לא הוזן מפתח API.",
   "key_neterr": "שגיאת רשת",
-  "key_credit_hint": "ℹ️ המפתח <b>תקין</b>, אבל בחשבון Anthropic אין יתרת API. בדקו ב-<b>Console</b>: <b>ארגון</b> נכון (למעלה משמאל), שהיתרה באמת <b>נרכשה</b> (לא רק הוספת כרטיס) ו<b>מגבלת ההוצאה</b> של סביבת העבודה &gt; 0. יתרת API נפרדת מ-Claude&nbsp;Pro / claude.ai."
+  "key_credit_hint": "ℹ️ המפתח <b>תקין</b>, אבל בחשבון Anthropic אין יתרת API. בדקו ב-<b>Console</b>: <b>ארגון</b> נכון (למעלה משמאל), שהיתרה באמת <b>נרכשה</b> (לא רק הוספת כרטיס) ו<b>מגבלת ההוצאה</b> של סביבת העבודה &gt; 0. יתרת API נפרדת מ-Claude&nbsp;Pro / claude.ai.",
+  "set_ai_s": "מפתח API משלך — נשאר רק בדפדפן הזה (localStorage), נשמר לכל ספק. נקרא ישירות מהדפדפן: הספק חייב לאפשר CORS (Anthropic ו-Gemini מאפשרים).",
+  "model_ph": "שם הדגם",
+  "endpoint_ph": "כתובת Endpoint",
+  "key_getlink": "🔑 קבל מפתח API ↗ ({host})",
+  "key_bill_hint": "ℹ️ המפתח תקין, אבל בחשבון הספק אין יתרה/מכסה. בחשבון הספק (אותו ארגון) בדקו יתרה/חיוב ומגבלת הוצאה &gt; 0. יתרת API נפרדת ממנויי צ׳אט כמו Claude&nbsp;Pro / ChatGPT&nbsp;Plus."
  },
  "yi": {
   "title": "🍽️ ענערגיע־טאָג — טאָג־פּלאַנער",
@@ -1566,7 +1606,7 @@
   "set_hilite": "⭐ אונטערשטרײַכן וויכטיקע מיקראָ",
   "set_bg": "🖼️ הינטערגרונט",
   "set_zoom": "🔎 זום",
-  "set_ai": "🤖 קי־זוכן",
+  "set_ai": "🤖 KI־פֿאַרזאָרגער",
   "stand_empty": "נאָך גאָרנישט אויפֿן טעלער",
   "center_day": "טאָג־דעקונג",
   "center_food": "דאָס עסן",
@@ -1734,7 +1774,12 @@
   "key_invalid": "שליסל אומגילטיק",
   "key_none": "⚠️ קײן API־שליסל אײַנגעגעבן.",
   "key_neterr": "נעץ־פֿעלער",
-  "key_credit_hint": "ℹ️ דער שליסל איז <b>גילטיק</b>, אָבער דער Anthropic־קאָנטע האָט קײן API־גוטהאָבן. קוקט אין דער <b>Console</b>: ריכטיקע <b>אָרגאַניזאַציע</b> (אויבן לינקס), אַז דאָס גוטהאָבן איז טאַקע <b>געקויפֿט</b> (נישט בלויז אַ קאַרטל צוגעלייגט) און דער <b>אויסגאַב־גרענעץ</b> פֿון דער וואָרקספּעйс &gt; 0. API־גוטהאָבן איז באַזונדער פֿון Claude&nbsp;Pro / claude.ai."
+  "key_credit_hint": "ℹ️ דער שליסל איז <b>גילטיק</b>, אָבער דער Anthropic־קאָנטע האָט קײן API־גוטהאָבן. קוקט אין דער <b>Console</b>: ריכטיקע <b>אָרגאַניזאַציע</b> (אויבן לינקס), אַז דאָס גוטהאָבן איז טאַקע <b>געקויפֿט</b> (נישט בלויז אַ קאַרטל צוגעלייגט) און דער <b>אויסגאַב־גרענעץ</b> פֿון דער וואָרקספּעйс &gt; 0. API־גוטהאָבן איז באַזונדער פֿון Claude&nbsp;Pro / claude.ai.",
+  "set_ai_s": "אײַער אײגענער API־שליסל — בלײַבט נאָר אין דעם בראַוזער (localStorage), געהיט פֿאַר יעדן פֿאַרזאָרגער. גערופֿן גלײַך פֿונעם בראַוזער: דער פֿאַרזאָרגער מוז דערלויבן CORS (Anthropic און Gemini טוען).",
+  "model_ph": "מאָדעל־נאָמען",
+  "endpoint_ph": "Endpoint־URL",
+  "key_getlink": "🔑 קריגט API־שליסל ↗ ({host})",
+  "key_bill_hint": "ℹ️ דער שליסל איז גילטיק, אָבער בײַם פֿאַרזאָרגער פֿעלט גוטהאָבן/קװאָטע. אין פֿאַרזאָרגער־קאָנטע (זעלביקע אָרגאַניזאַציע) קוקט גוטהאָבן/בילינג און אַן אויסגאַב־גרענעץ &gt; 0. API־גוטהאָבן איז באַזונדער פֿון טשאַט־אַבאָס װי Claude&nbsp;Pro / ChatGPT&nbsp;Plus."
  },
  "sjn": {
   "title": "🍽️ Aur en-Vellas — Govaded Aur",
@@ -1759,7 +1804,7 @@
   "set_hilite": "⭐ Calen i-vinn beleg",
   "set_bg": "🖼️ Adel",
   "set_zoom": "🔎 Beleg/Tithen",
-  "set_ai": "🤖 Ceno na-nûr",
+  "set_ai": "🤖 Atton-nûr",
   "stand_empty": "Ú-nad na i-basar",
   "center_day": "Panrad en-aur",
   "center_food": "I-vast hen",
@@ -1927,7 +1972,12 @@
   "key_invalid": "Pân ú-vaer",
   "key_none": "⚠️ Ú-bân API annen.",
   "key_neterr": "Delu na-nûr",
-  "key_credit_hint": "ℹ️ I-bân <b>vaer</b>, dan i-gonath Anthropic ú-mîr API. Tíro vi <b>Console</b>: i-<b>gonath</b> vaer (or-forven), i-mîr <b>bangannen</b> (ú-eriol i-cardol) a i-<b>ided-vangad</b> en-workspace &gt; 0. Mîr API sen o Claude&nbsp;Pro / claude.ai."
+  "key_credit_hint": "ℹ️ I-bân <b>vaer</b>, dan i-gonath Anthropic ú-mîr API. Tíro vi <b>Console</b>: i-<b>gonath</b> vaer (or-forven), i-mîr <b>bangannen</b> (ú-eriol i-cardol) a i-<b>ided-vangad</b> en-workspace &gt; 0. Mîr API sen o Claude&nbsp;Pro / claude.ai.",
+  "set_ai_s": "I-bân API lín — dortha erui vi i-govfaded (localStorage), heria na pân attan. Cannen o i-govfaded: i-attan baur dholo CORS (Anthropic a Gemini dholthar).",
+  "model_ph": "Eneth i-hos",
+  "endpoint_ph": "URL en-endpoint",
+  "key_getlink": "🔑 Garo bân API ↗ ({host})",
+  "key_bill_hint": "ℹ️ I-bân vaer, dan i-gonath en-attan ú-mîr/ú-rest. Vi i-gonath (i-gonath vin) tíro mîr/canad a ided-vangad &gt; 0. Mîr API sen o attpath-govaded sui Claude&nbsp;Pro / ChatGPT&nbsp;Plus."
  },
  "bar": {
   "title": "🍽️ Energie-Dog — Dogsplaner",
@@ -1952,7 +2002,7 @@
   "set_hilite": "⭐ Wichtige Mikros hervoheim",
   "set_bg": "🖼️ Hintagrund",
   "set_zoom": "🔎 Zoom",
-  "set_ai": "🤖 KI-Nochschaung",
+  "set_ai": "🤖 KI-Anbieter",
   "stand_empty": "No nix am Teller",
   "center_day": "Dogsdeckung",
   "center_food": "Des Essn",
@@ -2120,7 +2170,12 @@
   "key_invalid": "Schlissl ungüiti",
   "key_none": "⚠️ Koa API-Schlissl eigebn.",
   "key_neterr": "Netzwerkfeoler",
-  "key_credit_hint": "ℹ️ Da Key is <b>güiti</b>, aba des Anthropic-Konto hod koa API-Guthaben. In da <b>Console</b> schaung: richtige <b>Organisation</b> (obn links), Guthaben wiaklich <b>kafft</b> (ned bloß a Kartn hinterlegt) und des <b>Ausgabelimit</b> vo da Workspace &gt; 0. API-Guthaben is getrennt vo Claude&nbsp;Pro / claude.ai."
+  "key_credit_hint": "ℹ️ Da Key is <b>güiti</b>, aba des Anthropic-Konto hod koa API-Guthaben. In da <b>Console</b> schaung: richtige <b>Organisation</b> (obn links), Guthaben wiaklich <b>kafft</b> (ned bloß a Kartn hinterlegt) und des <b>Ausgabelimit</b> vo da Workspace &gt; 0. API-Guthaben is getrennt vo Claude&nbsp;Pro / claude.ai.",
+  "set_ai_s": "Dei eigna API-Key — bleibt bloß in dem Browser (localStorage), pro Anbieter gspeichert. Direkt ausm Browser aufgruaffa: da Anbieter muass CORS erlaam (Anthropic & Gemini doans).",
+  "model_ph": "Modöi-Nam",
+  "endpoint_ph": "Endpoint-URL",
+  "key_getlink": "🔑 API-Key hoin ↗ ({host})",
+  "key_bill_hint": "ℹ️ Da Key is güiti, aba beim Anbieter fäht Guthaben/Kontingent. Im Anbieter-Konto (gleiche Organisation) Guthaben/Billing und a Ausgabelimit &gt; 0 schaung. API-Guthaben is getrennt vo Chat-Abos wia Claude&nbsp;Pro / ChatGPT&nbsp;Plus."
  },
  "mainz": {
   "title": "🍽️ Energie-Daach — Daachsplaner",
@@ -2145,7 +2200,7 @@
   "set_hilite": "⭐ Wischtische Mikros hervorhewe",
   "set_bg": "🖼️ Hintergrund",
   "set_zoom": "🔎 Zoom",
-  "set_ai": "🤖 KI-Nochgucke",
+  "set_ai": "🤖 KI-Anbieter",
   "stand_empty": "Noch nix uffm Teller",
   "center_day": "Daachsdeckung",
   "center_food": "Des Esse",
@@ -2313,7 +2368,12 @@
   "key_invalid": "Schlissel ungildisch",
   "key_none": "⚠️ Kaa API-Schlissel aagebe.",
   "key_neterr": "Netzwerkfehler",
-  "key_credit_hint": "ℹ️ Der Key is <b>gildisch</b>, awwer des Anthropic-Konto hat kaa API-Guthabe. In de <b>Console</b> gucke: richtische <b>Organisation</b> (owwe links), Guthabe wärklisch <b>gekaaft</b> (net nur e Kart hinnerlescht) un es <b>Ausgabelimit</b> vun de Workspace &gt; 0. API-Guthabe is getrennt vun Claude&nbsp;Pro / claude.ai."
+  "key_credit_hint": "ℹ️ Der Key is <b>gildisch</b>, awwer des Anthropic-Konto hat kaa API-Guthabe. In de <b>Console</b> gucke: richtische <b>Organisation</b> (owwe links), Guthabe wärklisch <b>gekaaft</b> (net nur e Kart hinnerlescht) un es <b>Ausgabelimit</b> vun de Workspace &gt; 0. API-Guthabe is getrennt vun Claude&nbsp;Pro / claude.ai.",
+  "set_ai_s": "Dei eischener API-Key — bleibt nur in dem Browser (localStorage), pro Anbieter gespeichert. Direkt ausm Browser uffgeruffe: der Anbieter muss CORS erlaawe (Anthropic & Gemini mache des).",
+  "model_ph": "Modell-Name",
+  "endpoint_ph": "Endpoint-URL",
+  "key_getlink": "🔑 API-Key hole ↗ ({host})",
+  "key_bill_hint": "ℹ️ Der Key is gildisch, awwer beim Anbieter fehlt Guthabe/Kontingent. Im Anbieter-Konto (gleiche Organisation) Guthabe/Billing un e Ausgabelimit &gt; 0 gucke. API-Guthabe is getrennt vun Chat-Abos wie Claude&nbsp;Pro / ChatGPT&nbsp;Plus."
  },
  "hess": {
   "title": "🍽️ Energie-Daach — Daachesplaner",
@@ -2338,7 +2398,7 @@
   "set_hilite": "⭐ Wichtische Mikros hervorhewe",
   "set_bg": "🖼️ Hinnergrund",
   "set_zoom": "🔎 Zoom",
-  "set_ai": "🤖 KI-Nachgucke",
+  "set_ai": "🤖 KI-Anbieter",
   "stand_empty": "Noch nix uffm Teller",
   "center_day": "Daachesdeckung",
   "center_food": "Des Esse",
@@ -2506,6 +2566,11 @@
   "key_invalid": "Schlissel ungildisch",
   "key_none": "⚠️ Kaa API-Schlissel aagebe.",
   "key_neterr": "Netzwerkfehler",
-  "key_credit_hint": "ℹ️ Der Key is <b>gildisch</b>, awwer des Anthropic-Konto hat kaa API-Guthabe. In de <b>Console</b> gucke: richtische <b>Organisation</b> (owwe links), Guthabe wärklisch <b>gekaaft</b> (net nur e Kart hinnerlescht) un des <b>Ausgabelimit</b> vun de Workspace &gt; 0. API-Guthabe is getrennt vun Claude&nbsp;Pro / claude.ai."
+  "key_credit_hint": "ℹ️ Der Key is <b>gildisch</b>, awwer des Anthropic-Konto hat kaa API-Guthabe. In de <b>Console</b> gucke: richtische <b>Organisation</b> (owwe links), Guthabe wärklisch <b>gekaaft</b> (net nur e Kart hinnerlescht) un des <b>Ausgabelimit</b> vun de Workspace &gt; 0. API-Guthabe is getrennt vun Claude&nbsp;Pro / claude.ai.",
+  "set_ai_s": "Dei eischener API-Key — bleibt nur in dem Browser (localStorage), pro Anbieter gespeichert. Direkt ausm Browser uffgeruffe: der Anbieter muss CORS erlaawe (Anthropic & Gemini mache des).",
+  "model_ph": "Modell-Name",
+  "endpoint_ph": "Endpoint-URL",
+  "key_getlink": "🔑 API-Key hole ↗ ({host})",
+  "key_bill_hint": "ℹ️ Der Key is gildisch, awwer beim Anbieter fehlt Guthabe/Kontingent. Im Anbieter-Konto (gleiche Organisation) Guthabe/Billing un e Ausgabelimit &gt; 0 gucke. API-Guthabe is getrennt vun Chat-Abos wie Claude&nbsp;Pro / ChatGPT&nbsp;Plus."
  }
 }

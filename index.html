@@ -253,6 +253,9 @@ path.hit.aktivseg{stroke:var(--segcol,var(--tinte));stroke-width:3;stroke-linejo
 .keyfeld{display:block;width:100%;margin-top:6px;border:2px solid var(--papier-rand);border-radius:8px;
   padding:6px 9px;font-family:'IBM Plex Mono';font-size:11px;background:#fff;color:var(--tinte)}
 .keyfeld:focus{outline:none;border-color:var(--wiese)}
+.keylink{margin-top:5px;text-align:right}
+.keylink a{font-size:9.5px;font-weight:800;color:var(--wiese-tief);text-decoration:none}
+.keylink a:hover{text-decoration:underline}
 .keytestbtn{display:block;width:100%;margin-top:6px;background:var(--wiese-tief);color:#fff;border:none;
   border-radius:8px;padding:7px 9px;font-family:'Fredoka';font-weight:500;font-size:11px;cursor:pointer;transition:.12s}
 .keytestbtn:hover{transform:scale(1.02)} .keytestbtn:disabled{opacity:.6;cursor:wait;transform:none}
@@ -570,9 +573,18 @@ path.hit.aktivseg{stroke:var(--segcol,var(--tinte));stroke-width:3;stroke-linejo
             <span class="z" id="zoomwert">100%</span>
             <button class="plus" id="zoomplus" aria-label="Ansicht vergrößern">+</button>
           </span></div>
-        <div class="opt optki"><span><span data-i18n="set_ai">🤖 KI-Nachschlagen</span><small>Eigener Anthropic API-Key — bleibt nur in diesem Browser (localStorage).
-          Findet die Suche nichts, kann die KI Nährwerte für neue Lebensmittel nachschlagen.</small>
-          <input type="password" id="optkey" class="keyfeld" placeholder="sk-ant-…" autocomplete="off" aria-label="Anthropic API-Key">
+        <div class="opt optki"><span><span data-i18n="set_ai">🤖 KI-Anbieter</span><small data-i18n="set_ai_s">Eigener API-Key — bleibt nur in diesem Browser (localStorage), pro Anbieter gespeichert. Direkt-Aufruf aus dem Browser: der Anbieter muss CORS erlauben (Anthropic &amp; Gemini tun das).</small>
+          <select id="optprov" class="selfeld" aria-label="KI-Anbieter">
+            <option value="anthropic">Anthropic · Claude</option>
+            <option value="openai">OpenAI · GPT</option>
+            <option value="gemini">Google · Gemini</option>
+            <option value="grok">xAI · Grok</option>
+            <option value="custom">Custom · OpenAI-kompatibel</option>
+          </select>
+          <input type="text" id="optmodel" class="keyfeld" placeholder="Modellname" autocomplete="off" spellcheck="false" aria-label="Modell">
+          <input type="text" id="optendpoint" class="keyfeld" placeholder="Endpoint-URL" autocomplete="off" spellcheck="false" aria-label="Endpoint-URL">
+          <input type="password" id="optkey" class="keyfeld" placeholder="sk-ant-…" autocomplete="off" aria-label="API-Key">
+          <div class="keylink"><a id="optkeylink" href="#" target="_blank" rel="noopener">🔑 API-Key holen ↗</a></div>
           <button class="keytestbtn" id="optkeytest" data-i18n="key_test">🔑 Key testen</button>
           <div class="keymsg aus" id="optkeymsg" role="status" aria-live="polite"></div>
           <label class="optsub"><input type="checkbox" id="optkisuch">
@@ -1115,8 +1127,76 @@ document.addEventListener('click',e=>{ if(pinEl && !e.target.closest('.hit')) en
 const _render=render, _gross=gross;
 render=function(){_render(); bindeTip(document.getElementById('minichart'));};
 gross =function(){_gross();  bindeTip(document.getElementById('grosschart'));};
-/* ---------- KI-Nachschlagen (eigener Anthropic API-Key, nur localStorage) ---------- */
-const kiKeyDa=()=>!!(EINST.apiKey&&EINST.apiKey.trim());
+/* ---------- KI-Anbieter (Anthropic / OpenAI / Gemini / Grok / Custom) ---------- */
+/* Key, Modell und Endpoint werden PRO Anbieter in localStorage gespeichert. */
+const PROV={
+  anthropic:{lab:'Anthropic · Claude', ep:'https://api.anthropic.com/v1/messages',
+             model:'claude-opus-4-8', ph:'sk-ant-…', keys:'https://console.anthropic.com/settings/keys', kind:'anthropic'},
+  openai:   {lab:'OpenAI · GPT', ep:'https://api.openai.com/v1/chat/completions',
+             model:'gpt-4o', ph:'sk-…', keys:'https://platform.openai.com/api-keys', kind:'openai'},
+  gemini:   {lab:'Google · Gemini', ep:'https://generativelanguage.googleapis.com/v1beta/models',
+             model:'gemini-2.0-flash', ph:'AIza…', keys:'https://aistudio.google.com/api-keys', kind:'gemini'},
+  grok:     {lab:'xAI · Grok', ep:'https://api.x.ai/v1/chat/completions',
+             model:'grok-2-latest', ph:'xai-…', keys:'https://console.x.ai', kind:'openai'},
+  custom:   {lab:'Custom · OpenAI-kompatibel', ep:'', model:'', ph:'…', keys:'', kind:'openai'},
+};
+function provCfg(){
+  const p=PROV[EINST.provider]?EINST.provider:'anthropic', base=PROV[p];
+  const keys=EINST.keys||{}, models=EINST.models||{}, eps=EINST.endpoints||{};
+  return { p, base, kind:base.kind,
+    key:((keys[p]!=null?keys[p]:(p==='anthropic'?EINST.apiKey:''))||'').trim(),  // Migration alter apiKey
+    model:((models[p]||base.model)||'').trim(),
+    endpoint:((eps[p]||base.ep)||'').trim() };
+}
+const kiKeyDa=()=>!!provCfg().key;
+/* robustes JSON-Parsen: Markdown-Zäune entfernen, erstes {...} greifen */
+function parseJson(t){
+  if(t==null) throw new Error(T('ki_empty','Leere Antwort'));
+  let s=String(t).trim();
+  const m=s.match(/```(?:json)?\s*([\s\S]*?)```/i); if(m) s=m[1].trim();
+  if(s[0]!=='{'){ const i=s.indexOf('{'), j=s.lastIndexOf('}'); if(i>=0&&j>i) s=s.slice(i,j+1); }
+  return JSON.parse(s);
+}
+/* Ein Aufruf, drei Dialekte. Gibt das geparste JSON-Objekt zurück. */
+async function kiCall(system, user, schema, maxTokens){
+  const c=provCfg();
+  if(!c.key) throw new Error(T('key_none_short','Kein API-Key'));
+  if(!c.endpoint) throw new Error(T('err_no_endpoint','Kein Endpoint'));
+  if(!c.model) throw new Error(T('err_no_model','Kein Modell'));
+  let url=c.endpoint, headers, body, extract;
+  if(c.kind==='anthropic'){
+    headers={'content-type':'application/json','x-api-key':c.key,
+             'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'};
+    body={model:c.model, max_tokens:maxTokens, system,
+          messages:[{role:'user',content:user}], output_config:{format:{type:'json_schema',schema}}};
+    extract=d=>{ if(d.stop_reason==='refusal') throw new Error(T('ki_refusal','Anfrage abgelehnt'));
+      const t=(d.content||[]).find(b=>b.type==='text'); return parseJson(t&&t.text); };
+  } else if(c.kind==='gemini'){
+    url=c.endpoint.replace(/\/+$/,'')+'/'+encodeURIComponent(c.model)+':generateContent?key='+encodeURIComponent(c.key);
+    headers={'content-type':'application/json'};
+    body={ system_instruction:{parts:[{text:system+'\n\nAntworte NUR mit EINEM JSON-Objekt nach diesem JSON-Schema (keine Markdown-Zäune):\n'+JSON.stringify(schema)}]},
+      contents:[{role:'user',parts:[{text:user}]}],
+      generationConfig:{responseMimeType:'application/json', maxOutputTokens:maxTokens, temperature:0.4} };
+    extract=d=>{ const p=d&&d.candidates&&d.candidates[0]&&d.candidates[0].content&&d.candidates[0].content.parts;
+      return parseJson(p?p.map(x=>x.text||'').join(''):null); };
+  } else { // OpenAI-kompatibel: openai, grok, custom
+    headers={'content-type':'application/json','authorization':'Bearer '+c.key};
+    body={ model:c.model, max_tokens:maxTokens, temperature:0.4,
+      messages:[{role:'system',content:system+'\n\nRespond ONLY with a single JSON object that matches this JSON schema (no markdown, no prose):\n'+JSON.stringify(schema)},
+                {role:'user',content:user}],
+      response_format:{type:'json_object'} };
+    extract=d=>{ const m=d&&d.choices&&d.choices[0]&&d.choices[0].message;
+      const t=m&&(typeof m.content==='string'?m.content:(Array.isArray(m.content)?m.content.map(x=>x.text||'').join(''):''));
+      return parseJson(t); };
+  }
+  const res=await fetch(url,{method:'POST',headers,body:JSON.stringify(body)});
+  if(!res.ok){
+    const e=await res.json().catch(()=>null);
+    const msg=(e&&e.error&&e.error.message)?e.error.message:('HTTP '+res.status+' '+res.statusText);
+    const err=new Error(msg); err.status=res.status; throw err;
+  }
+  return extract(await res.json());
+}
 const KI_REGALE=["🍞 Brot & Gebäck","🥣 Frühstück","🍎 Obst","🥬 Gemüse","🧀 Milch & Käse",
   "🍔 Fleisch & Fast Food","🍽️ Fertige Teller","🍦 Eis & Kuchen","🍫 Süßes","🧈 Fette & Würze","🧃 Getränke","🥪 Gerichte"];
 const KI_SCHEMA={type:"object",additionalProperties:false,
@@ -1140,33 +1220,11 @@ const KI_SCHEMA={type:"object",additionalProperties:false,
     "vita_ug","vitc_mg","vitd_ug","vite_mg","vitk_ug","b6_mg","b12_ug","folat_ug","fakt"]};
 
 async function kiNachschlagen(begriff){
-  const res=await fetch('https://api.anthropic.com/v1/messages',{
-    method:'POST',
-    headers:{
-      'content-type':'application/json',
-      'x-api-key':EINST.apiKey.trim(),
-      'anthropic-version':'2023-06-01',
-      'anthropic-dangerous-direct-browser-access':'true'
-    },
-    body:JSON.stringify({
-      model:'claude-opus-4-8',
-      max_tokens:2000,
-      system:'Du bist die Nährwert-Datenbank eines Ernährungs-Lernspiels für ein 7-jähriges Kind. '
-        +'Liefere realistische Nährwerte (D-A-CH-Referenz, gute Schätzwerte sind erlaubt) für EINE kindgerechte Portion '
-        +'des genannten Lebensmittels. Alle Werte beziehen sich auf die Portion, nicht auf 100 g.',
-      messages:[{role:'user',content:'Lebensmittel: '+begriff}],
-      output_config:{format:{type:'json_schema',schema:KI_SCHEMA}}
-    })
-  });
-  if(!res.ok){
-    const e=await res.json().catch(()=>null);
-    if(res.status===401) throw new Error('API-Key ungültig');
-    throw new Error((e&&e.error&&e.error.message)?e.error.message.slice(0,80):('HTTP '+res.status));
-  }
-  const d=await res.json();
-  if(d.stop_reason==='refusal') throw new Error('Anfrage wurde abgelehnt');
-  const t=(d.content||[]).find(b=>b.type==='text');
-  return JSON.parse(t.text);
+  return kiCall(
+    'Du bist die Nährwert-Datenbank eines Ernährungs-Lernspiels für ein 7-jähriges Kind. '
+      +'Liefere realistische Nährwerte (D-A-CH-Referenz, gute Schätzwerte sind erlaubt) für EINE kindgerechte Portion '
+      +'des genannten Lebensmittels. Alle Werte beziehen sich auf die Portion, nicht auf 100 g.',
+    'Lebensmittel: '+begriff, KI_SCHEMA, 2000);
 }
 
 function kiZuFood(k){
@@ -1221,24 +1279,14 @@ const UEB_SCHEMA={type:'object',additionalProperties:false,properties:{items:{ty
   required:['id','name','wd']}}},required:['items']};
 async function uebBatch(l,batch){
   const src=batch.map(f=>({id:f.id, name:f.name, wd:(f.wd||[]).map(w=>w.text)}));
-  const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{
-    'content-type':'application/json','x-api-key':EINST.apiKey.trim(),
-    'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
-    body:JSON.stringify({model:'claude-opus-4-8',max_tokens:4000,
-      system:'You translate content for a children\'s nutrition learning game (target: a 7-year-old). '
-        +'Translate every "name" and every string in "wd" into '+LANGNAME[l]+'. '
-        +'Keep it simple, warm and child-friendly. IMPORTANT: preserve all HTML tags (e.g. <b>…</b>) '
-        +'and all emoji exactly as in the source. Keep parenthetical portion hints like "(klein)". '
-        +'Return the SAME ids and the SAME number of wd strings per item, in the same order.',
-      messages:[{role:'user',content:JSON.stringify({items:src})}],
-      output_config:{format:{type:'json_schema',schema:UEB_SCHEMA}}})});
-  if(!res.ok){ if(res.status===401) throw new Error('API-Key ungültig');
-    const e=await res.json().catch(()=>null);
-    throw new Error((e&&e.error&&e.error.message)?e.error.message.slice(0,80):('HTTP '+res.status)); }
-  const d=await res.json();
-  if(d.stop_reason==='refusal') throw new Error('Anfrage abgelehnt');
-  const t=(d.content||[]).find(b=>b.type==='text');
-  return JSON.parse(t.text).items||[];
+  const out=await kiCall(
+    'You translate content for a children\'s nutrition learning game (target: a 7-year-old). '
+      +'Translate every "name" and every string in "wd" into '+LANGNAME[l]+'. '
+      +'Keep it simple, warm and child-friendly. IMPORTANT: preserve all HTML tags (e.g. <b>…</b>) '
+      +'and all emoji exactly as in the source. Keep parenthetical portion hints like "(klein)". '
+      +'Return the SAME ids and the SAME number of wd strings per item, in the same order.',
+    JSON.stringify({items:src}), UEB_SCHEMA, 4000);
+  return (out&&out.items)||[];
 }
 async function uebersetzenFoods(btn){
   const l=LANG; if(l==='de'||!kiKeyDa()) return;
@@ -1317,6 +1365,7 @@ function applyLang(l){
   if(typeof aktiv==='object' && aktiv && typeof zeichneFood==='function') zeichneFood(aktiv);
   if(typeof render==='function') render();
   if(typeof uebersetzenBtnSync==='function') uebersetzenBtnSync();
+  if(typeof provSync==='function') provSync();
   if(document.getElementById('modal').classList.contains('on') && typeof gross==='function') gross();
 }
 const einstMerk=(k,v)=>{EINST[k]=v;try{localStorage.setItem('einstellungen',JSON.stringify(EINST))}catch(e){}};
@@ -1352,41 +1401,72 @@ document.getElementById('optkisuch').checked=kiSuchRow;
 if(EINST.bgop!==undefined){document.getElementById('optbg').value=Math.round(EINST.bgop*100);
   document.documentElement.style.setProperty('--bgop',EINST.bgop);}
 
-const KEYFELD=document.getElementById('optkey');
-if(EINST.apiKey) KEYFELD.value=EINST.apiKey;
-KEYFELD.onchange=()=>{ einstMerk('apiKey', KEYFELD.value.trim()||undefined); baue(); uebersetzenBtnSync(); };
-KEYFELD.oninput=()=>{ const m=document.getElementById('optkeymsg'); m.className='keymsg aus'; m.textContent=''; };
+const KEYFELD=document.getElementById('optkey'), PROVSEL=document.getElementById('optprov'),
+      MODELF=document.getElementById('optmodel'), ENDPF=document.getElementById('optendpoint'),
+      KEYLINK=document.getElementById('optkeylink');
+// Migration: alter Einzel-Key -> keys.anthropic
+if(EINST.apiKey && !(EINST.keys&&EINST.keys.anthropic)){ EINST.keys=Object.assign({},EINST.keys,{anthropic:EINST.apiKey}); einstMerk('keys',EINST.keys); }
+if(!PROV[EINST.provider]) EINST.provider='anthropic';
+const clearKeyMsg=()=>{ const m=document.getElementById('optkeymsg'); if(m){m.className='keymsg aus';m.innerHTML='';} };
+function provSync(){
+  const p=EINST.provider, base=PROV[p];
+  const keys=EINST.keys||{}, models=EINST.models||{}, eps=EINST.endpoints||{};
+  PROVSEL.value=p;
+  KEYFELD.value=keys[p]||''; KEYFELD.placeholder=base.ph||'…';
+  MODELF.value=models[p]||''; MODELF.placeholder=base.model||T('model_ph','Modellname');
+  ENDPF.value=eps[p]||''; ENDPF.placeholder=base.ep||T('endpoint_ph','Endpoint-URL');
+  if(base.keys){ KEYLINK.href=base.keys; KEYLINK.style.display='';
+    KEYLINK.textContent=TF('key_getlink','🔑 API-Key holen ↗ ({host})',{host:base.keys.replace(/^https?:\/\//,'').replace(/\/.*$/,'')}); }
+  else KEYLINK.style.display='none';
+  clearKeyMsg();
+}
+const mapMerk=(mk,p,v)=>{ const m=Object.assign({},EINST[mk]); if(v)m[p]=v; else delete m[p]; einstMerk(mk,m); };
+PROVSEL.onchange=()=>{ einstMerk('provider',PROVSEL.value); provSync(); baue(); uebersetzenBtnSync(); };
+KEYFELD.onchange=()=>{ mapMerk('keys',EINST.provider,KEYFELD.value.trim()); baue(); uebersetzenBtnSync(); };
+KEYFELD.oninput=clearKeyMsg;
+MODELF.onchange=()=>{ mapMerk('models',EINST.provider,MODELF.value.trim()); clearKeyMsg(); };
+ENDPF.onchange=()=>{ mapMerk('endpoints',EINST.provider,ENDPF.value.trim()); clearKeyMsg(); };
+provSync();
 
-/* KI-Key testen: echte API-Antwort (voller Fehlertext) zeigen */
+/* KI-Key testen: minimaler Aufruf beim gewählten Anbieter, echte Antwort */
 async function testKey(){
-  const key=(KEYFELD.value||'').trim();
+  const c=provCfg();
   const msg=document.getElementById('optkeymsg'), btn=document.getElementById('optkeytest');
-  if(!key){ msg.className='keymsg err'; msg.textContent=T('key_none','⚠️ Kein API-Key eingegeben.'); return; }
+  const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  const showErr=(txt,billing)=>{ let html=esc(txt);
+    if(billing){ const link=c.base.keys||'';
+      html+='<div class="keyhint">'+T('key_bill_hint','ℹ️ Der Key ist gültig, aber beim Anbieter fehlt Guthaben/Kontingent. Im Anbieter-Konto (gleiche Organisation) Guthaben/Billing und ein Ausgabelimit &gt; 0 prüfen. API-Guthaben ist getrennt von Chat-Abos wie Claude&nbsp;Pro / ChatGPT&nbsp;Plus.')
+        + (link?' <a href="'+esc(link)+'" target="_blank" rel="noopener">'+esc(link.replace(/^https?:\/\//,''))+'</a>':'')+'</div>'; }
+    msg.className='keymsg err'; msg.innerHTML=html; };
+  if(!c.key){ showErr(T('key_none','⚠️ Kein API-Key eingegeben.'),false); return; }
+  if(!c.endpoint){ showErr(T('err_no_endpoint2','⚠️ Kein Endpoint — beim Custom-Anbieter die URL eintragen.'),false); return; }
+  if(!c.model){ showErr(T('err_no_model2','⚠️ Kein Modell — Modellname eintragen.'),false); return; }
   const orig=btn.textContent; btn.disabled=true; btn.textContent=T('key_testing','🔑 Teste …');
   msg.className='keymsg info'; msg.textContent=T('key_testing','🔑 Teste …');
   try{
-    const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{
-      'content-type':'application/json','x-api-key':key,
-      'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
-      body:JSON.stringify({model:'claude-haiku-4-5-20251001',max_tokens:1,messages:[{role:'user',content:'hi'}]})});
+    let url=c.endpoint, headers, body;
+    if(c.kind==='anthropic'){
+      headers={'content-type':'application/json','x-api-key':c.key,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'};
+      body={model:c.model,max_tokens:1,messages:[{role:'user',content:'hi'}]};
+    } else if(c.kind==='gemini'){
+      url=c.endpoint.replace(/\/+$/,'')+'/'+encodeURIComponent(c.model)+':generateContent?key='+encodeURIComponent(c.key);
+      headers={'content-type':'application/json'};
+      body={contents:[{parts:[{text:'hi'}]}],generationConfig:{maxOutputTokens:1}};
+    } else {
+      headers={'content-type':'application/json','authorization':'Bearer '+c.key};
+      body={model:c.model,max_tokens:1,messages:[{role:'user',content:'hi'}]};
+    }
+    const res=await fetch(url,{method:'POST',headers,body:JSON.stringify(body)});
     if(res.ok){ msg.className='keymsg ok'; msg.textContent=T('key_ok','✅ Key funktioniert — Guthaben ist vorhanden.'); }
     else{
       const e=await res.json().catch(()=>null);
       const real=(e&&e.error&&e.error.message)?e.error.message:('HTTP '+res.status+' '+res.statusText);
-      const pre = res.status===401 ? '❌ '+T('key_invalid','Key ungültig')+': '
-                : res.status===400 ? '❌ '
-                : res.status===429 ? '⏳ '
-                : '❌ HTTP '+res.status+': ';
-      const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-      let html=esc(pre+real);
-      if(/credit balance/i.test(real)){
-        html+='<div class="keyhint">'+T('key_credit_hint','ℹ️ Der Key ist <b>gültig</b>, aber das Anthropic-Konto hat kein API-Guthaben. In der <b>Console</b> prüfen: richtige <b>Organisation</b> (oben links), Guthaben wirklich <b>gekauft</b> (nicht nur Karte hinterlegt) und das <b>Ausgabelimit</b> der Workspace &gt; 0. API-Guthaben ist getrennt von Claude&nbsp;Pro / claude.ai.')
-          +' <a href="https://console.anthropic.com/settings/billing" target="_blank" rel="noopener">console.anthropic.com → Billing</a></div>';
-      }
-      msg.className='keymsg err'; msg.innerHTML=html;
+      const pre = (res.status===401||res.status===403) ? '❌ '+T('key_invalid','Key ungültig')+': '
+                : res.status===429 ? '⏳ ' : res.status===400 ? '❌ ' : '❌ HTTP '+res.status+': ';
+      const billing=/credit balance|insufficient|quota|billing|exceeded your current|out of|payment|not been enabled|no funds|resource_exhausted/i.test(real);
+      showErr(pre+real, billing);
     }
-  }catch(err){ msg.className='keymsg err';
-    msg.textContent='❌ '+T('key_neterr','Netzwerkfehler')+': '+(err.message||err); }
+  }catch(err){ showErr('❌ '+T('key_neterr','Netzwerkfehler')+': '+(err.message||err), false); }
   btn.disabled=false; btn.textContent=orig;
 }
 document.getElementById('optkeytest').onclick=testKey;
