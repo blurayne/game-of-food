@@ -249,6 +249,15 @@ path.hit.aktivseg{stroke:var(--segcol,var(--tinte));stroke-width:3;stroke-linejo
 .opt.optbg span{flex:0 0 auto}
 .opt input[type=range]{flex:1;min-width:50px;accent-color:var(--wiese);cursor:pointer;height:14px}
 .opt.optzoom>span:first-child{flex:1}
+.opt.optki>span{flex:1}
+.keyfeld{display:block;width:100%;margin-top:6px;border:2px solid var(--papier-rand);border-radius:8px;
+  padding:6px 9px;font-family:'IBM Plex Mono';font-size:11px;background:#fff;color:var(--tinte)}
+.keyfeld:focus{outline:none;border-color:var(--wiese)}
+.kibtn{display:block;width:calc(100% - 8px);margin:6px auto;background:var(--wiese-tief);color:#fff;border:none;
+  border-radius:10px;padding:9px 10px;font-family:'Fredoka';font-weight:500;font-size:12px;cursor:pointer;transition:.12s}
+.kibtn:hover{transform:scale(1.02)}
+.kibtn:disabled{opacity:.6;cursor:wait}
+.kihinweis{font-size:9.5px;font-weight:700;color:var(--tinte-weich);text-align:center;padding:6px 10px;line-height:1.45}
 .optzoom .pm button.minus{visibility:visible;background:#f3d9d2;color:var(--rot-tief)}
 .optzoom .pm .z{width:38px}
 .suche{display:flex;align-items:center;gap:6px;background:#fff;border:2px solid transparent;border-radius:9px;
@@ -500,6 +509,9 @@ path.hit.aktivseg{stroke:var(--segcol,var(--tinte));stroke-width:3;stroke-linejo
             <span class="z" id="zoomwert">100%</span>
             <button class="plus" id="zoomplus" aria-label="Ansicht vergrößern">+</button>
           </span></div>
+        <div class="opt optki"><span>🤖 KI-Nachschlagen<small>Eigener Anthropic API-Key — bleibt nur in diesem Browser (localStorage).
+          Findet die Suche nichts, kann die KI Nährwerte für neue Lebensmittel nachschlagen.</small>
+          <input type="password" id="optkey" class="keyfeld" placeholder="sk-ant-…" autocomplete="off" aria-label="Anthropic API-Key"></span></div>
       </div>
     </div>
   </div>
@@ -895,8 +907,19 @@ function baue(){
         </span></div>`;
     });
   });
-  if(!h) h='<div class="streffer">🔍 Nichts gefunden.<br>Probier ein anderes Wort — z.&nbsp;B. „Käse" oder „Obst".</div>';
+  if(!h){
+    h='<div class="streffer">🔍 Nichts gefunden.<br>Probier ein anderes Wort — z.&nbsp;B. „Käse" oder „Obst".</div>';
+    if(suchtext){
+      const roh=document.getElementById('suche').value.trim()
+        .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+      h+= kiKeyDa()
+        ? `<button class="kibtn" id="kibtn">🤖 „${roh}" mit KI nachschlagen</button>`
+        : '<div class="kihinweis">🤖 Mit eigenem API-Key (⚙️ Einstellungen) kann die KI unbekannte Lebensmittel nachschlagen.</div>';
+    }
+  }
   const P=document.getElementById('picker'); P.innerHTML=h;
+  const KB=document.getElementById('kibtn');
+  if(KB) KB.onclick=()=>kiSuche(KB);
   P.querySelectorAll('[data-p]').forEach(b=>b.onclick=e=>{e.stopPropagation();
     const id=b.dataset.p; const wasLeer=leer();
     teller[id]=(teller[id]||0)+1; waehle(F(id),true);
@@ -981,6 +1004,102 @@ document.addEventListener('click',e=>{ if(pinEl && !e.target.closest('.hit')) en
 const _render=render, _gross=gross;
 render=function(){_render(); bindeTip(document.getElementById('minichart'));};
 gross =function(){_gross();  bindeTip(document.getElementById('grosschart'));};
+/* ---------- KI-Nachschlagen (eigener Anthropic API-Key, nur localStorage) ---------- */
+const kiKeyDa=()=>!!(EINST.apiKey&&EINST.apiKey.trim());
+const KI_REGALE=["🍞 Brot & Gebäck","🥣 Frühstück","🍎 Obst","🥬 Gemüse","🧀 Milch & Käse",
+  "🍔 Fleisch & Fast Food","🍽️ Fertige Teller","🍦 Eis & Kuchen","🍫 Süßes","🧈 Fette & Würze","🧃 Getränke","🥪 Gerichte"];
+const KI_SCHEMA={type:"object",additionalProperties:false,
+  properties:{
+    name:{type:"string",description:"Deutscher Name inkl. Portionsgröße, z. B. 'Leberkäse (1 Scheibe)'"},
+    emoji:{type:"string",description:"Genau ein passendes Emoji"},
+    regal:{type:"string",enum:KI_REGALE},
+    portion_g:{type:"number",description:"Kindgerechte Portion in Gramm"},
+    wnat:{type:"number",description:"Wasseranteil in Prozent (0-100)"},
+    kcal:{type:"number"},zucker_g:{type:"number"},kh_g:{type:"number",description:"Kohlenhydrate gesamt inkl. Zucker"},
+    eiweiss_g:{type:"number"},fges_g:{type:"number",description:"gesättigtes Fett"},
+    funges_g:{type:"number",description:"ungesättigtes Fett"},ballast_g:{type:"number"},
+    natrium_mg:{type:"number"},eisen_mg:{type:"number"},calcium_mg:{type:"number"},magnesium_mg:{type:"number"},
+    kalium_mg:{type:"number"},zink_mg:{type:"number"},jod_ug:{type:"number"},selen_ug:{type:"number"},
+    vita_ug:{type:"number"},vitc_mg:{type:"number"},vitd_ug:{type:"number"},vite_mg:{type:"number"},
+    vitk_ug:{type:"number"},b6_mg:{type:"number"},b12_ug:{type:"number"},folat_ug:{type:"number"},
+    fakt:{type:"string",description:"Ein kindgerechter 'Wusstest du?'-Fakt zu diesem Lebensmittel, 1-2 Sätze"}
+  },
+  required:["name","emoji","regal","portion_g","wnat","kcal","zucker_g","kh_g","eiweiss_g","fges_g","funges_g",
+    "ballast_g","natrium_mg","eisen_mg","calcium_mg","magnesium_mg","kalium_mg","zink_mg","jod_ug","selen_ug",
+    "vita_ug","vitc_mg","vitd_ug","vite_mg","vitk_ug","b6_mg","b12_ug","folat_ug","fakt"]};
+
+async function kiNachschlagen(begriff){
+  const res=await fetch('https://api.anthropic.com/v1/messages',{
+    method:'POST',
+    headers:{
+      'content-type':'application/json',
+      'x-api-key':EINST.apiKey.trim(),
+      'anthropic-version':'2023-06-01',
+      'anthropic-dangerous-direct-browser-access':'true'
+    },
+    body:JSON.stringify({
+      model:'claude-opus-4-8',
+      max_tokens:2000,
+      system:'Du bist die Nährwert-Datenbank eines Ernährungs-Lernspiels für ein 7-jähriges Kind. '
+        +'Liefere realistische Nährwerte (D-A-CH-Referenz, gute Schätzwerte sind erlaubt) für EINE kindgerechte Portion '
+        +'des genannten Lebensmittels. Alle Werte beziehen sich auf die Portion, nicht auf 100 g.',
+      messages:[{role:'user',content:'Lebensmittel: '+begriff}],
+      output_config:{format:{type:'json_schema',schema:KI_SCHEMA}}
+    })
+  });
+  if(!res.ok){
+    const e=await res.json().catch(()=>null);
+    if(res.status===401) throw new Error('API-Key ungültig');
+    throw new Error((e&&e.error&&e.error.message)?e.error.message.slice(0,80):('HTTP '+res.status));
+  }
+  const d=await res.json();
+  if(d.stop_reason==='refusal') throw new Error('Anfrage wurde abgelehnt');
+  const t=(d.content||[]).find(b=>b.type==='text');
+  return JSON.parse(t.text);
+}
+
+function kiZuFood(k){
+  const id='ki_'+k.name.toLowerCase().replace(/[^a-zäöüß0-9]+/g,'_').replace(/^_+|_+$/g,'');
+  const z=Math.max(0,k.zucker_g), khOhne=Math.max(0,k.kh_g-z);
+  const solids=Math.max(0,k.portion_g*(1-Math.min(100,Math.max(0,k.wnat))/100));
+  const rest=Math.max(0, solids-(z+khOhne+k.eiweiss_g+k.fges_g+k.funges_g));
+  return {
+    id, emoji:k.emoji||'🍽️', name:k.name+' 🤖', regal:KI_REGALE.includes(k.regal)?k.regal:'🥪 Gerichte',
+    portion:Math.round(k.portion_g), wnat:Math.round(k.wnat*10)/10,
+    a:{zucker:z,kh:khOhne,eiweiss:k.eiweiss_g,fges:k.fges_g,funges:k.funges_g,rest:rest},
+    sperr:false,
+    n:{kcal:k.kcal,wasser:Math.round(k.portion_g*k.wnat/100),eiweiss:k.eiweiss_g,kh:k.kh_g,
+       fett:k.fges_g+k.funges_g,ballast:k.ballast_g,zucker:z,
+       eisen:k.eisen_mg,calcium:k.calcium_mg,magnesium:k.magnesium_mg,kalium:k.kalium_mg,
+       zink:k.zink_mg,jod:k.jod_ug,selen:k.selen_ug,natrium:k.natrium_mg,
+       vita:k.vita_ug,vitc:k.vitc_mg,vitd:k.vitd_ug,vite:k.vite_mg,vitk:k.vitk_ug,
+       b6:k.b6_mg,b12:k.b12_ug,folat:k.folat_ug},
+    bd:[], wd:k.fakt?[{icons:'🤖 💡 😀',text:k.fakt,stimmung:'wow'}]:[]
+  };
+}
+
+let eigene=[]; try{eigene=JSON.parse(localStorage.getItem('eigeneFoods')||'[]')}catch(e){}
+eigene.forEach(f=>{ if(!F(f.id)) FOODS.push(f); });
+const merkEigene=()=>{try{localStorage.setItem('eigeneFoods',JSON.stringify(eigene))}catch(e){}};
+
+async function kiSuche(btn){
+  const begriff=document.getElementById('suche').value.trim();
+  if(!begriff) return;
+  btn.disabled=true; btn.textContent='🤖 Schlage nach … (dauert einen Moment)';
+  try{
+    const roh=await kiNachschlagen(begriff);
+    let f=kiZuFood(roh);
+    if(F(f.id)) f=F(f.id);
+    else { FOODS.push(f); eigene.push(f); merkEigene(); }
+    const S=document.getElementById('suche');
+    S.value=''; S.oninput();
+    waehle(f); setModus('aktuell',true);
+  }catch(e){
+    btn.disabled=false;
+    btn.textContent='❌ '+(e.message||'Fehler')+' — nochmal versuchen';
+  }
+}
+
 /* ---------- Einstellungen: Persistenz + Dialog + Vollbild ---------- */
 const EINST=(()=>{try{return JSON.parse(localStorage.getItem('einstellungen')||'{}')}catch(e){return{}}})();
 const einstMerk=(k,v)=>{EINST[k]=v;try{localStorage.setItem('einstellungen',JSON.stringify(EINST))}catch(e){}};
@@ -999,6 +1118,10 @@ if(EINST.zeigV!==undefined){zeigV=!!EINST.zeigV; document.getElementById('optv')
 if(EINST.fruchtAlsZucker!==undefined){fruchtAlsZucker=!!EINST.fruchtAlsZucker; document.getElementById('optf').checked=fruchtAlsZucker;}
 if(EINST.bgop!==undefined){document.getElementById('optbg').value=Math.round(EINST.bgop*100);
   document.documentElement.style.setProperty('--bgop',EINST.bgop);}
+
+const KEYFELD=document.getElementById('optkey');
+if(EINST.apiKey) KEYFELD.value=EINST.apiKey;
+KEYFELD.onchange=()=>{ einstMerk('apiKey', KEYFELD.value.trim()||undefined); baue(); };
 
 /* CSS-Zoom in Stufen von 10 % (60–160 %) */
 let zoomWert=EINST.zoom||1;
