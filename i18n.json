@@ -199,7 +199,17 @@
   "ki_empty": "Empty response",
   "ki_badjson": "The response was not valid JSON",
   "ki_refusal": "Request was declined",
-  "ki_retry": "try again"
+  "ki_retry": "try again",
+  "set_eigen": "🤖 Custom (AI) foods",
+  "set_eigen_s": "Manage and delete foods the AI added.",
+  "eig_manage": "🤖 Manage",
+  "eig_manage_n": "🤖 Manage ({n})",
+  "eig_title": "🤖 Custom foods",
+  "eig_empty": "No custom (AI) foods yet.",
+  "eig_del": "delete",
+  "eig_all": "Delete all",
+  "ig_all": "🚫 All",
+  "ig_none": "↩︎ Count all"
  },
  "es": {
   "title": "🍽️ Día de Energía — Planificador diario",
@@ -401,7 +411,17 @@
   "ki_empty": "Respuesta vacía",
   "ki_badjson": "La respuesta no era JSON válido",
   "ki_refusal": "La solicitud fue rechazada",
-  "ki_retry": "reintentar"
+  "ki_retry": "reintentar",
+  "set_eigen": "🤖 Alimentos propios (IA)",
+  "set_eigen_s": "Gestiona y elimina los alimentos que añadió la IA.",
+  "eig_manage": "🤖 Gestionar",
+  "eig_manage_n": "🤖 Gestionar ({n})",
+  "eig_title": "🤖 Alimentos propios",
+  "eig_empty": "Aún no hay alimentos propios (IA).",
+  "eig_del": "eliminar",
+  "eig_all": "Eliminar todo",
+  "ig_all": "🚫 Todos",
+  "ig_none": "↩︎ Contar todo"
  },
  "fr": {
   "title": "🍽️ Jour d'Énergie — Planificateur",
@@ -603,7 +623,17 @@
   "ki_empty": "Réponse vide",
   "ki_badjson": "La réponse n’était pas du JSON valide",
   "ki_refusal": "La requête a été refusée",
-  "ki_retry": "réessayer"
+  "ki_retry": "réessayer",
+  "set_eigen": "🤖 Aliments perso (IA)",
+  "set_eigen_s": "Gère et supprime les aliments ajoutés par l’IA.",
+  "eig_manage": "🤖 Gérer",
+  "eig_manage_n": "🤖 Gérer ({n})",
+  "eig_title": "🤖 Aliments perso",
+  "eig_empty": "Aucun aliment perso (IA) pour l’instant.",
+  "eig_del": "supprimer",
+  "eig_all": "Tout supprimer",
+  "ig_all": "🚫 Tous",
+  "ig_none": "↩︎ Tout compter"
  },
  "it": {
   "title": "🍽️ Giorno di Energia — Pianificatore",
@@ -805,7 +835,17 @@
   "ki_empty": "Risposta vuota",
   "ki_badjson": "La risposta non era JSON valido",
   "ki_refusal": "La richiesta è stata rifiutata",
-  "ki_retry": "riprova"
+  "ki_retry": "riprova",
+  "set_eigen": "🤖 Alimenti propri (IA)",
+  "set_eigen_s": "Gestisci ed elimina gli alimenti aggiunti dall’IA.",
+  "eig_manage": "🤖 Gestisci",
+  "eig_manage_n": "🤖 Gestisci ({n})",
+  "eig_title": "🤖 Alimenti propri",
+  "eig_empty": "Ancora nessun alimento proprio (IA).",
+  "eig_del": "elimina",
+  "eig_all": "Elimina tutti",
+  "ig_all": "🚫 Tutti",
+  "ig_none": "↩︎ Conta tutti"
  },
  "sv": {
   "title": "🍽️ Energidag — Dagsplanerare",
@@ -1007,7 +1047,17 @@
   "ki_empty": "Tomt svar",
   "ki_badjson": "Svaret var inte giltig JSON",
   "ki_refusal": "Begäran avvisades",
-  "ki_retry": "försök igen"
+  "ki_retry": "försök igen",
+  "set_eigen": "🤖 Egna (AI) livsmedel",
+  "set_eigen_s": "Hantera och ta bort livsmedel som AI lagt till.",
+  "eig_manage": "🤖 Hantera",
+  "eig_manage_n": "🤖 Hantera ({n})",
+  "eig_title": "🤖 Egna livsmedel",
+  "eig_empty": "Inga egna (AI) livsmedel än.",
+  "eig_del": "ta bort",
+  "eig_all": "Ta bort alla",
+  "ig_all": "🚫 Alla",
+  "ig_none": "↩︎ Räkna alla"
  },
  "no": {
   "title": "🍽️ Energidag — Dagsplanlegger",
@@ -1209,7 +1259,17 @@
   "ki_empty": "Tomt svar",
   "ki_badjson": "Svaret var ikke gyldig JSON",
   "ki_refusal": "Forespørselen ble avvist",
-  "ki_retry": "prøv igjen"
+  "ki_retry": "prøv igjen",
+  "set_eigen": "🤖 Egne (KI) matvarer",
+  "set_eigen_s": "Administrer og slett matvarer KI har lagt til.",
+  "eig_manage": "🤖 Administrer",
+  "eig_manage_n": "🤖 Administrer ({n})",
+  "eig_title": "🤖 Egne matvarer",
+  "eig_empty": "Ingen egne (KI) matvarer ennå.",
+  "eig_del": "slett",
+  "eig_all": "Slett alle",
+  "ig_all": "🚫 Alle",
+  "ig_none": "↩︎ Tell alle"
  },
  "fi": {
   "title": "🍽️ Energiapäivä — Päiväsuunnittelija",
@@ -1411,7 +1471,17 @@
   "ki_empty": "Tyhjä vastaus",
   "ki_badjson": "Vastaus ei ollut kelvollista JSONia",
   "ki_refusal": "Pyyntö hylättiin",
-  "ki_retry": "yritä uudelleen"
+  "ki_retry": "yritä uudelleen",
+  "set_eigen": "🤖 Omat (tekoäly) ruoat",
+  "set_eigen_s": "Hallitse ja poista tekoälyn lisäämiä ruokia.",
+  "eig_manage": "🤖 Hallitse",
+  "eig_manage_n": "🤖 Hallitse ({n})",
+  "eig_title": "🤖 Omat ruoat",
+  "eig_empty": "Ei vielä omia (tekoäly) ruokia.",
+  "eig_del": "poista",
+  "eig_all": "Poista kaikki",
+  "ig_all": "🚫 Kaikki",
+  "ig_none": "↩︎ Laske kaikki"
  },
  "he": {
   "title": "🍽️ יום אנרגיה — מתכנן יומי",
@@ -1613,7 +1683,17 @@
   "ki_empty": "תשובה ריקה",
   "ki_badjson": "התשובה לא הייתה JSON תקין",
   "ki_refusal": "הבקשה נדחתה",
-  "ki_retry": "נסו שוב"
+  "ki_retry": "נסו שוב",
+  "set_eigen": "🤖 מאכלים משלך (בינה)",
+  "set_eigen_s": "נהלו ומחקו מאכלים שהבינה הוסיפה.",
+  "eig_manage": "🤖 ניהול",
+  "eig_manage_n": "🤖 ניהול ({n})",
+  "eig_title": "🤖 מאכלים משלך",
+  "eig_empty": "עדיין אין מאכלים משלך (בינה).",
+  "eig_del": "מחק",
+  "eig_all": "מחק הכל",
+  "ig_all": "🚫 הכל",
+  "ig_none": "↩︎ ספור הכל"
  },
  "yi": {
   "title": "🍽️ ענערגיע־טאָג — טאָג־פּלאַנער",
@@ -1815,7 +1895,17 @@
   "ki_empty": "לײדיקע ענטפֿער",
   "ki_badjson": "דער ענטפֿער איז נישט געװען גילטיק JSON",
   "ki_refusal": "די בקשה איז אָפּגעזאָגט געװאָרן",
-  "ki_retry": "פּרוּװט נאָך אַ מאָל"
+  "ki_retry": "פּרוּװט נאָך אַ מאָל",
+  "set_eigen": "🤖 אײגענע (קי) עסן",
+  "set_eigen_s": "פֿאַרװאַלטן און אויסמעקן עסן װאָס די קי האָט צוגעלייגט.",
+  "eig_manage": "🤖 פֿאַרװאַלטן",
+  "eig_manage_n": "🤖 פֿאַרװאַלטן ({n})",
+  "eig_title": "🤖 אײגענע עסן",
+  "eig_empty": "נאָך קײן אײגענע (קי) עסן.",
+  "eig_del": "אויסמעקן",
+  "eig_all": "אַלץ אויסמעקן",
+  "ig_all": "🚫 אַלע",
+  "ig_none": "↩︎ צײל אַלע"
  },
  "sjn": {
   "title": "🍽️ Aur en-Vellas — Govaded Aur",
@@ -2017,7 +2107,17 @@
   "ki_empty": "Dammen lom",
   "ki_badjson": "I-dambeth ú-JSON vaer",
   "ki_refusal": "I-arim avarnen",
-  "ki_retry": "iesto ad"
+  "ki_retry": "iesto ad",
+  "set_eigen": "🤖 Vaist în (nûr)",
+  "set_eigen_s": "Tortho a gwanno vaist i-nûr annen.",
+  "eig_manage": "🤖 Tortho",
+  "eig_manage_n": "🤖 Tortho ({n})",
+  "eig_title": "🤖 Vaist în",
+  "eig_empty": "Ú-vaist în (nûr) an-uir.",
+  "eig_del": "gwanno",
+  "eig_all": "Gwanno bân",
+  "ig_all": "🚫 Bân",
+  "ig_none": "↩︎ Nogo bân"
  },
  "bar": {
   "title": "🍽️ Energie-Dog — Dogsplaner",
@@ -2219,7 +2319,17 @@
   "ki_empty": "Leere Antwort",
   "ki_badjson": "D’Antwort war koa güitigs JSON",
   "ki_refusal": "D’Anfrog is obglehnt worn",
-  "ki_retry": "nomoi probian"
+  "ki_retry": "nomoi probian",
+  "set_eigen": "🤖 Eigne (KI-)Essn",
+  "set_eigen_s": "Vo da KI dazuagfügte Essn vawoin und lesch.",
+  "eig_manage": "🤖 Vawoin",
+  "eig_manage_n": "🤖 Vawoin ({n})",
+  "eig_title": "🤖 Eigne Essn",
+  "eig_empty": "No koa eigne (KI-)Essn.",
+  "eig_del": "lesch",
+  "eig_all": "Ois lesch",
+  "ig_all": "🚫 Olle",
+  "ig_none": "↩︎ Olle zähn"
  },
  "mainz": {
   "title": "🍽️ Energie-Daach — Daachsplaner",
@@ -2421,7 +2531,17 @@
   "ki_empty": "Leer Antwort",
   "ki_badjson": "Die Antwort war kaa gildisches JSON",
   "ki_refusal": "Die Anfrooch is abgelehnt worn",
-  "ki_retry": "nochemol probiere"
+  "ki_retry": "nochemol probiere",
+  "set_eigen": "🤖 Eische (KI-)Esse",
+  "set_eigen_s": "Vun de KI dezugefüschte Esse verwalte un lösche.",
+  "eig_manage": "🤖 Verwalte",
+  "eig_manage_n": "🤖 Verwalte ({n})",
+  "eig_title": "🤖 Eische Esse",
+  "eig_empty": "Noch kaa eische (KI-)Esse.",
+  "eig_del": "lösche",
+  "eig_all": "Alles lösche",
+  "ig_all": "🚫 Alle",
+  "ig_none": "↩︎ Alle zähle"
  },
  "hess": {
   "title": "🍽️ Energie-Daach — Daachesplaner",
@@ -2623,6 +2743,16 @@
   "ki_empty": "Leer Antwort",
   "ki_badjson": "Die Antwort war kaa gildisches JSON",
   "ki_refusal": "Die Anfraach is abgelehnt worn",
-  "ki_retry": "nochemol probiere"
+  "ki_retry": "nochemol probiere",
+  "set_eigen": "🤖 Eische (KI-)Esse",
+  "set_eigen_s": "Vun de KI dezugefüschte Esse verwalte un lösche.",
+  "eig_manage": "🤖 Verwalte",
+  "eig_manage_n": "🤖 Verwalte ({n})",
+  "eig_title": "🤖 Eische Esse",
+  "eig_empty": "Noch kaa eische (KI-)Esse.",
+  "eig_del": "lösche",
+  "eig_all": "Alles lösche",
+  "ig_all": "🚫 Alle",
+  "ig_none": "↩︎ Alle zähle"
  }
 }

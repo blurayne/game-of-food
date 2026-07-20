@@ -148,6 +148,9 @@ path.hit.aktivseg{stroke:var(--segcol,var(--tinte));stroke-width:3;stroke-linejo
 .teller .h{font-family:'Fredoka';font-weight:600;font-size:13px;display:flex;align-items:center;margin-bottom:6px}
 .teller .h .rs{margin-left:auto;background:#fff;border:none;border-radius:7px;font-size:9.5px;font-weight:800;
   padding:4px 8px;cursor:pointer;color:var(--rot-tief);box-shadow:var(--sk)}
+.teller .h .igall{color:var(--tinte-weich)} .teller .h .igall.an{color:var(--rot-tief);background:#fbe4dc}
+.teller .h .igall.aus{display:none}
+.teller .h .igall + .rs{margin-left:6px}
 .liste{flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:3px}
 .li{display:flex;align-items:center;gap:6px;background:#fff;border-radius:8px;padding:4px 7px;box-shadow:var(--sk)}
 .li .em{font-size:14px}
@@ -287,6 +290,14 @@ path.hit.aktivseg{stroke:var(--segcol,var(--tinte));stroke-width:3;stroke-linejo
 .optsub input{margin-top:2px;flex:0 0 auto}
 .optsub small{display:block;font-size:9px;font-weight:700;color:var(--tinte-weich);line-height:1.4;margin-top:2px}
 .kisuchbtn{margin-top:10px}
+.eigrow{display:flex;align-items:center;gap:8px;background:#fff;border-radius:9px;padding:7px 9px;margin-bottom:6px;box-shadow:var(--sk)}
+.eigrow .em{font-size:20px;flex:0 0 auto}
+.eigrow .nm{flex:1;font-size:11px;font-weight:800;line-height:1.2;min-width:0}
+.eigrow .nm small{display:block;font-weight:700;color:var(--tinte-weich);font-size:9px}
+.eigrow .x{flex:0 0 auto;background:#fbe4dc;color:var(--rot-tief);border:none;border-radius:7px;width:26px;height:26px;font-size:13px;cursor:pointer}
+.eigrow .x:hover{background:#f6cabb}
+.eigallbtn{display:block;width:100%;margin-top:4px;background:#fbe4dc;color:var(--rot-tief);border:none;border-radius:9px;padding:8px;font-family:'Fredoka';font-weight:500;font-size:11.5px;cursor:pointer}
+.eigallbtn:hover{background:#f6cabb}
 .optzoom .pm button.minus{visibility:visible;background:#f3d9d2;color:var(--rot-tief)}
 .optzoom .pm .z{width:38px}
 .suche{display:flex;align-items:center;gap:6px;background:#fff;border:2px solid transparent;border-radius:9px;
@@ -493,7 +504,7 @@ path.hit.aktivseg{stroke:var(--segcol,var(--tinte));stroke-width:3;stroke-linejo
       </div>
 
       <div class="teller">
-        <div class="h"><span data-i18n="plate_title">🍽️ Heute gegessen</span> <button class="rs" id="reset" data-i18n="plate_reset">Alles leeren</button></div>
+        <div class="h"><span data-i18n="plate_title">🍽️ Heute gegessen</span> <button class="rs igall aus" id="igalle">🚫 Alle</button> <button class="rs" id="reset" data-i18n="plate_reset">Alles leeren</button></div>
         <div class="liste" id="liste"></div>
       </div>
     </div>
@@ -589,7 +600,16 @@ path.hit.aktivseg{stroke:var(--segcol,var(--tinte));stroke-width:3;stroke-linejo
           <div class="keymsg aus" id="optkeymsg" role="status" aria-live="polite"></div>
           <label class="optsub"><input type="checkbox" id="optkisuch">
             <span><span data-i18n="set_kisearch">🔎 KI-Zeile in der Suche</span><small data-i18n="set_kisearch_s">Bei aktiver Suche eine „mit KI nachschlagen"-Zeile in der Ergebnisliste zeigen (nur mit Key).</small></span></label></span></div>
+        <div class="opt optki"><span><span data-i18n="set_eigen">🤖 Eigene (KI-)Lebensmittel</span><small data-i18n="set_eigen_s">Von der KI hinzugefügte Lebensmittel verwalten und löschen.</small>
+          <button class="keytestbtn" id="eigenbtn" data-i18n="eig_manage">🤖 Verwalten</button></span></div>
       </div>
+    </div>
+  </div>
+  <div class="modal" id="eigenmodal">
+    <div class="sbox">
+      <div class="mbar"><span class="t" data-i18n="eig_title">🤖 Eigene Lebensmittel</span>
+        <button class="zu" id="eigenzu" aria-label="schließen">✕</button></div>
+      <div class="spad" id="eigenListe"></div>
     </div>
   </div>
 </div></div>
@@ -953,6 +973,11 @@ function render(){
   const anzAlle=Object.values(teller).reduce((a,b)=>a+b,0);
   const t=tagSumme();
   document.getElementById('usn').textContent = anz? `(${anz})` : '';
+  const igBtn=document.getElementById('igalle');
+  if(igBtn){ const ids=Object.keys(teller), alleIg=ids.length && ids.every(id=>ignoriert[id]);
+    igBtn.classList.toggle('aus', !ids.length);
+    igBtn.classList.toggle('an', !!alleIg);
+    igBtn.textContent = alleIg ? T('ig_none','↩︎ Alle zählen') : T('ig_all','🚫 Alle'); }
   document.getElementById('stand').textContent = anzAlle
     ? TF('stand_line','{n} {things} · {kcal} kcal · {zuck} g {sugar}',
         {n:anz, things:(anz===1?T('things_1','Sache'):T('things_n','Sachen')),
@@ -1072,8 +1097,16 @@ document.getElementById('tagbtn').onclick=openTag;
 document.getElementById('zu').onclick=()=>document.getElementById('modal').classList.remove('on');
 document.getElementById('modal').onclick=e=>{if(e.target.id==='modal')e.currentTarget.classList.remove('on');};
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){document.getElementById('modal').classList.remove('on');
-  document.getElementById('setmodal').classList.remove('on'); entpinnen();}});
+  document.getElementById('setmodal').classList.remove('on');
+  document.getElementById('eigenmodal').classList.remove('on'); entpinnen();}});
 document.getElementById('reset').onclick=()=>{teller={};ignoriert={};merkTeller();baue();render();};
+function toggleAlleIgnorieren(){
+  const ids=Object.keys(teller); if(!ids.length) return;
+  const alleIg = ids.every(id=>ignoriert[id]);
+  if(alleIg) ignoriert={}; else ids.forEach(id=>ignoriert[id]=true);
+  merkTeller(); render();
+}
+document.getElementById('igalle').onclick=toggleAlleIgnorieren;
 
 
 /* ---------- Tooltip: was füllt dieses Segment? ---------- */
@@ -1168,44 +1201,59 @@ function parseJson(t){
   }
 }
 /* Ein Aufruf, drei Dialekte. Gibt das geparste JSON-Objekt zurück. */
-async function kiCall(system, user, schema, maxTokens){
-  const c=provCfg();
-  if(!c.key) throw new Error(T('key_none_short','Kein API-Key'));
-  if(!c.endpoint) throw new Error(T('err_no_endpoint','Kein Endpoint'));
-  if(!c.model) throw new Error(T('err_no_model','Kein Modell'));
-  let url=c.endpoint, headers, body, extract;
-  if(c.kind==='anthropic'){
-    headers={'content-type':'application/json','x-api-key':c.key,
-             'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'};
-    body={model:c.model, max_tokens:maxTokens, system,
-          messages:[{role:'user',content:user}], output_config:{format:{type:'json_schema',schema}}};
-    extract=d=>{ if(d.stop_reason==='refusal') throw new Error(T('ki_refusal','Anfrage abgelehnt'));
-      const t=(d.content||[]).find(b=>b.type==='text'); return parseJson(t&&t.text); };
-  } else if(c.kind==='gemini'){
-    url=c.endpoint.replace(/\/+$/,'')+'/'+encodeURIComponent(c.model)+':generateContent?key='+encodeURIComponent(c.key);
-    headers={'content-type':'application/json'};
-    body={ system_instruction:{parts:[{text:system+'\n\nAntworte NUR mit EINEM JSON-Objekt nach diesem JSON-Schema (keine Markdown-Zäune):\n'+JSON.stringify(schema)}]},
-      contents:[{role:'user',parts:[{text:user}]}],
-      generationConfig:{responseMimeType:'application/json', maxOutputTokens:maxTokens, temperature:0.4} };
-    extract=d=>{ const p=d&&d.candidates&&d.candidates[0]&&d.candidates[0].content&&d.candidates[0].content.parts;
-      return parseJson(p?p.map(x=>x.text||'').join(''):null); };
-  } else { // OpenAI-kompatibel: openai, grok, custom
-    headers={'content-type':'application/json','authorization':'Bearer '+c.key};
-    body={ model:c.model, max_tokens:maxTokens, temperature:0.4,
-      messages:[{role:'system',content:system+'\n\nRespond ONLY with a single JSON object that matches this JSON schema (no markdown, no prose):\n'+JSON.stringify(schema)},
-                {role:'user',content:user}],
-      response_format:{type:'json_object'} };
-    extract=d=>{ const m=d&&d.choices&&d.choices[0]&&d.choices[0].message;
-      const t=m&&(typeof m.content==='string'?m.content:(Array.isArray(m.content)?m.content.map(x=>x.text||'').join(''):''));
-      return parseJson(t); };
-  }
-  const res=await fetch(url,{method:'POST',headers,body:JSON.stringify(body)});
+async function kiSend(spec){
+  const res=await fetch(spec.url,{method:'POST',headers:spec.headers,body:JSON.stringify(spec.body)});
   if(!res.ok){
     const e=await res.json().catch(()=>null);
     const msg=(e&&e.error&&e.error.message)?e.error.message:('HTTP '+res.status+' '+res.statusText);
     const err=new Error(msg); err.status=res.status; throw err;
   }
-  return extract(await res.json());
+  return spec.extract(await res.json());
+}
+async function kiCall(system, user, schema, maxTokens){
+  const c=provCfg();
+  if(!c.key) throw new Error(T('key_none_short','Kein API-Key'));
+  if(!c.endpoint) throw new Error(T('err_no_endpoint','Kein Endpoint'));
+  if(!c.model) throw new Error(T('err_no_model','Kein Modell'));
+  const build=variant=>{
+    if(c.kind==='anthropic'){
+      return { url:c.endpoint,
+        headers:{'content-type':'application/json','x-api-key':c.key,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
+        body:{model:c.model, max_tokens:maxTokens, system, messages:[{role:'user',content:user}], output_config:{format:{type:'json_schema',schema}}},
+        extract:d=>{ if(d.stop_reason==='refusal') throw new Error(T('ki_refusal','Anfrage abgelehnt'));
+          const t=(d.content||[]).find(b=>b.type==='text'); return parseJson(t&&t.text); } };
+    }
+    if(c.kind==='gemini'){
+      return { url:c.endpoint.replace(/\/+$/,'')+'/'+encodeURIComponent(c.model)+':generateContent?key='+encodeURIComponent(c.key),
+        headers:{'content-type':'application/json'},
+        body:{ system_instruction:{parts:[{text:system+'\n\nAntworte NUR mit EINEM gültigen JSON-Objekt nach diesem JSON-Schema — keine Markdown-Zäune, keine nachgestellten Kommas:\n'+JSON.stringify(schema)}]},
+          contents:[{role:'user',parts:[{text:user}]}],
+          generationConfig:{responseMimeType:'application/json', maxOutputTokens:maxTokens, temperature:0.2} },
+        extract:d=>{ const pa=d&&d.candidates&&d.candidates[0]&&d.candidates[0].content&&d.candidates[0].content.parts;
+          return parseJson(pa?pa.map(x=>x.text||'').join(''):null); } };
+    }
+    // OpenAI-kompatibel (openai, grok, custom): 'schema' = strenges json_schema, 'object' = json_object
+    const useSchema = variant==='schema';
+    return { url:c.endpoint,
+      headers:{'content-type':'application/json','authorization':'Bearer '+c.key},
+      body:{ model:c.model, max_tokens:maxTokens, temperature:0.2,
+        messages:[{role:'system',content:system+'\n\nRespond ONLY with a single valid JSON object matching the schema — no markdown, no prose, no trailing commas.'+(useSchema?'':'\nSchema:\n'+JSON.stringify(schema))},
+                  {role:'user',content:user}],
+        response_format: useSchema ? {type:'json_schema', json_schema:{name:'result', schema, strict:true}} : {type:'json_object'} },
+      extract:d=>{ const m=d&&d.choices&&d.choices[0]&&d.choices[0].message;
+        const t=m&&(typeof m.content==='string'?m.content:(Array.isArray(m.content)?m.content.map(x=>x.text||'').join(''):''));
+        return parseJson(t); } };
+  };
+  const openaiLike = (c.kind!=='anthropic' && c.kind!=='gemini');
+  if(openaiLike && c.p!=='custom'){
+    // openai/grok: strenges json_schema versuchen, bei Format-/Schema-Ablehnung auf json_object zurückfallen
+    try{ return await kiSend(build('schema')); }
+    catch(e){ const m=String(e.message||'');
+      if((e.status===400||e.status===422) && /response_format|json_schema|schema|not supported|unsupported|does not support/i.test(m))
+        return await kiSend(build('object'));
+      throw e; }
+  }
+  return await kiSend(build(openaiLike?'object':'default'));
 }
 const KI_REGALE=["🍞 Brot & Gebäck","🥣 Frühstück","🍎 Obst","🥬 Gemüse","🧀 Milch & Käse",
   "🍔 Fleisch & Fast Food","🍽️ Fertige Teller","🍦 Eis & Kuchen","🍫 Süßes","🧈 Fette & Würze","🧃 Getränke","🥪 Gerichte"];
@@ -1260,6 +1308,36 @@ function kiZuFood(k){
 let eigene=[]; try{eigene=JSON.parse(localStorage.getItem('eigeneFoods')||'[]')}catch(e){}
 eigene.forEach(f=>{ if(!F(f.id)) FOODS.push(f); });
 const merkEigene=()=>{try{localStorage.setItem('eigeneFoods',JSON.stringify(eigene))}catch(e){}};
+
+/* Eigene (KI-)Lebensmittel verwalten/löschen */
+function loescheEigenes(id){
+  eigene=eigene.filter(f=>f.id!==id);
+  const i=FOODS.findIndex(f=>f.id===id); if(i>=0) FOODS.splice(i,1);
+  if(teller[id]){ delete teller[id]; delete ignoriert[id]; merkTeller(); }
+  if(aktiv && aktiv.id===id) aktiv=FOODS[0];
+  merkEigene(); renderEigeneListe(); eigenBtnSync(); baue(); render();
+}
+function loescheAlleEigenen(){
+  eigene.slice().forEach(f=>{
+    const i=FOODS.findIndex(x=>x.id===f.id); if(i>=0) FOODS.splice(i,1);
+    if(teller[f.id]){ delete teller[f.id]; delete ignoriert[f.id]; }
+    if(aktiv && aktiv.id===f.id) aktiv=FOODS[0];
+  });
+  eigene=[]; merkEigene(); merkTeller(); renderEigeneListe(); eigenBtnSync(); baue(); render();
+}
+function renderEigeneListe(){
+  const box=document.getElementById('eigenListe'); if(!box) return;
+  if(!eigene.length){ box.innerHTML=`<div class="vleer">${T('eig_empty','Noch keine eigenen (KI-)Lebensmittel.')}</div>`; return; }
+  let h='';
+  eigene.forEach(f=>{ h+=`<div class="eigrow"><span class="em">${f.emoji}</span><span class="nm">${nameOf(f)}<small>${f.regal} · ${f.portion} g · ${Math.round(f.n.kcal)} kcal</small></span><button class="x" data-del-eig="${f.id}" title="${T('eig_del','löschen')}">✕</button></div>`; });
+  h+=`<button class="eigallbtn" id="eigenallbtn">🗑 ${T('eig_all','Alle löschen')} (${eigene.length})</button>`;
+  box.innerHTML=h;
+  box.querySelectorAll('[data-del-eig]').forEach(b=>b.onclick=()=>loescheEigenes(b.dataset.delEig));
+  const ab=document.getElementById('eigenallbtn'); if(ab) ab.onclick=loescheAlleEigenen;
+}
+function eigenBtnSync(){ const b=document.getElementById('eigenbtn'); if(b)
+  b.textContent = eigene.length ? TF('eig_manage_n','🤖 Verwalten ({n})',{n:eigene.length}) : T('eig_manage','🤖 Verwalten'); }
+
 // gespeicherten Teller wiederherstellen (nur ids, deren Lebensmittel es noch gibt)
 try{ const sp=JSON.parse(localStorage.getItem('teller')||'null');
   if(sp&&sp.t){ for(const id in sp.t){ if(F(id)&&sp.t[id]>0) teller[id]=sp.t[id]; }
@@ -1275,7 +1353,7 @@ async function kiSuche(btn){
     const roh=await kiNachschlagen(begriff);
     let f=kiZuFood(roh);
     if(F(f.id)) f=F(f.id);
-    else { FOODS.push(f); eigene.push(f); merkEigene(); }
+    else { FOODS.push(f); eigene.push(f); merkEigene(); if(typeof eigenBtnSync==='function') eigenBtnSync(); }
     teller[f.id]=(teller[f.id]||0)+1; merkTeller();   // gefundenes Essen direkt auf den Teller
     const S=document.getElementById('suche');
     S.value=''; S.oninput();
@@ -1504,6 +1582,13 @@ const setmodal=document.getElementById('setmodal');
 document.getElementById('setbtn').onclick=()=>setmodal.classList.add('on');
 document.getElementById('setzu').onclick=()=>setmodal.classList.remove('on');
 setmodal.onclick=e=>{if(e.target===setmodal)setmodal.classList.remove('on');};
+
+/* Eigene (KI-)Lebensmittel: Dialog */
+const eigenmodal=document.getElementById('eigenmodal');
+eigenBtnSync();
+document.getElementById('eigenbtn').onclick=()=>{ renderEigeneListe(); eigenmodal.classList.add('on'); };
+document.getElementById('eigenzu').onclick=()=>eigenmodal.classList.remove('on');
+eigenmodal.onclick=e=>{if(e.target===eigenmodal)eigenmodal.classList.remove('on');};
 
 /* Übersetzungs-Buttons */
 document.getElementById('uebbtn').onclick=e=>uebersetzenFoods(e.currentTarget);
