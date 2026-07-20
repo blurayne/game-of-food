@@ -1154,9 +1154,18 @@ const kiKeyDa=()=>!!provCfg().key;
 function parseJson(t){
   if(t==null) throw new Error(T('ki_empty','Leere Antwort'));
   let s=String(t).trim();
-  const m=s.match(/```(?:json)?\s*([\s\S]*?)```/i); if(m) s=m[1].trim();
-  if(s[0]!=='{'){ const i=s.indexOf('{'), j=s.lastIndexOf('}'); if(i>=0&&j>i) s=s.slice(i,j+1); }
-  return JSON.parse(s);
+  const m=s.match(/```(?:json)?\s*([\s\S]*?)```/i); if(m) s=m[1].trim();  // Markdown-Zäune weg
+  if(s[0]!=='{' && s[0]!=='['){ const i=s.indexOf('{'), j=s.lastIndexOf('}'); if(i>=0&&j>i) s=s.slice(i,j+1); } // Prosa drumherum
+  try{ return JSON.parse(s); }catch(e){
+    // Reparaturversuch für typische Modell-Macken
+    let r=s
+      .replace(/[“”„‟″]/g,'"')   // typografische Anführungszeichen → "
+      .replace(/[‘’′]/g,"'")               // typografische Apostrophe
+      .replace(/,\s*([}\]])/g,'$1');                        // nachgestellte Kommas: ,} ,] weg
+    try{ return JSON.parse(r); }catch(e2){
+      const err=new Error(T('ki_badjson','Antwort war kein gültiges JSON')); err.raw=s; throw err;
+    }
+  }
 }
 /* Ein Aufruf, drei Dialekte. Gibt das geparste JSON-Objekt zurück. */
 async function kiCall(system, user, schema, maxTokens){
@@ -1273,7 +1282,8 @@ async function kiSuche(btn){
     waehle(f); setModus('aktuell',true);
   }catch(e){
     btn.disabled=false;
-    btn.textContent='❌ '+(e.message||'Fehler')+' — nochmal versuchen';
+    const m=String(e.message||'Fehler'); const kurz=m.length>70?m.slice(0,70)+'…':m;
+    btn.textContent='❌ '+kurz+' — '+T('ki_retry','nochmal versuchen');
   }
 }
 

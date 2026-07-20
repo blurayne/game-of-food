@@ -195,7 +195,11 @@
   "model_ph": "Model name",
   "endpoint_ph": "Endpoint URL",
   "key_getlink": "🔑 Get API key ↗ ({host})",
-  "key_bill_hint": "ℹ️ The key is valid, but the provider account has no credit/quota. In the provider account (same organization) check credit/billing and a spend limit &gt; 0. API credit is separate from chat plans like Claude&nbsp;Pro / ChatGPT&nbsp;Plus."
+  "key_bill_hint": "ℹ️ The key is valid, but the provider account has no credit/quota. In the provider account (same organization) check credit/billing and a spend limit &gt; 0. API credit is separate from chat plans like Claude&nbsp;Pro / ChatGPT&nbsp;Plus.",
+  "ki_empty": "Empty response",
+  "ki_badjson": "The response was not valid JSON",
+  "ki_refusal": "Request was declined",
+  "ki_retry": "try again"
  },
  "es": {
   "title": "🍽️ Día de Energía — Planificador diario",
@@ -393,7 +397,11 @@
   "model_ph": "Nombre del modelo",
   "endpoint_ph": "URL del endpoint",
   "key_getlink": "🔑 Obtener clave API ↗ ({host})",
-  "key_bill_hint": "ℹ️ La clave es válida, pero la cuenta del proveedor no tiene saldo/cuota. En la cuenta del proveedor (misma organización) revisa saldo/facturación y un límite de gasto &gt; 0. El saldo de API es independiente de planes de chat como Claude&nbsp;Pro / ChatGPT&nbsp;Plus."
+  "key_bill_hint": "ℹ️ La clave es válida, pero la cuenta del proveedor no tiene saldo/cuota. En la cuenta del proveedor (misma organización) revisa saldo/facturación y un límite de gasto &gt; 0. El saldo de API es independiente de planes de chat como Claude&nbsp;Pro / ChatGPT&nbsp;Plus.",
+  "ki_empty": "Respuesta vacía",
+  "ki_badjson": "La respuesta no era JSON válido",
+  "ki_refusal": "La solicitud fue rechazada",
+  "ki_retry": "reintentar"
  },
  "fr": {
   "title": "🍽️ Jour d'Énergie — Planificateur",
@@ -591,7 +599,11 @@
   "model_ph": "Nom du modèle",
   "endpoint_ph": "URL du endpoint",
   "key_getlink": "🔑 Obtenir une clé API ↗ ({host})",
-  "key_bill_hint": "ℹ️ La clé est valide, mais le compte du fournisseur n’a pas de crédit/quota. Dans le compte du fournisseur (même organisation) vérifie crédit/facturation et une limite de dépense &gt; 0. Le crédit API est distinct des abonnements chat comme Claude&nbsp;Pro / ChatGPT&nbsp;Plus."
+  "key_bill_hint": "ℹ️ La clé est valide, mais le compte du fournisseur n’a pas de crédit/quota. Dans le compte du fournisseur (même organisation) vérifie crédit/facturation et une limite de dépense &gt; 0. Le crédit API est distinct des abonnements chat comme Claude&nbsp;Pro / ChatGPT&nbsp;Plus.",
+  "ki_empty": "Réponse vide",
+  "ki_badjson": "La réponse n’était pas du JSON valide",
+  "ki_refusal": "La requête a été refusée",
+  "ki_retry": "réessayer"
  },
  "it": {
   "title": "🍽️ Giorno di Energia — Pianificatore",
@@ -789,7 +801,11 @@
   "model_ph": "Nome del modello",
   "endpoint_ph": "URL endpoint",
   "key_getlink": "🔑 Ottieni chiave API ↗ ({host})",
-  "key_bill_hint": "ℹ️ La chiave è valida, ma l’account del fornitore non ha credito/quota. Nell’account del fornitore (stessa organizzazione) controlla credito/fatturazione e un limite di spesa &gt; 0. Il credito API è separato dagli abbonamenti chat come Claude&nbsp;Pro / ChatGPT&nbsp;Plus."
+  "key_bill_hint": "ℹ️ La chiave è valida, ma l’account del fornitore non ha credito/quota. Nell’account del fornitore (stessa organizzazione) controlla credito/fatturazione e un limite di spesa &gt; 0. Il credito API è separato dagli abbonamenti chat come Claude&nbsp;Pro / ChatGPT&nbsp;Plus.",
+  "ki_empty": "Risposta vuota",
+  "ki_badjson": "La risposta non era JSON valido",
+  "ki_refusal": "La richiesta è stata rifiutata",
+  "ki_retry": "riprova"
  },
  "sv": {
   "title": "🍽️ Energidag — Dagsplanerare",
@@ -987,7 +1003,11 @@
   "model_ph": "Modellnamn",
   "endpoint_ph": "Endpoint-URL",
   "key_getlink": "🔑 Hämta API-nyckel ↗ ({host})",
-  "key_bill_hint": "ℹ️ Nyckeln är giltig, men leverantörskontot har inget saldo/kvot. Kontrollera saldo/fakturering och en utgiftsgräns &gt; 0 i leverantörskontot (samma organisation). API-saldo är skilt från chattabonnemang som Claude&nbsp;Pro / ChatGPT&nbsp;Plus."
+  "key_bill_hint": "ℹ️ Nyckeln är giltig, men leverantörskontot har inget saldo/kvot. Kontrollera saldo/fakturering och en utgiftsgräns &gt; 0 i leverantörskontot (samma organisation). API-saldo är skilt från chattabonnemang som Claude&nbsp;Pro / ChatGPT&nbsp;Plus.",
+  "ki_empty": "Tomt svar",
+  "ki_badjson": "Svaret var inte giltig JSON",
+  "ki_refusal": "Begäran avvisades",
+  "ki_retry": "försök igen"
  },
  "no": {
   "title": "🍽️ Energidag — Dagsplanlegger",
@@ -1185,7 +1205,11 @@
   "model_ph": "Modellnavn",
   "endpoint_ph": "Endpoint-URL",
   "key_getlink": "🔑 Hent API-nøkkel ↗ ({host})",
-  "key_bill_hint": "ℹ️ Nøkkelen er gyldig, men leverandørkontoen har ingen saldo/kvote. Sjekk saldo/fakturering og en forbruksgrense &gt; 0 i leverandørkontoen (samme organisasjon). API-saldo er atskilt fra chat-abonnement som Claude&nbsp;Pro / ChatGPT&nbsp;Plus."
+  "key_bill_hint": "ℹ️ Nøkkelen er gyldig, men leverandørkontoen har ingen saldo/kvote. Sjekk saldo/fakturering og en forbruksgrense &gt; 0 i leverandørkontoen (samme organisasjon). API-saldo er atskilt fra chat-abonnement som Claude&nbsp;Pro / ChatGPT&nbsp;Plus.",
+  "ki_empty": "Tomt svar",
+  "ki_badjson": "Svaret var ikke gyldig JSON",
+  "ki_refusal": "Forespørselen ble avvist",
+  "ki_retry": "prøv igjen"
  },
  "fi": {
   "title": "🍽️ Energiapäivä — Päiväsuunnittelija",
@@ -1383,7 +1407,11 @@
   "model_ph": "Mallin nimi",
   "endpoint_ph": "Endpoint-URL",
   "key_getlink": "🔑 Hae API-avain ↗ ({host})",
-  "key_bill_hint": "ℹ️ Avain on kelvollinen, mutta tarjoajan tilillä ei ole saldoa/kiintiötä. Tarkista tarjoajan tililtä (sama organisaatio) saldo/laskutus ja kulutusraja &gt; 0. API-saldo on erillään chat-tilauksista kuten Claude&nbsp;Pro / ChatGPT&nbsp;Plus."
+  "key_bill_hint": "ℹ️ Avain on kelvollinen, mutta tarjoajan tilillä ei ole saldoa/kiintiötä. Tarkista tarjoajan tililtä (sama organisaatio) saldo/laskutus ja kulutusraja &gt; 0. API-saldo on erillään chat-tilauksista kuten Claude&nbsp;Pro / ChatGPT&nbsp;Plus.",
+  "ki_empty": "Tyhjä vastaus",
+  "ki_badjson": "Vastaus ei ollut kelvollista JSONia",
+  "ki_refusal": "Pyyntö hylättiin",
+  "ki_retry": "yritä uudelleen"
  },
  "he": {
   "title": "🍽️ יום אנרגיה — מתכנן יומי",
@@ -1581,7 +1609,11 @@
   "model_ph": "שם הדגם",
   "endpoint_ph": "כתובת Endpoint",
   "key_getlink": "🔑 קבל מפתח API ↗ ({host})",
-  "key_bill_hint": "ℹ️ המפתח תקין, אבל בחשבון הספק אין יתרה/מכסה. בחשבון הספק (אותו ארגון) בדקו יתרה/חיוב ומגבלת הוצאה &gt; 0. יתרת API נפרדת ממנויי צ׳אט כמו Claude&nbsp;Pro / ChatGPT&nbsp;Plus."
+  "key_bill_hint": "ℹ️ המפתח תקין, אבל בחשבון הספק אין יתרה/מכסה. בחשבון הספק (אותו ארגון) בדקו יתרה/חיוב ומגבלת הוצאה &gt; 0. יתרת API נפרדת ממנויי צ׳אט כמו Claude&nbsp;Pro / ChatGPT&nbsp;Plus.",
+  "ki_empty": "תשובה ריקה",
+  "ki_badjson": "התשובה לא הייתה JSON תקין",
+  "ki_refusal": "הבקשה נדחתה",
+  "ki_retry": "נסו שוב"
  },
  "yi": {
   "title": "🍽️ ענערגיע־טאָג — טאָג־פּלאַנער",
@@ -1779,7 +1811,11 @@
   "model_ph": "מאָדעל־נאָמען",
   "endpoint_ph": "Endpoint־URL",
   "key_getlink": "🔑 קריגט API־שליסל ↗ ({host})",
-  "key_bill_hint": "ℹ️ דער שליסל איז גילטיק, אָבער בײַם פֿאַרזאָרגער פֿעלט גוטהאָבן/קװאָטע. אין פֿאַרזאָרגער־קאָנטע (זעלביקע אָרגאַניזאַציע) קוקט גוטהאָבן/בילינג און אַן אויסגאַב־גרענעץ &gt; 0. API־גוטהאָבן איז באַזונדער פֿון טשאַט־אַבאָס װי Claude&nbsp;Pro / ChatGPT&nbsp;Plus."
+  "key_bill_hint": "ℹ️ דער שליסל איז גילטיק, אָבער בײַם פֿאַרזאָרגער פֿעלט גוטהאָבן/קװאָטע. אין פֿאַרזאָרגער־קאָנטע (זעלביקע אָרגאַניזאַציע) קוקט גוטהאָבן/בילינג און אַן אויסגאַב־גרענעץ &gt; 0. API־גוטהאָבן איז באַזונדער פֿון טשאַט־אַבאָס װי Claude&nbsp;Pro / ChatGPT&nbsp;Plus.",
+  "ki_empty": "לײדיקע ענטפֿער",
+  "ki_badjson": "דער ענטפֿער איז נישט געװען גילטיק JSON",
+  "ki_refusal": "די בקשה איז אָפּגעזאָגט געװאָרן",
+  "ki_retry": "פּרוּװט נאָך אַ מאָל"
  },
  "sjn": {
   "title": "🍽️ Aur en-Vellas — Govaded Aur",
@@ -1977,7 +2013,11 @@
   "model_ph": "Eneth i-hos",
   "endpoint_ph": "URL en-endpoint",
   "key_getlink": "🔑 Garo bân API ↗ ({host})",
-  "key_bill_hint": "ℹ️ I-bân vaer, dan i-gonath en-attan ú-mîr/ú-rest. Vi i-gonath (i-gonath vin) tíro mîr/canad a ided-vangad &gt; 0. Mîr API sen o attpath-govaded sui Claude&nbsp;Pro / ChatGPT&nbsp;Plus."
+  "key_bill_hint": "ℹ️ I-bân vaer, dan i-gonath en-attan ú-mîr/ú-rest. Vi i-gonath (i-gonath vin) tíro mîr/canad a ided-vangad &gt; 0. Mîr API sen o attpath-govaded sui Claude&nbsp;Pro / ChatGPT&nbsp;Plus.",
+  "ki_empty": "Dammen lom",
+  "ki_badjson": "I-dambeth ú-JSON vaer",
+  "ki_refusal": "I-arim avarnen",
+  "ki_retry": "iesto ad"
  },
  "bar": {
   "title": "🍽️ Energie-Dog — Dogsplaner",
@@ -2175,7 +2215,11 @@
   "model_ph": "Modöi-Nam",
   "endpoint_ph": "Endpoint-URL",
   "key_getlink": "🔑 API-Key hoin ↗ ({host})",
-  "key_bill_hint": "ℹ️ Da Key is güiti, aba beim Anbieter fäht Guthaben/Kontingent. Im Anbieter-Konto (gleiche Organisation) Guthaben/Billing und a Ausgabelimit &gt; 0 schaung. API-Guthaben is getrennt vo Chat-Abos wia Claude&nbsp;Pro / ChatGPT&nbsp;Plus."
+  "key_bill_hint": "ℹ️ Da Key is güiti, aba beim Anbieter fäht Guthaben/Kontingent. Im Anbieter-Konto (gleiche Organisation) Guthaben/Billing und a Ausgabelimit &gt; 0 schaung. API-Guthaben is getrennt vo Chat-Abos wia Claude&nbsp;Pro / ChatGPT&nbsp;Plus.",
+  "ki_empty": "Leere Antwort",
+  "ki_badjson": "D’Antwort war koa güitigs JSON",
+  "ki_refusal": "D’Anfrog is obglehnt worn",
+  "ki_retry": "nomoi probian"
  },
  "mainz": {
   "title": "🍽️ Energie-Daach — Daachsplaner",
@@ -2373,7 +2417,11 @@
   "model_ph": "Modell-Name",
   "endpoint_ph": "Endpoint-URL",
   "key_getlink": "🔑 API-Key hole ↗ ({host})",
-  "key_bill_hint": "ℹ️ Der Key is gildisch, awwer beim Anbieter fehlt Guthabe/Kontingent. Im Anbieter-Konto (gleiche Organisation) Guthabe/Billing un e Ausgabelimit &gt; 0 gucke. API-Guthabe is getrennt vun Chat-Abos wie Claude&nbsp;Pro / ChatGPT&nbsp;Plus."
+  "key_bill_hint": "ℹ️ Der Key is gildisch, awwer beim Anbieter fehlt Guthabe/Kontingent. Im Anbieter-Konto (gleiche Organisation) Guthabe/Billing un e Ausgabelimit &gt; 0 gucke. API-Guthabe is getrennt vun Chat-Abos wie Claude&nbsp;Pro / ChatGPT&nbsp;Plus.",
+  "ki_empty": "Leer Antwort",
+  "ki_badjson": "Die Antwort war kaa gildisches JSON",
+  "ki_refusal": "Die Anfrooch is abgelehnt worn",
+  "ki_retry": "nochemol probiere"
  },
  "hess": {
   "title": "🍽️ Energie-Daach — Daachesplaner",
@@ -2571,6 +2619,10 @@
   "model_ph": "Modell-Name",
   "endpoint_ph": "Endpoint-URL",
   "key_getlink": "🔑 API-Key hole ↗ ({host})",
-  "key_bill_hint": "ℹ️ Der Key is gildisch, awwer beim Anbieter fehlt Guthabe/Kontingent. Im Anbieter-Konto (gleiche Organisation) Guthabe/Billing un e Ausgabelimit &gt; 0 gucke. API-Guthabe is getrennt vun Chat-Abos wie Claude&nbsp;Pro / ChatGPT&nbsp;Plus."
+  "key_bill_hint": "ℹ️ Der Key is gildisch, awwer beim Anbieter fehlt Guthabe/Kontingent. Im Anbieter-Konto (gleiche Organisation) Guthabe/Billing un e Ausgabelimit &gt; 0 gucke. API-Guthabe is getrennt vun Chat-Abos wie Claude&nbsp;Pro / ChatGPT&nbsp;Plus.",
+  "ki_empty": "Leer Antwort",
+  "ki_badjson": "Die Antwort war kaa gildisches JSON",
+  "ki_refusal": "Die Anfraach is abgelehnt worn",
+  "ki_retry": "nochemol probiere"
  }
 }
